@@ -344,6 +344,17 @@ local function pulse(sep)
   set(true) sleep(0.3) set(false)
 end
 
+-- Magnetic Stabilizer (Cosmonautics): com redstone ligado ele FREIA a rotacao da nave.
+-- Nao aponta para nada: o Vector Thruster gira ate o angulo certo e o estabilizador segura ali.
+local stabOn = nil
+local function stabilizer(on)
+  local st = CFG.stabilizer
+  if not st or stabOn == on then return end
+  stabOn = on
+  if st.relay then call(st.relay, "setOutput", st.side, on) else redstone.setOutput(st.side, on) end
+  L.info("ESTABILIZADOR %s", on and "ligado (segurando o angulo)" or "desligado (livre para girar)")
+end
+
 local function separate(i)
   local sep = CFG.stages[i].separator
   if not sep then return end
@@ -681,6 +692,10 @@ local function preflight()
   end
   local lava, nt = lavaTotal()
   L.info("CHECAGEM lava=%d mB em %d tanques/motores", lava, nt)
+  if CFG.stabilizer then
+    L.info("CHECAGEM Magnetic Stabilizer no lado %s%s", tostring(CFG.stabilizer.side),
+      CFG.stabilizer.relay and (" do relay " .. CFG.stabilizer.relay) or "")
+  end
   if #gyroNames() > 0 then
     L.info("CHECAGEM Gyrodyne: %d (ajuda a apontar no pouso; precisa de energia e virado para o nariz)", #gyro.names)
   end
@@ -717,6 +732,10 @@ local function teste()
       end
       sleep(0.05)
     end
+  end
+  if CFG.stabilizer then
+    print("Teste do Magnetic Stabilizer: ligando por 2 s (confira o bloco acender)")
+    stabilizer(true) sleep(2) stabilizer(false)
   end
   L.info("Teste concluido: %d erros, %d avisos", #errs, #warns)
   print(("Pronto. %d erros, %d avisos. Veja: logs"):format(#errs, #warns))
@@ -1252,10 +1271,21 @@ local function voo()
     end
 
     if S.phase ~= "POUSO" then gyroMode("off") end
+    -- estabilizador: desligado enquanto o Vector Thruster gira a nave, ligado quando ja esta alinhada
+    local wantStab = false
+    if S.phase == "COAST" then wantStab = not orb.orienting
+    elseif S.phase == "CIRC" then wantStab = orb.burning == true
+    elseif S.phase == "DEORBIT" then wantStab = deorbit.burning == true
+    elseif S.phase == "REENTRADA" then wantStab = true
+    elseif S.phase == "POUSO" then wantStab = land.lastErr < (CFG.land_align_deg or 15)
+    elseif S.phase == "ASCENT" or S.phase == "BALISTICO" then wantStab = CFG.stab_ascent == true
+    end
+    stabilizer(wantStab)
     if S.phase == "ORBIT" or S.phase == "FALHA" or S.phase == "FIM" or S.phase == "POUSADO" then
       shutdown(S.stage)
       rcsOff()
       gyroMode("off")
+      stabilizer(false)
       show({ "== VOO ENCERRADO: " .. S.phase .. " ==", ("Y %.0f  ECC %s"):format(ship.pos.y, tostring(ecc)),
         "Veja: logs erros" })
       break
@@ -1353,4 +1383,5 @@ if not ok then
   pcall(shutdown, S.stage)
   pcall(rcsOff)
   pcall(gyroMode, "off")
+  pcall(stabilizer, false)
 end

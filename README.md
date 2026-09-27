@@ -67,9 +67,12 @@ No espaço (circularização, deorbit) e no pouso, a nave **primeiro aponta e s�
   porque o gimbal só gira a nave quando há empuxo.
 - Alinhada (erro < `align_deg` = 5° e girando menos que `align_rate`): acende tudo.
   Durante a queima tolera até `align_keep_deg` (15°) antes de voltar a só girar.
-- **Gyrodyne** (opcional): se houver um ligado ao computador, no pouso ele fica em `retrograde`
-  (caindo rápido) ou `radial_out` (nariz para cima). Precisa de energia (FE) e ficar virado para o nariz.
-  No espaço profundo ele não ajuda (os modos dele usam a velocidade local, que lá é ~0).
+- **Magnetic Stabilizer** (Cosmonautics 26.08): com redstone ligado ele **freia a rotação** da nave.
+  O piloto desliga enquanto o Vector Thruster gira e liga quando a nave já está alinhada
+  (esperando o apoastro, queimando, reentrada e pouso). Na subida fica desligado (`stab_ascent = true` para ligar).
+  O `setup` pergunta o lado do computador (ou `redstone_relay`) ligado a ele (`stabilizer`).
+- **Gyrodyne** (só no Cosmonautics 1.4+, que ainda não saiu): se houver um ligado ao computador, no pouso ele fica
+  em `retrograde` ou `radial_out`. Na versão 26.08 ele não existe e isso é ignorado.
 
 ### Controle de direção na subida
 

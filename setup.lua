@@ -98,6 +98,18 @@ for i = 1, nStages do
   stages[i] = st
 end
 
+-- Magnetic Stabilizer (freia a rotacao; ligado por redstone)
+local stab
+print("Magnetic Stabilizer: lado do computador que liga ele por redstone")
+local sside = ask("  (top/bottom/left/right/front/back, nome de redstone_relay, ou 'nenhum')", "nenhum")
+if sside ~= "nenhum" then
+  if peripheral.hasType(sside, "redstone_relay") then
+    stab = { relay = sside, side = ask("  lado do relay", "top") }
+  else
+    stab = { side = sside }
+  end
+end
+
 -- Sputnik / monitor
 local sp = peripheral.find("sputnik")
 local spName = sp and peripheral.getName(sp) or nil
@@ -108,6 +120,7 @@ local mon = peripheral.find("monitor")
 
 local cfg = {
   stages = stages,
+  stabilizer = stab,
   sputnik = spName,
   monitor = mon and peripheral.getName(mon) or nil,
   launch_side = ask("Lado do computador ligado ao BOTAO de lancamento", "left"),
