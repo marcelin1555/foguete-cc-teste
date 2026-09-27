@@ -48,6 +48,13 @@ logs 3 erros       -- avisos e erros do log 3 da lista
 logs limpar        -- apaga todos os logs
 ```
 
+### Controle de direção na subida
+
+A Sputnik (`sputnik_guiagem.lua`) aponta o foguete com um controle PID: proporcional (`KP`),
+amortecimento (`KD`) e **integral (`KI`)**. O integral tira o erro que ficaria parado quando o
+centro de massa está fora do eixo ou um motor empurra menos que os outros.
+Com `sputnik_guidance = false` quem controla é o computador, com os mesmos termos (`kp`, `kd`, `ki` no `config.lua`).
+
 ### Logs
 
 Cada voo grava num arquivo próprio, com data e hora no nome:

@@ -8,6 +8,7 @@
 
 ---------------- PARAMETROS (ajuste aqui) ----------------
 local KP, KD      = 1.5, 0.8   -- forca da correcao / amortecimento
+local KI, IMAX    = 0.6, 0.5   -- integral: tira o erro que fica parado (centro de massa torto, motor fraco)
 local MAXG        = 0.6        -- gimbal maximo (0..1)
 local SIGN        = 1          -- troque para -1 se corrigir para o lado errado
 local TURN_START  = 250        -- blocos acima da plataforma para comecar a inclinar
@@ -68,6 +69,7 @@ local vx, vy, vz = getVelocity()
 local speed = math.sqrt(vx * vx + vy * vy + vz * vz)
 if not running then
   _G.padY = nil -- no chao: memoriza a plataforma na proxima ignicao
+  _G.ix, _G.iz = 0, 0 -- zera o integral entre voos
   if speed < 0.5 then _G.voltando = nil end -- parado no chao: proximo voo e uma subida
   return
 end
@@ -100,8 +102,11 @@ if dy < 0 then -- alvo atras: esterca no maximo
   dx, dz = dx / m, dz / m
 end
 
-local gx = math.max(-MAXG, math.min(MAXG, SIGN * (KP * dx + KD * wz)))
-local gz = math.max(-MAXG, math.min(MAXG, SIGN * (KP * dz - KD * wx)))
+-- integral (20 ticks/s): cresce enquanto sobrar erro, limitado para nao embalar
+_G.ix = math.max(-IMAX, math.min(IMAX, (_G.ix or 0) + dx * 0.05))
+_G.iz = math.max(-IMAX, math.min(IMAX, (_G.iz or 0) + dz * 0.05))
+local gx = math.max(-MAXG, math.min(MAXG, SIGN * (KP * dx + KD * wz + KI * _G.ix)))
+local gz = math.max(-MAXG, math.min(MAXG, SIGN * (KP * dz - KD * wx + KI * _G.iz)))
 for _, id in ipairs(vectors) do
   writePeripheralValues(id, "gimbal", gx, gz)
 end

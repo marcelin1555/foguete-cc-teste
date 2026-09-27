@@ -261,7 +261,9 @@ end
 local lastW = V(0, 0, 0) -- velocidade angular local (para o log)
 local steerCount = 0      -- quantas vezes o gimbal foi comandado
 -- force = true: o CC controla o gimbal mesmo com sputnik_guidance (manobras no espaco)
-local function steer(ship, target, force)
+local integ = { x = 0, z = 0, t = nil }
+-- integ = true: acumula o erro (tira o erro parado); so na subida, com motor ligado
+local function steer(ship, target, force, useInteg)
   local d = toLocal(ship.q, target:normalize())
   local ex, ez = d.x, d.z
   if d.y < 0 then
@@ -271,8 +273,18 @@ local function steer(ship, target, force)
   end
   local w = toLocal(ship.q, ship.angv)
   local s, lim = CFG.gimbal_sign, CFG.max_gimbal
-  local gx = clamp(s * (CFG.kp * ex + CFG.kd * w.z), -lim, lim)
-  local gz = clamp(s * (CFG.kp * ez - CFG.kd * w.x), -lim, lim)
+  local now = os.clock()
+  local ki, imax = CFG.ki or 0.6, CFG.imax or 0.5
+  if useInteg and integ.t then
+    local dt = math.min(now - integ.t, 0.5)
+    integ.x = clamp(integ.x + ex * dt, -imax, imax)
+    integ.z = clamp(integ.z + ez * dt, -imax, imax)
+  elseif not useInteg then
+    integ.x, integ.z = 0, 0
+  end
+  integ.t = now
+  local gx = clamp(s * (CFG.kp * ex + CFG.kd * w.z + ki * integ.x), -lim, lim)
+  local gz = clamp(s * (CFG.kp * ez - CFG.kd * w.x + ki * integ.z), -lim, lim)
   -- todos os vector thrusters no mesmo tick
   -- (com sputnik_guidance o Sputnik controla o gimbal; o CC so mede o erro)
   local fns = {}
@@ -587,7 +599,9 @@ local function preflight()
   if nt == 0 then W("nenhum tanque ligado ao computador: nao da para medir o combustivel") end
   local twr = maxT / (ship.mass * g)
   L.info("CHECAGEM empuxo_max=%.0f TWR=%.2f", maxT, twr)
-  if twr < CFG.min_twr then W("TWR %.2f abaixo de %.2f", twr, CFG.min_twr) end
+  if twr < CFG.min_twr then
+    E("TWR %.2f abaixo de %.2f: o foguete so flutua e escorrega de lado (mais motores ou menos peso)", twr, CFG.min_twr)
+  end
   if not CFG.sputnik or not peripheral.isPresent(CFG.sputnik) then W("Sputnik nao encontrado: sem dados de orbita") end
   if not redstone then W("sem API redstone") end
   return errs, warns, twr
@@ -847,7 +861,7 @@ local function voo()
           tilt = CFG.turn_end_angle * f ^ 0.6
         end
         local r = math.rad(tilt)
-        err, gx, gz = steer(ship, UP * math.cos(r) + EAST * math.sin(r))
+        err, gx, gz = steer(ship, UP * math.cos(r) + EAST * math.sin(r), nil, S.phase == "ASCENT")
         if S.phase == "ASCENT" then
           local maxT = #stageEngines(S.stage) * CFG.max_thrust_n
           setThrottle(S.stage, math.min(1, CFG.max_twr * ship.mass * g / maxT))
