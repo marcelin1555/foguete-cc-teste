@@ -59,6 +59,18 @@ o piloto manda um pulso no separador dos boosters e os motores líquidos continu
 - O `setup` pergunta o lado do computador (ou `redstone_relay`) que manda o pulso (`booster_separator`).
 - **Mesmo número de blocos de carvão em todos os boosters**, senão um acaba antes e o foguete gira.
 
+### Apontar antes de acender
+
+No espaço (circularização, deorbit) e no pouso, a nave **primeiro aponta e só depois acende** os motores:
+
+- Desalinhada: os motores fixos ficam **desligados** e só o **Vector Thruster** empurra (`orient_throttle`, 35%),
+  porque o gimbal só gira a nave quando há empuxo.
+- Alinhada (erro < `align_deg` = 5° e girando menos que `align_rate`): acende tudo.
+  Durante a queima tolera até `align_keep_deg` (15°) antes de voltar a só girar.
+- **Gyrodyne** (opcional): se houver um ligado ao computador, no pouso ele fica em `retrograde`
+  (caindo rápido) ou `radial_out` (nariz para cima). Precisa de energia (FE) e ficar virado para o nariz.
+  No espaço profundo ele não ajuda (os modos dele usam a velocidade local, que lá é ~0).
+
 ### Controle de direção na subida
 
 A Sputnik (`sputnik_guiagem.lua`) aponta o foguete com um controle PID: proporcional (`KP`),

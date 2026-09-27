@@ -182,23 +182,46 @@ local function logEngines(tag)
 end
 
 -- cada chamada de periferico custa 1 tick: evite chamadas repetidas
-local lastThrottleN = {}
-local function setThrottle(i, frac)
+local lastThrottleN = {}  -- maior acelerador comandado no estagio (usado para saber se esgotou)
+local lastEngineN = {}    -- ultimo empuxo mandado para cada motor
+local function quantN(frac)
   local n = math.floor(clamp(frac, 0, 1) * CFG.max_thrust_n)
-  n = math.floor(n / 50) * 50
-  if lastThrottleN[i] == n then return end -- so chama o periferico quando muda
-  lastThrottleN[i] = n
+  return math.floor(n / 50) * 50
+end
+-- vecFrac (opcional): acelerador so dos Vector Thrusters; os fixos usam frac
+local function setThrottle(i, frac, vecFrac)
+  local nMain = quantN(frac)
+  local nVec = vecFrac and quantN(vecFrac) or nMain
+  lastThrottleN[i] = math.max(nMain, nVec)
   local fns = {}
   for _, name in ipairs(stageEngines(i)) do
-    if typeOf(name) ~= "booster_thruster" then
-      -- acelerador 0 = motor desativado (ativo com empuxo 0 ainda gasta lava)
-      fns[#fns + 1] = function()
-        call(name, "setThrust", n)
-        call(name, "setActive", n > 0)
+    local t = typeOf(name)
+    if t ~= "booster_thruster" then
+      local n = (t == "vector_thruster") and nVec or nMain
+      if lastEngineN[name] ~= n then -- so chama o periferico quando muda
+        lastEngineN[name] = n
+        -- acelerador 0 = motor desativado (ativo com empuxo 0 ainda gasta lava)
+        fns[#fns + 1] = function()
+          call(name, "setThrust", n)
+          call(name, "setActive", n > 0)
+        end
       end
     end
   end
   if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
+end
+
+-- girando: motores fixos desligados, so o Vector Thruster empurra (e o unico que vira a nave)
+local function orientThrottle(i)
+  setThrottle(i, 0, CFG.orient_throttle or 0.35)
+end
+
+-- alinhado de verdade: erro pequeno e a nave quase sem girar (com folga enquanto ja queima)
+local function alignedFor(state, err, ship)
+  local w = ship.angv and ship.angv:length() or 0
+  local limit = state.burning and (CFG.align_keep_deg or 15) or (CFG.align_deg or 5)
+  state.burning = err < limit and (state.burning or w < (CFG.align_rate or 0.05))
+  return state.burning
 end
 
 local function ignite(i)
@@ -208,6 +231,7 @@ end
 
 local function shutdown(i)
   lastThrottleN[i] = nil
+  for _, name in ipairs(stageEngines(i)) do lastEngineN[name] = nil end
   for _, name in ipairs(stageEngines(i)) do
     if typeOf(name) ~= "booster_thruster" then
       call(name, "setThrust", 0)
@@ -235,6 +259,7 @@ local function safeAll(why)
   end
   if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
   lastThrottleN = {}
+  lastEngineN = {}
   L.info("Motores liquidos desligados (%d) - %s", #fns, why)
   return #fns
 end
@@ -397,6 +422,28 @@ local function lavaTotal()
   local total = 0
   for k = 1, #names do total = total + (amounts[k] or 0) end
   return total, #names
+end
+
+---------------------------------------------------------------- Gyrodyne
+-- Roda de reacao do Cosmonautics: gira a nave SEM empuxo (precisa de energia FE).
+-- Os modos dela usam a velocidade local da nave, que no espaco profundo e ~0,
+-- entao so servem no pouso: radial_out = nariz para cima, retrograde = contra o movimento.
+-- O Gyrodyne precisa estar virado para o mesmo lado do nariz do foguete.
+local gyro = { names = nil, mode = nil }
+local function gyroNames()
+  if not gyro.names then
+    gyro.names = {}
+    for _, n in ipairs(periNames()) do
+      if peripheral.hasType(n, "gyrodyne") then gyro.names[#gyro.names + 1] = n end
+    end
+  end
+  return gyro.names
+end
+local function gyroMode(mode)
+  if gyro.mode == mode or #gyroNames() == 0 then return end
+  gyro.mode = mode
+  for _, n in ipairs(gyro.names) do call(n, "setMode", mode) end
+  L.info("GYRODYNE modo %s (%d)", mode, #gyro.names)
 end
 
 ---------------------------------------------------------------- RCS
@@ -634,6 +681,9 @@ local function preflight()
   end
   local lava, nt = lavaTotal()
   L.info("CHECAGEM lava=%d mB em %d tanques/motores", lava, nt)
+  if #gyroNames() > 0 then
+    L.info("CHECAGEM Gyrodyne: %d (ajuda a apontar no pouso; precisa de energia e virado para o nariz)", #gyro.names)
+  end
   rcsDiscover()
   if #rcs.names > 0 then
     L.info("CHECAGEM RCS: %d propulsores, %s", #rcs.names, rcsReady() and "calibrados" or "sem calibracao (calibra sozinho ao chegar no espaco)")
@@ -746,7 +796,7 @@ local function voo()
     ignite(S.stage)
   end
   if S.phase == "ASCENT" then setThrottle(S.stage, 1) end
-  if S.phase == "DEORBIT" then setThrottle(S.stage, CFG.steer_throttle) end
+  if S.phase == "DEORBIT" then orientThrottle(S.stage) end
   -- POUSO comeca com motor em 0: so acelera depois de apontar para cima
   -- (antes acendia com o foguete de lado e empurrava a nave para o lado)
   if S.phase == "POUSO" then setThrottle(S.stage, 0) end
@@ -877,7 +927,7 @@ local function voo()
         save()
         sleep(1)
         ignite(S.stage)
-        setThrottle(S.stage, (S.phase == "ASCENT") and 1 or CFG.steer_throttle)
+        if S.phase == "ASCENT" then setThrottle(S.stage, 1) else orientThrottle(S.stage) end
         burnStart, igniteT, boosterRetry = os.clock(), os.clock(), {}
       elseif not S.fuelOut then
         S.fuelOut = true
@@ -937,8 +987,8 @@ local function voo()
         local dv = V(dsd.velocity.x, dsd.velocity.y, dsd.velocity.z)
         local target = dv:length() > 1e-6 and dv:normalize() * (-deorbit.sign) or UP
         err, gx, gz = steer(ship, target, true)
-        local burning = err < 15
-        setThrottle(S.stage, burning and 1 or CFG.steer_throttle)
+        local burning = alignedFor(deorbit, err, ship)
+        if burning then setThrottle(S.stage, 1) else orientThrottle(S.stage) end
         if burning then deorbit.burnedFull = true end
         local peri = (dsd.semiMajorAxis or 0 / 0) * (1 - (dsd.eccentricity or 0 / 0)) - (dsd.parentRadius or 0)
         if slow and peri == peri then
@@ -1035,15 +1085,21 @@ local function voo()
       -- empuxo, corrigido pelo quanto o foguete ainda esta desalinhado
       local cosE = math.cos(math.rad(math.min(land.lastErr, 60)))
       local thr = clamp(aMag * ship.mass / math.max(Fmax * cosE, 1), 0, 1)
-      if land.lastErr > 60 then thr = 0 end      -- nunca acelera de lado ou de cabeca para baixo
-      -- empuxo minimo so para o gimbal conseguir girar a nave (sem empuxo o gimbal nao faz nada)
-      local minThr = (CFG.land_orient_n or 100) / CFG.max_thrust_n
-      if thr < minThr and land.lastErr > 8 and not rcsReady() then thr = minThr end
       if aMax <= 0.5 then
         thr = 1
         if slow then L.err("Empuxo insuficiente para pousar (a_max=%.2f)", aMax) end
       end
-      setThrottle(S.stage, thr)
+      -- gyrodyne ajuda a apontar: contra o movimento quando cai rapido, senao nariz para cima
+      if vy < -2 and speed > 3 then gyroMode("retrograde") else gyroMode("radial_out") end
+      -- primeiro aponta, depois acende: desalinhado, so o Vector Thruster empurra (para girar)
+      local okAng = land.lastErr < (CFG.land_align_deg or 15)
+      if okAng then
+        setThrottle(S.stage, thr)
+      elseif rcsReady() then
+        setThrottle(S.stage, 0)
+      else
+        orientThrottle(S.stage)
+      end
 
       err, gx, gz = steer(ship, tgt, CFG.land_cc_gimbal ~= false)
       if rcsReady() then rcsControl(ship, tgt) end
@@ -1109,18 +1165,28 @@ local function voo()
       local alvo = math.min(CFG.orbit_peri_alt or 23000, (dist == dist and dist or 1e9) - 300)
 
       if S.phase == "COAST" then
-        -- com RCS nao gasta lava para girar; sem RCS, empuxo minimo so enquanto gira
-        setThrottle(S.stage, (not useRcs and err > 5) and CFG.steer_throttle or 0)
+        -- ja vai apontando para a queima: com RCS nao gasta lava; sem RCS so o Vector Thruster empurra
+        -- histerese: comeca a girar acima de 5 graus e so para quando estiver a menos de 2 e quase sem girar
+        local w = ship.angv and ship.angv:length() or 0
+        if err > (CFG.align_deg or 5) then orb.orienting = true end
+        if err < 2 and w < 0.02 then orb.orienting = false end
+        if not useRcs and orb.orienting then orientThrottle(S.stage) else setThrottle(S.stage, 0) end
         if slow and dsd and ((orb.vrOk and vr <= 1) or (peri == peri and peri >= alvo)) then
           bestEcc = math.huge
           setPhase("CIRC", ("apoastro, vr=%.2f ecc=%s periastro=%.0f alvo=%.0f"):format(vr, tostring(ecc), peri, alvo))
         end
       else
-        local aligned = err < 10
+        local aligned = alignedFor(orb, err, ship)
         -- perto do alvo reduz o empuxo para nao passar do ponto
         local falta = (peri == peri) and (alvo - peri) or math.huge
         local full = clamp(falta / (CFG.circ_slow_m or 50000), 0.2, 1)
-        setThrottle(S.stage, aligned and full or (useRcs and 0 or CFG.steer_throttle))
+        if aligned then
+          setThrottle(S.stage, full)
+        elseif useRcs then
+          setThrottle(S.stage, 0)
+        else
+          orientThrottle(S.stage)
+        end
         if aligned then orb.burned = true end
         if slow and sma then
           if not orb.lastSma then
@@ -1185,9 +1251,11 @@ local function voo()
       engT = now
     end
 
+    if S.phase ~= "POUSO" then gyroMode("off") end
     if S.phase == "ORBIT" or S.phase == "FALHA" or S.phase == "FIM" or S.phase == "POUSADO" then
       shutdown(S.stage)
       rcsOff()
+      gyroMode("off")
       show({ "== VOO ENCERRADO: " .. S.phase .. " ==", ("Y %.0f  ECC %s"):format(ship.pos.y, tostring(ecc)),
         "Veja: logs erros" })
       break
@@ -1284,4 +1352,5 @@ if not ok then
   end
   pcall(shutdown, S.stage)
   pcall(rcsOff)
+  pcall(gyroMode, "off")
 end
