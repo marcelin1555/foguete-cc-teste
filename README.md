@@ -43,6 +43,22 @@ voo reset          -- apaga o estado (novo voo)
 logs erros         -- só avisos e erros
 ```
 
+### Como a órbita funciona
+
+No espaço profundo a nave fica parada no próprio mundo e a Sputnik simula a órbita.
+Por isso o piloto usa só os dados da Sputnik (`semiMajorAxis`, `eccentricity`, `velocity`, `distanceToPlanet`):
+
+1. **COAST**: motores desligados até o apoastro (a distância para de subir).
+2. **CIRC**: queima na direção do movimento orbital até o periastro passar de `orbit_peri_alt`.
+   - Se o semi-eixo maior **cai** durante a queima, inverte a direção.
+   - Se a órbita **não muda**, gira 90° e tenta de novo (até 4 vezes).
+3. **ORBIT**: motores desligados e voo encerrado.
+
+| Chave | Padrão | |
+|---|---|---|
+| `orbit_peri_alt` | 23000 | periastro mínimo (a nave volta para o overworld abaixo de ~21000) |
+| `circ_slow_m` | 50000 | começa a reduzir o empuxo quando falta menos que isso para o alvo |
+
 ### Pouso sem saber o Y do chão
 
 O foguete freia até `land_ceiling_y` (padrão 400) e depois desce a `land_speed` (padrão 3 m/s) até encostar.

@@ -280,6 +280,46 @@ local function sputnik()
   return call(CFG.sputnik, "getDeepSpaceData")
 end
 
+-- direcao da velocidade orbital (prograde) no mundo da nave, se a Sputnik der o vetor
+local function orbitDir(d)
+  local v = d and d.velocity
+  if type(v) == "table" and v.x and v.x == v.x then
+    local w = V(v.x, v.y or 0, v.z or 0)
+    if w:length() > 1e-6 then return w:normalize() end
+  end
+  return nil
+end
+
+-- altura do periastro acima da superficie
+local function periAlt(d)
+  if not d or not d.semiMajorAxis or not d.eccentricity then return 0 / 0 end
+  return d.semiMajorAxis * (1 - d.eccentricity) - (d.parentRadius or 0)
+end
+
+-- lava somada em tudo que for tanque de fluido ligado ao computador (inclui os motores)
+local function lavaTotal()
+  local names, amounts, fns = {}, {}, {}
+  for _, n in ipairs(peripheral.getNames()) do
+    if peripheral.hasType(n, "fluid_storage") then names[#names + 1] = n end
+  end
+  for k, n in ipairs(names) do
+    fns[k] = function()
+      local ok, t = pcall(peripheral.call, n, "tanks")
+      local sum = 0
+      if ok and type(t) == "table" then
+        for _, tk in pairs(t) do
+          if type(tk) == "table" and tostring(tk.name):find("lava") then sum = sum + (tk.amount or 0) end
+        end
+      end
+      amounts[k] = sum
+    end
+  end
+  if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
+  local total = 0
+  for k = 1, #names do total = total + (amounts[k] or 0) end
+  return total, #names
+end
+
 ---------------------------------------------------------------- tela
 local mon = CFG.monitor and peripheral.wrap(CFG.monitor)
 local function show(t)
@@ -358,6 +398,9 @@ local function preflight()
     local d = call(n, "getData") or {}
     maxT = maxT + (d.engine_type == "booster_thruster" and (d.thrust_power or 0) or CFG.max_thrust_n)
   end
+  local lava, nt = lavaTotal()
+  L.info("CHECAGEM lava=%d mB em %d tanques/motores", lava, nt)
+  if nt == 0 then W("nenhum tanque ligado ao computador: nao da para medir o combustivel") end
   local twr = maxT / (ship.mass * g)
   L.info("CHECAGEM empuxo_max=%.0f TWR=%.2f", maxT, twr)
   if twr < CFG.min_twr then W("TWR %.2f abaixo de %.2f", twr, CFG.min_twr) end
@@ -471,7 +514,7 @@ local function voo()
   local slowT = -1
   local orbT = -math.huge
   local tiltT = nil
-  local gdir = nil
+  local orb = { flips = 0 }
   local bestEcc = math.huge
   local tick = 0
   -- valores lidos na parte lenta do loop (a cada 0.5s)
@@ -494,12 +537,23 @@ local function voo()
       inSpace = dsd and dsd.inDeepSpace or false
       ecc = dsd and dsd.eccentricity or 0 / 0
       dist = dsd and dsd.distanceToPlanet or 0 / 0
-      if dsd and dsd.distanceToPlanet and lastDist then
+      -- a Sputnik so atualiza a distancia de vez em quando: mede vr so quando ela muda
+      if dsd and dsd.distanceToPlanet and lastDist and dsd.distanceToPlanet ~= lastDist then
         vr = (dsd.distanceToPlanet - lastDist) / math.max(now - lastDistT, 0.05)
+        orb.vrOk = true
       end
-      if dsd and dsd.distanceToPlanet then lastDist, lastDistT = dsd.distanceToPlanet, now end
+      if dsd and dsd.distanceToPlanet and dsd.distanceToPlanet ~= lastDist then
+        lastDist, lastDistT = dsd.distanceToPlanet, now
+      elseif orb.vrOk and lastDistT and now - lastDistT > 3 then
+        vr = 0  -- distancia parada ha 3 s: estamos no apoastro
+      end
       thrust, spent = stageStatus(S.stage, now - burnStart)
       -- dados orbitais completos a cada 2s no espaco
+      if inSpace and not orb.dumped then
+        -- uma vez: tudo que a Sputnik entrega (para descobrir campos e unidades)
+        orb.dumped = true
+        L.info("SPUTNIK dados=%s", textutils.serialize(dsd, { compact = true }))
+      end
       if inSpace and now - orbT >= 2 then
         orbT = now
         L.info("ORBITA ecc=%s sma=%s periodo=%s vel_orb=%s g=%s raio_planeta=%s dist=%s atm=%s corpo=%s",
@@ -740,37 +794,75 @@ local function voo()
       end
 
     elseif S.phase == "COAST" or S.phase == "CIRC" then
-      if lastVel and S.phase == "COAST" then
-        local a = (ship.vel - lastVel) / dt
-        if a:length() > 0.01 then
-          gdir = gdir and (gdir * 0.9 + a:normalize() * 0.1):normalize() or a:normalize()
-        end
+      -- No espaco profundo a nave fica parada no seu proprio mundo: a orbita e
+      -- simulada pela Sputnik. ship.vel nao serve para nada aqui; a direcao da
+      -- queima vem da velocidade orbital da Sputnik, e o sinal certo e descoberto
+      -- olhando se o semi-eixo maior (sma) sobe durante a queima.
+      local pro = (not orb.noPro) and orbitDir(dsd) or nil
+      if pro then
+        orb.dir = pro * (S.progSign or 1)
+      elseif not orb.dir then
+        orb.dir = qrot(ship.q, UP)  -- sem vetor da Sputnik: mantem o nariz e testa o sinal queimando
+        L.warn("Sputnik sem velocity: vou queimar para onde o nariz aponta e corrigir pelo sma")
       end
-      local target
-      if gdir then
-        local vh = ship.vel - gdir * ship.vel:dot(gdir)
-        local h = vh:length() > 1e-3 and vh:normalize() or EAST
-        target = h + gdir * (vr * 0.05)
-      else
-        target = speed > 1e-3 and ship.vel:normalize() or EAST
-      end
-      err, gx, gz = steer(ship, target)
+      err, gx, gz = steer(ship, orb.dir, true)
+      local peri = periAlt(dsd)
+      local sma = dsd and dsd.semiMajorAxis
+      local alvo = math.min(CFG.orbit_peri_alt or 23000, (dist == dist and dist or 1e9) - 300)
 
       if S.phase == "COAST" then
-        local tApo = (dsd and dsd.gravity and dsd.gravity > 0) and vr / dsd.gravity or math.huge
-        setThrottle(S.stage, tApo < 20 and CFG.steer_throttle or 0)
-        if slow and dsd and vr <= 1 then
+        -- empuxo minimo so enquanto gira (sem empuxo o gimbal nao vira a nave)
+        setThrottle(S.stage, err > 5 and CFG.steer_throttle or 0)
+        if slow and dsd and ((orb.vrOk and vr <= 1) or (peri == peri and peri >= alvo)) then
           bestEcc = math.huge
-          setPhase("CIRC", ("apoastro, vr=%.2f ecc=%s"):format(vr, tostring(ecc)))
+          setPhase("CIRC", ("apoastro, vr=%.2f ecc=%s periastro=%.0f alvo=%.0f"):format(vr, tostring(ecc), peri, alvo))
         end
       else
-        setThrottle(S.stage, err < 10 and 1 or CFG.steer_throttle)
-        if ecc == ecc then
-          if ecc < bestEcc then bestEcc = ecc end
-          if ecc <= CFG.ecc_target or (ecc > bestEcc + 0.005 and bestEcc < 0.3) then
-            shutdown(S.stage)
-            setPhase("ORBIT", ("ecc=%.4f"):format(ecc))
+        local aligned = err < 10
+        -- perto do alvo reduz o empuxo para nao passar do ponto
+        local falta = (peri == peri) and (alvo - peri) or math.huge
+        local full = clamp(falta / (CFG.circ_slow_m or 50000), 0.2, 1)
+        setThrottle(S.stage, aligned and full or CFG.steer_throttle)
+        if aligned then orb.burned = true end
+        if slow and sma then
+          if not orb.lastSma then
+            orb.lastSma, orb.lastT = sma, now
+          elseif now - orb.lastT >= 1.5 then
+            if orb.burned and sma < orb.lastSma - 1 and orb.flips < 3 then
+              orb.flips, orb.stale = orb.flips + 1, 0
+              if pro then S.progSign = -(S.progSign or 1) save() else orb.dir = orb.dir * -1 end
+              L.warn("sma CAINDO com a queima (%.0f -> %.0f): invertendo a direcao", orb.lastSma, sma)
+            elseif orb.burned and math.abs(sma - orb.lastSma) < 1 then
+              -- queimando alinhado e a orbita nao muda: essa direcao e perpendicular ao movimento
+              orb.stale = (orb.stale or 0) + 1
+              if orb.stale >= 2 then
+                orb.stale, orb.turns = 0, (orb.turns or 0) + 1
+                local h = V(orb.dir.x, 0, orb.dir.z)
+                if h:length() < 0.1 then h = EAST end
+                orb.noPro = true
+                orb.dir = V(-h.z, 0, h.x):normalize()  -- gira 90 graus no plano horizontal
+                L.warn("Queima nao muda a orbita (sma=%.0f): tentando outra direcao (%d/4)", sma, orb.turns)
+                if orb.turns > 4 then
+                  shutdown(S.stage)
+                  setPhase("FALHA", "nenhuma direcao de queima muda a orbita; mande o log")
+                end
+              end
+            elseif orb.burned then
+              orb.stale = 0
+            end
+            L.info("CIRC periastro=%.0f alvo=%.0f sma=%.0f ecc=%s erro=%.1f sinal=%d",
+              peri, alvo, sma, tostring(ecc), err, S.progSign or 1)
+            orb.lastSma, orb.lastT, orb.burned = sma, now, false
           end
+        end
+        if ecc == ecc and ecc < bestEcc then bestEcc = ecc end
+        if slow and peri == peri and peri >= alvo then
+          shutdown(S.stage)
+          setPhase("ORBIT", ("periastro=%.0f ecc=%s"):format(peri, tostring(ecc)))
+        elseif slow and ecc == ecc and bestEcc < 0.3 and ecc > bestEcc + 0.005 and peri == peri and peri > 0 then
+          -- passou do ponto: a queima comecou a esticar a orbita do outro lado
+          shutdown(S.stage)
+          setPhase("ORBIT", ("ecc voltou a subir, periastro=%.0f ecc=%.4f"):format(peri, ecc))
         end
       end
     end
@@ -788,7 +880,12 @@ local function voo()
     end
     -- motores: a cada 5s no inicio, depois a cada 20s (em paralelo)
     local engEvery = (now - burnStart < 30) and 5 or 20
-    if now - engT >= engEvery then logEngines(S.phase) engT = now end
+    if now - engT >= engEvery then
+      logEngines(S.phase)
+      local lava, nt = lavaTotal()
+      L.info("COMBUSTIVEL lava=%d mB em %d tanques/motores (fase %s, Y=%.0f)", lava, nt, S.phase, ship.pos.y)
+      engT = now
+    end
 
     if S.phase == "ORBIT" or S.phase == "FALHA" or S.phase == "FIM" or S.phase == "POUSADO" then
       shutdown(S.stage)
