@@ -1,7 +1,16 @@
 -- parar.lua : DESLIGA todos os motores liquidos conectados (emergencia)
 -- Boosters solidos nao podem ser desligados depois de acesos.
+-- nomes dos perifericos sem repeticao (com 2 modems na mesma rede o CC lista cada um 2 vezes)
+local function periNames()
+  local seen, out = {}, {}
+  for _, n in ipairs(peripheral.getNames()) do
+    if not seen[n] then seen[n] = true out[#out + 1] = n end
+  end
+  return out
+end
+
 local n = 0
-for _, name in ipairs(peripheral.getNames()) do
+for _, name in ipairs(periNames()) do
   if peripheral.hasType(name, "thruster") then
     local ok, d = pcall(peripheral.call, name, "getData")
     if ok and d and d.engine_type ~= "booster_thruster" then

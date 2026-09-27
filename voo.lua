@@ -16,6 +16,13 @@ if not fs.exists(path("config.lua")) then
   printError("Rode 'setup' primeiro.") return
 end
 local CFG = dofile(path("config.lua"))
+for _, st in ipairs(CFG.stages or {}) do
+  local seen, list = {}, {}
+  for _, n in ipairs(st.engines or {}) do
+    if not seen[n] then seen[n] = true list[#list + 1] = n end
+  end
+  st.engines = list
+end
 
 if args[1] == "reset" then
   fs.delete(STATE_FILE) L.info("Estado apagado (voo reset)") print("Estado apagado.") return
@@ -27,6 +34,15 @@ local UP = V(0, 1, 0)
 local EAST = V(CFG.east[1], CFG.east[2], CFG.east[3]):normalize()
 
 local function clamp(x, a, b) return math.max(a, math.min(b, x)) end
+
+-- nomes dos perifericos sem repeticao (com 2 modems na mesma rede o CC lista cada um 2 vezes)
+local function periNames()
+  local seen, out = {}, {}
+  for _, n in ipairs(peripheral.getNames()) do
+    if not seen[n] then seen[n] = true out[#out + 1] = n end
+  end
+  return out
+end
 
 local function qrot(q, v)
   local qx, qy, qz, qw = q[1], q[2], q[3], q[4]
@@ -188,7 +204,7 @@ end
 local function safeAll(why)
   local seen, fns = {}, {}
   local names = allEngines()
-  for _, n in ipairs(peripheral.getNames()) do
+  for _, n in ipairs(periNames()) do
     if peripheral.hasType(n, "thruster") then names[#names + 1] = n end
   end
   for _, n in ipairs(names) do
@@ -300,7 +316,7 @@ end
 -- lava somada em tudo que for tanque de fluido ligado ao computador (inclui os motores)
 local function lavaTotal()
   local names, amounts, fns = {}, {}, {}
-  for _, n in ipairs(peripheral.getNames()) do
+  for _, n in ipairs(periNames()) do
     if peripheral.hasType(n, "fluid_storage") then names[#names + 1] = n end
   end
   for k, n in ipairs(names) do
@@ -331,7 +347,7 @@ local rcs = { names = {}, cal = {}, on = {} }
 
 local function rcsDiscover()
   rcs.names = {}
-  for _, n in ipairs(peripheral.getNames()) do
+  for _, n in ipairs(periNames()) do
     if peripheral.hasType(n, "thruster") and typeOf(n) == "rcs_thruster" then rcs.names[#rcs.names + 1] = n end
   end
   table.sort(rcs.names)
@@ -524,7 +540,7 @@ local function preflight()
     end
   end
   -- motores ligados mas fora da config
-  for _, n in ipairs(peripheral.getNames()) do
+  for _, n in ipairs(periNames()) do
     if peripheral.hasType(n, "thruster") and not configured[n] and typeOf(n) ~= "rcs_thruster" then
       W("%s esta conectado mas NAO esta na config (rode setup)", short(n))
     end

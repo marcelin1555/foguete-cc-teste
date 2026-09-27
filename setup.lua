@@ -1,6 +1,15 @@
 -- setup.lua : configura o foguete e gera config.lua
 -- Rode com o foguete montado e todos os motores ligados por modem ao computador.
 
+-- nomes dos perifericos sem repeticao (com 2 modems na mesma rede o CC lista cada um 2 vezes)
+local function periNames()
+  local seen, out = {}, {}
+  for _, n in ipairs(peripheral.getNames()) do
+    if not seen[n] then seen[n] = true out[#out + 1] = n end
+  end
+  return out
+end
+
 local function ask(prompt, default)
   write(prompt .. (default and (" [" .. tostring(default) .. "]") or "") .. ": ")
   local r = read()
@@ -17,7 +26,7 @@ end
 -- Motores
 local engines = {}
 local rcsCount = 0
-for _, name in ipairs(peripheral.getNames()) do
+for _, name in ipairs(periNames()) do
   if peripheral.hasType(name, "thruster") then
     local ok, data = pcall(peripheral.call, name, "getData")
     local t = ok and data.engine_type or "?"
