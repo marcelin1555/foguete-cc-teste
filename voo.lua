@@ -547,6 +547,14 @@ local function preflight()
       W("%s esta conectado mas NAO esta na config (rode setup)", short(n))
     end
   end
+  -- controle de direcao: sem Vector Thruster nao ha gimbal (a menos que o RCS esteja ligado e calibrado)
+  local nVec = 0
+  for _, n in ipairs(stageEngines(1)) do
+    if typeOf(n) == "vector_thruster" then nVec = nVec + 1 end
+  end
+  if nVec == 0 then
+    E("nenhum Vector Thruster no estagio 1: o foguete nao tem como corrigir a direcao e vai tombar (ligue um modem no Vector Thruster e rode setup)")
+  end
   -- boosters: simetria de potencia
   local pots = {}
   for _, n in ipairs(stageEngines(1)) do
@@ -756,6 +764,32 @@ local function voo()
         end end
       end
       if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
+    end
+
+    -- empuxo desigual entre motores liquidos gira o foguete (bomba fraca num dos lados)
+    if slow and S.phase == "ASCENT" and now - burnStart > 3 and now - (orb.unevenT or -99) > 5 then
+      local lo, hi, loN, hiN = math.huge, 0, "?", "?"
+      local vals, fns = {}, {}
+      local names = stageEngines(S.stage)
+      for k, n in ipairs(names) do
+        if typeOf(n) ~= "booster_thruster" then
+          fns[#fns + 1] = function() vals[k] = call(n, "getThrust") end
+        end
+      end
+      if #fns > 1 then
+        parallel.waitForAll(table.unpack(fns))
+        for k, n in ipairs(names) do
+          local v = vals[k]
+          if v then
+            if v < lo then lo, loN = v, short(n) end
+            if v > hi then hi, hiN = v, short(n) end
+          end
+        end
+        if hi > 0 and (hi - lo) / hi > 0.2 then
+          orb.unevenT = now
+          L.warn("EMPUXO DESIGUAL: %s=%d N e %s=%d N. O lado fraco nao recebe lava suficiente (bomba/cano).", loN, lo, hiN, hi)
+        end
+      end
     end
 
     -- troca de estagio
