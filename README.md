@@ -15,7 +15,7 @@ Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso c
 | `atualizar.lua` | baixa a versão mais nova deste repositório |
 | `sputnik_guiagem.lua` | script do nó "Lua Script" da Sputnik (gravity turn na subida) |
 
-`config.lua`, `estado.txt`, `log.txt` e `voo.log` ficam só no computador do jogo. Eles não vão para o repositório.
+`config.lua`, `estado.txt`, `rcs.cal`, `log.txt` e `voo.log` ficam só no computador do jogo. Eles não vão para o repositório.
 
 ## Instalar no computador do foguete
 
@@ -39,6 +39,7 @@ voo                -- checagem e espera o botão de lançamento
 voo teste          -- checagem + teste de gimbal, sem acender nada
 voo descer         -- deorbit (se estiver no espaço) e pouso
 voo descer 64      -- o mesmo, sabendo que o chão fica em Y=64
+voo rcs            -- calibra os RCS e testa (nave solta no ar ou no espaco)
 voo reset          -- apaga o estado (novo voo)
 logs erros         -- só avisos e erros
 ```
@@ -58,6 +59,26 @@ Por isso o piloto usa só os dados da Sputnik (`semiMajorAxis`, `eccentricity`, 
 |---|---|---|
 | `orbit_peri_alt` | 23000 | periastro mínimo (a nave volta para o overworld abaixo de ~21000) |
 | `circ_slow_m` | 50000 | começa a reduzir o empuxo quando falta menos que isso para o alvo |
+
+### RCS
+
+O RCS gira a nave **sem gastar lava**: no espaço e na queda do pouso, é ele que aponta o foguete,
+e o motor principal só liga quando a nave já está alinhada.
+
+- **O script da Sputnik precisa ser o novo.** O computador só consegue ligar e desligar o RCS;
+  o acelerador dele começa em 0 e só a Sputnik consegue colocar em 100%.
+- **Calibração automática**: o CC não sabe para onde cada RCS aponta. Na primeira vez no espaço
+  (ou com `voo rcs`), ele liga um de cada vez por 1 s, mede o giro e salva em `rcs.cal`.
+  Se você mudar os RCS de lugar, apague o `rcs.cal` ou rode `voo rcs`.
+- **Empuxo do RCS pelo Y da nave**: 12 N abaixo de Y=2000, sobe até 105 N em Y=5000.
+  No espaço profundo a nave fica perto de Y=1100, então lá o RCS é fraco (12 N).
+- **Onde colocar 4 RCS**: longe do centro de massa (perto do nariz ou da cauda), apontando para os 4 lados.
+  Se eles não conseguirem girar a nave para algum lado, o log avisa e o piloto volta a girar com o motor principal.
+
+| Chave | Padrão | |
+|---|---|---|
+| `rcs_kp` / `rcs_kd` | 0.4 / 1.2 | força da correção / amortecimento |
+| `rcs_timeout` | 30 | segundos sem melhorar o erro antes de desistir do RCS |
 
 ### Pouso sem saber o Y do chão
 

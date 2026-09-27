@@ -16,11 +16,16 @@ end
 
 -- Motores
 local engines = {}
+local rcsCount = 0
 for _, name in ipairs(peripheral.getNames()) do
   if peripheral.hasType(name, "thruster") then
     local ok, data = pcall(peripheral.call, name, "getData")
     local t = ok and data.engine_type or "?"
-    table.insert(engines, { name = name, type = t })
+    if t == "rcs_thruster" then
+      rcsCount = rcsCount + 1  -- RCS nao entra nos estagios: o voo acha e calibra sozinho
+    else
+      table.insert(engines, { name = name, type = t })
+    end
   end
 end
 if #engines == 0 then
@@ -29,6 +34,9 @@ if #engines == 0 then
   return
 end
 table.sort(engines, function(a, b) return a.name < b.name end)
+if rcsCount > 0 then
+  print(("%d RCS encontrados (ficam fora dos estagios; calibre com 'voo rcs')."):format(rcsCount))
+end
 
 print(("Encontrei %d motores. Diga o estagio de cada um (1 = primeiro a queimar)."):format(#engines))
 print("Dica: rode 'voo teste' depois para ver qual motor e qual.")

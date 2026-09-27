@@ -3,6 +3,7 @@
 --      voo teste    -> checagem completa + teste de gimbal, sem acender nada
 --      voo reset    -> apaga o estado salvo (novo voo)
 --      voo descer [Y]  -> deorbit (se no espaco) e pouso; Y = altura do chao, se souber
+--      voo rcs      -> calibra os RCS (nave solta no ar/espaco) e testa por 15 s
 -- Registros: log.txt (eventos, use o programa 'logs') e voo.log (telemetria CSV)
 
 local args = { ... }
@@ -320,6 +321,151 @@ local function lavaTotal()
   return total, #names
 end
 
+---------------------------------------------------------------- RCS
+-- O CC so liga/desliga o RCS (setThrust nao faz nada nele e o acelerador interno
+-- comeca em 0). O script da Sputnik poe o acelerador em 1; aqui so ligamos/desligamos.
+-- O CC tambem nao diz para onde cada RCS aponta: a calibracao liga um de cada vez
+-- e mede o giro que ele causa (em rad/s2, no referencial da nave). Fica em rcs.cal.
+local RCS_FILE = path("rcs.cal")
+local rcs = { names = {}, cal = {}, on = {} }
+
+local function rcsDiscover()
+  rcs.names = {}
+  for _, n in ipairs(peripheral.getNames()) do
+    if peripheral.hasType(n, "thruster") and typeOf(n) == "rcs_thruster" then rcs.names[#rcs.names + 1] = n end
+  end
+  table.sort(rcs.names)
+  rcs.cal = {}
+  if fs.exists(RCS_FILE) then
+    local f = fs.open(RCS_FILE, "r")
+    local t = textutils.unserialize(f.readAll())
+    f.close()
+    if type(t) == "table" then rcs.cal = t end
+  end
+end
+
+-- eixos (X e Z da nave, nos dois sentidos) que nenhum RCS consegue girar
+local function rcsMissing()
+  local missing = {}
+  for _, ax in ipairs({ { V(1, 0, 0), "+X" }, { V(-1, 0, 0), "-X" }, { V(0, 0, 1), "+Z" }, { V(0, 0, -1), "-Z" } }) do
+    local covered = false
+    for _, n in ipairs(rcs.names) do
+      local rr = rcs.cal[n]
+      if rr then
+        local rv = V(rr[1], rr[2], rr[3])
+        if rv:length() > 1e-9 and rv:dot(ax[1]) / rv:length() > (CFG.rcs_cos or 0.5) then covered = true end
+      end
+    end
+    if not covered then missing[#missing + 1] = ax[2] end
+  end
+  return missing
+end
+
+-- RCS pronto para apontar a nave sozinho (calibrado e cobrindo os 4 lados)
+local function rcsReady()
+  if #rcs.names == 0 or rcs.failed then return false end
+  return #rcsMissing() == 0
+end
+
+-- liga exatamente os RCS da lista (so chama o periferico quando muda)
+local function rcsSet(list)
+  local fns = {}
+  for _, n in ipairs(rcs.names) do
+    local want = list[n] == true
+    if rcs.on[n] ~= want then
+      rcs.on[n] = want
+      fns[#fns + 1] = function() call(n, "setActive", want) end
+    end
+  end
+  if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
+end
+
+local function rcsOff()
+  rcs.on = {}  -- forca o desligamento de todos
+  rcsSet({})
+end
+
+-- aponta o nariz (+Y da nave) para 'target' (mundo) so com RCS. Retorna o erro em graus.
+local function rcsControl(ship, target)
+  local d = toLocal(ship.q, target:normalize())
+  local w = toLocal(ship.q, ship.angv)
+  local ang = math.acos(clamp(d.y, -1, 1))
+  local ax = V(d.z, 0, -d.x)  -- eixo que leva +Y ate o alvo (regra da mao direita)
+  if ax:length() < 1e-6 then
+    ax = (d.y < 0) and V(1, 0, 0) or V(0, 0, 0)
+  else
+    ax = ax:normalize()
+  end
+  -- aceleracao angular desejada: corrige o erro e amortece o giro (inclusive o de rolagem)
+  local want = ax * ((CFG.rcs_kp or 0.4) * ang) - w * (CFG.rcs_kd or 1.2)
+  local fire, m = {}, want:length()
+  if m > (CFG.rcs_deadband or 0.01) then
+    for _, n in ipairs(rcs.names) do
+      local r = rcs.cal[n]
+      if r then
+        local rv = V(r[1], r[2], r[3])
+        local rl = rv:length()
+        if rl > 1e-9 and rv:dot(want) / (rl * m) > (CFG.rcs_cos or 0.5) then fire[n] = true end
+      end
+    end
+  end
+  rcsSet(fire)
+  return math.deg(ang)
+end
+
+-- calibracao: precisa da nave solta (espaco ou no ar), nunca apoiada no chao
+local function rcsCalibrate(why)
+  rcsDiscover()
+  if #rcs.names == 0 then return false end
+  L.info("RCS calibrando %d propulsores (%s)", #rcs.names, why)
+  rcsOff()
+  local T = CFG.rcs_cal_time or 1.0
+  local cal, ok = {}, 0
+  for _, n in ipairs(rcs.names) do
+    local s0, t0 = readShip(), os.clock()
+    rcsSet({ [n] = true })
+    sleep(T)
+    rcsSet({})
+    local s1 = readShip()
+    local dt = math.max(os.clock() - t0, 0.05)
+    local r = (toLocal(s1.q, s1.angv) - toLocal(s0.q, s0.angv)) * (1 / dt)
+    if r:length() > (CFG.rcs_min_resp or 0.002) then
+      cal[n] = { r.x, r.y, r.z }
+      ok = ok + 1
+      L.info("RCS %s giro=(%.4f, %.4f, %.4f) rad/s2", short(n), r.x, r.y, r.z)
+    else
+      L.warn("RCS %s nao girou a nave (%.4f rad/s2)", short(n), r:length())
+    end
+  end
+  if ok == 0 then
+    L.err("Nenhum RCS fez efeito. Confira: script NOVO da Sputnik (ele liga o acelerador do RCS) e nave solta, fora do chao.")
+    return false
+  end
+  rcs.cal = cal
+  local f = fs.open(RCS_FILE, "w") f.write(textutils.serialize(cal)) f.close()
+  -- freia o giro que sobrou da calibracao
+  local tEnd = os.clock() + 8
+  while os.clock() < tEnd do
+    local s = readShip()
+    local w = toLocal(s.q, s.angv)
+    if w:length() < 0.003 then break end
+    local fire = {}
+    for name, rr in pairs(cal) do
+      if V(rr[1], rr[2], rr[3]):dot(w) < 0 then fire[name] = true end
+    end
+    rcsSet(fire)
+    sleep(0.05)
+  end
+  rcsOff()
+  L.info("RCS calibrado: %d de %d propulsores com efeito", ok, #rcs.names)
+  local missing = rcsMissing()
+  if #missing > 0 then
+    L.warn("RCS nao consegue girar em torno de %s: vou girar com o motor principal. Com 4 RCS: ponha longe do centro de massa (nariz ou cauda), apontando para os 4 lados.",
+      table.concat(missing, ", "))
+  end
+  return true
+end
+
 ---------------------------------------------------------------- tela
 local mon = CFG.monitor and peripheral.wrap(CFG.monitor)
 local function show(t)
@@ -379,7 +525,7 @@ local function preflight()
   end
   -- motores ligados mas fora da config
   for _, n in ipairs(peripheral.getNames()) do
-    if peripheral.hasType(n, "thruster") and not configured[n] then
+    if peripheral.hasType(n, "thruster") and not configured[n] and typeOf(n) ~= "rcs_thruster" then
       W("%s esta conectado mas NAO esta na config (rode setup)", short(n))
     end
   end
@@ -400,6 +546,10 @@ local function preflight()
   end
   local lava, nt = lavaTotal()
   L.info("CHECAGEM lava=%d mB em %d tanques/motores", lava, nt)
+  rcsDiscover()
+  if #rcs.names > 0 then
+    L.info("CHECAGEM RCS: %d propulsores, %s", #rcs.names, rcsReady() and "calibrados" or "sem calibracao (calibra sozinho ao chegar no espaco)")
+  end
   if nt == 0 then W("nenhum tanque ligado ao computador: nao da para medir o combustivel") end
   local twr = maxT / (ship.mass * g)
   L.info("CHECAGEM empuxo_max=%.0f TWR=%.2f", maxT, twr)
@@ -503,6 +653,8 @@ local function voo()
   -- (antes acendia com o foguete de lado e empurrava a nave para o lado)
   if S.phase == "POUSO" then setThrottle(S.stage, 0) end
   local land = { lastErr = 180, lastThr = 0, I = 0 }
+  rcsDiscover()
+  rcsOff()
   local deorbit = { sign = S.deorbitSign or 1, lastPeri = nil, lastT = os.clock(), flips = 0 }
 
   local burnStart = os.clock()
@@ -760,7 +912,7 @@ local function voo()
       if land.lastErr > 60 then thr = 0 end      -- nunca acelera de lado ou de cabeca para baixo
       -- empuxo minimo so para o gimbal conseguir girar a nave (sem empuxo o gimbal nao faz nada)
       local minThr = (CFG.land_orient_n or 100) / CFG.max_thrust_n
-      if thr < minThr and land.lastErr > 8 then thr = minThr end
+      if thr < minThr and land.lastErr > 8 and not rcsReady() then thr = minThr end
       if aMax <= 0.5 then
         thr = 1
         if slow then L.err("Empuxo insuficiente para pousar (a_max=%.2f)", aMax) end
@@ -768,6 +920,7 @@ local function voo()
       setThrottle(S.stage, thr)
 
       err, gx, gz = steer(ship, tgt, CFG.land_cc_gimbal ~= false)
+      if rcsReady() then rcsControl(ship, tgt) end
 
       -- toque no chao: pela altura (se o chao e conhecido) ou por contato
       -- (vinha descendo, parou de repente mesmo com empuxo abaixo do necessario para pairar)
@@ -805,14 +958,33 @@ local function voo()
         orb.dir = qrot(ship.q, UP)  -- sem vetor da Sputnik: mantem o nariz e testa o sinal queimando
         L.warn("Sputnik sem velocity: vou queimar para onde o nariz aponta e corrigir pelo sma")
       end
+      -- calibra o RCS na primeira vez no espaco (nave solta e sem gravidade)
+      if S.phase == "COAST" and #rcs.names > 0 and not rcsReady() and not orb.rcsTried then
+        orb.rcsTried = true
+        setThrottle(S.stage, 0)
+        rcsCalibrate("primeira vez no espaco")
+        ship = readShip()
+      end
+      local useRcs = rcsReady()
       err, gx, gz = steer(ship, orb.dir, true)
+      if useRcs then
+        rcsControl(ship, orb.dir)
+        -- se em 30 s o erro nao cair pelo menos 5 graus, o RCS nao da conta: volta para o motor
+        if err < 10 or not orb.rcsBest or err < orb.rcsBest - 5 then orb.rcsBest, orb.rcsT = err, now end
+        if err >= 10 and now - orb.rcsT > (CFG.rcs_timeout or 30) then
+          rcs.failed = true
+          rcsOff()
+          L.warn("RCS nao conseguiu apontar a nave em %ds (erro %.0f): girando com o motor principal", CFG.rcs_timeout or 30, err)
+          useRcs = false
+        end
+      end
       local peri = periAlt(dsd)
       local sma = dsd and dsd.semiMajorAxis
       local alvo = math.min(CFG.orbit_peri_alt or 23000, (dist == dist and dist or 1e9) - 300)
 
       if S.phase == "COAST" then
-        -- empuxo minimo so enquanto gira (sem empuxo o gimbal nao vira a nave)
-        setThrottle(S.stage, err > 5 and CFG.steer_throttle or 0)
+        -- com RCS nao gasta lava para girar; sem RCS, empuxo minimo so enquanto gira
+        setThrottle(S.stage, (not useRcs and err > 5) and CFG.steer_throttle or 0)
         if slow and dsd and ((orb.vrOk and vr <= 1) or (peri == peri and peri >= alvo)) then
           bestEcc = math.huge
           setPhase("CIRC", ("apoastro, vr=%.2f ecc=%s periastro=%.0f alvo=%.0f"):format(vr, tostring(ecc), peri, alvo))
@@ -822,7 +994,7 @@ local function voo()
         -- perto do alvo reduz o empuxo para nao passar do ponto
         local falta = (peri == peri) and (alvo - peri) or math.huge
         local full = clamp(falta / (CFG.circ_slow_m or 50000), 0.2, 1)
-        setThrottle(S.stage, aligned and full or CFG.steer_throttle)
+        setThrottle(S.stage, aligned and full or (useRcs and 0 or CFG.steer_throttle))
         if aligned then orb.burned = true end
         if slow and sma then
           if not orb.lastSma then
@@ -889,6 +1061,7 @@ local function voo()
 
     if S.phase == "ORBIT" or S.phase == "FALHA" or S.phase == "FIM" or S.phase == "POUSADO" then
       shutdown(S.stage)
+      rcsOff()
       show({ "== VOO ENCERRADO: " .. S.phase .. " ==", ("Y %.0f  ECC %s"):format(ship.pos.y, tostring(ecc)),
         "Veja: logs erros" })
       break
@@ -940,7 +1113,33 @@ local function descer()
   return voo()
 end
 
-local main = (args[1] == "teste") and teste or (args[1] == "descer") and descer or voo
+-- voo rcs: calibra o RCS agora e testa segurando o nariz para cima por 15 s
+local function rcsTeste()
+  L.section("TESTE DO RCS")
+  rcsDiscover()
+  if #rcs.names == 0 then printError("Nenhum RCS ligado ao computador (modem + cabo em cada um).") return end
+  print(("%d RCS encontrados. A nave precisa estar SOLTA (no ar ou no espaco)."):format(#rcs.names))
+  if not rcsCalibrate("comando voo rcs") then printError("Calibracao falhou. Veja: logs erros") return end
+  print("Calibrado. Segurando o nariz para cima por 15 s...")
+  local tEnd = os.clock() + 15
+  local nextLog = 0
+  while os.clock() < tEnd do
+    local ship = readShip()
+    local e = rcsControl(ship, UP)
+    if os.clock() >= nextLog then
+      nextLog = os.clock() + 1
+      local w = toLocal(ship.q, ship.angv)
+      L.info("RCS teste erro=%.1f w=(%.3f,%.3f,%.3f)", e, w.x, w.y, w.z)
+      print(("erro %.1f graus"):format(e))
+    end
+    sleep(0.05)
+  end
+  rcsOff()
+  print("Pronto. Veja: logs")
+end
+
+local main = (args[1] == "teste") and teste or (args[1] == "descer") and descer
+  or (args[1] == "rcs") and rcsTeste or voo
 local ok, e = xpcall(main, debug.traceback)
 if not ok then
   if tostring(e):find("Terminated") then
@@ -951,4 +1150,5 @@ if not ok then
     printError(tostring(e))
   end
   pcall(shutdown, S.stage)
+  pcall(rcsOff)
 end

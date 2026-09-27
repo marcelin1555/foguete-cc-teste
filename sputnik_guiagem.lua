@@ -4,6 +4,7 @@
 --   subindo  -> gravity turn;
 --   no espaco, na volta e no pouso -> nao mexe (o computador CC controla).
 -- O computador CC cuida de contagem, ignicao, estagios e logs.
+-- Tambem deixa o acelerador de todo RCS em 100% (o CC nao consegue; ele so liga/desliga).
 
 ---------------- PARAMETROS (ajuste aqui) ----------------
 local KP, KD      = 1.5, 0.8   -- forca da correcao / amortecimento
@@ -52,9 +53,13 @@ _G.prevQ = q
 -- motores vetoriais e se algum esta queimando
 local vectors, running = {}, false
 for _, id in ipairs(getPeripheralIds() or {}) do
-  if tostring(getPeripheralType(id)) == "vector_engine" then
+  local t = tostring(getPeripheralType(id))
+  if t == "vector_engine" then
     vectors[#vectors + 1] = id
     if (readPeripheral(id, "thrust") or 0) > 1 then running = true end
+  elseif t == "rcs" and (readPeripheral(id, "throttle") or 0) < 0.99 then
+    -- o computador CC so liga/desliga o RCS; o acelerador dele so da para ajustar daqui
+    writePeripheral(id, "throttle", 1)
   end
 end
 
