@@ -7,7 +7,7 @@ local REPO = "marcelin1555/foguete-cc-teste"
 local BRANCH = "main"
 local FILES = {
   "voo.lua", "setup.lua", "log.lua", "logs.lua", "parar.lua",
-  "startup.lua", "atualizar.lua", "sputnik_guiagem.lua",
+  "startup.lua", "atualizar.lua", "sputnik_guiagem.lua", "diagnostico.lua",
 }
 
 if not http then

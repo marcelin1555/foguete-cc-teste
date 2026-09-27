@@ -13,6 +13,7 @@ Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso c
 | `parar.lua` | emergência: desliga todos os motores líquidos |
 | `logs.lua` / `log.lua` | mostra e grava os logs (um arquivo por voo em `/logs`) |
 | `atualizar.lua` | baixa a versão mais nova deste repositório |
+| `diagnostico.lua` | lista tudo que o computador enxerga (motores, modems, config) |
 | `sputnik_guiagem.lua` | script do nó "Lua Script" da Sputnik (gravity turn na subida) |
 
 `config.lua`, `estado.txt`, `rcs.cal` e a pasta `logs/` ficam só no computador do jogo. Eles não vão para o repositório.
