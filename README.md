@@ -62,6 +62,9 @@ Por isso o piloto usa só os dados da Sputnik (`semiMajorAxis`, `eccentricity`, 
 
 ### RCS
 
+**Desligado por padrão.** Para usar, coloque `rcs_enabled = true` no `config.lua`.
+Desligado, o piloto gira a nave só com o gimbal do Vector Thruster, como antes.
+
 O RCS gira a nave **sem gastar lava**: no espaço e na queda do pouso, é ele que aponta o foguete,
 e o motor principal só liga quando a nave já está alinhada.
 

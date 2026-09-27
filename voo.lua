@@ -347,6 +347,8 @@ local rcs = { names = {}, cal = {}, on = {} }
 
 local function rcsDiscover()
   rcs.names = {}
+  -- RCS desligado por padrao: so e usado com rcs_enabled = true no config.lua
+  if not CFG.rcs_enabled then return end
   for _, n in ipairs(periNames()) do
     if peripheral.hasType(n, "thruster") and typeOf(n) == "rcs_thruster" then rcs.names[#rcs.names + 1] = n end
   end
@@ -1133,6 +1135,7 @@ end
 local function rcsTeste()
   L.section("TESTE DO RCS")
   rcsDiscover()
+  if not CFG.rcs_enabled then printError("RCS desligado. Para usar, ponha rcs_enabled = true no config.lua.") return end
   if #rcs.names == 0 then printError("Nenhum RCS ligado ao computador (modem + cabo em cada um).") return end
   print(("%d RCS encontrados. A nave precisa estar SOLTA (no ar ou no espaco)."):format(#rcs.names))
   if not rcsCalibrate("comando voo rcs") then printError("Calibracao falhou. Veja: logs erros") return end
