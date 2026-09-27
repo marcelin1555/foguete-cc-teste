@@ -1,31 +1,88 @@
--- log.lua : registro de eventos do foguete (log.txt)
+-- log.lua : registro de eventos do foguete
+-- Cada voo grava num arquivo proprio dentro de /logs, com data e hora no nome:
+--   /logs/2026-09-27_19-32-50_voo.txt            eventos (use o programa 'logs')
+--   /logs/2026-09-27_19-32-50_voo_telemetria.csv telemetria do voo
 -- Niveis: INFO, AVISO, ERRO. Mensagens repetidas sao agrupadas para nao lotar o disco.
+-- Os arquivos mais antigos sao apagados quando a pasta passa do limite.
 
 local M = {}
--- os arquivos ficam na raiz do computador
-local FILE = "/log.txt"
-local OLD = "/log_antigo.txt"
-local MAX_SIZE = 150 * 1024
+M.DIR = "/logs"
+local MAX_FILES = 40            -- arquivos na pasta (eventos + telemetria)
+local MAX_TOTAL = 500 * 1024    -- bytes somando todos os arquivos
+local MAX_FILE = 200 * 1024     -- um arquivo de eventos nao passa disso
 
+local file         -- caminho do arquivo de eventos em uso
 local f
 local failed = false
 local t0 = os.epoch("utc")
 local counts = {}
 M.recent = {} -- ultimos avisos/erros para mostrar na tela
 
-local function open()
-  if f or failed then return f ~= nil end
-  pcall(function()
-    if fs.exists(FILE) and fs.getSize(FILE) > MAX_SIZE then
-      if fs.exists(OLD) then fs.delete(OLD) end
-      fs.move(FILE, OLD)
+-- apaga os arquivos mais antigos (o nome comeca com a data, entao ordem alfabetica = ordem de tempo)
+local function cleanup()
+  if not fs.exists(M.DIR) then return end
+  local names = fs.list(M.DIR)
+  table.sort(names)
+  local total = 0
+  for _, n in ipairs(names) do total = total + fs.getSize(fs.combine(M.DIR, n)) end
+  local i = 1
+  while i <= #names and (#names - i + 1 > MAX_FILES or total > MAX_TOTAL) do
+    local p = "/" .. (fs.combine(M.DIR, names[i]):gsub("^/+", ""))
+    if p ~= file then
+      total = total - fs.getSize(p)
+      fs.delete(p)
     end
-  end)
+    i = i + 1
+  end
+end
+
+local function closeFile()
+  if f then pcall(f.close) end
+  f = nil
+end
+
+-- comeca um arquivo novo: /logs/AAAA-MM-DD_HH-MM-SS_<tipo>.txt
+function M.newFile(kind)
+  closeFile()
+  failed = false
+  if not fs.exists(M.DIR) then fs.makeDir(M.DIR) end
+  local base = os.date("%Y-%m-%d_%H-%M-%S") .. (kind and ("_" .. kind) or "")
+  file = "/" .. (fs.combine(M.DIR, base .. ".txt"):gsub("^/+", ""))
+  pcall(cleanup)
+  return file
+end
+
+-- continua num arquivo que ja existe (voo retomado depois de reiniciar o computador)
+function M.useFile(path)
+  if not path then return M.newFile("voo") end
+  closeFile()
+  failed = false
+  file = path
+  return file
+end
+
+function M.currentFile() return file end
+
+-- arquivo de telemetria que acompanha o arquivo de eventos atual
+function M.csvPath()
+  if not file then M.newFile("sessao") end
+  return (file:gsub("%.txt$", "")) .. "_telemetria.csv"
+end
+
+local function open()
+  if f then return true end
+  if failed then return false end
+  if not file then M.newFile("sessao") end
+  if fs.exists(file) and fs.getSize(file) > MAX_FILE then
+    -- arquivo grande demais: continua numa parte 2, 3...
+    local n = tonumber(file:match("_parte(%d+)%.txt$") or "1") + 1
+    file = file:gsub("_parte%d+%.txt$", ".txt"):gsub("%.txt$", "_parte" .. n .. ".txt")
+  end
   local err
-  f, err = fs.open(FILE, "a")
+  f, err = fs.open(file, "a")
   if not f then
     failed = true
-    printError("Nao consegui abrir " .. FILE .. ": " .. tostring(err) .. " (disco cheio?)")
+    printError("Nao consegui abrir " .. file .. ": " .. tostring(err) .. " (disco cheio? rode: logs limpar)")
   end
   return f ~= nil
 end
@@ -60,7 +117,7 @@ function M.section(title)
   counts = {}
   if not open() then return end
   f.writeLine("")
-  f.writeLine(("========== %s  (%s) =========="):format(title, os.date("%d/%m %H:%M:%S")))
+  f.writeLine(("========== %s  (%s) =========="):format(title, os.date("%d/%m/%Y %H:%M:%S")))
   f.flush()
 end
 

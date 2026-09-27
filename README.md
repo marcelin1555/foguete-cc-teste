@@ -11,11 +11,11 @@ Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso c
 | `setup.lua` | detecta os motores e gera o `config.lua` |
 | `startup.lua` | roda o `voo` ao ligar (e retoma o voo depois de trocar de dimensão) |
 | `parar.lua` | emergência: desliga todos os motores líquidos |
-| `logs.lua` / `log.lua` | mostra e grava o `log.txt` |
+| `logs.lua` / `log.lua` | mostra e grava os logs (um arquivo por voo em `/logs`) |
 | `atualizar.lua` | baixa a versão mais nova deste repositório |
 | `sputnik_guiagem.lua` | script do nó "Lua Script" da Sputnik (gravity turn na subida) |
 
-`config.lua`, `estado.txt`, `rcs.cal`, `log.txt` e `voo.log` ficam só no computador do jogo. Eles não vão para o repositório.
+`config.lua`, `estado.txt`, `rcs.cal` e a pasta `logs/` ficam só no computador do jogo. Eles não vão para o repositório.
 
 ## Instalar no computador do foguete
 
@@ -41,8 +41,25 @@ voo descer         -- deorbit (se estiver no espaço) e pouso
 voo descer 64      -- o mesmo, sabendo que o chão fica em Y=64
 voo rcs            -- calibra os RCS e testa (nave solta no ar ou no espaco)
 voo reset          -- apaga o estado (novo voo)
-logs erros         -- só avisos e erros
+logs               -- últimas linhas do voo mais recente
+logs lista         -- todos os logs, do mais novo (1) ao mais velho
+logs 3 erros       -- avisos e erros do log 3 da lista
+logs limpar        -- apaga todos os logs
 ```
+
+### Logs
+
+Cada voo grava num arquivo próprio, com data e hora no nome:
+
+```
+/logs/2026-09-27_19-32-50_voo.txt              eventos
+/logs/2026-09-27_19-32-50_voo_telemetria.csv   telemetria (y, velocidade, empuxo, erro...)
+```
+
+- Se o computador reiniciar no meio do voo (troca de dimensão), ele continua no **mesmo arquivo**.
+- `voo teste` e `voo rcs` gravam arquivos `..._teste.txt` e `..._rcs.txt`.
+- Os mais antigos são apagados sozinhos quando a pasta passa de 40 arquivos ou 500 KB.
+- Um `voo reset` faz o próximo voo começar um arquivo novo.
 
 ### Como a órbita funciona
 

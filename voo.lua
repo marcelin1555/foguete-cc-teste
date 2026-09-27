@@ -4,13 +4,13 @@
 --      voo reset    -> apaga o estado salvo (novo voo)
 --      voo descer [Y]  -> deorbit (se no espaco) e pouso; Y = altura do chao, se souber
 --      voo rcs      -> calibra os RCS (nave solta no ar/espaco) e testa por 15 s
--- Registros: log.txt (eventos, use o programa 'logs') e voo.log (telemetria CSV)
+-- Registros: um arquivo por voo em /logs, com data e hora no nome (use o programa 'logs')
 
 local args = { ... }
 local DIR = fs.getDir(shell.getRunningProgram())
 local function path(p) return fs.combine(DIR, p) end
 local L = dofile(path("log.lua"))
-local STATE_FILE, CSV_FILE = path("estado.txt"), path("voo.log")
+local STATE_FILE = path("estado.txt")
 
 if not fs.exists(path("config.lua")) then
   printError("Rode 'setup' primeiro.") return
@@ -25,7 +25,15 @@ for _, st in ipairs(CFG.stages or {}) do
 end
 
 if args[1] == "reset" then
-  fs.delete(STATE_FILE) L.info("Estado apagado (voo reset)") print("Estado apagado.") return
+  -- registra no log do voo que esta sendo apagado
+  if fs.exists(STATE_FILE) then
+    local h = fs.open(STATE_FILE, "r") local t = textutils.unserialize(h.readAll()) h.close()
+    if type(t) == "table" and t.logFile and fs.exists(t.logFile) then
+      L.useFile(t.logFile)
+      L.info("Estado apagado (voo reset)")
+    end
+  end
+  fs.delete(STATE_FILE) print("Estado apagado. O proximo voo vai gravar num log novo.") return
 end
 
 ---------------------------------------------------------------- matematica
@@ -503,7 +511,7 @@ end
 
 local csv
 local function csvLine(fields)
-  if not csv then csv = fs.open(CSV_FILE, "a") end
+  if not csv then csv = fs.open(L.csvPath(), "a") end
   csv.writeLine(table.concat(fields, ",")) csv.flush()
 end
 
@@ -587,6 +595,7 @@ end
 
 ---------------------------------------------------------------- modo teste
 local function teste()
+  L.newFile("teste")
   L.section("TESTE EM SOLO")
   safeAll("teste em solo")
   local errs, warns, twr = preflight()
@@ -610,6 +619,13 @@ end
 ---------------------------------------------------------------- voo
 local function voo()
   load()
+  -- um arquivo de log por voo: continua no mesmo se o voo esta sendo retomado
+  if S.logFile and fs.exists(S.logFile) then
+    L.useFile(S.logFile)
+  else
+    S.logFile = L.newFile(S.phase == "PAD" and "voo" or "retomada")
+    save()
+  end
   S.failed = S.failed or {}
   if not sublevel.isInPlotGrid() then printError("Computador fora da nave!") return end
 
@@ -1144,9 +1160,14 @@ end
 -- voo descer: deorbit (se no espaco) e pouso controlado
 local function descer()
   load()
+  if S.logFile and fs.exists(S.logFile) then
+    L.useFile(S.logFile)
+  else
+    S.logFile = L.newFile("descida")
+  end
   S.failed = S.failed or {}
   S.fuelOut = nil
-  S.t0 = S.t0 or os.epoch("utc")  -- sem isso o tempo no voo.log sai gigante (apos 'voo reset')
+  S.t0 = S.t0 or os.epoch("utc")  -- sem isso o tempo na telemetria sai gigante (apos 'voo reset')
   L.section("MANOBRA DE DESCIDA")
   local gy = tonumber(args[2])
   if gy then S.groundY = gy L.info("Chao definido em Y=%.1f", gy) end
@@ -1167,6 +1188,7 @@ end
 
 -- voo rcs: calibra o RCS agora e testa segurando o nariz para cima por 15 s
 local function rcsTeste()
+  L.newFile("rcs")
   L.section("TESTE DO RCS")
   rcsDiscover()
   if not CFG.rcs_enabled then printError("RCS desligado. Para usar, ponha rcs_enabled = true no config.lua.") return end
