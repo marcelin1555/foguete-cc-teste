@@ -48,6 +48,17 @@ logs 3 erros       -- avisos e erros do log 3 da lista
 logs limpar        -- apaga todos os logs
 ```
 
+### Boosters (combustível sólido)
+
+Boosters e motores líquidos no **mesmo estágio** acendem juntos. Quando **todos** os boosters acabam,
+o piloto manda um pulso no separador dos boosters e os motores líquidos continuam queimando.
+
+- Cada booster empurra até **1000 N** e cada **bloco de carvão** atrás dele queima **10 s**.
+- Use o **Stage Separator** do Cosmonautics entre cada booster e o corpo. Ligue os separadores entre si
+  com a **chave inglesa**: um pulso dispara todos em cadeia.
+- O `setup` pergunta o lado do computador (ou `redstone_relay`) que manda o pulso (`booster_separator`).
+- **Mesmo número de blocos de carvão em todos os boosters**, senão um acaba antes e o foguete gira.
+
 ### Controle de direção na subida
 
 A Sputnik (`sputnik_guiagem.lua`) aponta o foguete com um controle PID: proporcional (`KP`),

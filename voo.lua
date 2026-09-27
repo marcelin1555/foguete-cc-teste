@@ -135,13 +135,22 @@ local function short(name) return (name:gsub("rocketnautics:", "")) end
 
 local function stageEngines(i)
   local st = CFG.stages[i]
-  return st and st.engines or {}
+  if not st then return {} end
+  -- boosters ja separados saem da lista (nao estao mais na nave)
+  if S.boostersDropped and S.boostersDropped[i] then
+    local list = {}
+    for _, n in ipairs(st.engines) do
+      if typeOf(n) ~= "booster_thruster" then list[#list + 1] = n end
+    end
+    return list
+  end
+  return st.engines
 end
 
 local function allEngines()
   local t = {}
-  for _, st in ipairs(CFG.stages) do
-    for _, n in ipairs(st.engines) do table.insert(t, n) end
+  for i = 1, #CFG.stages do
+    for _, n in ipairs(stageEngines(i)) do table.insert(t, n) end
   end
   return t
 end
@@ -301,15 +310,48 @@ local function steer(ship, target, force, useInteg)
   return math.deg(math.acos(clamp(d.y, -1, 1))), gx, gz
 end
 
-local function separate(i)
-  local sep = CFG.stages[i].separator
-  if not sep then return end
-  L.info("Separando estagio %d (%s)", i, textutils.serialize(sep, { compact = true }))
+-- pulso de redstone num Stage Separator (lado do computador ou redstone_relay)
+local function pulse(sep)
   local function set(v)
     if sep.relay then call(sep.relay, "setOutput", sep.side, v)
     else redstone.setOutput(sep.side, v) end
   end
   set(true) sleep(0.3) set(false)
+end
+
+local function separate(i)
+  local sep = CFG.stages[i].separator
+  if not sep then return end
+  L.info("Separando estagio %d (%s)", i, textutils.serialize(sep, { compact = true }))
+  pulse(sep)
+end
+
+-- boosters em paralelo: acendem junto com os motores liquidos do mesmo estagio e,
+-- quando TODOS acabam, o separador deles solta so os boosters; os liquidos continuam
+local function checkBoosterDrop(i)
+  local st = CFG.stages[i]
+  if not st or not st.booster_separator then return end
+  S.boostersDropped = S.boostersDropped or {}
+  if S.boostersDropped[i] then return end
+  local boosters = {}
+  for _, n in ipairs(st.engines) do
+    if typeOf(n) == "booster_thruster" then boosters[#boosters + 1] = n end
+  end
+  if #boosters == 0 then return end
+  local done, fns = {}, {}
+  for k, n in ipairs(boosters) do
+    fns[k] = function()
+      local d = peripheral.isPresent(n) and call(n, "getData") or nil
+      done[k] = (not d) or d.is_spent or (S.failed and S.failed[n]) or false
+    end
+  end
+  parallel.waitForAll(table.unpack(fns))
+  for k = 1, #boosters do if not done[k] then return end end
+  L.info("Boosters do estagio %d esgotados: separando (%s)", i,
+    textutils.serialize(st.booster_separator, { compact = true }))
+  pulse(st.booster_separator)
+  S.boostersDropped[i] = true
+  save()
 end
 
 local function sputnik()
@@ -795,6 +837,8 @@ local function voo()
       end
       if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
     end
+
+    if slow and now - burnStart > 1 then checkBoosterDrop(S.stage) end
 
     -- empuxo desigual entre motores liquidos gira o foguete (bomba fraca num dos lados)
     if slow and S.phase == "ASCENT" and now - burnStart > 3 and now - (orb.unevenT or -99) > 5 then

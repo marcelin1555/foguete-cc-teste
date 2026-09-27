@@ -51,7 +51,7 @@ print(("Encontrei %d motores. Diga o estagio de cada um (1 = primeiro a queimar)
 print("Dica: rode 'voo teste' depois para ver qual motor e qual.")
 local nStages = 1
 for _, e in ipairs(engines) do
-  local def = (e.type == "booster_thruster") and 1 or nil
+  local def = 1  -- boosters e liquidos juntos no estagio 1 = boosters em paralelo
   local s
   repeat
     s = tonumber(ask(("  %s (%s) estagio"):format(e.name, e.type), def))
@@ -66,6 +66,25 @@ for i = 1, nStages do
   local st = { engines = {} }
   for _, e in ipairs(engines) do
     if e.stage == i then table.insert(st.engines, e.name) end
+  end
+  -- boosters junto com motores liquidos no mesmo estagio: separador proprio dos boosters
+  local nB, nL = 0, 0
+  for _, e in ipairs(engines) do
+    if e.stage == i then
+      if e.type == "booster_thruster" then nB = nB + 1 else nL = nL + 1 end
+    end
+  end
+  if nB > 0 and nL > 0 then
+    print(("Estagio %d tem %d boosters + %d motores liquidos (acendem juntos)."):format(i, nB, nL))
+    print("  Separador dos BOOSTERS (dispara quando todos acabarem). Lado do computador")
+    local side = ask("  (top/bottom/left/right/front/back, nome de redstone_relay, ou 'nenhum')", "bottom")
+    if side ~= "nenhum" then
+      if peripheral.hasType(side, "redstone_relay") then
+        st.booster_separator = { relay = side, side = ask("  lado do relay", "top") }
+      else
+        st.booster_separator = { side = side }
+      end
+    end
   end
   if i < nStages then
     print(("Estagio %d -> separador. Lado do computador que manda o pulso"):format(i))
