@@ -1,0 +1,5 @@
+config.lua
+estado.txt
+log.txt
+log_antigo.txt
+*.log
