@@ -1,4 +1,4 @@
-# foguete-cc
+# foguete-cc-teste
 
 Piloto automático de foguete para Minecraft com **Create Cosmonautics (Rocketnautics)**, **Sable** e **CC: Tweaked**.
 Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso controlado, sempre com logs.
@@ -20,7 +20,7 @@ Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso c
 ## Instalar no computador do foguete
 
 ```
-wget https://raw.githubusercontent.com/marcelin1555/foguete-cc/main/atualizar.lua
+wget https://raw.githubusercontent.com/marcelin1555/foguete-cc-teste/main/atualizar.lua
 atualizar
 setup
 ```

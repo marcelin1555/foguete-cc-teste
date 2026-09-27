@@ -3,7 +3,7 @@
 --      atualizar voo.lua  -> atualiza so um arquivo
 -- Nao mexe em config.lua, estado.txt nem nos logs.
 
-local REPO = "marcelin1555/foguete-cc"
+local REPO = "marcelin1555/foguete-cc-teste"
 local BRANCH = "main"
 local FILES = {
   "voo.lua", "setup.lua", "log.lua", "logs.lua", "parar.lua",
