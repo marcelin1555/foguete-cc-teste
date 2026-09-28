@@ -1,0 +1,32 @@
+    0.00 call rocketnautics:rocket_thruster_0.setThrust(0.000)
+    0.00 call rocketnautics:rocket_thruster_0.setActive(false)
+    0.00 call rocketnautics:rocket_thruster_9.setThrust(0.000)
+    0.00 call rocketnautics:rocket_thruster_9.setActive(false)
+    0.15 tela TWR estagio 1: 0.23
+    0.15 erro ERRO: nenhum Vector Thruster no estagio 1: o foguete nao tem como corrigir a direcao e vai tombar (ligue um modem no Vector Thruster e rode setup)
+    0.15 erro ERRO: TWR 0.23 abaixo de 1.15: o foguete so flutua e escorrega de lado (mais motores ou menos peso)
+    0.15 tela AVISO: rocket_thruster_9 esta conectado mas NAO esta na config (rode setup)
+    0.15 tela Teste de gimbal: olhe os bocais dos Vector Thrusters.
+    0.15 tela   inclinando o escape para +X por 3s
+    3.15 tela   inclinando o escape para +Z por 3s
+    6.15 tela Pronto. 2 erros, 1 avisos. Veja: logs
+    6.15 fim de voo.lua
+==== arquivo config.lua
+return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
+ turn_start_alt=250, turn_end_angle=55, stages={{engines={"rocketnautics:rocket_thruster_0"}}},
+ max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=10, sputnik="top", turn_end_y=16000,
+ gimbal_sign=1, transfer_y=20000, kp_errado=3 }
+==== arquivo logs/2026-09-27_20-01-00_teste.txt
+
+========== TESTE EM SOLO  (2026-09-27_20-02-00) ==========
+[   0.05] INFO  Motores liquidos desligados (2) - teste em solo
+[   0.10] INFO  CHECAGEM massa=400.0 g=11.00 pos=(0.0, 63.0, 0.0)
+[   0.10] INFO  MOTOR pre rocket_thruster_0 [rocket_thruster] ativo=false lava=1000/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   0.10] AVISO CHECAGEM rocket_thruster_9 esta conectado mas NAO esta na config (rode setup)
+[   0.10] ERRO  CHECAGEM nenhum Vector Thruster no estagio 1: o foguete nao tem como corrigir a direcao e vai tombar (ligue um modem no Vector Thruster e rode setup)
+[   0.15] INFO  CHECAGEM lava=2000 mB em 2 tanques/motores
+[   0.15] INFO  CHECAGEM empuxo_max=1000 TWR=0.23
+[   0.15] ERRO  CHECAGEM TWR 0.23 abaixo de 1.15: o foguete so flutua e escorrega de lado (mais motores ou menos peso)
+[   6.15] INFO  Teste concluido: 2 erros, 1 avisos
+
+mundo final: y=63.00 vy=0.00 espaco=false

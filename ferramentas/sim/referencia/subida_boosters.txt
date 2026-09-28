@@ -1,0 +1,378 @@
+    0.00 call rocketnautics:booster_thruster_0.setActive(true)
+    0.00 call rocketnautics:booster_thruster_1.setActive(true)
+    0.00 call rocketnautics:booster_thruster_2.setActive(true)
+    0.00 call rocketnautics:booster_thruster_3.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_2.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_3.setActive(true)
+    0.00 call rocketnautics:vector_thruster_1.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_2.setThrust(1000.000)
+    0.00 call rocketnautics:rocket_thruster_2.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_3.setThrust(1000.000)
+    0.00 call rocketnautics:rocket_thruster_3.setActive(true)
+    0.00 call rocketnautics:vector_thruster_1.setThrust(1000.000)
+    0.00 call rocketnautics:vector_thruster_1.setActive(true)
+    0.70 call rocketnautics:booster_thruster_3.setActive(true)
+    1.20 call rocketnautics:booster_thruster_3.setActive(true)
+    1.75 call rocketnautics:booster_thruster_3.setActive(true)
+    2.30 call rocketnautics:booster_thruster_3.setActive(true)
+    2.90 call rocketnautics:booster_thruster_3.setActive(true)
+   15.35 redstone bottom true
+   15.35 mundo separou rocketnautics:booster_thruster_0,rocketnautics:booster_thruster_1,rocketnautics:booster_thruster_2,rocketnautics:booster_thruster_3
+   15.65 redstone bottom false
+   60.05 fim de voo.lua (fim)
+==== arquivo config.lua
+return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
+ turn_start_alt=250, turn_end_angle=55, stages={{engines={"rocketnautics:booster_thruster_0","rocketnautics:booster_thruster_1",
+ "rocketnautics:booster_thruster_2","rocketnautics:booster_thruster_3","rocketnautics:rocket_thruster_2",
+ "rocketnautics:rocket_thruster_3","rocketnautics:vector_thruster_1"}, booster_separator={side="bottom"}}},
+ max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=10, ecc_target=0.02, sputnik="top", turn_end_y=16000,
+ steer_throttle=0.08, gimbal_sign=1, transfer_y=20000 }
+==== arquivo estado.txt
+{boostersDropped={[1]=true},failed={["rocketnautics:booster_thruster_3"]=true},logFile="/logs/2026-09-27_20-01-00_retomada.txt",padY=1127,phase="ASCENT",stage=1,t0=0}
+==== arquivo logs/2026-09-27_20-01-00_retomada.txt
+
+========== RETOMANDO VOO na fase ASCENT  (2026-09-27_20-02-00) ==========
+[   0.00] INFO  Acendendo estagio 1 (7 motores)
+[   0.70] AVISO booster_thruster_3 nao acendeu, tentando de novo
+[   2.10] INFO  FISICA y=1138.2 vy=8.00 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=7.0Hz
+[   3.15] INFO  FISICA y=1148.9 vy=12.20 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=6.7Hz
+[   3.45] ERRO  booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+[   4.30] INFO  FISICA y=1165.7 vy=16.80 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=7.0Hz
+[   5.35] INFO  MOTOR ASCENT booster_thruster_0 [booster_thruster] aceso=true gasto=false carvao_ticks=0 potencia=1000 empuxo=1000
+[   5.35] INFO  MOTOR ASCENT booster_thruster_1 [booster_thruster] aceso=true gasto=false carvao_ticks=0 potencia=1000 empuxo=1000
+[   5.35] INFO  MOTOR ASCENT booster_thruster_2 [booster_thruster] aceso=true gasto=false carvao_ticks=0 potencia=1000 empuxo=1000
+[   5.35] INFO  MOTOR ASCENT booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+[   5.35] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=978.79999999999518/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[   5.35] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=978.79999999999518/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[   5.35] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=978.79999999999518/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[   5.40] INFO  COMBUSTIVEL lava=2934 mB em 7 tanques/motores (fase ASCENT, Y=1183)
+[   5.50] INFO  FISICA y=1188.9 vy=21.60 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=7.5Hz
+[   6.55] INFO  FISICA y=1213.8 vy=25.80 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[   7.80] INFO  FISICA y=1249.3 vy=30.80 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.0Hz
+[   8.80] INFO  FISICA y=1282.2 vy=34.80 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.0Hz
+[   9.85] INFO  FISICA y=1321.1 vy=39.00 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[  10.40] INFO  MOTOR ASCENT booster_thruster_0 [booster_thruster] aceso=true gasto=false carvao_ticks=0 potencia=1000 empuxo=1000
+[  10.40] INFO  MOTOR ASCENT booster_thruster_1 [booster_thruster] aceso=true gasto=false carvao_ticks=0 potencia=1000 empuxo=1000
+[  10.40] INFO  MOTOR ASCENT booster_thruster_2 [booster_thruster] aceso=true gasto=false carvao_ticks=0 potencia=1000 empuxo=1000
+[  10.40] INFO  MOTOR ASCENT booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+[  10.40] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=958.59999999999059/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  10.40] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=958.59999999999059/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  10.40] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=958.59999999999059/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  10.45] INFO  COMBUSTIVEL lava=2874 mB em 7 tanques/motores (fase ASCENT, Y=1341)
+[  10.90] INFO  FISICA y=1364.4 vy=43.20 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=6.7Hz
+[  11.90] INFO  FISICA y=1409.7 vy=47.20 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=1.4 gimbal=(0.04,0.00) w=(0.00,0.00,0.00) loop=8.0Hz
+[  12.95] INFO  FISICA y=1461.5 vy=51.40 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=2.5 gimbal=(0.09,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[  14.00] INFO  FISICA y=1517.8 vy=55.60 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=3.4 gimbal=(0.15,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[  15.00] INFO  FISICA y=1575.5 vy=59.60 a_medida=4.00 F/m=15.00 g=11.00 massa=400.0 F=6000 erro=4.2 gimbal=(0.21,0.00) w=(0.00,0.00,0.00) loop=8.0Hz
+[  15.35] INFO  Boosters do estagio 1 esgotados: separando ({side="bottom"})
+[  15.95] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=936.39999999998577/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  15.95] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=936.39999999998577/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  15.95] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=936.39999999998577/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  16.00] INFO  COMBUSTIVEL lava=2808 mB em 3 tanques/motores (fase ASCENT, Y=1625)
+[  16.10] INFO  FISICA y=1639.1 vy=56.13 a_medida=-3.16 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=4.9 gimbal=(0.28,0.00) w=(0.00,0.00,0.00) loop=4.5Hz
+[  17.15] INFO  FISICA y=1696.0 vy=52.45 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=5.5 gimbal=(0.35,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  18.15] INFO  FISICA y=1746.7 vy=48.95 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=6.1 gimbal=(0.43,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  19.20] INFO  FISICA y=1796.0 vy=45.27 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=6.5 gimbal=(0.47,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  20.35] INFO  FISICA y=1845.7 vy=41.25 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=7.0 gimbal=(0.48,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  20.95] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=916.39999999998122/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  20.95] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=916.39999999998122/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  20.95] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=916.39999999998122/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  21.00] INFO  COMBUSTIVEL lava=2748 mB em 3 tanques/motores (fase ASCENT, Y=1868)
+[  21.35] INFO  FISICA y=1885.1 vy=37.75 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=7.3 gimbal=(0.49,0.00) w=(0.00,0.00,0.00) loop=8.0Hz
+[  22.40] INFO  FISICA y=1922.7 vy=34.07 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=7.6 gimbal=(0.50,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  23.55] INFO  FISICA y=1959.5 vy=30.05 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.0 gimbal=(0.51,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  24.55] INFO  FISICA y=1987.7 vy=26.55 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.2 gimbal=(0.51,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  25.60] INFO  FISICA y=2013.6 vy=22.87 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.4 gimbal=(0.52,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  25.95] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=896.39999999997667/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.95] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=896.39999999997667/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.95] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=896.39999999997667/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  26.00] INFO  COMBUSTIVEL lava=2688 mB em 3 tanques/motores (fase ASCENT, Y=2020)
+[  26.75] INFO  FISICA y=2035.6 vy=19.20 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.6 gimbal=(0.52,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  27.75] INFO  FISICA y=2053.7 vy=15.52 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.7 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  28.80] INFO  FISICA y=2068.0 vy=11.85 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.8 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  29.75] INFO  FISICA y=2078.0 vy=8.35 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.9 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  30.80] INFO  FISICA y=2084.7 vy=4.67 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.9 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  31.85] INFO  FISICA y=2087.6 vy=1.00 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=9.0 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  32.95] INFO  FISICA y=2086.5 vy=-2.85 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=9.0 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  34.00] INFO  FISICA y=2081.5 vy=-6.53 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.9 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  35.05] INFO  FISICA y=2072.6 vy=-10.20 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.8 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  36.15] INFO  FISICA y=2059.2 vy=-14.05 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.7 gimbal=(0.53,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  37.20] INFO  FISICA y=2042.4 vy=-17.72 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.6 gimbal=(0.52,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  38.35] INFO  FISICA y=2019.6 vy=-21.75 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.4 gimbal=(0.52,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  39.45] INFO  FISICA y=1993.5 vy=-25.60 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.2 gimbal=(0.51,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  40.60] INFO  FISICA y=1961.6 vy=-29.62 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=8.0 gimbal=(0.51,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  41.75] INFO  FISICA y=1925.1 vy=-33.65 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=7.7 gimbal=(0.50,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  42.85] INFO  FISICA y=1885.9 vy=-37.50 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=7.3 gimbal=(0.49,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  44.00] INFO  FISICA y=1840.4 vy=-41.52 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=6.9 gimbal=(0.48,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  45.15] INFO  FISICA y=1790.2 vy=-45.55 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=6.5 gimbal=(0.47,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  46.05] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=815.99999999995839/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  46.05] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=815.99999999995839/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  46.05] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=815.99999999995839/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  46.10] INFO  COMBUSTIVEL lava=2445 mB em 3 tanques/motores (fase ASCENT, Y=1750)
+[  46.25] INFO  FISICA y=1740.3 vy=-49.22 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=6.0 gimbal=(0.46,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  47.25] INFO  FISICA y=1686.6 vy=-52.90 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=5.4 gimbal=(0.44,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  48.35] INFO  FISICA y=1626.2 vy=-56.75 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=4.8 gimbal=(0.42,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  49.40] INFO  FISICA y=1564.6 vy=-60.42 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=4.0 gimbal=(0.41,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  50.45] INFO  FISICA y=1499.2 vy=-64.10 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=3.1 gimbal=(0.38,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  51.55] INFO  FISICA y=1426.4 vy=-67.95 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=1.8 gimbal=(0.35,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  52.60] INFO  FISICA y=1353.1 vy=-71.62 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  53.75] INFO  FISICA y=1268.3 vy=-75.65 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  54.85] INFO  FISICA y=1182.9 vy=-79.50 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  56.00] INFO  FISICA y=1089.0 vy=-83.52 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  57.15] INFO  FISICA y=990.5 vy=-87.55 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  58.25] INFO  FISICA y=892.0 vy=-91.40 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  59.40] INFO  FISICA y=784.5 vy=-95.42 a_medida=-3.50 F/m=7.50 g=11.00 massa=400.0 F=3000 erro=0.0 gimbal=(0.30,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+
+==== arquivo logs/2026-09-27_20-01-00_retomada_telemetria.csv
+300,ASCENT,1,1130.1,0.80,0.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+500,ASCENT,1,1130.4,1.60,1.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+800,ASCENT,1,1130.8,2.40,2.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1000,ASCENT,1,1131.7,3.60,3.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1350,ASCENT,1,1132.5,4.40,4.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1550,ASCENT,1,1134.3,5.80,5.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1900,ASCENT,1,1135.6,6.60,6.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2100,ASCENT,1,1138.2,8.00,8.00,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2500,ASCENT,1,1139.9,8.80,8.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2700,ASCENT,1,1143.8,10.40,10.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3050,ASCENT,1,1146.0,11.20,11.20,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3250,ASCENT,1,1150.2,12.60,12.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3600,ASCENT,1,1152.8,13.40,13.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3800,ASCENT,1,1157.8,14.80,14.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4200,ASCENT,1,1160.8,15.60,15.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4400,ASCENT,1,1167.4,17.20,17.20,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4700,ASCENT,1,1170.9,18.00,18.00,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4900,ASCENT,1,1176.6,19.20,19.20,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5100,ASCENT,1,1180.5,20.00,20.00,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5500,ASCENT,1,1188.9,21.60,21.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5700,ASCENT,1,1193.3,22.40,22.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6050,ASCENT,1,1201.4,23.80,23.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6250,ASCENT,1,1206.3,24.60,24.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6550,ASCENT,1,1213.8,25.80,25.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6750,ASCENT,1,1219.1,26.60,26.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7050,ASCENT,1,1224.5,27.40,27.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7250,ASCENT,1,1233.0,28.60,28.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7450,ASCENT,1,1238.8,29.40,29.40,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7800,ASCENT,1,1249.3,30.80,30.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+8000,ASCENT,1,1255.6,31.60,31.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+8300,ASCENT,1,1265.3,32.80,32.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+8500,ASCENT,1,1272.0,33.60,33.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+8800,ASCENT,1,1282.2,34.80,34.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+9000,ASCENT,1,1289.3,35.60,35.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+9350,ASCENT,1,1302.0,37.00,37.00,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+9550,ASCENT,1,1309.5,37.80,37.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+9850,ASCENT,1,1321.1,39.00,39.00,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+10050,ASCENT,1,1329.0,39.80,39.80,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+10450,ASCENT,1,1341.2,41.00,41.00,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+10800,ASCENT,1,1353.7,42.20,42.20,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+11000,ASCENT,1,1368.7,43.60,43.60,400,6000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+11300,ASCENT,1,1377.5,44.40,44.40,400,6000,0.1,0.1,0.00,0.00,-nan(ind),-nan(ind)
+11500,ASCENT,1,1391.1,45.60,45.60,400,6000,0.9,0.9,0.02,0.00,-nan(ind),-nan(ind)
+11800,ASCENT,1,1400.3,46.40,46.40,400,6000,1.2,1.2,0.04,0.00,-nan(ind),-nan(ind)
+12000,ASCENT,1,1414.4,47.60,47.60,400,6000,1.5,1.5,0.05,0.00,-nan(ind),-nan(ind)
+12350,ASCENT,1,1424.0,48.40,48.40,400,6000,1.8,1.8,0.06,0.00,-nan(ind),-nan(ind)
+12550,ASCENT,1,1441.3,49.80,49.80,400,6000,2.1,2.1,0.07,0.00,-nan(ind),-nan(ind)
+12850,ASCENT,1,1451.3,50.60,50.60,400,6000,2.3,2.3,0.09,0.00,-nan(ind),-nan(ind)
+13050,ASCENT,1,1466.7,51.80,51.80,400,6000,2.6,2.6,0.10,0.00,-nan(ind),-nan(ind)
+13350,ASCENT,1,1477.2,52.60,52.60,400,6000,2.8,2.8,0.11,0.00,-nan(ind),-nan(ind)
+13550,ASCENT,1,1493.2,53.80,53.80,400,6000,3.0,3.0,0.13,0.00,-nan(ind),-nan(ind)
+13900,ASCENT,1,1504.0,54.60,54.60,400,6000,3.2,3.2,0.14,0.00,-nan(ind),-nan(ind)
+14100,ASCENT,1,1523.4,56.00,56.00,400,6000,3.5,3.5,0.16,0.00,-nan(ind),-nan(ind)
+14400,ASCENT,1,1534.7,56.80,56.80,400,6000,3.6,3.6,0.17,0.00,-nan(ind),-nan(ind)
+14600,ASCENT,1,1552.0,58.00,58.00,400,6000,3.9,3.9,0.19,0.00,-nan(ind),-nan(ind)
+14900,ASCENT,1,1563.7,58.80,58.80,400,6000,4.0,4.0,0.20,0.00,-nan(ind),-nan(ind)
+15100,ASCENT,1,1581.5,59.63,59.63,400,6000,4.2,4.2,0.22,0.00,-nan(ind),-nan(ind)
+15750,ASCENT,1,1593.3,58.93,58.93,400,3000,4.4,4.4,0.25,0.00,-nan(ind),-nan(ind)
+16100,ASCENT,1,1639.1,56.13,56.13,400,3000,4.9,4.9,0.28,0.00,-nan(ind),-nan(ind)
+16300,ASCENT,1,1650.3,55.43,55.43,400,3000,5.1,5.1,0.29,0.00,-nan(ind),-nan(ind)
+16550,ASCENT,1,1664.0,54.55,54.55,400,3000,5.2,5.2,0.31,0.00,-nan(ind),-nan(ind)
+16750,ASCENT,1,1674.8,53.85,53.85,400,3000,5.3,5.3,0.33,0.00,-nan(ind),-nan(ind)
+17050,ASCENT,1,1685.5,53.15,53.15,400,3000,5.4,5.4,0.35,0.00,-nan(ind),-nan(ind)
+17250,ASCENT,1,1701.3,52.10,52.10,400,3000,5.6,5.6,0.36,0.00,-nan(ind),-nan(ind)
+17500,ASCENT,1,1711.6,51.40,51.40,400,3000,5.7,5.7,0.38,0.00,-nan(ind),-nan(ind)
+17700,ASCENT,1,1724.3,50.53,50.53,400,3000,5.8,5.8,0.39,0.00,-nan(ind),-nan(ind)
+17900,ASCENT,1,1734.3,49.83,49.83,400,3000,5.9,5.9,0.41,0.00,-nan(ind),-nan(ind)
+18150,ASCENT,1,1746.7,48.95,48.95,400,3000,6.1,6.1,0.43,0.00,-nan(ind),-nan(ind)
+18350,ASCENT,1,1756.4,48.25,48.25,400,3000,6.1,6.1,0.44,0.00,-nan(ind),-nan(ind)
+18650,ASCENT,1,1765.9,47.55,47.55,400,3000,6.2,6.2,0.46,0.00,-nan(ind),-nan(ind)
+18850,ASCENT,1,1780.0,46.50,46.50,400,3000,6.4,6.4,0.47,0.00,-nan(ind),-nan(ind)
+19100,ASCENT,1,1789.2,45.80,45.80,400,3000,6.5,6.5,0.47,0.00,-nan(ind),-nan(ind)
+19300,ASCENT,1,1800.5,44.92,44.92,400,3000,6.6,6.6,0.47,0.00,-nan(ind),-nan(ind)
+19500,ASCENT,1,1809.4,44.22,44.22,400,3000,6.7,6.7,0.47,0.00,-nan(ind),-nan(ind)
+19750,ASCENT,1,1820.4,43.35,43.35,400,3000,6.8,6.8,0.48,0.00,-nan(ind),-nan(ind)
+19950,ASCENT,1,1828.9,42.65,42.65,400,3000,6.8,6.8,0.48,0.00,-nan(ind),-nan(ind)
+20250,ASCENT,1,1837.4,41.95,41.95,400,3000,6.9,6.9,0.48,0.00,-nan(ind),-nan(ind)
+20450,ASCENT,1,1849.8,40.90,40.90,400,3000,7.0,7.0,0.48,0.00,-nan(ind),-nan(ind)
+20700,ASCENT,1,1857.9,40.20,40.20,400,3000,7.1,7.1,0.49,0.00,-nan(ind),-nan(ind)
+21000,ASCENT,1,1867.8,39.32,39.32,400,3000,7.2,7.2,0.49,0.00,-nan(ind),-nan(ind)
+21250,ASCENT,1,1879.4,38.27,38.27,400,3000,7.3,7.3,0.49,0.00,-nan(ind),-nan(ind)
+21450,ASCENT,1,1888.8,37.40,37.40,400,3000,7.4,7.4,0.49,0.00,-nan(ind),-nan(ind)
+21650,ASCENT,1,1896.2,36.70,36.70,400,3000,7.4,7.4,0.49,0.00,-nan(ind),-nan(ind)
+21950,ASCENT,1,1907.1,35.65,35.65,400,3000,7.5,7.5,0.50,0.00,-nan(ind),-nan(ind)
+22150,ASCENT,1,1914.1,34.95,34.95,400,3000,7.6,7.6,0.50,0.00,-nan(ind),-nan(ind)
+22400,ASCENT,1,1922.7,34.07,34.07,400,3000,7.6,7.6,0.50,0.00,-nan(ind),-nan(ind)
+22600,ASCENT,1,1929.4,33.37,33.37,400,3000,7.7,7.7,0.50,0.00,-nan(ind),-nan(ind)
+22850,ASCENT,1,1936.0,32.67,32.67,400,3000,7.8,7.8,0.50,0.00,-nan(ind),-nan(ind)
+23050,ASCENT,1,1944.1,31.80,31.80,400,3000,7.8,7.8,0.50,0.00,-nan(ind),-nan(ind)
+23250,ASCENT,1,1950.3,31.10,31.10,400,3000,7.9,7.9,0.51,0.00,-nan(ind),-nan(ind)
+23550,ASCENT,1,1959.5,30.05,30.05,400,3000,8.0,8.0,0.51,0.00,-nan(ind),-nan(ind)
+23750,ASCENT,1,1965.4,29.35,29.35,400,3000,8.0,8.0,0.51,0.00,-nan(ind),-nan(ind)
+24000,ASCENT,1,1972.6,28.47,28.47,400,3000,8.1,8.1,0.51,0.00,-nan(ind),-nan(ind)
+24200,ASCENT,1,1978.2,27.77,27.77,400,3000,8.1,8.1,0.51,0.00,-nan(ind),-nan(ind)
+24450,ASCENT,1,1983.7,27.07,27.07,400,3000,8.1,8.1,0.51,0.00,-nan(ind),-nan(ind)
+24650,ASCENT,1,1990.3,26.20,26.20,400,3000,8.2,8.2,0.51,0.00,-nan(ind),-nan(ind)
+24850,ASCENT,1,1995.5,25.50,25.50,400,3000,8.2,8.2,0.52,0.00,-nan(ind),-nan(ind)
+25150,ASCENT,1,2002.9,24.45,24.45,400,3000,8.3,8.3,0.52,0.00,-nan(ind),-nan(ind)
+25350,ASCENT,1,2007.8,23.75,23.75,400,3000,8.3,8.3,0.52,0.00,-nan(ind),-nan(ind)
+25600,ASCENT,1,2013.6,22.87,22.87,400,3000,8.4,8.4,0.52,0.00,-nan(ind),-nan(ind)
+25800,ASCENT,1,2018.0,22.17,22.17,400,3000,8.4,8.4,0.52,0.00,-nan(ind),-nan(ind)
+26150,ASCENT,1,2024.5,21.12,21.12,400,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+26350,ASCENT,1,2029.7,20.25,20.25,400,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+26550,ASCENT,1,2033.6,19.55,19.55,400,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+26850,ASCENT,1,2039.3,18.50,18.50,400,3000,8.6,8.6,0.52,0.00,-nan(ind),-nan(ind)
+27050,ASCENT,1,2042.9,17.80,17.80,400,3000,8.6,8.6,0.52,0.00,-nan(ind),-nan(ind)
+27300,ASCENT,1,2047.2,16.92,16.92,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+27500,ASCENT,1,2050.5,16.22,16.22,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+27750,ASCENT,1,2053.7,15.52,15.52,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+27950,ASCENT,1,2057.4,14.65,14.65,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+28150,ASCENT,1,2060.3,13.95,13.95,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+28450,ASCENT,1,2064.3,12.90,12.90,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+28650,ASCENT,1,2066.8,12.20,12.20,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+28900,ASCENT,1,2069.7,11.32,11.32,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+29100,ASCENT,1,2071.9,10.62,10.62,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+29350,ASCENT,1,2073.9,9.92,9.92,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+29550,ASCENT,1,2076.3,9.05,9.05,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+29750,ASCENT,1,2078.0,8.35,8.35,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+30050,ASCENT,1,2080.3,7.30,7.30,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+30250,ASCENT,1,2081.7,6.60,6.60,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+30500,ASCENT,1,2083.2,5.72,5.72,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+30700,ASCENT,1,2084.3,5.02,5.02,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+30950,ASCENT,1,2085.2,4.32,4.32,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+31150,ASCENT,1,2086.1,3.45,3.45,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+31350,ASCENT,1,2086.7,2.75,2.75,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+31650,ASCENT,1,2087.4,1.70,1.70,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+31850,ASCENT,1,2087.6,1.00,1.00,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+32100,ASCENT,1,2087.7,0.12,0.12,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+32300,ASCENT,1,2087.7,0.58,-0.58,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+32550,ASCENT,1,2087.5,1.28,-1.28,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+32750,ASCENT,1,2087.0,2.15,-2.15,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+32950,ASCENT,1,2086.5,2.85,-2.85,400,3000,9.0,9.0,0.53,0.00,-nan(ind),-nan(ind)
+33250,ASCENT,1,2085.5,3.90,-3.90,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+33450,ASCENT,1,2084.6,4.60,-4.60,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+33700,ASCENT,1,2083.6,5.30,-5.30,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+33900,ASCENT,1,2082.1,6.18,-6.18,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+34100,ASCENT,1,2080.8,6.88,-6.88,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+34350,ASCENT,1,2079.0,7.75,-7.75,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+34550,ASCENT,1,2077.3,8.45,-8.45,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+34850,ASCENT,1,2075.5,9.15,-9.15,400,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+35050,ASCENT,1,2072.6,10.20,-10.20,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+35250,ASCENT,1,2070.5,10.90,-10.90,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+35500,ASCENT,1,2067.6,11.78,-11.78,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+35700,ASCENT,1,2065.2,12.48,-12.48,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+35950,ASCENT,1,2062.6,13.18,-13.18,400,3000,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+36150,ASCENT,1,2059.2,14.05,-14.05,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+36350,ASCENT,1,2056.3,14.75,-14.75,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+36650,ASCENT,1,2051.7,15.80,-15.80,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+36850,ASCENT,1,2048.4,16.50,-16.50,400,3000,8.7,8.7,0.53,0.00,-nan(ind),-nan(ind)
+37100,ASCENT,1,2045.0,17.20,-17.20,400,3000,8.6,8.6,0.53,0.00,-nan(ind),-nan(ind)
+37300,ASCENT,1,2040.6,18.07,-18.07,400,3000,8.6,8.6,0.52,0.00,-nan(ind),-nan(ind)
+37500,ASCENT,1,2036.9,18.77,-18.77,400,3000,8.6,8.6,0.52,0.00,-nan(ind),-nan(ind)
+37750,ASCENT,1,2032.1,19.65,-19.65,400,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+37950,ASCENT,1,2028.1,20.35,-20.35,400,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+38250,ASCENT,1,2023.9,21.05,-21.05,400,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+38450,ASCENT,1,2017.4,22.10,-22.10,400,3000,8.4,8.4,0.52,0.00,-nan(ind),-nan(ind)
+38650,ASCENT,1,2012.9,22.80,-22.80,400,3000,8.4,8.4,0.52,0.00,-nan(ind),-nan(ind)
+38900,ASCENT,1,2007.1,23.67,-23.67,400,3000,8.3,8.3,0.52,0.00,-nan(ind),-nan(ind)
+39100,ASCENT,1,2002.3,24.37,-24.37,400,3000,8.3,8.3,0.52,0.00,-nan(ind),-nan(ind)
+39350,ASCENT,1,1997.3,25.07,-25.07,400,3000,8.3,8.3,0.52,0.00,-nan(ind),-nan(ind)
+39550,ASCENT,1,1990.9,25.95,-25.95,400,3000,8.2,8.2,0.51,0.00,-nan(ind),-nan(ind)
+39750,ASCENT,1,1985.6,26.65,-26.65,400,3000,8.2,8.2,0.51,0.00,-nan(ind),-nan(ind)
+40050,ASCENT,1,1977.4,27.70,-27.70,400,3000,8.1,8.1,0.51,0.00,-nan(ind),-nan(ind)
+40250,ASCENT,1,1971.8,28.40,-28.40,400,3000,8.1,8.1,0.51,0.00,-nan(ind),-nan(ind)
+40500,ASCENT,1,1966.0,29.10,-29.10,400,3000,8.0,8.0,0.51,0.00,-nan(ind),-nan(ind)
+40700,ASCENT,1,1958.6,29.97,-29.97,400,3000,7.9,7.9,0.51,0.00,-nan(ind),-nan(ind)
+40900,ASCENT,1,1952.5,30.67,-30.67,400,3000,7.9,7.9,0.51,0.00,-nan(ind),-nan(ind)
+41150,ASCENT,1,1944.7,31.55,-31.55,400,3000,7.8,7.8,0.50,0.00,-nan(ind),-nan(ind)
+41350,ASCENT,1,1938.4,32.25,-32.25,400,3000,7.8,7.8,0.50,0.00,-nan(ind),-nan(ind)
+41650,ASCENT,1,1931.8,32.95,-32.95,400,3000,7.7,7.7,0.50,0.00,-nan(ind),-nan(ind)
+41850,ASCENT,1,1921.7,34.00,-34.00,400,3000,7.6,7.6,0.50,0.00,-nan(ind),-nan(ind)
+42050,ASCENT,1,1914.9,34.70,-34.70,400,3000,7.6,7.6,0.50,0.00,-nan(ind),-nan(ind)
+42300,ASCENT,1,1906.1,35.57,-35.57,400,3000,7.5,7.5,0.50,0.00,-nan(ind),-nan(ind)
+42500,ASCENT,1,1898.8,36.27,-36.27,400,3000,7.4,7.4,0.49,0.00,-nan(ind),-nan(ind)
+42750,ASCENT,1,1891.5,36.97,-36.97,400,3000,7.4,7.4,0.49,0.00,-nan(ind),-nan(ind)
+42950,ASCENT,1,1882.1,37.85,-37.85,400,3000,7.3,7.3,0.49,0.00,-nan(ind),-nan(ind)
+43150,ASCENT,1,1874.5,38.55,-38.55,400,3000,7.2,7.2,0.49,0.00,-nan(ind),-nan(ind)
+43450,ASCENT,1,1862.7,39.60,-39.60,400,3000,7.1,7.1,0.49,0.00,-nan(ind),-nan(ind)
+43650,ASCENT,1,1854.7,40.30,-40.30,400,3000,7.1,7.1,0.48,0.00,-nan(ind),-nan(ind)
+43900,ASCENT,1,1846.6,41.00,-41.00,400,3000,7.0,7.0,0.48,0.00,-nan(ind),-nan(ind)
+44100,ASCENT,1,1836.2,41.87,-41.87,400,3000,6.9,6.9,0.48,0.00,-nan(ind),-nan(ind)
+44300,ASCENT,1,1827.7,42.57,-42.57,400,3000,6.8,6.8,0.48,0.00,-nan(ind),-nan(ind)
+44550,ASCENT,1,1817.0,43.45,-43.45,400,3000,6.7,6.7,0.48,0.00,-nan(ind),-nan(ind)
+44750,ASCENT,1,1808.2,44.15,-44.15,400,3000,6.6,6.6,0.47,0.00,-nan(ind),-nan(ind)
+45050,ASCENT,1,1799.3,44.85,-44.85,400,3000,6.6,6.6,0.47,0.00,-nan(ind),-nan(ind)
+45250,ASCENT,1,1785.6,45.90,-45.90,400,3000,6.4,6.4,0.47,0.00,-nan(ind),-nan(ind)
+45450,ASCENT,1,1776.3,46.60,-46.60,400,3000,6.3,6.3,0.47,0.00,-nan(ind),-nan(ind)
+45700,ASCENT,1,1764.6,47.47,-47.47,400,3000,6.2,6.2,0.46,0.00,-nan(ind),-nan(ind)
+45900,ASCENT,1,1755.0,48.17,-48.17,400,3000,6.1,6.1,0.46,0.00,-nan(ind),-nan(ind)
+46250,ASCENT,1,1740.3,49.22,-49.22,400,3000,6.0,6.0,0.46,0.00,-nan(ind),-nan(ind)
+46450,ASCENT,1,1727.9,50.10,-50.10,400,3000,5.9,5.9,0.45,0.00,-nan(ind),-nan(ind)
+46650,ASCENT,1,1717.8,50.80,-50.80,400,3000,5.8,5.8,0.45,0.00,-nan(ind),-nan(ind)
+46950,ASCENT,1,1702.4,51.85,-51.85,400,3000,5.6,5.6,0.45,0.00,-nan(ind),-nan(ind)
+47150,ASCENT,1,1691.9,52.55,-52.55,400,3000,5.5,5.5,0.44,0.00,-nan(ind),-nan(ind)
+47400,ASCENT,1,1681.3,53.25,-53.25,400,3000,5.4,5.4,0.44,0.00,-nan(ind),-nan(ind)
+47600,ASCENT,1,1667.9,54.12,-54.12,400,3000,5.2,5.2,0.44,0.00,-nan(ind),-nan(ind)
+47800,ASCENT,1,1657.0,54.82,-54.82,400,3000,5.1,5.1,0.43,0.00,-nan(ind),-nan(ind)
+48050,ASCENT,1,1643.1,55.70,-55.70,400,3000,5.0,5.0,0.43,0.00,-nan(ind),-nan(ind)
+48250,ASCENT,1,1631.9,56.40,-56.40,400,3000,4.8,4.8,0.43,0.00,-nan(ind),-nan(ind)
+48550,ASCENT,1,1620.5,57.10,-57.10,400,3000,4.7,4.7,0.42,0.00,-nan(ind),-nan(ind)
+48750,ASCENT,1,1603.2,58.15,-58.15,400,3000,4.5,4.5,0.42,0.00,-nan(ind),-nan(ind)
+48950,ASCENT,1,1591.5,58.85,-58.85,400,3000,4.4,4.4,0.41,0.00,-nan(ind),-nan(ind)
+49200,ASCENT,1,1576.7,59.72,-59.72,400,3000,4.2,4.2,0.41,0.00,-nan(ind),-nan(ind)
+49400,ASCENT,1,1564.6,60.42,-60.42,400,3000,4.0,4.0,0.41,0.00,-nan(ind),-nan(ind)
+49650,ASCENT,1,1552.5,61.12,-61.12,400,3000,3.9,3.9,0.40,0.00,-nan(ind),-nan(ind)
+49850,ASCENT,1,1537.0,62.00,-62.00,400,3000,3.7,3.7,0.40,0.00,-nan(ind),-nan(ind)
+50050,ASCENT,1,1524.6,62.70,-62.70,400,3000,3.5,3.5,0.39,0.00,-nan(ind),-nan(ind)
+50350,ASCENT,1,1505.6,63.75,-63.75,400,3000,3.2,3.2,0.38,0.00,-nan(ind),-nan(ind)
+50550,ASCENT,1,1492.7,64.45,-64.45,400,3000,3.0,3.0,0.38,0.00,-nan(ind),-nan(ind)
+50800,ASCENT,1,1479.7,65.15,-65.15,400,3000,2.8,2.8,0.37,0.00,-nan(ind),-nan(ind)
+51000,ASCENT,1,1463.3,66.02,-66.02,400,3000,2.5,2.5,0.37,0.00,-nan(ind),-nan(ind)
+51200,ASCENT,1,1450.0,66.72,-66.72,400,3000,2.3,2.3,0.36,0.00,-nan(ind),-nan(ind)
+51450,ASCENT,1,1433.2,67.60,-67.60,400,3000,2.0,2.0,0.35,0.00,-nan(ind),-nan(ind)
+51650,ASCENT,1,1419.6,68.30,-68.30,400,3000,1.7,1.7,0.34,0.00,-nan(ind),-nan(ind)
+51950,ASCENT,1,1405.9,69.00,-69.00,400,3000,1.3,1.3,0.33,0.00,-nan(ind),-nan(ind)
+52150,ASCENT,1,1385.0,70.05,-70.05,400,3000,0.6,0.6,0.32,0.00,-nan(ind),-nan(ind)
+52350,ASCENT,1,1370.9,70.75,-70.75,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+52600,ASCENT,1,1353.1,71.62,-71.62,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+52800,ASCENT,1,1338.7,72.32,-72.32,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+53050,ASCENT,1,1324.1,73.02,-73.02,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+53250,ASCENT,1,1305.7,73.90,-73.90,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+53450,ASCENT,1,1290.8,74.60,-74.60,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+53750,ASCENT,1,1268.3,75.65,-75.65,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+53950,ASCENT,1,1253.1,76.35,-76.35,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+54200,ASCENT,1,1237.7,77.05,-77.05,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+54400,ASCENT,1,1218.3,77.92,-77.92,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+54600,ASCENT,1,1202.6,78.62,-78.62,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+54850,ASCENT,1,1182.9,79.50,-79.50,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+55050,ASCENT,1,1166.9,80.20,-80.20,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+55350,ASCENT,1,1150.7,80.90,-80.90,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+55550,ASCENT,1,1126.3,81.95,-81.95,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+55750,ASCENT,1,1109.8,82.65,-82.65,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+56000,ASCENT,1,1089.0,83.52,-83.52,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+56200,ASCENT,1,1072.2,84.22,-84.22,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+56450,ASCENT,1,1055.3,84.92,-84.92,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+56650,ASCENT,1,1033.9,85.80,-85.80,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+56850,ASCENT,1,1016.7,86.50,-86.50,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+57150,ASCENT,1,990.5,87.55,-87.55,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+57350,ASCENT,1,973.0,88.25,-88.25,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+57600,ASCENT,1,955.2,88.95,-88.95,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+57800,ASCENT,1,932.8,89.82,-89.82,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+58000,ASCENT,1,914.8,90.52,-90.52,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+58250,ASCENT,1,892.0,91.40,-91.40,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+58450,ASCENT,1,873.7,92.10,-92.10,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+58750,ASCENT,1,855.2,92.80,-92.80,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+58950,ASCENT,1,827.1,93.85,-93.85,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+59150,ASCENT,1,808.3,94.55,-94.55,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+59400,ASCENT,1,784.5,95.42,-95.42,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+59600,ASCENT,1,765.3,96.12,-96.12,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+59850,ASCENT,1,746.0,96.82,-96.82,400,3000,0.0,0.0,0.30,0.00,-nan(ind),-nan(ind)
+
+mundo final: y=711.89 vy=-98.05 espaco=false

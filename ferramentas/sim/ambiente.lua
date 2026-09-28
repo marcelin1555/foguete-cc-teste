@@ -207,6 +207,7 @@ end
 
 ---------------------------------------------------------------- redstone, perifericos, http
 redstone = {
+  getSides = function() return { "top", "bottom", "left", "right", "front", "back" } end,
   getInput = function(lado) return A.redstoneEntrada[lado] == true end,
   setOutput = function(lado, v)
     A.registrar("redstone %s %s", tostring(lado), tostring(v))
