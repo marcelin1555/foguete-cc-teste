@@ -5,3 +5,4 @@ log_antigo.txt
 *.log
 /rcs.cal
 logs/
+__pycache__/
