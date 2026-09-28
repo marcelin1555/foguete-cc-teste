@@ -167,31 +167,67 @@
     6.60 call rocketnautics:vector_thruster_1.setGimbal(0.016,0.000,-0.010)
     6.70 call rocketnautics:vector_thruster_1.setGimbal(0.031,0.000,0.008)
     6.85 call rocketnautics:vector_thruster_1.setGimbal(0.008,0.000,0.012)
+    6.90 desenho [limpa]
+    6.90 desenho == POUSO == estagio 1/1
+    6.90 desenho Y 247   vel 94.5   vy -94.5
+    6.90 desenho Empuxo 5000 N   massa 160
+    6.90 desenho Inclin 0.0   erro 0.3
+    6.90 desenho 
     6.95 call rocketnautics:vector_thruster_1.setGimbal(-0.039,0.000,-0.004)
     7.05 call rocketnautics:vector_thruster_1.setGimbal(-0.024,0.000,-0.011)
     7.15 call rocketnautics:vector_thruster_1.setGimbal(0.018,0.000,-0.003)
     7.25 call rocketnautics:vector_thruster_1.setGimbal(0.029,0.000,0.007)
     7.40 call rocketnautics:vector_thruster_1.setGimbal(0.004,0.000,0.006)
+    7.45 desenho [limpa]
+    7.45 desenho == POUSO == estagio 1/1
+    7.45 desenho Y 198   vel 83.3   vy -83.3
+    7.45 desenho Empuxo 5000 N   massa 160
+    7.45 desenho Inclin 0.0   erro 0.0
+    7.45 desenho 
     7.50 call rocketnautics:vector_thruster_1.setGimbal(-0.040,0.000,-0.006)
     7.60 call rocketnautics:vector_thruster_1.setGimbal(-0.022,0.000,-0.007)
     7.70 call rocketnautics:vector_thruster_1.setGimbal(0.019,0.000,0.001)
     7.80 call rocketnautics:vector_thruster_1.setGimbal(0.028,0.000,0.006)
     7.95 call rocketnautics:vector_thruster_1.setGimbal(0.002,0.000,0.003)
+    8.00 desenho [limpa]
+    8.00 desenho == POUSO == estagio 1/1
+    8.00 desenho Y 156   vel 72.2   vy -72.1
+    8.00 desenho Empuxo 5000 N   massa 160
+    8.00 desenho Inclin 0.0   erro 0.1
+    8.00 desenho 
     8.05 call rocketnautics:vector_thruster_1.setGimbal(-0.040,0.000,-0.007)
     8.15 call rocketnautics:vector_thruster_1.setGimbal(-0.021,0.000,-0.006)
     8.25 call rocketnautics:vector_thruster_1.setGimbal(0.019,0.000,0.003)
     8.35 call rocketnautics:vector_thruster_1.setGimbal(0.027,0.000,0.006)
     8.50 call rocketnautics:vector_thruster_1.setGimbal(0.001,0.000,0.001)
+    8.55 desenho [limpa]
+    8.55 desenho == POUSO == estagio 1/1
+    8.55 desenho Y 119   vel 61.0   vy -60.9
+    8.55 desenho Empuxo 5000 N   massa 160
+    8.55 desenho Inclin 0.0   erro 0.1
+    8.55 desenho 
     8.60 call rocketnautics:vector_thruster_1.setGimbal(-0.039,0.000,-0.008)
     8.70 call rocketnautics:vector_thruster_1.setGimbal(-0.020,0.000,-0.005)
     8.80 call rocketnautics:vector_thruster_1.setGimbal(0.019,0.000,0.003)
     8.90 call rocketnautics:vector_thruster_1.setGimbal(0.025,0.000,0.005)
     9.05 call rocketnautics:vector_thruster_1.setGimbal(-0.001,0.000,0.001)
+    9.10 desenho [limpa]
+    9.10 desenho == POUSO == estagio 1/1
+    9.10 desenho Y 89   vel 49.8   vy -49.8
+    9.10 desenho Empuxo 5000 N   massa 160
+    9.10 desenho Inclin 0.0   erro 0.1
+    9.10 desenho 
     9.15 call rocketnautics:vector_thruster_1.setGimbal(-0.039,0.000,-0.008)
     9.25 call rocketnautics:vector_thruster_1.setGimbal(-0.019,0.000,-0.004)
     9.35 call rocketnautics:vector_thruster_1.setGimbal(0.019,0.000,0.004)
     9.45 call rocketnautics:vector_thruster_1.setGimbal(0.025,0.000,0.005)
     9.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    9.65 desenho [limpa]
+    9.65 desenho == POUSO == estagio 1/1
+    9.65 desenho Y 65   vel 38.6   vy -38.6
+    9.65 desenho Empuxo 5000 N   massa 160
+    9.65 desenho Inclin 0.0   erro 0.0
+    9.65 desenho 
     9.70 call rocketnautics:rocket_thruster_0.setThrust(350.000)
     9.70 call rocketnautics:rocket_thruster_0.setActive(true)
     9.70 call rocketnautics:rocket_thruster_1.setThrust(350.000)
@@ -223,6 +259,10 @@
     9.80 call rocketnautics:rocket_thruster_3.setActive(false)
     9.80 call rocketnautics:vector_thruster_1.setThrust(0.000)
     9.80 call rocketnautics:vector_thruster_1.setActive(false)
+    9.80 desenho [limpa]
+    9.80 desenho == VOO ENCERRADO: POUSADO ==
+    9.80 desenho Y 63  ECC -nan(ind)
+    9.80 desenho Veja: logs erros
     9.80 fim de voo.lua
 ==== arquivo config.lua
 return { max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},

@@ -22,36 +22,78 @@
     0.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     0.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     0.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    0.75 desenho [limpa]
+    0.75 desenho == POUSO == estagio 1/1
+    0.75 desenho Y 774   vel 46.3   vy -46.3
+    0.75 desenho Empuxo 0 N   massa 160
+    0.75 desenho Inclin 0.0   erro 0.0
+    0.75 desenho 
     0.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     0.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    1.30 desenho [limpa]
+    1.30 desenho == POUSO == estagio 1/1
+    1.30 desenho Y 747   vel 52.3   vy -52.3
+    1.30 desenho Empuxo 0 N   massa 160
+    1.30 desenho Inclin 0.0   erro 0.0
+    1.30 desenho 
     1.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     1.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    1.85 desenho [limpa]
+    1.85 desenho == POUSO == estagio 1/1
+    1.85 desenho Y 716   vel 58.4   vy -58.4
+    1.85 desenho Empuxo 0 N   massa 160
+    1.85 desenho Inclin 0.0   erro 0.0
+    1.85 desenho 
     1.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    2.40 desenho [limpa]
+    2.40 desenho == POUSO == estagio 1/1
+    2.40 desenho Y 682   vel 64.4   vy -64.4
+    2.40 desenho Empuxo 0 N   massa 160
+    2.40 desenho Inclin 0.0   erro 0.0
+    2.40 desenho 
     2.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     2.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    2.95 desenho [limpa]
+    2.95 desenho == POUSO == estagio 1/1
+    2.95 desenho Y 645   vel 70.5   vy -70.5
+    2.95 desenho Empuxo 0 N   massa 160
+    2.95 desenho Inclin 0.0   erro 0.0
+    2.95 desenho 
     3.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    3.50 desenho [limpa]
+    3.50 desenho == POUSO == estagio 1/1
+    3.50 desenho Y 604   vel 76.5   vy -76.5
+    3.50 desenho Empuxo 0 N   massa 160
+    3.50 desenho Inclin 0.0   erro 0.0
+    3.50 desenho 
     3.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     3.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     4.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    4.05 desenho [limpa]
+    4.05 desenho == POUSO == estagio 1/1
+    4.05 desenho Y 560   vel 82.6   vy -82.6
+    4.05 desenho Empuxo 0 N   massa 160
+    4.05 desenho Inclin 0.0   erro 0.0
+    4.05 desenho 
     4.10 call rocketnautics:rocket_thruster_0.setThrust(50.000)
     4.10 call rocketnautics:rocket_thruster_0.setActive(true)
     4.10 call rocketnautics:rocket_thruster_1.setThrust(50.000)
@@ -107,6 +149,12 @@
     4.75 call rocketnautics:vector_thruster_1.setThrust(300.000)
     4.75 call rocketnautics:vector_thruster_1.setActive(true)
     4.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    4.85 desenho [limpa]
+    4.85 desenho == POUSO == estagio 1/1
+    4.85 desenho Y 491   vel 88.6   vy -88.6
+    4.85 desenho Empuxo 1000 N   massa 160
+    4.85 desenho Inclin 0.0   erro 0.0
+    4.85 desenho 
     4.90 call rocketnautics:rocket_thruster_0.setThrust(350.000)
     4.90 call rocketnautics:rocket_thruster_0.setActive(true)
     4.90 call rocketnautics:rocket_thruster_1.setThrust(350.000)
@@ -162,6 +210,12 @@
     5.65 call rocketnautics:vector_thruster_1.setThrust(550.000)
     5.65 call rocketnautics:vector_thruster_1.setActive(true)
     5.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    5.75 desenho [limpa]
+    5.75 desenho == POUSO == estagio 1/1
+    5.75 desenho Y 412   vel 87.5   vy -87.5
+    5.75 desenho Empuxo 2000 N   massa 160
+    5.75 desenho Inclin 0.0   erro 0.0
+    5.75 desenho 
     5.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     5.95 call rocketnautics:rocket_thruster_0.setThrust(600.000)
     5.95 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -177,6 +231,12 @@
     6.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     6.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     6.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    6.35 desenho [limpa]
+    6.35 desenho == POUSO == estagio 1/1
+    6.35 desenho Y 356   vel 83.0   vy -83.0
+    6.35 desenho Empuxo 2750 N   massa 160
+    6.35 desenho Inclin 0.0   erro 0.0
+    6.35 desenho 
     6.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     6.55 call rocketnautics:rocket_thruster_0.setThrust(650.000)
     6.55 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -192,6 +252,12 @@
     6.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     6.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     6.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    6.95 desenho [limpa]
+    6.95 desenho == POUSO == estagio 1/1
+    6.95 desenho Y 308   vel 77.9   vy -77.9
+    6.95 desenho Empuxo 3000 N   massa 160
+    6.95 desenho Inclin 0.0   erro 0.0
+    6.95 desenho 
     7.05 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     7.15 call rocketnautics:rocket_thruster_0.setThrust(700.000)
     7.15 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -207,6 +273,12 @@
     7.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     7.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     7.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    7.55 desenho [limpa]
+    7.55 desenho == POUSO == estagio 1/1
+    7.55 desenho Y 263   vel 71.8   vy -71.8
+    7.55 desenho Empuxo 3250 N   massa 160
+    7.55 desenho Inclin 0.0   erro 0.0
+    7.55 desenho 
     7.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     7.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     7.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
@@ -222,11 +294,23 @@
     8.05 call rocketnautics:vector_thruster_1.setThrust(750.000)
     8.05 call rocketnautics:vector_thruster_1.setActive(true)
     8.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    8.15 desenho [limpa]
+    8.15 desenho == POUSO == estagio 1/1
+    8.15 desenho Y 226   vel 65.8   vy -65.8
+    8.15 desenho Empuxo 3500 N   massa 160
+    8.15 desenho Inclin 0.0   erro 0.0
+    8.15 desenho 
     8.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     8.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     8.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     8.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     8.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    8.70 desenho [limpa]
+    8.70 desenho == POUSO == estagio 1/1
+    8.70 desenho Y 188   vel 58.3   vy -58.3
+    8.70 desenho Empuxo 3750 N   massa 160
+    8.70 desenho Inclin 0.0   erro 0.0
+    8.70 desenho 
     8.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     8.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     9.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
@@ -242,11 +326,23 @@
     9.20 call rocketnautics:vector_thruster_1.setThrust(800.000)
     9.20 call rocketnautics:vector_thruster_1.setActive(true)
     9.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    9.30 desenho [limpa]
+    9.30 desenho == POUSO == estagio 1/1
+    9.30 desenho Y 158   vel 51.4   vy -51.4
+    9.30 desenho Empuxo 3750 N   massa 160
+    9.30 desenho Inclin 0.0   erro 0.0
+    9.30 desenho 
     9.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     9.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     9.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     9.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
     9.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+    9.85 desenho [limpa]
+    9.85 desenho == POUSO == estagio 1/1
+    9.85 desenho Y 130   vel 43.1   vy -43.1
+    9.85 desenho Empuxo 4000 N   massa 160
+    9.85 desenho Inclin 0.0   erro 0.0
+    9.85 desenho 
     9.95 call rocketnautics:rocket_thruster_0.setThrust(850.000)
     9.95 call rocketnautics:rocket_thruster_0.setActive(true)
     9.95 call rocketnautics:rocket_thruster_1.setThrust(850.000)
@@ -282,6 +378,12 @@
    10.50 call rocketnautics:vector_thruster_1.setActive(true)
    10.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    10.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   10.70 desenho [limpa]
+   10.70 desenho == POUSO == estagio 1/1
+   10.70 desenho Y 100   vel 29.2   vy -29.2
+   10.70 desenho Empuxo 4500 N   massa 160
+   10.70 desenho Inclin 0.0   erro 0.0
+   10.70 desenho 
    10.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    10.85 call rocketnautics:rocket_thruster_0.setThrust(950.000)
    10.85 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -327,6 +429,12 @@
    11.35 call rocketnautics:vector_thruster_1.setThrust(750.000)
    11.35 call rocketnautics:vector_thruster_1.setActive(true)
    11.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   11.45 desenho [limpa]
+   11.45 desenho == POUSO == estagio 1/1
+   11.45 desenho Y 84   vel 16.3   vy -16.3
+   11.45 desenho Empuxo 4750 N   massa 160
+   11.45 desenho Inclin 0.0   erro 0.0
+   11.45 desenho 
    11.55 call rocketnautics:rocket_thruster_0.setThrust(700.000)
    11.55 call rocketnautics:rocket_thruster_0.setActive(true)
    11.55 call rocketnautics:rocket_thruster_1.setThrust(700.000)
@@ -372,6 +480,12 @@
    12.15 call rocketnautics:vector_thruster_1.setThrust(550.000)
    12.15 call rocketnautics:vector_thruster_1.setActive(true)
    12.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   12.25 desenho [limpa]
+   12.25 desenho == POUSO == estagio 1/1
+   12.25 desenho Y 75   vel 8.1   vy -8.1
+   12.25 desenho Empuxo 3000 N   massa 160
+   12.25 desenho Inclin 0.0   erro 0.0
+   12.25 desenho 
    12.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    12.40 call rocketnautics:rocket_thruster_0.setThrust(500.000)
    12.40 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -397,11 +511,23 @@
    12.80 call rocketnautics:vector_thruster_1.setThrust(450.000)
    12.80 call rocketnautics:vector_thruster_1.setActive(true)
    12.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   12.90 desenho [limpa]
+   12.90 desenho == POUSO == estagio 1/1
+   12.90 desenho Y 71   vel 4.5   vy -4.5
+   12.90 desenho Empuxo 2500 N   massa 160
+   12.90 desenho Inclin 0.0   erro 0.0
+   12.90 desenho 
    12.95 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   13.45 desenho [limpa]
+   13.45 desenho == POUSO == estagio 1/1
+   13.45 desenho Y 69   vel 2.6   vy -2.6
+   13.45 desenho Empuxo 2250 N   massa 160
+   13.45 desenho Inclin 0.0   erro 0.0
+   13.45 desenho 
    13.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.75 call rocketnautics:rocket_thruster_0.setThrust(400.000)
@@ -417,11 +543,23 @@
    13.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    13.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    14.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   14.05 desenho [limpa]
+   14.05 desenho == POUSO == estagio 1/1
+   14.05 desenho Y 68   vel 1.0   vy -1.0
+   14.05 desenho Empuxo 2250 N   massa 160
+   14.05 desenho Inclin 0.0   erro 0.0
+   14.05 desenho 
    14.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    14.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    14.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    14.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    14.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   14.60 desenho [limpa]
+   14.60 desenho == POUSO == estagio 1/1
+   14.60 desenho Y 68   vel 0.2   vy -0.2
+   14.60 desenho Empuxo 2000 N   massa 160
+   14.60 desenho Inclin 0.0   erro 0.0
+   14.60 desenho 
    14.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    14.80 call rocketnautics:rocket_thruster_0.setThrust(350.000)
    14.80 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -437,46 +575,100 @@
    14.95 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    15.05 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    15.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   15.25 desenho [limpa]
+   15.25 desenho == POUSO == estagio 1/1
+   15.25 desenho Y 68   vel 0.3   vy 0.3
+   15.25 desenho Empuxo 1750 N   massa 160
+   15.25 desenho Inclin 0.0   erro 0.0
+   15.25 desenho 
    15.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    15.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    15.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    15.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    15.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   15.90 desenho [limpa]
+   15.90 desenho == POUSO == estagio 1/1
+   15.90 desenho Y 68   vel 0.2   vy 0.2
+   15.90 desenho Empuxo 1750 N   massa 160
+   15.90 desenho Inclin 0.0   erro 0.0
+   15.90 desenho 
    15.95 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.05 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   16.45 desenho [limpa]
+   16.45 desenho == POUSO == estagio 1/1
+   16.45 desenho Y 68   vel 0.2   vy 0.2
+   16.45 desenho Empuxo 1750 N   massa 160
+   16.45 desenho Inclin 0.0   erro 0.0
+   16.45 desenho 
    16.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    16.95 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   17.00 desenho [limpa]
+   17.00 desenho == POUSO == estagio 1/1
+   17.00 desenho Y 68   vel 0.2   vy 0.2
+   17.00 desenho Empuxo 1750 N   massa 160
+   17.00 desenho Inclin 0.0   erro 0.0
+   17.00 desenho 
    17.05 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   17.55 desenho [limpa]
+   17.55 desenho == POUSO == estagio 1/1
+   17.55 desenho Y 68   vel 0.2   vy 0.2
+   17.55 desenho Empuxo 1750 N   massa 160
+   17.55 desenho Inclin 0.0   erro 0.0
+   17.55 desenho 
    17.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    17.95 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.05 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   18.10 desenho [limpa]
+   18.10 desenho == POUSO == estagio 1/1
+   18.10 desenho Y 68   vel 0.2   vy 0.2
+   18.10 desenho Empuxo 1750 N   massa 160
+   18.10 desenho Inclin 0.0   erro 0.0
+   18.10 desenho 
    18.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.50 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   18.65 desenho [limpa]
+   18.65 desenho == POUSO == estagio 1/1
+   18.65 desenho Y 69   vel 0.2   vy 0.2
+   18.65 desenho Empuxo 1750 N   massa 160
+   18.65 desenho Inclin 0.0   erro 0.0
+   18.65 desenho 
    18.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    18.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.05 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   19.20 desenho [limpa]
+   19.20 desenho == POUSO == estagio 1/1
+   19.20 desenho Y 69   vel 0.2   vy 0.2
+   19.20 desenho Empuxo 1750 N   massa 160
+   19.20 desenho Inclin 0.0   erro 0.0
+   19.20 desenho 
    19.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   19.75 desenho [limpa]
+   19.75 desenho == POUSO == estagio 1/1
+   19.75 desenho Y 69   vel 0.1   vy 0.1
+   19.75 desenho Empuxo 1750 N   massa 160
+   19.75 desenho Inclin 0.0   erro 0.0
+   19.75 desenho 
    19.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    19.90 call rocketnautics:rocket_thruster_0.setThrust(300.000)
    19.90 call rocketnautics:rocket_thruster_0.setActive(true)
@@ -502,11 +694,23 @@
    20.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    20.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    20.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   20.50 desenho [limpa]
+   20.50 desenho == POUSO == estagio 1/1
+   20.50 desenho Y 69   vel 0.2   vy -0.2
+   20.50 desenho Empuxo 1500 N   massa 160
+   20.50 desenho Inclin 0.0   erro 0.0
+   20.50 desenho 
    20.60 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    20.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    20.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    20.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    21.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   21.05 desenho [limpa]
+   21.05 desenho == POUSO == estagio 1/1
+   21.05 desenho Y 69   vel 0.2   vy -0.2
+   21.05 desenho Empuxo 1750 N   massa 160
+   21.05 desenho Inclin 0.0   erro 0.0
+   21.05 desenho 
    21.15 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    21.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    21.35 call rocketnautics:rocket_thruster_0.setThrust(300.000)
@@ -532,21 +736,45 @@
    21.50 call rocketnautics:vector_thruster_1.setActive(true)
    21.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    21.70 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   21.75 desenho [limpa]
+   21.75 desenho == POUSO == estagio 1/1
+   21.75 desenho Y 68   vel 0.5   vy -0.5
+   21.75 desenho Empuxo 1750 N   massa 160
+   21.75 desenho Inclin 0.0   erro 0.0
+   21.75 desenho 
    21.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    21.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.25 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   22.30 desenho [limpa]
+   22.30 desenho == POUSO == estagio 1/1
+   22.30 desenho Y 68   vel 0.5   vy -0.5
+   22.30 desenho Empuxo 1750 N   massa 160
+   22.30 desenho Inclin 0.0   erro 0.0
+   22.30 desenho 
    22.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    22.80 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   22.85 desenho [limpa]
+   22.85 desenho == POUSO == estagio 1/1
+   22.85 desenho Y 68   vel 0.5   vy -0.5
+   22.85 desenho Empuxo 1750 N   massa 160
+   22.85 desenho Inclin 0.0   erro 0.0
+   22.85 desenho 
    22.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    23.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    23.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    23.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    23.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   23.40 desenho [limpa]
+   23.40 desenho == POUSO == estagio 1/1
+   23.40 desenho Y 68   vel 0.5   vy -0.5
+   23.40 desenho Empuxo 1750 N   massa 160
+   23.40 desenho Inclin 0.0   erro 0.0
+   23.40 desenho 
    23.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    23.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    23.65 call rocketnautics:rocket_thruster_0.setThrust(300.000)
@@ -572,31 +800,67 @@
    23.85 call rocketnautics:vector_thruster_1.setActive(true)
    23.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   24.05 desenho [limpa]
+   24.05 desenho == POUSO == estagio 1/1
+   24.05 desenho Y 67   vel 0.8   vy -0.8
+   24.05 desenho Empuxo 1500 N   massa 160
+   24.05 desenho Inclin 0.0   erro 0.0
+   24.05 desenho 
    24.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.35 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   24.60 desenho [limpa]
+   24.60 desenho == POUSO == estagio 1/1
+   24.60 desenho Y 67   vel 0.9   vy -0.9
+   24.60 desenho Empuxo 1750 N   massa 160
+   24.60 desenho Inclin 0.0   erro 0.0
+   24.60 desenho 
    24.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    24.90 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    25.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    25.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   25.15 desenho [limpa]
+   25.15 desenho == POUSO == estagio 1/1
+   25.15 desenho Y 66   vel 0.9   vy -0.9
+   25.15 desenho Empuxo 1750 N   massa 160
+   25.15 desenho Inclin 0.0   erro 0.0
+   25.15 desenho 
    25.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    25.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    25.45 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    25.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    25.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   25.80 desenho [limpa]
+   25.80 desenho == POUSO == estagio 1/1
+   25.80 desenho Y 66   vel 0.9   vy -0.9
+   25.80 desenho Empuxo 1750 N   massa 160
+   25.80 desenho Inclin 0.0   erro 0.0
+   25.80 desenho 
    25.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.00 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.20 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.30 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   26.35 desenho [limpa]
+   26.35 desenho == POUSO == estagio 1/1
+   26.35 desenho Y 65   vel 0.9   vy -0.9
+   26.35 desenho Empuxo 1750 N   massa 160
+   26.35 desenho Inclin 0.0   erro 0.0
+   26.35 desenho 
    26.40 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.65 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.75 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    26.85 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
+   26.90 desenho [limpa]
+   26.90 desenho == POUSO == estagio 1/1
+   26.90 desenho Y 65   vel 0.9   vy -0.9
+   26.90 desenho Empuxo 1750 N   massa 160
+   26.90 desenho Inclin 0.0   erro 0.0
+   26.90 desenho 
    26.95 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    27.10 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.000)
    27.15 call rocketnautics:rocket_thruster_0.setThrust(0.000)
@@ -619,6 +883,10 @@
    27.15 call rocketnautics:rocket_thruster_3.setActive(false)
    27.15 call rocketnautics:vector_thruster_1.setThrust(0.000)
    27.15 call rocketnautics:vector_thruster_1.setActive(false)
+   27.15 desenho [limpa]
+   27.15 desenho == VOO ENCERRADO: POUSADO ==
+   27.15 desenho Y 64  ECC -nan(ind)
+   27.15 desenho Veja: logs erros
    27.15 fim de startup.lua
 ==== arquivo config.lua
 return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},

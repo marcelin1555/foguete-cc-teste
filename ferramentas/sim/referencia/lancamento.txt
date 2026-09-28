@@ -8,6 +8,22 @@
     0.00 call rocketnautics:rocket_thruster_3.setActive(false)
     0.00 call rocketnautics:vector_thruster_1.setThrust(0.000)
     0.00 call rocketnautics:vector_thruster_1.setActive(false)
+    0.15 desenho [limpa]
+    0.15 desenho == FOGUETE NA PLATAFORMA ==
+    0.15 desenho TWR E1: 2.85  estagios: 1
+    0.15 desenho Aperte o botao (left) ou digite L
+    0.15 desenho [limpa]
+    0.15 desenho == CONTAGEM ==
+    0.15 desenho T-3
+    0.15 desenho Digite A para abortar
+    0.20 desenho [limpa]
+    0.20 desenho == CONTAGEM ==
+    0.20 desenho T-2
+    0.20 desenho Digite A para abortar
+    0.25 desenho [limpa]
+    0.25 desenho == CONTAGEM ==
+    0.25 desenho T-1
+    0.25 desenho Digite A para abortar
     0.35 call rocketnautics:rocket_thruster_0.setActive(true)
     0.35 call rocketnautics:rocket_thruster_1.setActive(true)
     0.35 call rocketnautics:rocket_thruster_2.setActive(true)
@@ -34,6 +50,468 @@
     0.55 call rocketnautics:vector_thruster_1.setThrust(850.000)
     0.55 call rocketnautics:vector_thruster_1.setActive(true)
     0.60 redstone right false
+    1.05 desenho [limpa]
+    1.05 desenho == ASCENT == estagio 1/1
+    1.05 desenho Y 66   vel 9.5   vy 9.5
+    1.05 desenho Empuxo 4250 N   massa 160
+    1.05 desenho Inclin 0.0   erro 0.0
+    1.05 desenho 
+    1.60 desenho [limpa]
+    1.60 desenho == ASCENT == estagio 1/1
+    1.60 desenho Y 74   vel 18.2   vy 18.2
+    1.60 desenho Empuxo 4250 N   massa 160
+    1.60 desenho Inclin 0.0   erro 0.0
+    1.60 desenho 
+    2.15 desenho [limpa]
+    2.15 desenho == ASCENT == estagio 1/1
+    2.15 desenho Y 86   vel 26.8   vy 26.8
+    2.15 desenho Empuxo 4250 N   massa 160
+    2.15 desenho Inclin 0.0   erro 0.0
+    2.15 desenho 
+    2.75 desenho [limpa]
+    2.75 desenho == ASCENT == estagio 1/1
+    2.75 desenho Y 104   vel 35.4   vy 35.4
+    2.75 desenho Empuxo 4250 N   massa 160
+    2.75 desenho Inclin 0.0   erro 0.0
+    2.75 desenho 
+    3.30 desenho [limpa]
+    3.30 desenho == ASCENT == estagio 1/1
+    3.30 desenho Y 128   vel 44.7   vy 44.7
+    3.30 desenho Empuxo 4250 N   massa 160
+    3.30 desenho Inclin 0.0   erro 0.0
+    3.30 desenho 
+    3.85 desenho [limpa]
+    3.85 desenho == ASCENT == estagio 1/1
+    3.85 desenho Y 155   vel 53.4   vy 53.4
+    3.85 desenho Empuxo 4250 N   massa 160
+    3.85 desenho Inclin 0.0   erro 0.0
+    3.85 desenho 
+    4.45 desenho [limpa]
+    4.45 desenho == ASCENT == estagio 1/1
+    4.45 desenho Y 187   vel 62.0   vy 62.0
+    4.45 desenho Empuxo 4250 N   massa 160
+    4.45 desenho Inclin 0.0   erro 0.0
+    4.45 desenho 
+    5.00 desenho [limpa]
+    5.00 desenho == ASCENT == estagio 1/1
+    5.00 desenho Y 227   vel 71.3   vy 71.3
+    5.00 desenho Empuxo 4250 N   massa 160
+    5.00 desenho Inclin 0.0   erro 0.0
+    5.00 desenho 
+    5.65 desenho [limpa]
+    5.65 desenho == ASCENT == estagio 1/1
+    5.65 desenho Y 269   vel 80.0   vy 80.0
+    5.65 desenho Empuxo 4250 N   massa 160
+    5.65 desenho Inclin 0.0   erro 0.0
+    5.65 desenho 
+    6.25 desenho [limpa]
+    6.25 desenho == ASCENT == estagio 1/1
+    6.25 desenho Y 334   vel 91.7   vy 91.7
+    6.25 desenho Empuxo 4250 N   massa 160
+    6.25 desenho Inclin 1.0   erro 1.0
+    6.25 desenho 
+    6.80 desenho [limpa]
+    6.80 desenho == ASCENT == estagio 1/1
+    6.80 desenho Y 387   vel 100.3   vy 100.3
+    6.80 desenho Empuxo 4250 N   massa 160
+    6.80 desenho Inclin 2.2   erro 2.2
+    6.80 desenho 
+    7.35 desenho [limpa]
+    7.35 desenho == ASCENT == estagio 1/1
+    7.35 desenho Y 445   vel 108.9   vy 108.9
+    7.35 desenho Empuxo 4250 N   massa 160
+    7.35 desenho Inclin 3.1   erro 3.1
+    7.35 desenho 
+    7.95 desenho [limpa]
+    7.95 desenho == ASCENT == estagio 1/1
+    7.95 desenho Y 513   vel 118.3   vy 118.3
+    7.95 desenho Empuxo 4250 N   massa 160
+    7.95 desenho Inclin 4.0   erro 4.0
+    7.95 desenho 
+    8.50 desenho [limpa]
+    8.50 desenho == ASCENT == estagio 1/1
+    8.50 desenho Y 581   vel 126.9   vy 126.9
+    8.50 desenho Empuxo 4250 N   massa 160
+    8.50 desenho Inclin 4.8   erro 4.8
+    8.50 desenho 
+    9.05 desenho [limpa]
+    9.05 desenho == ASCENT == estagio 1/1
+    9.05 desenho Y 653   vel 135.5   vy 135.5
+    9.05 desenho Empuxo 4250 N   massa 160
+    9.05 desenho Inclin 5.5   erro 5.5
+    9.05 desenho 
+    9.65 desenho [limpa]
+    9.65 desenho == ASCENT == estagio 1/1
+    9.65 desenho Y 737   vel 144.9   vy 144.9
+    9.65 desenho Empuxo 4250 N   massa 160
+    9.65 desenho Inclin 6.3   erro 6.3
+    9.65 desenho 
+   10.20 desenho [limpa]
+   10.20 desenho == ASCENT == estagio 1/1
+   10.20 desenho Y 820   vel 153.5   vy 153.5
+   10.20 desenho Empuxo 4250 N   massa 160
+   10.20 desenho Inclin 7.0   erro 7.0
+   10.20 desenho 
+   10.85 desenho [limpa]
+   10.85 desenho == ASCENT == estagio 1/1
+   10.85 desenho Y 923   vel 163.7   vy 163.7
+   10.85 desenho Empuxo 4250 N   massa 160
+   10.85 desenho Inclin 7.8   erro 7.8
+   10.85 desenho 
+   11.50 desenho [limpa]
+   11.50 desenho == ASCENT == estagio 1/1
+   11.50 desenho Y 1024   vel 173.0   vy 173.0
+   11.50 desenho Empuxo 4250 N   massa 160
+   11.50 desenho Inclin 8.6   erro 8.6
+   11.50 desenho 
+   12.05 desenho [limpa]
+   12.05 desenho == ASCENT == estagio 1/1
+   12.05 desenho Y 1122   vel 181.6   vy 181.6
+   12.05 desenho Empuxo 4250 N   massa 160
+   12.05 desenho Inclin 9.3   erro 9.3
+   12.05 desenho 
+   12.65 desenho [limpa]
+   12.65 desenho == ASCENT == estagio 1/1
+   12.65 desenho Y 1224   vel 190.3   vy 190.3
+   12.65 desenho Empuxo 4250 N   massa 160
+   12.65 desenho Inclin 10.0   erro 10.0
+   12.65 desenho 
+   13.20 desenho [limpa]
+   13.20 desenho == ASCENT == estagio 1/1
+   13.20 desenho Y 1352   vel 200.4   vy 200.4
+   13.20 desenho Empuxo 4250 N   massa 160
+   13.20 desenho Inclin 10.8   erro 10.8
+   13.20 desenho 
+   13.75 desenho [limpa]
+   13.75 desenho == ASCENT == estagio 1/1
+   13.75 desenho Y 1464   vel 209.0   vy 209.0
+   13.75 desenho Empuxo 4250 N   massa 160
+   13.75 desenho Inclin 11.5   erro 11.5
+   13.75 desenho 
+   14.35 desenho [limpa]
+   14.35 desenho == ASCENT == estagio 1/1
+   14.35 desenho Y 1593   vel 218.4   vy 218.4
+   14.35 desenho Empuxo 4250 N   massa 160
+   14.35 desenho Inclin 12.2   erro 12.2
+   14.35 desenho 
+   14.90 desenho [limpa]
+   14.90 desenho == ASCENT == estagio 1/1
+   14.90 desenho Y 1716   vel 227.0   vy 227.0
+   14.90 desenho Empuxo 4250 N   massa 160
+   14.90 desenho Inclin 12.9   erro 12.9
+   14.90 desenho 
+   15.45 desenho [limpa]
+   15.45 desenho == ASCENT == estagio 1/1
+   15.45 desenho Y 1843   vel 235.6   vy 235.6
+   15.45 desenho Empuxo 4250 N   massa 160
+   15.45 desenho Inclin 13.6   erro 13.6
+   15.45 desenho 
+   16.15 desenho [limpa]
+   16.15 desenho == ASCENT == estagio 1/1
+   16.15 desenho Y 2012   vel 246.6   vy 246.6
+   16.15 desenho Empuxo 4250 N   massa 160
+   16.15 desenho Inclin 14.5   erro 14.5
+   16.15 desenho 
+   16.70 desenho [limpa]
+   16.70 desenho == ASCENT == estagio 1/1
+   16.70 desenho Y 2150   vel 255.2   vy 255.2
+   16.70 desenho Empuxo 4250 N   massa 160
+   16.70 desenho Inclin 15.2   erro 15.2
+   16.70 desenho 
+   17.25 desenho [limpa]
+   17.25 desenho == ASCENT == estagio 1/1
+   17.25 desenho Y 2293   vel 263.8   vy 263.8
+   17.25 desenho Empuxo 4250 N   massa 160
+   17.25 desenho Inclin 15.9   erro 15.9
+   17.25 desenho 
+   17.90 desenho [limpa]
+   17.90 desenho == ASCENT == estagio 1/1
+   17.90 desenho Y 2455   vel 273.2   vy 273.2
+   17.90 desenho Empuxo 4250 N   massa 160
+   17.90 desenho Inclin 16.7   erro 16.7
+   17.90 desenho 
+   18.45 desenho [limpa]
+   18.45 desenho == ASCENT == estagio 1/1
+   18.45 desenho Y 2607   vel 281.8   vy 281.8
+   18.45 desenho Empuxo 4250 N   massa 160
+   18.45 desenho Inclin 17.4   erro 17.4
+   18.45 desenho 
+   19.05 desenho [limpa]
+   19.05 desenho == ASCENT == estagio 1/1
+   19.05 desenho Y 2765   vel 290.4   vy 290.4
+   19.05 desenho Empuxo 4250 N   massa 160
+   19.05 desenho Inclin 18.1   erro 18.1
+   19.05 desenho 
+   19.60 desenho [limpa]
+   19.60 desenho == ASCENT == estagio 1/1
+   19.60 desenho Y 2957   vel 300.6   vy 300.6
+   19.60 desenho Empuxo 4250 N   massa 160
+   19.60 desenho Inclin 18.9   erro 18.9
+   19.60 desenho 
+   20.15 desenho [limpa]
+   20.15 desenho == ASCENT == estagio 1/1
+   20.15 desenho Y 3125   vel 309.2   vy 309.2
+   20.15 desenho Empuxo 4250 N   massa 160
+   20.15 desenho Inclin 19.6   erro 19.6
+   20.15 desenho 
+   20.85 desenho [limpa]
+   20.85 desenho == ASCENT == estagio 1/1
+   20.85 desenho Y 3346   vel 320.1   vy 320.1
+   20.85 desenho Empuxo 4250 N   massa 160
+   20.85 desenho Inclin 20.5   erro 20.5
+   20.85 desenho 
+   21.40 desenho [limpa]
+   21.40 desenho == ASCENT == estagio 1/1
+   21.40 desenho Y 3524   vel 328.7   vy 328.7
+   21.40 desenho Empuxo 4250 N   massa 160
+   21.40 desenho Inclin 21.2   erro 21.2
+   21.40 desenho 
+   21.95 desenho [limpa]
+   21.95 desenho == ASCENT == estagio 1/1
+   21.95 desenho Y 3708   vel 337.3   vy 337.3
+   21.95 desenho Empuxo 4250 N   massa 160
+   21.95 desenho Inclin 22.0   erro 22.0
+   21.95 desenho 
+   22.55 desenho [limpa]
+   22.55 desenho == ASCENT == estagio 1/1
+   22.55 desenho Y 3913   vel 346.7   vy 346.7
+   22.55 desenho Empuxo 4250 N   massa 160
+   22.55 desenho Inclin 22.7   erro 22.7
+   22.55 desenho 
+   23.10 desenho [limpa]
+   23.10 desenho == ASCENT == estagio 1/1
+   23.10 desenho Y 4106   vel 355.3   vy 355.3
+   23.10 desenho Empuxo 4250 N   massa 160
+   23.10 desenho Inclin 23.5   erro 23.5
+   23.10 desenho 
+   23.65 desenho [limpa]
+   23.65 desenho == ASCENT == estagio 1/1
+   23.65 desenho Y 4304   vel 363.9   vy 363.9
+   23.65 desenho Empuxo 4250 N   massa 160
+   23.65 desenho Inclin 24.2   erro 24.2
+   23.65 desenho 
+   24.30 desenho [limpa]
+   24.30 desenho == ASCENT == estagio 1/1
+   24.30 desenho Y 4526   vel 373.3   vy 373.3
+   24.30 desenho Empuxo 4250 N   massa 160
+   24.30 desenho Inclin 25.0   erro 25.0
+   24.30 desenho 
+   24.85 desenho [limpa]
+   24.85 desenho == ASCENT == estagio 1/1
+   24.85 desenho Y 4734   vel 381.9   vy 381.9
+   24.85 desenho Empuxo 4250 N   massa 160
+   24.85 desenho Inclin 25.7   erro 25.7
+   24.85 desenho 
+   25.45 desenho [limpa]
+   25.45 desenho == ASCENT == estagio 1/1
+   25.45 desenho Y 4946   vel 390.5   vy 390.5
+   25.45 desenho Empuxo 4250 N   massa 160
+   25.45 desenho Inclin 26.5   erro 26.5
+   25.45 desenho 
+   26.10 desenho [limpa]
+   26.10 desenho == ASCENT == estagio 1/1
+   26.10 desenho Y 5244   vel 402.3   vy 402.3
+   26.10 desenho Empuxo 4250 N   massa 160
+   26.10 desenho Inclin 27.5   erro 27.5
+   26.10 desenho 
+   26.65 desenho [limpa]
+   26.65 desenho == ASCENT == estagio 1/1
+   26.65 desenho Y 5468   vel 410.9   vy 410.9
+   26.65 desenho Empuxo 4250 N   massa 160
+   26.65 desenho Inclin 28.2   erro 28.2
+   26.65 desenho 
+   27.25 desenho [limpa]
+   27.25 desenho == ASCENT == estagio 1/1
+   27.25 desenho Y 5717   vel 420.2   vy 420.2
+   27.25 desenho Empuxo 4250 N   massa 160
+   27.25 desenho Inclin 29.0   erro 29.0
+   27.25 desenho 
+   27.80 desenho [limpa]
+   27.80 desenho == ASCENT == estagio 1/1
+   27.80 desenho Y 5951   vel 428.9   vy 428.9
+   27.80 desenho Empuxo 4250 N   massa 160
+   27.80 desenho Inclin 29.8   erro 29.8
+   27.80 desenho 
+   28.35 desenho [limpa]
+   28.35 desenho == ASCENT == estagio 1/1
+   28.35 desenho Y 6189   vel 437.5   vy 437.5
+   28.35 desenho Empuxo 4250 N   massa 160
+   28.35 desenho Inclin 30.5   erro 30.5
+   28.35 desenho 
+   28.95 desenho [limpa]
+   28.95 desenho == ASCENT == estagio 1/1
+   28.95 desenho Y 6455   vel 446.8   vy 446.8
+   28.95 desenho Empuxo 4250 N   massa 160
+   28.95 desenho Inclin 31.3   erro 31.3
+   28.95 desenho 
+   29.50 desenho [limpa]
+   29.50 desenho == ASCENT == estagio 1/1
+   29.50 desenho Y 6703   vel 455.5   vy 455.5
+   29.50 desenho Empuxo 4250 N   massa 160
+   29.50 desenho Inclin 32.1   erro 32.1
+   29.50 desenho 
+   30.05 desenho [limpa]
+   30.05 desenho == ASCENT == estagio 1/1
+   30.05 desenho Y 6956   vel 464.1   vy 464.1
+   30.05 desenho Empuxo 4250 N   massa 160
+   30.05 desenho Inclin 32.8   erro 32.8
+   30.05 desenho 
+   30.70 desenho [limpa]
+   30.70 desenho == ASCENT == estagio 1/1
+   30.70 desenho Y 7238   vel 473.4   vy 473.4
+   30.70 desenho Empuxo 4250 N   massa 160
+   30.70 desenho Inclin 33.7   erro 33.7
+   30.70 desenho 
+   31.25 desenho [limpa]
+   31.25 desenho == ASCENT == estagio 1/1
+   31.25 desenho Y 7501   vel 482.0   vy 482.0
+   31.25 desenho Empuxo 4250 N   massa 160
+   31.25 desenho Inclin 34.4   erro 34.4
+   31.25 desenho 
+   31.85 desenho [limpa]
+   31.85 desenho == ASCENT == estagio 1/1
+   31.85 desenho Y 7769   vel 490.7   vy 490.7
+   31.85 desenho Empuxo 4250 N   massa 160
+   31.85 desenho Inclin 35.2   erro 35.2
+   31.85 desenho 
+   32.40 desenho [limpa]
+   32.40 desenho == ASCENT == estagio 1/1
+   32.40 desenho Y 8066   vel 500.0   vy 500.0
+   32.40 desenho Empuxo 4250 N   massa 160
+   32.40 desenho Inclin 36.0   erro 36.0
+   32.40 desenho 
+   32.95 desenho [limpa]
+   32.95 desenho == ASCENT == estagio 1/1
+   32.95 desenho Y 8344   vel 508.6   vy 508.6
+   32.95 desenho Empuxo 4250 N   massa 160
+   32.95 desenho Inclin 36.8   erro 36.8
+   32.95 desenho 
+   33.55 desenho [limpa]
+   33.55 desenho == ASCENT == estagio 1/1
+   33.55 desenho Y 8626   vel 517.3   vy 517.3
+   33.55 desenho Empuxo 4250 N   massa 160
+   33.55 desenho Inclin 37.6   erro 37.6
+   33.55 desenho 
+   34.10 desenho [limpa]
+   34.10 desenho == ASCENT == estagio 1/1
+   34.10 desenho Y 8939   vel 526.6   vy 526.6
+   34.10 desenho Empuxo 4250 N   massa 160
+   34.10 desenho Inclin 38.4   erro 38.4
+   34.10 desenho 
+   34.65 desenho [limpa]
+   34.65 desenho == ASCENT == estagio 1/1
+   34.65 desenho Y 9232   vel 535.2   vy 535.2
+   34.65 desenho Empuxo 4250 N   massa 160
+   34.65 desenho Inclin 39.2   erro 39.2
+   34.65 desenho 
+   35.25 desenho [limpa]
+   35.25 desenho == ASCENT == estagio 1/1
+   35.25 desenho Y 9529   vel 543.8   vy 543.8
+   35.25 desenho Empuxo 4250 N   massa 160
+   35.25 desenho Inclin 40.0   erro 40.0
+   35.25 desenho 
+   35.80 desenho [limpa]
+   35.80 desenho == ASCENT == estagio 1/1
+   35.80 desenho Y 9858   vel 553.2   vy 553.2
+   35.80 desenho Empuxo 4250 N   massa 160
+   35.80 desenho Inclin 40.8   erro 40.8
+   35.80 desenho 
+   36.35 desenho [limpa]
+   36.35 desenho == ASCENT == estagio 1/1
+   36.35 desenho Y 10165   vel 561.8   vy 561.8
+   36.35 desenho Empuxo 4250 N   massa 160
+   36.35 desenho Inclin 41.6   erro 41.6
+   36.35 desenho 
+   36.95 desenho [limpa]
+   36.95 desenho == ASCENT == estagio 1/1
+   36.95 desenho Y 10476   vel 570.4   vy 570.4
+   36.95 desenho Empuxo 4250 N   massa 160
+   36.95 desenho Inclin 42.4   erro 42.4
+   36.95 desenho 
+   37.50 desenho [limpa]
+   37.50 desenho == ASCENT == estagio 1/1
+   37.50 desenho Y 10822   vel 579.8   vy 579.8
+   37.50 desenho Empuxo 4250 N   massa 160
+   37.50 desenho Inclin 43.2   erro 43.2
+   37.50 desenho 
+   38.05 desenho [limpa]
+   38.05 desenho == ASCENT == estagio 1/1
+   38.05 desenho Y 11143   vel 588.4   vy 588.4
+   38.05 desenho Empuxo 4250 N   massa 160
+   38.05 desenho Inclin 44.0   erro 44.0
+   38.05 desenho 
+   38.65 desenho [limpa]
+   38.65 desenho == ASCENT == estagio 1/1
+   38.65 desenho Y 11469   vel 597.0   vy 597.0
+   38.65 desenho Empuxo 4250 N   massa 160
+   38.65 desenho Inclin 44.8   erro 44.8
+   38.65 desenho 
+   39.20 desenho [limpa]
+   39.20 desenho == ASCENT == estagio 1/1
+   39.20 desenho Y 11831   vel 606.4   vy 606.4
+   39.20 desenho Empuxo 4250 N   massa 160
+   39.20 desenho Inclin 45.7   erro 45.7
+   39.20 desenho 
+   39.75 desenho [limpa]
+   39.75 desenho == ASCENT == estagio 1/1
+   39.75 desenho Y 12167   vel 615.0   vy 615.0
+   39.75 desenho Empuxo 4250 N   massa 160
+   39.75 desenho Inclin 46.5   erro 46.5
+   39.75 desenho 
+   40.35 desenho [limpa]
+   40.35 desenho == ASCENT == estagio 1/1
+   40.35 desenho Y 12508   vel 623.6   vy 623.6
+   40.35 desenho Empuxo 4250 N   massa 160
+   40.35 desenho Inclin 47.3   erro 47.3
+   40.35 desenho 
+   40.90 desenho [limpa]
+   40.90 desenho == ASCENT == estagio 1/1
+   40.90 desenho Y 12885   vel 633.0   vy 633.0
+   40.90 desenho Empuxo 4250 N   massa 160
+   40.90 desenho Inclin 48.2   erro 48.2
+   40.90 desenho 
+   41.45 desenho [limpa]
+   41.45 desenho == ASCENT == estagio 1/1
+   41.45 desenho Y 13236   vel 641.6   vy 641.6
+   41.45 desenho Empuxo 4250 N   massa 160
+   41.45 desenho Inclin 49.0   erro 49.0
+   41.45 desenho 
+   42.05 desenho [limpa]
+   42.05 desenho == ASCENT == estagio 1/1
+   42.05 desenho Y 13591   vel 650.2   vy 650.2
+   42.05 desenho Empuxo 4250 N   massa 160
+   42.05 desenho Inclin 49.8   erro 49.8
+   42.05 desenho 
+   42.60 desenho [limpa]
+   42.60 desenho == ASCENT == estagio 1/1
+   42.60 desenho Y 13984   vel 659.6   vy 659.6
+   42.60 desenho Empuxo 4250 N   massa 160
+   42.60 desenho Inclin 50.6   erro 50.6
+   42.60 desenho 
+   43.15 desenho [limpa]
+   43.15 desenho == ASCENT == estagio 1/1
+   43.15 desenho Y 14350   vel 668.2   vy 668.2
+   43.15 desenho Empuxo 4250 N   massa 160
+   43.15 desenho Inclin 51.5   erro 51.5
+   43.15 desenho 
+   43.75 desenho [limpa]
+   43.75 desenho == ASCENT == estagio 1/1
+   43.75 desenho Y 14720   vel 676.8   vy 676.8
+   43.75 desenho Empuxo 4250 N   massa 160
+   43.75 desenho Inclin 52.3   erro 52.3
+   43.75 desenho 
+   44.30 desenho [limpa]
+   44.30 desenho == ASCENT == estagio 1/1
+   44.30 desenho Y 15129   vel 686.2   vy 686.2
+   44.30 desenho Empuxo 4250 N   massa 160
+   44.30 desenho Inclin 53.1   erro 53.1
+   44.30 desenho 
+   44.85 desenho [limpa]
+   44.85 desenho == ASCENT == estagio 1/1
+   44.85 desenho Y 15509   vel 694.8   vy 694.8
+   44.85 desenho Empuxo 4250 N   massa 160
+   44.85 desenho Inclin 54.0   erro 54.0
+   44.85 desenho 
    45.05 fim de voo.lua (fim)
 ==== arquivo config.lua
 return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},

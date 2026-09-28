@@ -183,11 +183,12 @@ function parallel.waitForAny(...)
 end
 
 ---------------------------------------------------------------- tela, entrada
+-- o que o script desenha na tela (show) tambem entra no rastro
 term = {
-  clear = function() end, clearLine = function() end, setCursorPos = function() end,
+  clear = function() A.registrar("desenho [limpa]") end, clearLine = function() end, setCursorPos = function() end,
   getCursorPos = function() return 1, 1 end, getSize = function() return 51, 19 end,
-  write = function() end, setTextColor = function() end, setTextColour = function() end,
-  setBackgroundColor = function() end, isColor = function() return false end,
+  write = function(s) A.registrar("desenho %s", tostring(s)) end, setTextColor = function() end,
+  setTextColour = function() end, setBackgroundColor = function() end, isColor = function() return false end,
 }
 colors = setmetatable({}, { __index = function() return 1 end })
 colours = colors

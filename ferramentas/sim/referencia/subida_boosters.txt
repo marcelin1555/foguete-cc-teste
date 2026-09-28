@@ -11,14 +11,808 @@
     0.00 call rocketnautics:rocket_thruster_3.setActive(true)
     0.00 call rocketnautics:vector_thruster_1.setThrust(1000.000)
     0.00 call rocketnautics:vector_thruster_1.setActive(true)
+    0.60 desenho [limpa]
+    0.60 desenho == ASCENT == estagio 1/1
+    0.60 desenho Y 1131   vel 2.0   vy 2.0
+    0.60 desenho Empuxo 6000 N   massa 400
+    0.60 desenho Inclin 0.0   erro 0.0
+    0.60 desenho 
     0.70 call rocketnautics:booster_thruster_3.setActive(true)
     1.20 call rocketnautics:booster_thruster_3.setActive(true)
+    1.35 desenho [limpa]
+    1.35 desenho == ASCENT == estagio 1/1
+    1.35 desenho Y 1133   vel 4.4   vy 4.4
+    1.35 desenho Empuxo 6000 N   massa 400
+    1.35 desenho Inclin 0.0   erro 0.0
+    1.35 desenho 
+    1.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
     1.75 call rocketnautics:booster_thruster_3.setActive(true)
+    2.00 desenho [limpa]
+    2.00 desenho == ASCENT == estagio 1/1
+    2.00 desenho Y 1137   vel 7.6   vy 7.6
+    2.00 desenho Empuxo 6000 N   massa 400
+    2.00 desenho Inclin 0.0   erro 0.0
+    2.00 desenho 
+    2.00 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
     2.30 call rocketnautics:booster_thruster_3.setActive(true)
+    2.70 desenho [limpa]
+    2.70 desenho == ASCENT == estagio 1/1
+    2.70 desenho Y 1144   vel 10.4   vy 10.4
+    2.70 desenho Empuxo 6000 N   massa 400
+    2.70 desenho Inclin 0.0   erro 0.0
+    2.70 desenho 
+    2.70 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
     2.90 call rocketnautics:booster_thruster_3.setActive(true)
+    3.35 desenho [limpa]
+    3.35 desenho == ASCENT == estagio 1/1
+    3.35 desenho Y 1151   vel 13.0   vy 13.0
+    3.35 desenho Empuxo 6000 N   massa 400
+    3.35 desenho Inclin 0.0   erro 0.0
+    3.35 desenho 
+    3.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    4.20 desenho [limpa]
+    4.20 desenho == ASCENT == estagio 1/1
+    4.20 desenho Y 1161   vel 15.6   vy 15.6
+    4.20 desenho Empuxo 6000 N   massa 400
+    4.20 desenho Inclin 0.0   erro 0.0
+    4.20 desenho 
+    4.20 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    4.20 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    4.80 desenho [limpa]
+    4.80 desenho == ASCENT == estagio 1/1
+    4.80 desenho Y 1175   vel 18.8   vy 18.8
+    4.80 desenho Empuxo 6000 N   massa 400
+    4.80 desenho Inclin 0.0   erro 0.0
+    4.80 desenho 
+    4.80 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    4.80 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    5.50 desenho [limpa]
+    5.50 desenho == ASCENT == estagio 1/1
+    5.50 desenho Y 1189   vel 21.6   vy 21.6
+    5.50 desenho Empuxo 6000 N   massa 400
+    5.50 desenho Inclin 0.0   erro 0.0
+    5.50 desenho 
+    5.50 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    5.50 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    6.15 desenho [limpa]
+    6.15 desenho == ASCENT == estagio 1/1
+    6.15 desenho Y 1204   vel 24.2   vy 24.2
+    6.15 desenho Empuxo 6000 N   massa 400
+    6.15 desenho Inclin 0.0   erro 0.0
+    6.15 desenho 
+    6.15 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    6.15 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    6.75 desenho [limpa]
+    6.75 desenho == ASCENT == estagio 1/1
+    6.75 desenho Y 1219   vel 26.6   vy 26.6
+    6.75 desenho Empuxo 6000 N   massa 400
+    6.75 desenho Inclin 0.0   erro 0.0
+    6.75 desenho 
+    6.75 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    6.75 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    7.35 desenho [limpa]
+    7.35 desenho == ASCENT == estagio 1/1
+    7.35 desenho Y 1236   vel 29.0   vy 29.0
+    7.35 desenho Empuxo 6000 N   massa 400
+    7.35 desenho Inclin 0.0   erro 0.0
+    7.35 desenho 
+    7.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    7.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    8.00 desenho [limpa]
+    8.00 desenho == ASCENT == estagio 1/1
+    8.00 desenho Y 1256   vel 31.6   vy 31.6
+    8.00 desenho Empuxo 6000 N   massa 400
+    8.00 desenho Inclin 0.0   erro 0.0
+    8.00 desenho 
+    8.00 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    8.00 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    8.70 desenho [limpa]
+    8.70 desenho == ASCENT == estagio 1/1
+    8.70 desenho Y 1275   vel 34.0   vy 34.0
+    8.70 desenho Empuxo 6000 N   massa 400
+    8.70 desenho Inclin 0.0   erro 0.0
+    8.70 desenho 
+    8.70 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    8.70 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    9.35 desenho [limpa]
+    9.35 desenho == ASCENT == estagio 1/1
+    9.35 desenho Y 1302   vel 37.0   vy 37.0
+    9.35 desenho Empuxo 6000 N   massa 400
+    9.35 desenho Inclin 0.0   erro 0.0
+    9.35 desenho 
+    9.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    9.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+    9.95 desenho [limpa]
+    9.95 desenho == ASCENT == estagio 1/1
+    9.95 desenho Y 1325   vel 39.4   vy 39.4
+    9.95 desenho Empuxo 6000 N   massa 400
+    9.95 desenho Inclin 0.0   erro 0.0
+    9.95 desenho 
+    9.95 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+    9.95 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   10.80 desenho [limpa]
+   10.80 desenho == ASCENT == estagio 1/1
+   10.80 desenho Y 1354   vel 42.2   vy 42.2
+   10.80 desenho Empuxo 6000 N   massa 400
+   10.80 desenho Inclin 0.0   erro 0.0
+   10.80 desenho 
+   10.80 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   10.80 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   11.40 desenho [limpa]
+   11.40 desenho == ASCENT == estagio 1/1
+   11.40 desenho Y 1387   vel 45.2   vy 45.2
+   11.40 desenho Empuxo 6000 N   massa 400
+   11.40 desenho Inclin 0.7   erro 0.7
+   11.40 desenho 
+   11.40 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   11.40 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   12.00 desenho [limpa]
+   12.00 desenho == ASCENT == estagio 1/1
+   12.00 desenho Y 1414   vel 47.6   vy 47.6
+   12.00 desenho Empuxo 6000 N   massa 400
+   12.00 desenho Inclin 1.5   erro 1.5
+   12.00 desenho 
+   12.00 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   12.00 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   12.65 desenho [limpa]
+   12.65 desenho == ASCENT == estagio 1/1
+   12.65 desenho Y 1446   vel 50.2   vy 50.2
+   12.65 desenho Empuxo 6000 N   massa 400
+   12.65 desenho Inclin 2.2   erro 2.2
+   12.65 desenho 
+   12.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   12.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   13.35 desenho [limpa]
+   13.35 desenho == ASCENT == estagio 1/1
+   13.35 desenho Y 1477   vel 52.6   vy 52.6
+   13.35 desenho Empuxo 6000 N   massa 400
+   13.35 desenho Inclin 2.8   erro 2.8
+   13.35 desenho 
+   13.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   13.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   14.00 desenho [limpa]
+   14.00 desenho == ASCENT == estagio 1/1
+   14.00 desenho Y 1518   vel 55.6   vy 55.6
+   14.00 desenho Empuxo 6000 N   massa 400
+   14.00 desenho Inclin 3.4   erro 3.4
+   14.00 desenho 
+   14.00 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   14.00 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   14.60 desenho [limpa]
+   14.60 desenho == ASCENT == estagio 1/1
+   14.60 desenho Y 1552   vel 58.0   vy 58.0
+   14.60 desenho Empuxo 6000 N   massa 400
+   14.60 desenho Inclin 3.9   erro 3.9
+   14.60 desenho 
+   14.60 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   14.60 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   15.20 desenho [limpa]
+   15.20 desenho == ASCENT == estagio 1/1
+   15.20 desenho Y 1587   vel 59.3   vy 59.3
+   15.20 desenho Empuxo 6000 N   massa 400
+   15.20 desenho Inclin 4.3   erro 4.3
+   15.20 desenho 
+   15.20 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   15.20 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
    15.35 redstone bottom true
    15.35 mundo separou rocketnautics:booster_thruster_0,rocketnautics:booster_thruster_1,rocketnautics:booster_thruster_2,rocketnautics:booster_thruster_3
    15.65 redstone bottom false
+   16.30 desenho [limpa]
+   16.30 desenho == ASCENT == estagio 1/1
+   16.30 desenho Y 1650   vel 55.4   vy 55.4
+   16.30 desenho Empuxo 3000 N   massa 400
+   16.30 desenho Inclin 5.1   erro 5.1
+   16.30 desenho 
+   16.30 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   16.30 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   16.85 desenho [limpa]
+   16.85 desenho == ASCENT == estagio 1/1
+   16.85 desenho Y 1680   vel 53.5   vy 53.5
+   16.85 desenho Empuxo 3000 N   massa 400
+   16.85 desenho Inclin 5.4   erro 5.4
+   16.85 desenho 
+   16.85 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   16.85 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   17.50 desenho [limpa]
+   17.50 desenho == ASCENT == estagio 1/1
+   17.50 desenho Y 1712   vel 51.4   vy 51.4
+   17.50 desenho Empuxo 3000 N   massa 400
+   17.50 desenho Inclin 5.7   erro 5.7
+   17.50 desenho 
+   17.50 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   17.50 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   18.05 desenho [limpa]
+   18.05 desenho == ASCENT == estagio 1/1
+   18.05 desenho Y 1739   vel 49.5   vy 49.5
+   18.05 desenho Empuxo 3000 N   massa 400
+   18.05 desenho Inclin 6.0   erro 6.0
+   18.05 desenho 
+   18.05 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   18.05 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   18.65 desenho [limpa]
+   18.65 desenho == ASCENT == estagio 1/1
+   18.65 desenho Y 1766   vel 47.6   vy 47.6
+   18.65 desenho Empuxo 3000 N   massa 400
+   18.65 desenho Inclin 6.2   erro 6.2
+   18.65 desenho 
+   18.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   18.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   19.20 desenho [limpa]
+   19.20 desenho == ASCENT == estagio 1/1
+   19.20 desenho Y 1796   vel 45.3   vy 45.3
+   19.20 desenho Empuxo 3000 N   massa 400
+   19.20 desenho Inclin 6.5   erro 6.5
+   19.20 desenho 
+   19.20 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   19.20 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   19.75 desenho [limpa]
+   19.75 desenho == ASCENT == estagio 1/1
+   19.75 desenho Y 1820   vel 43.3   vy 43.3
+   19.75 desenho Empuxo 3000 N   massa 400
+   19.75 desenho Inclin 6.8   erro 6.8
+   19.75 desenho 
+   19.75 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   19.75 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   20.35 desenho [limpa]
+   20.35 desenho == ASCENT == estagio 1/1
+   20.35 desenho Y 1846   vel 41.2   vy 41.2
+   20.35 desenho Empuxo 3000 N   massa 400
+   20.35 desenho Inclin 7.0   erro 7.0
+   20.35 desenho 
+   20.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   20.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   21.00 desenho [limpa]
+   21.00 desenho == ASCENT == estagio 1/1
+   21.00 desenho Y 1868   vel 39.3   vy 39.3
+   21.00 desenho Empuxo 3000 N   massa 400
+   21.00 desenho Inclin 7.2   erro 7.2
+   21.00 desenho 
+   21.00 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   21.00 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   21.55 desenho [limpa]
+   21.55 desenho == ASCENT == estagio 1/1
+   21.55 desenho Y 1893   vel 37.0   vy 37.0
+   21.55 desenho Empuxo 3000 N   massa 400
+   21.55 desenho Inclin 7.4   erro 7.4
+   21.55 desenho 
+   21.55 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   21.55 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   22.15 desenho [limpa]
+   22.15 desenho == ASCENT == estagio 1/1
+   22.15 desenho Y 1914   vel 34.9   vy 34.9
+   22.15 desenho Empuxo 3000 N   massa 400
+   22.15 desenho Inclin 7.6   erro 7.6
+   22.15 desenho 
+   22.15 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   22.15 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   22.70 desenho [limpa]
+   22.70 desenho == ASCENT == estagio 1/1
+   22.70 desenho Y 1933   vel 33.0   vy 33.0
+   22.70 desenho Empuxo 3000 N   massa 400
+   22.70 desenho Inclin 7.7   erro 7.7
+   22.70 desenho 
+   22.70 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   22.70 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   23.25 desenho [limpa]
+   23.25 desenho == ASCENT == estagio 1/1
+   23.25 desenho Y 1950   vel 31.1   vy 31.1
+   23.25 desenho Empuxo 3000 N   massa 400
+   23.25 desenho Inclin 7.9   erro 7.9
+   23.25 desenho 
+   23.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   23.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   23.90 desenho [limpa]
+   23.90 desenho == ASCENT == estagio 1/1
+   23.90 desenho Y 1968   vel 29.0   vy 29.0
+   23.90 desenho Empuxo 3000 N   massa 400
+   23.90 desenho Inclin 8.0   erro 8.0
+   23.90 desenho 
+   23.90 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   23.90 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   24.45 desenho [limpa]
+   24.45 desenho == ASCENT == estagio 1/1
+   24.45 desenho Y 1984   vel 27.1   vy 27.1
+   24.45 desenho Empuxo 3000 N   massa 400
+   24.45 desenho Inclin 8.1   erro 8.1
+   24.45 desenho 
+   24.45 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   24.45 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   25.05 desenho [limpa]
+   25.05 desenho == ASCENT == estagio 1/1
+   25.05 desenho Y 1998   vel 25.1   vy 25.1
+   25.05 desenho Empuxo 3000 N   massa 400
+   25.05 desenho Inclin 8.3   erro 8.3
+   25.05 desenho 
+   25.05 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   25.05 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   25.60 desenho [limpa]
+   25.60 desenho == ASCENT == estagio 1/1
+   25.60 desenho Y 2014   vel 22.9   vy 22.9
+   25.60 desenho Empuxo 3000 N   massa 400
+   25.60 desenho Inclin 8.4   erro 8.4
+   25.60 desenho 
+   25.60 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   25.60 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   26.25 desenho [limpa]
+   26.25 desenho == ASCENT == estagio 1/1
+   26.25 desenho Y 2028   vel 20.6   vy 20.6
+   26.25 desenho Empuxo 3000 N   massa 400
+   26.25 desenho Inclin 8.5   erro 8.5
+   26.25 desenho 
+   26.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   26.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   26.85 desenho [limpa]
+   26.85 desenho == ASCENT == estagio 1/1
+   26.85 desenho Y 2039   vel 18.5   vy 18.5
+   26.85 desenho Empuxo 3000 N   massa 400
+   26.85 desenho Inclin 8.6   erro 8.6
+   26.85 desenho 
+   26.85 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   26.85 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   27.40 desenho [limpa]
+   27.40 desenho == ASCENT == estagio 1/1
+   27.40 desenho Y 2049   vel 16.6   vy 16.6
+   27.40 desenho Empuxo 3000 N   massa 400
+   27.40 desenho Inclin 8.7   erro 8.7
+   27.40 desenho 
+   27.40 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   27.40 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   27.95 desenho [limpa]
+   27.95 desenho == ASCENT == estagio 1/1
+   27.95 desenho Y 2057   vel 14.6   vy 14.6
+   27.95 desenho Empuxo 3000 N   massa 400
+   27.95 desenho Inclin 8.7   erro 8.7
+   27.95 desenho 
+   27.95 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   27.95 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   28.55 desenho [limpa]
+   28.55 desenho == ASCENT == estagio 1/1
+   28.55 desenho Y 2066   vel 12.5   vy 12.5
+   28.55 desenho Empuxo 3000 N   massa 400
+   28.55 desenho Inclin 8.8   erro 8.8
+   28.55 desenho 
+   28.55 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   28.55 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   29.10 desenho [limpa]
+   29.10 desenho == ASCENT == estagio 1/1
+   29.10 desenho Y 2072   vel 10.6   vy 10.6
+   29.10 desenho Empuxo 3000 N   massa 400
+   29.10 desenho Inclin 8.8   erro 8.8
+   29.10 desenho 
+   29.10 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   29.10 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   29.65 desenho [limpa]
+   29.65 desenho == ASCENT == estagio 1/1
+   29.65 desenho Y 2077   vel 8.7   vy 8.7
+   29.65 desenho Empuxo 3000 N   massa 400
+   29.65 desenho Inclin 8.9   erro 8.9
+   29.65 desenho 
+   29.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   29.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   30.25 desenho [limpa]
+   30.25 desenho == ASCENT == estagio 1/1
+   30.25 desenho Y 2082   vel 6.6   vy 6.6
+   30.25 desenho Empuxo 3000 N   massa 400
+   30.25 desenho Inclin 8.9   erro 8.9
+   30.25 desenho 
+   30.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   30.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   30.80 desenho [limpa]
+   30.80 desenho == ASCENT == estagio 1/1
+   30.80 desenho Y 2085   vel 4.7   vy 4.7
+   30.80 desenho Empuxo 3000 N   massa 400
+   30.80 desenho Inclin 8.9   erro 8.9
+   30.80 desenho 
+   30.80 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   30.80 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   31.35 desenho [limpa]
+   31.35 desenho == ASCENT == estagio 1/1
+   31.35 desenho Y 2087   vel 2.7   vy 2.7
+   31.35 desenho Empuxo 3000 N   massa 400
+   31.35 desenho Inclin 9.0   erro 9.0
+   31.35 desenho 
+   31.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   31.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   32.00 desenho [limpa]
+   32.00 desenho == ASCENT == estagio 1/1
+   32.00 desenho Y 2088   vel 0.6   vy 0.6
+   32.00 desenho Empuxo 3000 N   massa 400
+   32.00 desenho Inclin 9.0   erro 9.0
+   32.00 desenho 
+   32.00 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   32.00 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   32.55 desenho [limpa]
+   32.55 desenho == ASCENT == estagio 1/1
+   32.55 desenho Y 2087   vel 1.3   vy -1.3
+   32.55 desenho Empuxo 3000 N   massa 400
+   32.55 desenho Inclin 9.0   erro 9.0
+   32.55 desenho 
+   32.55 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   32.55 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   33.15 desenho [limpa]
+   33.15 desenho == ASCENT == estagio 1/1
+   33.15 desenho Y 2086   vel 3.2   vy -3.2
+   33.15 desenho Empuxo 3000 N   massa 400
+   33.15 desenho Inclin 8.9   erro 8.9
+   33.15 desenho 
+   33.15 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   33.15 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   33.70 desenho [limpa]
+   33.70 desenho == ASCENT == estagio 1/1
+   33.70 desenho Y 2084   vel 5.3   vy -5.3
+   33.70 desenho Empuxo 3000 N   massa 400
+   33.70 desenho Inclin 8.9   erro 8.9
+   33.70 desenho 
+   33.70 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   33.70 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   34.25 desenho [limpa]
+   34.25 desenho == ASCENT == estagio 1/1
+   34.25 desenho Y 2080   vel 7.2   vy -7.2
+   34.25 desenho Empuxo 3000 N   massa 400
+   34.25 desenho Inclin 8.9   erro 8.9
+   34.25 desenho 
+   34.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   34.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   34.85 desenho [limpa]
+   34.85 desenho == ASCENT == estagio 1/1
+   34.85 desenho Y 2076   vel 9.2   vy -9.2
+   34.85 desenho Empuxo 3000 N   massa 400
+   34.85 desenho Inclin 8.9   erro 8.9
+   34.85 desenho 
+   34.85 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   34.85 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   35.40 desenho [limpa]
+   35.40 desenho == ASCENT == estagio 1/1
+   35.40 desenho Y 2069   vel 11.3   vy -11.3
+   35.40 desenho Empuxo 3000 N   massa 400
+   35.40 desenho Inclin 8.8   erro 8.8
+   35.40 desenho 
+   35.40 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   35.40 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   35.95 desenho [limpa]
+   35.95 desenho == ASCENT == estagio 1/1
+   35.95 desenho Y 2063   vel 13.2   vy -13.2
+   35.95 desenho Empuxo 3000 N   massa 400
+   35.95 desenho Inclin 8.8   erro 8.8
+   35.95 desenho 
+   35.95 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   35.95 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   36.55 desenho [limpa]
+   36.55 desenho == ASCENT == estagio 1/1
+   36.55 desenho Y 2055   vel 15.1   vy -15.1
+   36.55 desenho Empuxo 3000 N   massa 400
+   36.55 desenho Inclin 8.7   erro 8.7
+   36.55 desenho 
+   36.55 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   36.55 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   37.10 desenho [limpa]
+   37.10 desenho == ASCENT == estagio 1/1
+   37.10 desenho Y 2045   vel 17.2   vy -17.2
+   37.10 desenho Empuxo 3000 N   massa 400
+   37.10 desenho Inclin 8.6   erro 8.6
+   37.10 desenho 
+   37.10 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   37.10 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   37.65 desenho [limpa]
+   37.65 desenho == ASCENT == estagio 1/1
+   37.65 desenho Y 2035   vel 19.1   vy -19.1
+   37.65 desenho Empuxo 3000 N   massa 400
+   37.65 desenho Inclin 8.6   erro 8.6
+   37.65 desenho 
+   37.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   37.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   38.25 desenho [limpa]
+   38.25 desenho == ASCENT == estagio 1/1
+   38.25 desenho Y 2024   vel 21.0   vy -21.0
+   38.25 desenho Empuxo 3000 N   massa 400
+   38.25 desenho Inclin 8.5   erro 8.5
+   38.25 desenho 
+   38.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   38.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   38.80 desenho [limpa]
+   38.80 desenho == ASCENT == estagio 1/1
+   38.80 desenho Y 2011   vel 23.1   vy -23.1
+   38.80 desenho Empuxo 3000 N   massa 400
+   38.80 desenho Inclin 8.4   erro 8.4
+   38.80 desenho 
+   38.80 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   38.80 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   39.35 desenho [limpa]
+   39.35 desenho == ASCENT == estagio 1/1
+   39.35 desenho Y 1997   vel 25.1   vy -25.1
+   39.35 desenho Empuxo 3000 N   massa 400
+   39.35 desenho Inclin 8.3   erro 8.3
+   39.35 desenho 
+   39.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   39.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   39.95 desenho [limpa]
+   39.95 desenho == ASCENT == estagio 1/1
+   39.95 desenho Y 1983   vel 27.0   vy -27.0
+   39.95 desenho Empuxo 3000 N   massa 400
+   39.95 desenho Inclin 8.1   erro 8.1
+   39.95 desenho 
+   39.95 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   39.95 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   40.50 desenho [limpa]
+   40.50 desenho == ASCENT == estagio 1/1
+   40.50 desenho Y 1966   vel 29.1   vy -29.1
+   40.50 desenho Empuxo 3000 N   massa 400
+   40.50 desenho Inclin 8.0   erro 8.0
+   40.50 desenho 
+   40.50 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   40.50 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   41.05 desenho [limpa]
+   41.05 desenho == ASCENT == estagio 1/1
+   41.05 desenho Y 1949   vel 31.0   vy -31.0
+   41.05 desenho Empuxo 3000 N   massa 400
+   41.05 desenho Inclin 7.9   erro 7.9
+   41.05 desenho 
+   41.05 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   41.05 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   41.65 desenho [limpa]
+   41.65 desenho == ASCENT == estagio 1/1
+   41.65 desenho Y 1932   vel 32.9   vy -32.9
+   41.65 desenho Empuxo 3000 N   massa 400
+   41.65 desenho Inclin 7.7   erro 7.7
+   41.65 desenho 
+   41.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   41.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   42.20 desenho [limpa]
+   42.20 desenho == ASCENT == estagio 1/1
+   42.20 desenho Y 1911   vel 35.0   vy -35.0
+   42.20 desenho Empuxo 3000 N   massa 400
+   42.20 desenho Inclin 7.6   erro 7.6
+   42.20 desenho 
+   42.20 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   42.20 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   42.75 desenho [limpa]
+   42.75 desenho == ASCENT == estagio 1/1
+   42.75 desenho Y 1892   vel 37.0   vy -37.0
+   42.75 desenho Empuxo 3000 N   massa 400
+   42.75 desenho Inclin 7.4   erro 7.4
+   42.75 desenho 
+   42.75 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   42.75 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   43.35 desenho [limpa]
+   43.35 desenho == ASCENT == estagio 1/1
+   43.35 desenho Y 1871   vel 38.9   vy -38.9
+   43.35 desenho Empuxo 3000 N   massa 400
+   43.35 desenho Inclin 7.2   erro 7.2
+   43.35 desenho 
+   43.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   43.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   43.90 desenho [limpa]
+   43.90 desenho == ASCENT == estagio 1/1
+   43.90 desenho Y 1847   vel 41.0   vy -41.0
+   43.90 desenho Empuxo 3000 N   massa 400
+   43.90 desenho Inclin 7.0   erro 7.0
+   43.90 desenho 
+   43.90 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   43.90 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   44.45 desenho [limpa]
+   44.45 desenho == ASCENT == estagio 1/1
+   44.45 desenho Y 1823   vel 42.9   vy -42.9
+   44.45 desenho Empuxo 3000 N   massa 400
+   44.45 desenho Inclin 6.8   erro 6.8
+   44.45 desenho 
+   44.45 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   44.45 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   45.05 desenho [limpa]
+   45.05 desenho == ASCENT == estagio 1/1
+   45.05 desenho Y 1799   vel 44.8   vy -44.8
+   45.05 desenho Empuxo 3000 N   massa 400
+   45.05 desenho Inclin 6.6   erro 6.6
+   45.05 desenho 
+   45.05 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   45.05 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   45.60 desenho [limpa]
+   45.60 desenho == ASCENT == estagio 1/1
+   45.60 desenho Y 1772   vel 46.9   vy -46.9
+   45.60 desenho Empuxo 3000 N   massa 400
+   45.60 desenho Inclin 6.3   erro 6.3
+   45.60 desenho 
+   45.60 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   45.60 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   46.25 desenho [limpa]
+   46.25 desenho == ASCENT == estagio 1/1
+   46.25 desenho Y 1740   vel 49.2   vy -49.2
+   46.25 desenho Empuxo 3000 N   massa 400
+   46.25 desenho Inclin 6.0   erro 6.0
+   46.25 desenho 
+   46.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   46.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   46.85 desenho [limpa]
+   46.85 desenho == ASCENT == estagio 1/1
+   46.85 desenho Y 1713   vel 51.1   vy -51.1
+   46.85 desenho Empuxo 3000 N   massa 400
+   46.85 desenho Inclin 5.7   erro 5.7
+   46.85 desenho 
+   46.85 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   46.85 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   47.40 desenho [limpa]
+   47.40 desenho == ASCENT == estagio 1/1
+   47.40 desenho Y 1681   vel 53.2   vy -53.2
+   47.40 desenho Empuxo 3000 N   massa 400
+   47.40 desenho Inclin 5.4   erro 5.4
+   47.40 desenho 
+   47.40 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   47.40 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   47.95 desenho [limpa]
+   47.95 desenho == ASCENT == estagio 1/1
+   47.95 desenho Y 1651   vel 55.2   vy -55.2
+   47.95 desenho Empuxo 3000 N   massa 400
+   47.95 desenho Inclin 5.1   erro 5.1
+   47.95 desenho 
+   47.95 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   47.95 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   48.55 desenho [limpa]
+   48.55 desenho == ASCENT == estagio 1/1
+   48.55 desenho Y 1621   vel 57.1   vy -57.1
+   48.55 desenho Empuxo 3000 N   massa 400
+   48.55 desenho Inclin 4.7   erro 4.7
+   48.55 desenho 
+   48.55 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   48.55 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   49.10 desenho [limpa]
+   49.10 desenho == ASCENT == estagio 1/1
+   49.10 desenho Y 1586   vel 59.2   vy -59.2
+   49.10 desenho Empuxo 3000 N   massa 400
+   49.10 desenho Inclin 4.3   erro 4.3
+   49.10 desenho 
+   49.10 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   49.10 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   49.65 desenho [limpa]
+   49.65 desenho == ASCENT == estagio 1/1
+   49.65 desenho Y 1552   vel 61.1   vy -61.1
+   49.65 desenho Empuxo 3000 N   massa 400
+   49.65 desenho Inclin 3.9   erro 3.9
+   49.65 desenho 
+   49.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   49.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   50.25 desenho [limpa]
+   50.25 desenho == ASCENT == estagio 1/1
+   50.25 desenho Y 1518   vel 63.0   vy -63.0
+   50.25 desenho Empuxo 3000 N   massa 400
+   50.25 desenho Inclin 3.4   erro 3.4
+   50.25 desenho 
+   50.25 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   50.25 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   50.80 desenho [limpa]
+   50.80 desenho == ASCENT == estagio 1/1
+   50.80 desenho Y 1480   vel 65.1   vy -65.1
+   50.80 desenho Empuxo 3000 N   massa 400
+   50.80 desenho Inclin 2.8   erro 2.8
+   50.80 desenho 
+   50.80 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   50.80 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   51.35 desenho [limpa]
+   51.35 desenho == ASCENT == estagio 1/1
+   51.35 desenho Y 1443   vel 67.1   vy -67.1
+   51.35 desenho Empuxo 3000 N   massa 400
+   51.35 desenho Inclin 2.2   erro 2.2
+   51.35 desenho 
+   51.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   51.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   51.95 desenho [limpa]
+   51.95 desenho == ASCENT == estagio 1/1
+   51.95 desenho Y 1406   vel 69.0   vy -69.0
+   51.95 desenho Empuxo 3000 N   massa 400
+   51.95 desenho Inclin 1.3   erro 1.3
+   51.95 desenho 
+   51.95 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   51.95 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   52.50 desenho [limpa]
+   52.50 desenho == ASCENT == estagio 1/1
+   52.50 desenho Y 1364   vel 71.1   vy -71.1
+   52.50 desenho Empuxo 3000 N   massa 400
+   52.50 desenho Inclin 0.0   erro 0.0
+   52.50 desenho 
+   52.50 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   52.50 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   53.05 desenho [limpa]
+   53.05 desenho == ASCENT == estagio 1/1
+   53.05 desenho Y 1324   vel 73.0   vy -73.0
+   53.05 desenho Empuxo 3000 N   massa 400
+   53.05 desenho Inclin 0.0   erro 0.0
+   53.05 desenho 
+   53.05 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   53.05 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   53.65 desenho [limpa]
+   53.65 desenho == ASCENT == estagio 1/1
+   53.65 desenho Y 1283   vel 74.9   vy -74.9
+   53.65 desenho Empuxo 3000 N   massa 400
+   53.65 desenho Inclin 0.0   erro 0.0
+   53.65 desenho 
+   53.65 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   53.65 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   54.20 desenho [limpa]
+   54.20 desenho == ASCENT == estagio 1/1
+   54.20 desenho Y 1238   vel 77.0   vy -77.0
+   54.20 desenho Empuxo 3000 N   massa 400
+   54.20 desenho Inclin 0.0   erro 0.0
+   54.20 desenho 
+   54.20 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   54.20 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   54.75 desenho [limpa]
+   54.75 desenho == ASCENT == estagio 1/1
+   54.75 desenho Y 1195   vel 79.0   vy -79.0
+   54.75 desenho Empuxo 3000 N   massa 400
+   54.75 desenho Inclin 0.0   erro 0.0
+   54.75 desenho 
+   54.75 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   54.75 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   55.35 desenho [limpa]
+   55.35 desenho == ASCENT == estagio 1/1
+   55.35 desenho Y 1151   vel 80.9   vy -80.9
+   55.35 desenho Empuxo 3000 N   massa 400
+   55.35 desenho Inclin 0.0   erro 0.0
+   55.35 desenho 
+   55.35 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   55.35 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   55.90 desenho [limpa]
+   55.90 desenho == ASCENT == estagio 1/1
+   55.90 desenho Y 1102   vel 83.0   vy -83.0
+   55.90 desenho Empuxo 3000 N   massa 400
+   55.90 desenho Inclin 0.0   erro 0.0
+   55.90 desenho 
+   55.90 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   55.90 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   56.45 desenho [limpa]
+   56.45 desenho == ASCENT == estagio 1/1
+   56.45 desenho Y 1055   vel 84.9   vy -84.9
+   56.45 desenho Empuxo 3000 N   massa 400
+   56.45 desenho Inclin 0.0   erro 0.0
+   56.45 desenho 
+   56.45 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   56.45 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   57.05 desenho [limpa]
+   57.05 desenho == ASCENT == estagio 1/1
+   57.05 desenho Y 1008   vel 86.8   vy -86.8
+   57.05 desenho Empuxo 3000 N   massa 400
+   57.05 desenho Inclin 0.0   erro 0.0
+   57.05 desenho 
+   57.05 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   57.05 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   57.60 desenho [limpa]
+   57.60 desenho == ASCENT == estagio 1/1
+   57.60 desenho Y 955   vel 88.9   vy -88.9
+   57.60 desenho Empuxo 3000 N   massa 400
+   57.60 desenho Inclin 0.0   erro 0.0
+   57.60 desenho 
+   57.60 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   57.60 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   58.15 desenho [limpa]
+   58.15 desenho == ASCENT == estagio 1/1
+   58.15 desenho Y 906   vel 90.9   vy -90.9
+   58.15 desenho Empuxo 3000 N   massa 400
+   58.15 desenho Inclin 0.0   erro 0.0
+   58.15 desenho 
+   58.15 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   58.15 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   58.75 desenho [limpa]
+   58.75 desenho == ASCENT == estagio 1/1
+   58.75 desenho Y 855   vel 92.8   vy -92.8
+   58.75 desenho Empuxo 3000 N   massa 400
+   58.75 desenho Inclin 0.0   erro 0.0
+   58.75 desenho 
+   58.75 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   58.75 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   59.30 desenho [limpa]
+   59.30 desenho == ASCENT == estagio 1/1
+   59.30 desenho Y 799   vel 94.9   vy -94.9
+   59.30 desenho Empuxo 3000 N   massa 400
+   59.30 desenho Inclin 0.0   erro 0.0
+   59.30 desenho 
+   59.30 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   59.30 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
+   59.85 desenho [limpa]
+   59.85 desenho == ASCENT == estagio 1/1
+   59.85 desenho Y 746   vel 96.8   vy -96.8
+   59.85 desenho Empuxo 3000 N   massa 400
+   59.85 desenho Inclin 0.0   erro 0.0
+   59.85 desenho 
+   59.85 desenho AVISO booster_thruster_3 nao acendeu, tentando de novo
+   59.85 desenho ERRO booster_thruster_3 NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. booster_thruster_3 [booster_thruster] aceso=false gasto=false carvao_ticks=0 potencia=1000 empuxo=0
    60.05 fim de voo.lua (fim)
 ==== arquivo config.lua
 return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
