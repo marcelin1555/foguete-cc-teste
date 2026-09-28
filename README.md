@@ -74,6 +74,18 @@ No espaço (circularização, deorbit) e no pouso, a nave **primeiro aponta e s�
 - **Gyrodyne** (só no Cosmonautics 1.4+, que ainda não saiu): se houver um ligado ao computador, no pouso ele fica
   em `retrograde` ou `radial_out`. Na versão 26.08 ele não existe e isso é ignorado.
 
+### Equilíbrio de empuxo (bombas sem vazão)
+
+Cada Rocket Thruster precisa de **vazão 40** para dar 1000 N. Quando as bombas não dão conta, a lava se
+divide de forma desigual e o foguete gira para o lado fraco. Na subida o piloto mede o empuxo de cada motor
+a cada 1,5 s e, se a diferença passar de 20%, **limita todos à média** (os fortes deixam lava para os fracos).
+Quando todos chegam no limite, ele sobe 50 N por vez. O aviso `EMPUXO DESIGUAL` no log mostra o motor mais fraco.
+
+| Chave | Padrão | |
+|---|---|---|
+| `balance_spread` | 0.2 | diferença entre motores que dispara o equilíbrio |
+| `balance_min` | 100 | limite mínimo por motor (N) |
+
 ### Controle de direção na subida
 
 A Sputnik (`sputnik_guiagem.lua`) aponta o foguete com um controle PID: proporcional (`KP`),

@@ -105,6 +105,7 @@ end
 local function setPhase(p, why)
   L.info("FASE %s -> %s (%s)", S.phase, p, why)
   S.phase = p
+  if p ~= "ASCENT" and p ~= "BALISTICO" then S.thrCap = nil end -- equilibrio so vale na subida
   save()
 end
 
@@ -192,6 +193,8 @@ end
 local function setThrottle(i, frac, vecFrac)
   local nMain = quantN(frac)
   local nVec = vecFrac and quantN(vecFrac) or nMain
+  -- limite de equilibrio: com as bombas sem dar conta, todos os motores empurram igual
+  if S.thrCap then nMain, nVec = math.min(nMain, S.thrCap), math.min(nVec, S.thrCap) end
   lastThrottleN[i] = math.max(nMain, nVec)
   local fns = {}
   for _, name in ipairs(stageEngines(i)) do
@@ -909,9 +912,10 @@ local function voo()
 
     if slow and now - burnStart > 1 then checkBoosterDrop(S.stage) end
 
-    -- empuxo desigual entre motores liquidos gira o foguete (bomba fraca num dos lados)
-    if slow and S.phase == "ASCENT" and now - burnStart > 3 and now - (orb.unevenT or -99) > 5 then
-      local lo, hi, loN, hiN = math.huge, 0, "?", "?"
+    -- empuxo desigual entre motores liquidos gira o foguete (bombas nao dao conta da vazao).
+    -- Equilibra: limita todos os motores a media que as bombas sustentam; depois tenta subir aos poucos.
+    if slow and S.phase == "ASCENT" and now - burnStart > 2 and now - (orb.balT or -99) > (CFG.balance_every or 1.5) then
+      orb.balT = now
       local vals, fns = {}, {}
       local names = stageEngines(S.stage)
       for k, n in ipairs(names) do
@@ -921,16 +925,31 @@ local function voo()
       end
       if #fns > 1 then
         parallel.waitForAll(table.unpack(fns))
+        local lo, hi, sum, cnt, loN, hiN = math.huge, 0, 0, 0, "?", "?"
         for k, n in ipairs(names) do
           local v = vals[k]
           if v then
+            sum, cnt = sum + v, cnt + 1
             if v < lo then lo, loN = v, short(n) end
             if v > hi then hi, hiN = v, short(n) end
           end
         end
-        if hi > 0 and (hi - lo) / hi > 0.2 then
-          orb.unevenT = now
-          L.warn("EMPUXO DESIGUAL: %s=%d N e %s=%d N. O lado fraco nao recebe lava suficiente (bomba/cano).", loN, lo, hiN, hi)
+        local cap = S.thrCap or CFG.max_thrust_n
+        if hi > 0 and (hi - lo) / hi > (CFG.balance_spread or 0.2) then
+          local newCap = math.max(CFG.balance_min or 100, math.floor(sum / cnt / 50) * 50)
+          if newCap < cap then
+            S.thrCap = newCap
+            save()
+            L.warn("EMPUXO DESIGUAL: %s=%d N e %s=%d N (bombas sem vazao). Limitando todos a %d N para equilibrar.",
+              loN, lo, hiN, hi, newCap)
+          end
+        elseif S.thrCap and lo >= S.thrCap - 50 and now - (orb.capUpT or -99) > 3 then
+          -- todos chegando no limite: sobra lava, tenta subir 50 N
+          orb.capUpT = now
+          S.thrCap = math.min(CFG.max_thrust_n, S.thrCap + 50)
+          if S.thrCap >= CFG.max_thrust_n then S.thrCap = nil end
+          save()
+          L.info("Empuxo equilibrado; limite por motor agora %s", S.thrCap and (S.thrCap .. " N") or "livre")
         end
       end
     end
