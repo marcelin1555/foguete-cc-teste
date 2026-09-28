@@ -60,6 +60,10 @@ function M.novo(args, L, CFG, DESCONHECIDAS, STATE_FILE)
   ---------------------------------------------------------------- voo
   local function voo()
     load()
+    if not require("foguete.estado").FASES[S.phase] then
+      printError(("Fase desconhecida no estado.txt: %s. Use 'voo reset' para comecar de novo."):format(tostring(S.phase)))
+      return
+    end
     -- um arquivo de log por voo: continua no mesmo se o voo esta sendo retomado
     if S.logFile and fs.exists(S.logFile) then
       L.useFile(S.logFile)
