@@ -99,10 +99,11 @@ function M.novo(args, L, CFG, DESCONHECIDAS, STATE_FILE)
     -- POUSO comeca com motor em 0: so acelera depois de apontar para cima
     -- (antes acendia com o foguete de lado e empurrava a nave para o lado)
     if S.phase == "POUSO" then setThrottle(S.stage, 0) end
-    local memorias = {}
-    for _, nome in ipairs(MODULOS_FASE) do memorias[nome] = porNome[nome].novaMemoria(S) end
     rcsDiscover()
     rcsOff()
+    -- depois do rcsOff (que pode gastar um tick): o relogio do DEORBIT comeca aqui, como antes
+    local memorias = {}
+    for _, nome in ipairs(MODULOS_FASE) do memorias[nome] = porNome[nome].novaMemoria(S) end
 
     local burnStart = os.clock()
     local igniteT = os.clock()
