@@ -164,3 +164,8 @@ O toque é detectado sozinho.
 | `land_h_accel` | 8 | aceleração máxima para frear a deriva lateral |
 | `land_orient_n` | 100 | empuxo mínimo por motor só para girar a nave |
 | `land_cc_gimbal` | true | o computador controla o gimbal no pouso |
+
+## Documentação do projeto
+
+- [HISTORICO.md](HISTORICO.md): tudo o que foi feito, do começo, em ordem.
+- [HANDOFF.md](HANDOFF.md): estado atual, fatos do mod e próximos passos.
