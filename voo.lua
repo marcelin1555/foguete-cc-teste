@@ -52,111 +52,10 @@ local call, typeOf, short, stageEngines, allEngines = Mot.call, Mot.typeOf, Mot.
 local engineLine, logEngines, setThrottle, orientThrottle = Mot.engineLine, Mot.logEngines, Mot.setThrottle, Mot.orientThrottle
 local ignite, shutdown, safeAll, stageStatus, lavaTotal = Mot.ignite, Mot.shutdown, Mot.safeAll, Mot.stageStatus, Mot.lavaTotal
 
--- alinhado de verdade: erro pequeno e a nave quase sem girar (com folga enquanto ja queima)
-local function alignedFor(state, err, ship)
-  local w = ship.angv and ship.angv:length() or 0
-  local limit = state.burning and (CFG.align_keep_deg) or (CFG.align_deg)
-  state.burning = err < limit and (state.burning or w < (CFG.align_rate))
-  return state.burning
-end
-
-local lastW = V(0, 0, 0) -- velocidade angular local (para o log)
-local steerCount = 0      -- quantas vezes o gimbal foi comandado
--- force = true: o CC controla o gimbal mesmo com sputnik_guidance (manobras no espaco)
-local integ = { x = 0, z = 0, t = nil }
--- integ = true: acumula o erro (tira o erro parado); so na subida, com motor ligado
-local function steer(ship, target, force, useInteg)
-  local d = toLocal(ship.q, target:normalize())
-  local ex, ez = d.x, d.z
-  if d.y < 0 then
-    local m = math.sqrt(ex * ex + ez * ez)
-    if m < 1e-6 then ex, m = 1, 1 end
-    ex, ez = ex / m, ez / m
-  end
-  local w = toLocal(ship.q, ship.angv)
-  local s, lim = CFG.gimbal_sign, CFG.max_gimbal
-  local now = os.clock()
-  local ki, imax = CFG.ki, CFG.imax
-  if useInteg and integ.t then
-    local dt = math.min(now - integ.t, 0.5)
-    integ.x = clamp(integ.x + ex * dt, -imax, imax)
-    integ.z = clamp(integ.z + ez * dt, -imax, imax)
-  elseif not useInteg then
-    integ.x, integ.z = 0, 0
-  end
-  integ.t = now
-  local gx = clamp(s * (CFG.kp * ex + CFG.kd * w.z + ki * integ.x), -lim, lim)
-  local gz = clamp(s * (CFG.kp * ez - CFG.kd * w.x + ki * integ.z), -lim, lim)
-  -- todos os vector thrusters no mesmo tick
-  -- (com sputnik_guidance o Sputnik controla o gimbal; o CC so mede o erro)
-  local fns = {}
-  if force or not CFG.sputnik_guidance then
-    for _, name in ipairs(stageEngines(S.stage)) do
-      if typeOf(name) == "vector_thruster" then
-        fns[#fns + 1] = function() call(name, "setGimbal", gx, 0, gz) end
-      end
-    end
-  end
-  if #fns > 0 then parallel.waitForAll(table.unpack(fns)) else sleep(0.05) end
-  lastW = w
-  steerCount = steerCount + 1
-  return math.deg(math.acos(clamp(d.y, -1, 1))), gx, gz
-end
-
--- pulso de redstone num Stage Separator (lado do computador ou redstone_relay)
-local function pulse(sep)
-  local function set(v)
-    if sep.relay then call(sep.relay, "setOutput", sep.side, v)
-    else redstone.setOutput(sep.side, v) end
-  end
-  set(true) sleep(0.3) set(false)
-end
-
--- Magnetic Stabilizer (Cosmonautics): com redstone ligado ele FREIA a rotacao da nave.
--- Nao aponta para nada: o Vector Thruster gira ate o angulo certo e o estabilizador segura ali.
-local stabOn = nil
-local function stabilizer(on)
-  local st = CFG.stabilizer
-  if not st or stabOn == on then return end
-  stabOn = on
-  if st.relay then call(st.relay, "setOutput", st.side, on) else redstone.setOutput(st.side, on) end
-  L.info("ESTABILIZADOR %s", on and "ligado (segurando o angulo)" or "desligado (livre para girar)")
-end
-
-local function separate(i)
-  local sep = CFG.stages[i].separator
-  if not sep then return end
-  L.info("Separando estagio %d (%s)", i, textutils.serialize(sep, { compact = true }))
-  pulse(sep)
-end
-
--- boosters em paralelo: acendem junto com os motores liquidos do mesmo estagio e,
--- quando TODOS acabam, o separador deles solta so os boosters; os liquidos continuam
-local function checkBoosterDrop(i)
-  local st = CFG.stages[i]
-  if not st or not st.booster_separator then return end
-  S.boostersDropped = S.boostersDropped or {}
-  if S.boostersDropped[i] then return end
-  local boosters = {}
-  for _, n in ipairs(st.engines) do
-    if typeOf(n) == "booster_thruster" then boosters[#boosters + 1] = n end
-  end
-  if #boosters == 0 then return end
-  local done, fns = {}, {}
-  for k, n in ipairs(boosters) do
-    fns[k] = function()
-      local d = peripheral.isPresent(n) and call(n, "getData") or nil
-      done[k] = (not d) or d.is_spent or (S.failed and S.failed[n]) or false
-    end
-  end
-  parallel.waitForAll(table.unpack(fns))
-  for k = 1, #boosters do if not done[k] then return end end
-  L.info("Boosters do estagio %d esgotados: separando (%s)", i,
-    textutils.serialize(st.booster_separator, { compact = true }))
-  pulse(st.booster_separator)
-  S.boostersDropped[i] = true
-  save()
-end
+local Ctl = require("foguete.controle").novo(CFG, E, L, Mot)
+local steer, alignedFor, stabilizer = Ctl.steer, Ctl.alignedFor, Ctl.stabilizer
+local Sep = require("foguete.separacao").novo(CFG, E, L, Mot)
+local pulse, separate, checkBoosterDrop = Sep.pulse, Sep.separate, Sep.checkBoosterDrop
 
 local Sp = require("foguete.sputnik").novo(CFG, Mot)
 local sputnik, orbitDir, periAlt = Sp.dados, Sp.orbitDir, Sp.periAlt
@@ -331,27 +230,10 @@ local function rcsCalibrate(why)
 end
 
 ---------------------------------------------------------------- tela
-local mon = CFG.monitor and peripheral.wrap(CFG.monitor)
-local function show(t)
-  local all = {}
-  for _, l in ipairs(t) do table.insert(all, l) end
-  for _, r in ipairs(L.recent) do table.insert(all, r) end
-  for _, out in ipairs({ term, mon }) do
-    if out then
-      out.clear() out.setCursorPos(1, 1)
-      for _, l in ipairs(all) do
-        local _, y = out.getCursorPos()
-        out.write(l) out.setCursorPos(1, y + 1)
-      end
-    end
-  end
-end
-
-local csv
-local function csvLine(fields)
-  if not csv then csv = fs.open(L.csvPath(), "a") end
-  csv.writeLine(table.concat(fields, ",")) csv.flush()
-end
+local Tela = require("foguete.tela").novo(CFG, L)
+local show = Tela.show
+local TelCsv = require("foguete.telemetria").novo(L)
+local csvLine = TelCsv.csvLine
 
 ---------------------------------------------------------------- checagem
 -- retorna lista de erros (impedem o lancamento) e avisos
@@ -557,8 +439,7 @@ local function voo()
   local igniteT = os.clock()
   local boosterRetry = {}
   local lastDist, lastDistT, lastVel, lastT = nil, nil, nil, os.clock()
-  local calT, calVy, calTicks = os.clock(), nil, 0
-  local engT = os.clock()
+  local Tel = require("foguete.telemetria").novo(L, csvLine)
   local slowT = -1
   local orbT = -math.huge
   local tiltT = nil
@@ -569,7 +450,7 @@ local function voo()
   local g, dsd, inSpace, thrust, ecc, dist, vr = gravity(), nil, false, 0, 0 / 0, 0 / 0, 0
 
   while true do
-    local steerBefore = steerCount
+    local steerBefore = Ctl.steerCount()
     local ship = readShip()
     local now = os.clock()
     local dt = math.max(now - lastT, 0.05)
@@ -611,30 +492,8 @@ local function voo()
       end
     end
 
-    -- confirma que cada booster acendeu (parte lenta, ate 4s apos ignicao)
     local since = now - igniteT
-    if slow and since > 0.5 and since < 4 then
-      local fns = {}
-      for _, n in ipairs(stageEngines(S.stage)) do
-        if typeOf(n) == "booster_thruster" and not S.failed[n] then fns[#fns + 1] = function()
-          local d = call(n, "getData")
-          if d and not d.ignited and not d.is_spent then
-            boosterRetry[n] = (boosterRetry[n] or 0) + 1
-            if since < 3 then
-              if boosterRetry[n] == 1 then L.warn("%s nao acendeu, tentando de novo", short(n)) end
-              call(n, "setActive", true)
-            else
-              S.failed[n] = true save()
-              L.err("%s NAO ACENDEU: sem bloco de carvao logo acima dele, ou potencia 0. %s", short(n), engineLine(n))
-            end
-          elseif d and d.ignited and boosterRetry[n] and boosterRetry[n] > 0 and not S.failed[n] then
-            L.info("%s acendeu apos %d tentativas", short(n), boosterRetry[n])
-            boosterRetry[n] = -1
-          end
-        end end
-      end
-      if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
-    end
+    if slow and since > 0.5 and since < 4 then Sep.confirmarIgnicao(S.stage, since, boosterRetry) end
 
     if slow and now - burnStart > 1 then checkBoosterDrop(S.stage) end
 
@@ -955,25 +814,8 @@ local function voo()
       end
     end
 
-    -- fisica: aceleracao medida x esperada (calibra unidades de massa/empuxo)
-    calTicks = calTicks + 1
-    if now - calT >= 1 then
-      if calVy then
-        local aMed = (ship.vel.y - calVy) / (now - calT)
-        L.info("FISICA y=%.1f vy=%.2f a_medida=%.2f F/m=%.2f g=%.2f massa=%.1f F=%.0f erro=%.1f gimbal=(%.2f,%.2f) w=(%.2f,%.2f,%.2f) loop=%.1fHz",
-          ship.pos.y, ship.vel.y, aMed, thrust / math.max(ship.mass, 1e-6), g, ship.mass, thrust, err,
-          gx, gz, lastW.x, lastW.y, lastW.z, calTicks / (now - calT))
-      end
-      calT, calVy, calTicks = now, ship.vel.y, 0
-    end
-    -- motores: a cada 5s no inicio, depois a cada 20s (em paralelo)
-    local engEvery = (now - burnStart < 30) and 5 or 20
-    if now - engT >= engEvery then
-      logEngines(S.phase)
-      local lava, nt = lavaTotal()
-      L.info("COMBUSTIVEL lava=%d mB em %d tanques/motores (fase %s, Y=%.0f)", lava, nt, S.phase, ship.pos.y)
-      engT = now
-    end
+    Tel.fisica(ship, now, thrust, g, err, gx, gz, Ctl.lastW())
+    Tel.motores(now, burnStart, S, ship, Mot)
 
     if S.phase ~= "POUSO" then gyroMode("off") end
     -- estabilizador: desligado enquanto o Vector Thruster gira a nave, ligado quando ja esta alinhada
@@ -1000,7 +842,7 @@ local function voo()
     tick = tick + 1
 
     if tick % 2 == 0 then
-      csvLine({ os.epoch("utc") - (S.t0 or 0), S.phase, S.stage, ("%.1f"):format(ship.pos.y),
+      Tel.csvLine({ os.epoch("utc") - (S.t0 or 0), S.phase, S.stage, ("%.1f"):format(ship.pos.y),
         ("%.2f"):format(speed), ("%.2f"):format(ship.vel.y), ("%.0f"):format(ship.mass),
         ("%.0f"):format(thrust), ("%.1f"):format(tilt), ("%.1f"):format(err),
         ("%.2f"):format(gx), ("%.2f"):format(gz), tostring(ecc), tostring(dist) })
@@ -1013,7 +855,7 @@ local function voo()
         inSpace and "ESPACO PROFUNDO" or "" })
     end
     -- o setGimbal dentro de steer() ja espera 1 tick; se nao houve steer, espera aqui
-    if steerCount == steerBefore then sleep(0.05) end
+    if Ctl.steerCount() == steerBefore then sleep(0.05) end
   end
 end
 
