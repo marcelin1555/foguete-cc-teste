@@ -21,7 +21,7 @@ Dividir o código para que cada ajuste futuro mexa num arquivo pequeno, **sem mu
 |---|---|
 | Objetivo | Facilitar mudanças: módulos pequenos, comportamento igual |
 | Gyrodyne | **Removido.** O bloco não existe na 26.08.307. |
-| RCS | Vira o módulo opcional `rcs.lua`, carregado só com `rcs_enabled = true` |
+| RCS | Vira o módulo `rcs.lua`, que só age com `rcs_enabled = true` (como hoje) |
 | Validação | Um simulador unificado + comparação com uma referência gravada do código antigo |
 | Organização | Comandos na raiz; partes internas em `/lib/foguete/`; o `atualizar` lê a lista do GitHub |
 | Arquitetura | Uma fase por arquivo, todas com a mesma interface; o laço principal fica separado |
@@ -34,9 +34,9 @@ Dividir o código para que cada ajuste futuro mexa num arquivo pequeno, **sem mu
 |---|---|
 | `voo.lua` | Lê os argumentos (`teste`, `reset`, `descer [Y]`, `rcs`, nenhum) e chama `laco`, `checagem` ou `rcs` |
 | `setup.lua` | Assistente do `config.lua` (mesmo formato de saída de hoje) |
-| `logs.lua` | Leitor de logs (usa `lib/foguete/log.lua`) |
-| `diagnostico.lua` | Igual ao de hoje, mas lê a config por `lib/foguete/config.lua` |
-| `parar.lua` | Corta os motores (usa `motores.safeAll`) |
+| `logs.lua` | Leitor de logs, igual ao de hoje (lê os arquivos de `/logs` direto) |
+| `diagnostico.lua` | Igual ao de hoje e independente de `/lib`, para funcionar mesmo com a instalação incompleta |
+| `parar.lua` | Corta os motores. Continua independente de `/lib`, para funcionar mesmo com a instalação incompleta. |
 | `atualizar.lua` | Baixa usando `arquivos.txt` (ver seção 4) |
 | `startup.lua` | Retoma o voo |
 | `sputnik_guiagem.lua` | Script da Sputnik. Não é dividido em módulos; ganha só `-- versao: N` |
@@ -57,7 +57,7 @@ Dividir o código para que cada ajuste futuro mexa num arquivo pequeno, **sem mu
 | `checagem.lua` | `preflight()`, `teste()` | `preflight`, `teste` |
 | `tela.lua` | `mostrar(linhas)` no terminal e no monitor | `show` |
 | `telemetria.lua` | CSV e linha `FISICA` | `csvLine` + bloco de calibração |
-| `rcs.lua` | RCS opcional (descoberta, calibração, controle, `voo rcs`) | bloco RCS |
+| `rcs.lua` | RCS (descoberta, calibração, controle, `voo rcs`); não faz nada sem `rcs_enabled = true` | bloco RCS |
 | `log.lua` | Biblioteca de log (movida da raiz, API igual) | `log.lua` |
 | `laco.lua` | Laço principal: plataforma, retomada e ciclo por tick | `voo()` |
 | `fases/plataforma.lua` | Preflight, espera do botão e contagem (PAD) | começo de `voo()` |
@@ -82,17 +82,18 @@ Cada arquivo em `fases/` devolve uma tabela:
 
 ```lua
 return {
-  fases = { "COAST", "CIRC" },               -- nomes de fase que o módulo atende
-  entrar = function(ctx) end,                -- ao entrar na fase ou ao retomar após reboot
-  tick = function(ctx) return nil end,       -- ou: return "PROXIMA", "motivo"
+  fases = { "COAST", "CIRC" },                 -- nomes de fase que o módulo atende
+  novaMemoria = function() return { flips = 0 } end, -- memória volátil do módulo
+  tick = function(ctx) end,                    -- um passo da fase
   estabilizador = function(ctx) return false end,
-  sem_combustivel = function(ctx) return nil end, -- ou: return "FASE", "motivo"
-  apos_troca_estagio = function(ctx) end,    -- acelerador depois de separar um estágio
 }
 ```
 
-- A fase **nunca** chama `estado.trocar`. Ela devolve a próxima fase, e o laço faz a troca, grava no log e chama `entrar` da nova fase.
-- Uma fase com vários nomes (COAST/CIRC, ASCENT/BALISTICO) lê `ctx.S.phase` e pode devolver o outro nome.
+- Para trocar de fase, a fase chama `ctx.trocar(fase, motivo)`. Essa é a **única** função que troca de fase: ela grava no log e salva o estado, como o `setPhase` de hoje. A troca acontece **no mesmo ponto do código** em que acontece hoje, então a ordem dos comandos não muda.
+- A memória de cada módulo (`ctx.mem`) é criada **uma vez por execução do `voo`** e **não é zerada nas trocas de fase**. Hoje as tabelas `orb`, `deorbit` e `land` funcionam assim, e a `orb` guarda dados de COAST para CIRC.
+- Os comandos feitos ao retomar um voo (acender, desligar ou apontar conforme a fase) ficam no `laco.lua`, na mesma ordem de hoje. Numa troca de fase comum não existe comando de entrada.
+- A troca de estágio, o que fazer quando a lava do último estágio acaba e o equilíbrio de empuxo ficam no `laco.lua`, na **mesma ordem de hoje**: equilíbrio → troca de estágio → tick da fase. Mover esses trechos para dentro das fases mudaria a ordem das chamadas aos motores.
+- Uma fase com vários nomes (COAST/CIRC, ASCENT/BALISTICO) lê `ctx.S.phase`.
 
 **Contexto `ctx`** (montado pelo laço):
 
@@ -104,20 +105,20 @@ return {
 | `ctx.lento` | `true` no tick lento (a cada 0,5 s) |
 | `ctx.orb` | `dsd`, `inSpace`, `ecc`, `dist`, `vr`, `g` (atualizados no tick lento) |
 | `ctx.mot` | `thrust`, `spent`, `burnStart`, `igniteT` |
-| `ctx.mem` | memória volátil da fase, zerada em `entrar` (substitui `orb`, `land` e `deorbit` locais) |
+| `ctx.mem` | memória volátil do módulo da fase atual, criada uma vez por execução (substitui `orb`, `land` e `deorbit` locais) |
+| `ctx.trocar` | `trocar(fase, motivo)`: troca de fase, grava no log e salva |
 | `ctx.saida` | `tilt`, `err`, `gx`, `gz` para a tela e a telemetria |
 | `ctx.agora`, `ctx.dt`, `ctx.log` | tempo e log |
 
 **Ordem do tick no `laco.lua`**, a mesma ordem de hoje:
 1. `sensores.lerNave`. No tick lento: gravidade, Sputnik, vr, `stageStatus` e os logs `SPUTNIK`/`ORBITA`.
 2. `separacao.confirmarIgnicaoBoosters` (até 4 s após a ignição) e `separacao.largarBoosters`.
-3. Troca de estágio quando o estágio esgota. Se for o último, `fase.sem_combustivel(ctx)`.
-4. `fase.tick(ctx)`, com troca de fase se ela devolver outra.
-5. `controle.estabilizador(fase.estabilizador(ctx))`.
-6. Telemetria (`FISICA`, CSV), `logEngines` periódico e tela.
-7. Fim ao chegar numa fase terminal.
-
-O equilíbrio de empuxo (`motores.equilibrar`) passa a ser chamado por `subida.lua`, só na fase ASCENT, como hoje.
+3. `motores.equilibrar` (só na fase ASCENT, como hoje).
+4. Troca de estágio quando o estágio esgota. Se for o último, a mesma escolha de hoje (BALISTICO, FIM, REENTRADA ou erro de pouso).
+5. `fase.tick(ctx)` do módulo da fase atual.
+6. Telemetria (`FISICA`, `COMBUSTIVEL`, `logEngines` periódico).
+7. `controle.estabilizador(fase.estabilizador(ctx))`.
+8. Fim ao chegar numa fase terminal; senão CSV e tela.
 
 ## 3. Compatibilidade e erros
 
