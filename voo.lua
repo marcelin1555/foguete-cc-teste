@@ -7,22 +7,16 @@
 -- Registros: um arquivo por voo em /logs, com data e hora no nome (use o programa 'logs')
 
 local args = { ... }
+package.path = "/lib/?.lua;" .. package.path
 local DIR = fs.getDir(shell.getRunningProgram())
 local function path(p) return fs.combine(DIR, p) end
-local L = dofile(path("log.lua"))
+local L = require("foguete.log")
 local STATE_FILE = path("estado.txt")
 
 if not fs.exists(path("config.lua")) then
   printError("Rode 'setup' primeiro.") return
 end
-local CFG = dofile(path("config.lua"))
-for _, st in ipairs(CFG.stages or {}) do
-  local seen, list = {}, {}
-  for _, n in ipairs(st.engines or {}) do
-    if not seen[n] then seen[n] = true list[#list + 1] = n end
-  end
-  st.engines = list
-end
+local CFG, DESCONHECIDAS = require("foguete.config").carregar(path("config.lua"))
 
 if args[1] == "reset" then
   -- registra no log do voo que esta sendo apagado
@@ -37,36 +31,11 @@ if args[1] == "reset" then
 end
 
 ---------------------------------------------------------------- matematica
+local mat = require("foguete.mat")
 local V = vector.new
-local UP = V(0, 1, 0)
+local UP = mat.UP
 local EAST = V(CFG.east[1], CFG.east[2], CFG.east[3]):normalize()
-
-local function clamp(x, a, b) return math.max(a, math.min(b, x)) end
-
--- nomes dos perifericos sem repeticao (com 2 modems na mesma rede o CC lista cada um 2 vezes)
-local function periNames()
-  local seen, out = {}, {}
-  for _, n in ipairs(peripheral.getNames()) do
-    if not seen[n] then seen[n] = true out[#out + 1] = n end
-  end
-  return out
-end
-
-local function qrot(q, v)
-  local qx, qy, qz, qw = q[1], q[2], q[3], q[4]
-  local tx = 2 * (qy * v.z - qz * v.y)
-  local ty = 2 * (qz * v.x - qx * v.z)
-  local tz = 2 * (qx * v.y - qy * v.x)
-  return V(v.x + qw * tx + (qy * tz - qz * ty),
-           v.y + qw * ty + (qz * tx - qx * tz),
-           v.z + qw * tz + (qx * ty - qy * tx))
-end
-local function toLocal(q, v) return qrot({ -q[1], -q[2], -q[3], q[4] }, v) end
-
-local function quatParts(o)
-  if o.v then return { o.v.x, o.v.y, o.v.z, o.a } end
-  return { o.x, o.y, o.z, o.w }
-end
+local clamp, periNames, qrot, toLocal, quatParts = mat.clamp, mat.periNames, mat.qrot, mat.toLocal, mat.quatParts
 
 ---------------------------------------------------------------- nave
 -- as 4 leituras em paralelo: cada uma pode custar 1 tick se feita em sequencia
@@ -93,21 +62,9 @@ local function gravity()
 end
 
 ---------------------------------------------------------------- estado
-local S = { phase = "PAD", stage = 1 }
-local function save()
-  local f = fs.open(STATE_FILE, "w") f.write(textutils.serialize(S)) f.close()
-end
-local function load()
-  if not fs.exists(STATE_FILE) then return end
-  local f = fs.open(STATE_FILE, "r") local t = textutils.unserialize(f.readAll()) f.close()
-  if t then S = t end
-end
-local function setPhase(p, why)
-  L.info("FASE %s -> %s (%s)", S.phase, p, why)
-  S.phase = p
-  if p ~= "ASCENT" and p ~= "BALISTICO" then S.thrCap = nil end -- equilibrio so vale na subida
-  save()
-end
+local E = require("foguete.estado").novo(STATE_FILE, L)
+local S = E.proxy
+local save, load, setPhase = E.salvar, E.carregar, E.trocar
 
 ---------------------------------------------------------------- perifericos
 local function call(name, fn, ...)
@@ -216,14 +173,14 @@ end
 
 -- girando: motores fixos desligados, so o Vector Thruster empurra (e o unico que vira a nave)
 local function orientThrottle(i)
-  setThrottle(i, 0, CFG.orient_throttle or 0.35)
+  setThrottle(i, 0, CFG.orient_throttle)
 end
 
 -- alinhado de verdade: erro pequeno e a nave quase sem girar (com folga enquanto ja queima)
 local function alignedFor(state, err, ship)
   local w = ship.angv and ship.angv:length() or 0
-  local limit = state.burning and (CFG.align_keep_deg or 15) or (CFG.align_deg or 5)
-  state.burning = err < limit and (state.burning or w < (CFG.align_rate or 0.05))
+  local limit = state.burning and (CFG.align_keep_deg) or (CFG.align_deg)
+  state.burning = err < limit and (state.burning or w < (CFG.align_rate))
   return state.burning
 end
 
@@ -268,7 +225,6 @@ local function safeAll(why)
 end
 
 -- empuxo real somado e se o estagio inteiro acabou
-S.failed = S.failed or {}
 -- consulta todos os motores ao mesmo tempo (em paralelo = ~2 ticks no total)
 local function stageStatus(i, burnTime)
   local total, spent, count = 0, 0, 0
@@ -311,7 +267,7 @@ local function steer(ship, target, force, useInteg)
   local w = toLocal(ship.q, ship.angv)
   local s, lim = CFG.gimbal_sign, CFG.max_gimbal
   local now = os.clock()
-  local ki, imax = CFG.ki or 0.6, CFG.imax or 0.5
+  local ki, imax = CFG.ki, CFG.imax
   if useInteg and integ.t then
     local dt = math.min(now - integ.t, 0.5)
     integ.x = clamp(integ.x + ex * dt, -imax, imax)
@@ -494,7 +450,7 @@ local function rcsMissing()
       local rr = rcs.cal[n]
       if rr then
         local rv = V(rr[1], rr[2], rr[3])
-        if rv:length() > 1e-9 and rv:dot(ax[1]) / rv:length() > (CFG.rcs_cos or 0.5) then covered = true end
+        if rv:length() > 1e-9 and rv:dot(ax[1]) / rv:length() > (CFG.rcs_cos) then covered = true end
       end
     end
     if not covered then missing[#missing + 1] = ax[2] end
@@ -538,15 +494,15 @@ local function rcsControl(ship, target)
     ax = ax:normalize()
   end
   -- aceleracao angular desejada: corrige o erro e amortece o giro (inclusive o de rolagem)
-  local want = ax * ((CFG.rcs_kp or 0.4) * ang) - w * (CFG.rcs_kd or 1.2)
+  local want = ax * ((CFG.rcs_kp) * ang) - w * (CFG.rcs_kd)
   local fire, m = {}, want:length()
-  if m > (CFG.rcs_deadband or 0.01) then
+  if m > (CFG.rcs_deadband) then
     for _, n in ipairs(rcs.names) do
       local r = rcs.cal[n]
       if r then
         local rv = V(r[1], r[2], r[3])
         local rl = rv:length()
-        if rl > 1e-9 and rv:dot(want) / (rl * m) > (CFG.rcs_cos or 0.5) then fire[n] = true end
+        if rl > 1e-9 and rv:dot(want) / (rl * m) > (CFG.rcs_cos) then fire[n] = true end
       end
     end
   end
@@ -560,7 +516,7 @@ local function rcsCalibrate(why)
   if #rcs.names == 0 then return false end
   L.info("RCS calibrando %d propulsores (%s)", #rcs.names, why)
   rcsOff()
-  local T = CFG.rcs_cal_time or 1.0
+  local T = CFG.rcs_cal_time
   local cal, ok = {}, 0
   for _, n in ipairs(rcs.names) do
     local s0, t0 = readShip(), os.clock()
@@ -570,7 +526,7 @@ local function rcsCalibrate(why)
     local s1 = readShip()
     local dt = math.max(os.clock() - t0, 0.05)
     local r = (toLocal(s1.q, s1.angv) - toLocal(s0.q, s0.angv)) * (1 / dt)
-    if r:length() > (CFG.rcs_min_resp or 0.002) then
+    if r:length() > (CFG.rcs_min_resp) then
       cal[n] = { r.x, r.y, r.z }
       ok = ok + 1
       L.info("RCS %s giro=(%.4f, %.4f, %.4f) rad/s2", short(n), r.x, r.y, r.z)
@@ -711,6 +667,9 @@ local function preflight()
   L.info("CHECAGEM empuxo_max=%.0f TWR=%.2f", maxT, twr)
   if twr < CFG.min_twr then
     E("TWR %.2f abaixo de %.2f: o foguete so flutua e escorrega de lado (mais motores ou menos peso)", twr, CFG.min_twr)
+  end
+  for _, k in ipairs(DESCONHECIDAS) do
+    W("chave desconhecida no config.lua: %s (erro de digitacao?)", k)
   end
   if not CFG.sputnik or not peripheral.isPresent(CFG.sputnik) then W("Sputnik nao encontrado: sem dados de orbita") end
   if not redstone then W("sem API redstone") end
@@ -914,7 +873,7 @@ local function voo()
 
     -- empuxo desigual entre motores liquidos gira o foguete (bombas nao dao conta da vazao).
     -- Equilibra: limita todos os motores a media que as bombas sustentam; depois tenta subir aos poucos.
-    if slow and S.phase == "ASCENT" and now - burnStart > 2 and now - (orb.balT or -99) > (CFG.balance_every or 1.5) then
+    if slow and S.phase == "ASCENT" and now - burnStart > 2 and now - (orb.balT or -99) > (CFG.balance_every) then
       orb.balT = now
       local vals, fns = {}, {}
       local names = stageEngines(S.stage)
@@ -935,8 +894,8 @@ local function voo()
           end
         end
         local cap = S.thrCap or CFG.max_thrust_n
-        if hi > 0 and (hi - lo) / hi > (CFG.balance_spread or 0.2) then
-          local newCap = math.max(CFG.balance_min or 100, math.floor(sum / cnt / 50) * 50)
+        if hi > 0 and (hi - lo) / hi > (CFG.balance_spread) then
+          local newCap = math.max(CFG.balance_min, math.floor(sum / cnt / 50) * 50)
           if newCap < cap then
             S.thrCap = newCap
             save()
@@ -1018,7 +977,7 @@ local function voo()
 
     elseif S.phase == "DEORBIT" then
       -- queima contra o movimento orbital ate o periastro ficar baixo
-      local alvo = CFG.deorbit_peri or 8000
+      local alvo = CFG.deorbit_peri
       if slow and dsd and not inSpace then
         setPhase("POUSO", "saiu do espaco durante o deorbit")
       elseif dsd and dsd.velocity and dsd.velocity.x == dsd.velocity.x then
@@ -1071,9 +1030,9 @@ local function voo()
       -- chao: 'voo descer <Y>' ou ground_y na config. Sem chao conhecido, usa um teto
       -- seguro (land_ceiling_y) e desce devagar dali ate encostar no chao.
       local groundY = S.groundY or CFG.ground_y
-      local off = CFG.land_offset or 3          -- altura do centro de massa com a nave no chao
+      local off = CFG.land_offset          -- altura do centro de massa com a nave no chao
       local h = groundY and (ship.pos.y - groundY - off) or nil
-      local slowTop = groundY and (groundY + off + (CFG.land_slow_h or 40)) or (CFG.land_ceiling_y or 400)
+      local slowTop = groundY and (groundY + off + (CFG.land_slow_h)) or (CFG.land_ceiling_y)
       local hTop = ship.pos.y - slowTop          -- altura acima da zona de descida lenta
 
       local nEng = 0
@@ -1082,14 +1041,14 @@ local function voo()
       end
       local Fmax = nEng * CFG.max_thrust_n
       local aMax = Fmax / math.max(ship.mass, 1) - gUse
-      local vFinal = CFG.land_speed or 3
+      local vFinal = CFG.land_speed
 
       -- velocidade vertical alvo
       local vT
       if hTop > 0 then
         local aB = math.max(aMax * 0.5, 0.5)
         vT = -math.max(vFinal, math.sqrt(2 * aB * hTop))
-        vT = math.max(vT, -(CFG.land_max_speed or 120))
+        vT = math.max(vT, -(CFG.land_max_speed))
       else
         vT = -vFinal
         if h then vT = -clamp(h * 0.3, 1.5, vFinal) end
@@ -1106,11 +1065,11 @@ local function voo()
       local aH = V(0, 0, 0)
       if hs > 0.3 then
         aH = vh * (-0.4)
-        local aHmax = CFG.land_h_accel or 8
+        local aHmax = CFG.land_h_accel
         if aH:length() > aHmax then aH = aH * (aHmax / aH:length()) end
       end
       -- inclinacao maxima: 60 graus longe do chao, 25 graus perto
-      local tanMax = math.tan(math.rad(hTop > 0 and (CFG.land_max_tilt_high or 60) or (CFG.land_max_tilt or 25)))
+      local tanMax = math.tan(math.rad(hTop > 0 and (CFG.land_max_tilt_high) or (CFG.land_max_tilt)))
       local aHl = aH:length()
       if aHl > aV * tanMax then
         if hTop > 0 then aV = aHl / tanMax             -- longe do chao: sobe um pouco para frear de lado
@@ -1130,7 +1089,7 @@ local function voo()
       -- gyrodyne ajuda a apontar: contra o movimento quando cai rapido, senao nariz para cima
       if vy < -2 and speed > 3 then gyroMode("retrograde") else gyroMode("radial_out") end
       -- primeiro aponta, depois acende: desalinhado, so o Vector Thruster empurra (para girar)
-      local okAng = land.lastErr < (CFG.land_align_deg or 15)
+      local okAng = land.lastErr < (CFG.land_align_deg)
       if okAng then
         setThrottle(S.stage, thr)
       elseif rcsReady() then
@@ -1139,7 +1098,7 @@ local function voo()
         orientThrottle(S.stage)
       end
 
-      err, gx, gz = steer(ship, tgt, CFG.land_cc_gimbal ~= false)
+      err, gx, gz = steer(ship, tgt, CFG.land_cc_gimbal)
       if rcsReady() then rcsControl(ship, tgt) end
 
       -- toque no chao: pela altura (se o chao e conhecido) ou por contato
@@ -1191,22 +1150,22 @@ local function voo()
         rcsControl(ship, orb.dir)
         -- se em 30 s o erro nao cair pelo menos 5 graus, o RCS nao da conta: volta para o motor
         if err < 10 or not orb.rcsBest or err < orb.rcsBest - 5 then orb.rcsBest, orb.rcsT = err, now end
-        if err >= 10 and now - orb.rcsT > (CFG.rcs_timeout or 30) then
+        if err >= 10 and now - orb.rcsT > (CFG.rcs_timeout) then
           rcs.failed = true
           rcsOff()
-          L.warn("RCS nao conseguiu apontar a nave em %ds (erro %.0f): girando com o motor principal", CFG.rcs_timeout or 30, err)
+          L.warn("RCS nao conseguiu apontar a nave em %ds (erro %.0f): girando com o motor principal", CFG.rcs_timeout, err)
           useRcs = false
         end
       end
       local peri = periAlt(dsd)
       local sma = dsd and dsd.semiMajorAxis
-      local alvo = math.min(CFG.orbit_peri_alt or 23000, (dist == dist and dist or 1e9) - 300)
+      local alvo = math.min(CFG.orbit_peri_alt, (dist == dist and dist or 1e9) - 300)
 
       if S.phase == "COAST" then
         -- ja vai apontando para a queima: com RCS nao gasta lava; sem RCS so o Vector Thruster empurra
         -- histerese: comeca a girar acima de 5 graus e so para quando estiver a menos de 2 e quase sem girar
         local w = ship.angv and ship.angv:length() or 0
-        if err > (CFG.align_deg or 5) then orb.orienting = true end
+        if err > (CFG.align_deg) then orb.orienting = true end
         if err < 2 and w < 0.02 then orb.orienting = false end
         if not useRcs and orb.orienting then orientThrottle(S.stage) else setThrottle(S.stage, 0) end
         if slow and dsd and ((orb.vrOk and vr <= 1) or (peri == peri and peri >= alvo)) then
@@ -1217,7 +1176,7 @@ local function voo()
         local aligned = alignedFor(orb, err, ship)
         -- perto do alvo reduz o empuxo para nao passar do ponto
         local falta = (peri == peri) and (alvo - peri) or math.huge
-        local full = clamp(falta / (CFG.circ_slow_m or 50000), 0.2, 1)
+        local full = clamp(falta / (CFG.circ_slow_m), 0.2, 1)
         if aligned then
           setThrottle(S.stage, full)
         elseif useRcs then
@@ -1296,7 +1255,7 @@ local function voo()
     elseif S.phase == "CIRC" then wantStab = orb.burning == true
     elseif S.phase == "DEORBIT" then wantStab = deorbit.burning == true
     elseif S.phase == "REENTRADA" then wantStab = true
-    elseif S.phase == "POUSO" then wantStab = land.lastErr < (CFG.land_align_deg or 15)
+    elseif S.phase == "POUSO" then wantStab = land.lastErr < (CFG.land_align_deg)
     elseif S.phase == "ASCENT" or S.phase == "BALISTICO" then wantStab = CFG.stab_ascent == true
     end
     stabilizer(wantStab)
@@ -1348,7 +1307,7 @@ local function descer()
   if gy then S.groundY = gy L.info("Chao definido em Y=%.1f", gy) end
   if not S.groundY and not CFG.ground_y then
     L.warn("Chao desconhecido: freia ate Y=%s e desce a %s m/s ate encostar. Use 'voo descer <Y do chao>' se souber.",
-      tostring(CFG.land_ceiling_y or 400), tostring(CFG.land_speed or 3))
+      tostring(CFG.land_ceiling_y), tostring(CFG.land_speed))
   end
   csvLine({ "t", "fase", "est", "y", "vel", "vy", "massa", "empuxo", "incl", "erro", "gx", "gz", "ecc", "dist" })
   local d = sputnik() or {}

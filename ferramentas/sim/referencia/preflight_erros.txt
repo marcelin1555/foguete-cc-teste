@@ -6,10 +6,11 @@
     0.15 erro ERRO: nenhum Vector Thruster no estagio 1: o foguete nao tem como corrigir a direcao e vai tombar (ligue um modem no Vector Thruster e rode setup)
     0.15 erro ERRO: TWR 0.23 abaixo de 1.15: o foguete so flutua e escorrega de lado (mais motores ou menos peso)
     0.15 tela AVISO: rocket_thruster_9 esta conectado mas NAO esta na config (rode setup)
+    0.15 tela AVISO: chave desconhecida no config.lua: kp_errado (erro de digitacao?)
     0.15 tela Teste de gimbal: olhe os bocais dos Vector Thrusters.
     0.15 tela   inclinando o escape para +X por 3s
     3.15 tela   inclinando o escape para +Z por 3s
-    6.15 tela Pronto. 2 erros, 1 avisos. Veja: logs
+    6.15 tela Pronto. 2 erros, 2 avisos. Veja: logs
     6.15 fim de voo.lua
 ==== arquivo config.lua
 return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
@@ -27,6 +28,7 @@ return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, 
 [   0.15] INFO  CHECAGEM lava=2000 mB em 2 tanques/motores
 [   0.15] INFO  CHECAGEM empuxo_max=1000 TWR=0.23
 [   0.15] ERRO  CHECAGEM TWR 0.23 abaixo de 1.15: o foguete so flutua e escorrega de lado (mais motores ou menos peso)
-[   6.15] INFO  Teste concluido: 2 erros, 1 avisos
+[   0.15] AVISO CHECAGEM chave desconhecida no config.lua: kp_errado (erro de digitacao?)
+[   6.15] INFO  Teste concluido: 2 erros, 2 avisos
 
 mundo final: y=63.00 vy=0.00 espaco=false
