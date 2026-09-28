@@ -1,3 +1,4 @@
+-- versao: 1
 -- GUIAGEM DO FOGUETE (cole num no "Lua Script" do Sputnik)
 -- Roda a cada tick no servidor. Enquanto algum Vector Thruster estiver queimando,
 -- aponta o nariz do foguete (+Y do foguete como construido):
