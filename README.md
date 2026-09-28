@@ -7,14 +7,33 @@ Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso c
 
 | Arquivo | O que faz |
 |---|---|
-| `voo.lua` | piloto automático (subida, órbita, descida, pouso) |
+| `voo.lua` | comando do piloto automático (subida, órbita, descida, pouso); o código fica em `lib/foguete/` |
 | `setup.lua` | detecta os motores e gera o `config.lua` |
 | `startup.lua` | roda o `voo` ao ligar (e retoma o voo depois de trocar de dimensão) |
 | `parar.lua` | emergência: desliga todos os motores líquidos |
-| `logs.lua` / `log.lua` | mostra e grava os logs (um arquivo por voo em `/logs`) |
-| `atualizar.lua` | baixa a versão mais nova deste repositório |
+| `logs.lua` | mostra os logs (um arquivo por voo em `/logs`) |
+| `atualizar.lua` | baixa a versão mais nova deste repositório (a lista está em `arquivos.txt`) |
 | `diagnostico.lua` | lista tudo que o computador enxerga (motores, modems, config) |
 | `sputnik_guiagem.lua` | script do nó "Lua Script" da Sputnik (gravity turn na subida) |
+
+### Código do voo (`lib/foguete/`)
+
+| Módulo | O que faz |
+|---|---|
+| `laco.lua` | laço principal: lê os sensores, troca de estágio, chama a fase atual, telemetria |
+| `fases/plataforma.lua` | checagem, botão e contagem |
+| `fases/subida.lua` | ASCENT e BALISTICO (gravity turn) |
+| `fases/orbita.lua` | COAST e CIRC (apoastro e circularização) |
+| `fases/deorbit.lua`, `fases/reentrada.lua`, `fases/pouso.lua` | descida até o chão |
+| `config.lua` | **todos os valores padrão** do `config.lua` do foguete (`PADROES`) |
+| `estado.lua` | `estado.txt` e troca de fase |
+| `motores.lua` | acelerador, ignição, desligar, equilíbrio de empuxo |
+| `controle.lua` | gimbal (PD+I), alinhar antes de acender, Magnetic Stabilizer |
+| `separacao.lua` | separadores, boosters e troca de estágio |
+| `sensores.lua`, `sputnik.lua` | leitura da nave e dados orbitais |
+| `checagem.lua` | preflight e `voo teste` |
+| `rcs.lua` | RCS (só age com `rcs_enabled = true`) |
+| `tela.lua`, `telemetria.lua`, `log.lua`, `mat.lua` | tela, CSV, logs e matemática |
 
 `config.lua`, `estado.txt`, `rcs.cal` e a pasta `logs/` ficam só no computador do jogo. Eles não vão para o repositório.
 
@@ -23,8 +42,11 @@ Ele cuida da subida até a órbita, da circularização, do deorbit e do pouso c
 ```
 wget https://raw.githubusercontent.com/marcelin1555/foguete-cc-teste/main/atualizar.lua
 atualizar
+atualizar
 setup
 ```
+
+Rode `atualizar` **duas vezes** na primeira instalação ou vindo de uma versão antiga: a primeira baixa o atualizador novo, a segunda baixa a pasta `lib/`.
 
 ## Atualizar
 
@@ -32,6 +54,9 @@ setup
 atualizar            -- todos os scripts
 atualizar voo.lua    -- só um arquivo
 ```
+
+O atualizador é **tudo ou nada**: se a internet cair ou um arquivo vier com erro, nada é trocado.
+Ele só pede para colar de novo o script da Sputnik quando o `sputnik_guiagem.lua` realmente mudou.
 
 ## Comandos de voo
 
@@ -71,8 +96,6 @@ No espaço (circularização, deorbit) e no pouso, a nave **primeiro aponta e s�
   O piloto desliga enquanto o Vector Thruster gira e liga quando a nave já está alinhada
   (esperando o apoastro, queimando, reentrada e pouso). Na subida fica desligado (`stab_ascent = true` para ligar).
   O `setup` pergunta o lado do computador (ou `redstone_relay`) ligado a ele (`stabilizer`).
-- **Gyrodyne** (só no Cosmonautics 1.4+, que ainda não saiu): se houver um ligado ao computador, no pouso ele fica
-  em `retrograde` ou `radial_out`. Na versão 26.08 ele não existe e isso é ignorado.
 
 ### Equilíbrio de empuxo (bombas sem vazão)
 
@@ -164,6 +187,20 @@ O toque é detectado sozinho.
 | `land_h_accel` | 8 | aceleração máxima para frear a deriva lateral |
 | `land_orient_n` | 100 | empuxo mínimo por motor só para girar a nave |
 | `land_cc_gimbal` | true | o computador controla o gimbal no pouso |
+
+## Simulador (fora do jogo)
+
+Precisa de Python 3 com `lupa` (`pip install lupa`). Na raiz do repositório:
+
+```
+py ferramentas/sim/testar.py                 -- roda todos os cenários e compara com a referência
+py ferramentas/sim/testar.py descida         -- um cenário
+py ferramentas/sim/testar.py --gravar        -- regrava a referência
+```
+
+Os cenários ficam em `ferramentas/sim/cenarios/` e a referência em `ferramentas/sim/referencia/`.
+A referência registra cada comando mandado aos motores, a redstone, a tela, os logs e o estado final.
+**Mudança de comportamento de propósito = regravar a referência e explicar o motivo no commit.**
 
 ## Documentação do projeto
 

@@ -1,0 +1,809 @@
+    0.00 call rocketnautics:rocket_thruster_0.setThrust(0.000)
+    0.00 call rocketnautics:rocket_thruster_0.setActive(false)
+    0.00 call rocketnautics:rocket_thruster_1.setThrust(0.000)
+    0.00 call rocketnautics:rocket_thruster_1.setActive(false)
+    0.00 call rocketnautics:rocket_thruster_2.setThrust(0.000)
+    0.00 call rocketnautics:rocket_thruster_2.setActive(false)
+    0.00 call rocketnautics:rocket_thruster_3.setThrust(0.000)
+    0.00 call rocketnautics:rocket_thruster_3.setActive(false)
+    0.00 call rocketnautics:vector_thruster_1.setThrust(0.000)
+    0.00 call rocketnautics:vector_thruster_1.setActive(false)
+    0.15 desenho [limpa]
+    0.15 desenho == FOGUETE NA PLATAFORMA ==
+    0.15 desenho TWR E1: 2.85  estagios: 1
+    0.15 desenho Aperte o botao (left) ou digite L
+    0.15 desenho [limpa]
+    0.15 desenho == CONTAGEM ==
+    0.15 desenho T-3
+    0.15 desenho Digite A para abortar
+    0.20 desenho [limpa]
+    0.20 desenho == CONTAGEM ==
+    0.20 desenho T-2
+    0.20 desenho Digite A para abortar
+    0.25 desenho [limpa]
+    0.25 desenho == CONTAGEM ==
+    0.25 desenho T-1
+    0.25 desenho Digite A para abortar
+    0.35 call rocketnautics:rocket_thruster_0.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_1.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_2.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_3.setActive(true)
+    0.35 call rocketnautics:vector_thruster_1.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_0.setThrust(1000.000)
+    0.35 call rocketnautics:rocket_thruster_0.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_1.setThrust(1000.000)
+    0.35 call rocketnautics:rocket_thruster_1.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_2.setThrust(1000.000)
+    0.35 call rocketnautics:rocket_thruster_2.setActive(true)
+    0.35 call rocketnautics:rocket_thruster_3.setThrust(1000.000)
+    0.35 call rocketnautics:rocket_thruster_3.setActive(true)
+    0.35 call rocketnautics:vector_thruster_1.setThrust(1000.000)
+    0.35 call rocketnautics:vector_thruster_1.setActive(true)
+    0.55 call rocketnautics:rocket_thruster_0.setThrust(850.000)
+    0.55 call rocketnautics:rocket_thruster_0.setActive(true)
+    0.55 call rocketnautics:rocket_thruster_1.setThrust(850.000)
+    0.55 call rocketnautics:rocket_thruster_1.setActive(true)
+    0.55 call rocketnautics:rocket_thruster_2.setThrust(850.000)
+    0.55 call rocketnautics:rocket_thruster_2.setActive(true)
+    0.55 call rocketnautics:rocket_thruster_3.setThrust(850.000)
+    0.55 call rocketnautics:rocket_thruster_3.setActive(true)
+    0.55 call rocketnautics:vector_thruster_1.setThrust(850.000)
+    0.55 call rocketnautics:vector_thruster_1.setActive(true)
+    0.60 redstone right false
+    1.05 desenho [limpa]
+    1.05 desenho == ASCENT == estagio 1/1
+    1.05 desenho Y 66   vel 9.5   vy 9.5
+    1.05 desenho Empuxo 4250 N   massa 160
+    1.05 desenho Inclin 0.0   erro 0.0
+    1.05 desenho 
+    1.60 desenho [limpa]
+    1.60 desenho == ASCENT == estagio 1/1
+    1.60 desenho Y 74   vel 18.2   vy 18.2
+    1.60 desenho Empuxo 4250 N   massa 160
+    1.60 desenho Inclin 0.0   erro 0.0
+    1.60 desenho 
+    2.15 desenho [limpa]
+    2.15 desenho == ASCENT == estagio 1/1
+    2.15 desenho Y 86   vel 26.8   vy 26.8
+    2.15 desenho Empuxo 4250 N   massa 160
+    2.15 desenho Inclin 0.0   erro 0.0
+    2.15 desenho 
+    2.75 desenho [limpa]
+    2.75 desenho == ASCENT == estagio 1/1
+    2.75 desenho Y 104   vel 35.4   vy 35.4
+    2.75 desenho Empuxo 4250 N   massa 160
+    2.75 desenho Inclin 0.0   erro 0.0
+    2.75 desenho 
+    3.30 desenho [limpa]
+    3.30 desenho == ASCENT == estagio 1/1
+    3.30 desenho Y 128   vel 44.7   vy 44.7
+    3.30 desenho Empuxo 4250 N   massa 160
+    3.30 desenho Inclin 0.0   erro 0.0
+    3.30 desenho 
+    3.85 desenho [limpa]
+    3.85 desenho == ASCENT == estagio 1/1
+    3.85 desenho Y 155   vel 53.4   vy 53.4
+    3.85 desenho Empuxo 4250 N   massa 160
+    3.85 desenho Inclin 0.0   erro 0.0
+    3.85 desenho 
+    4.45 desenho [limpa]
+    4.45 desenho == ASCENT == estagio 1/1
+    4.45 desenho Y 187   vel 62.0   vy 62.0
+    4.45 desenho Empuxo 4250 N   massa 160
+    4.45 desenho Inclin 0.0   erro 0.0
+    4.45 desenho 
+    5.00 desenho [limpa]
+    5.00 desenho == ASCENT == estagio 1/1
+    5.00 desenho Y 227   vel 71.3   vy 71.3
+    5.00 desenho Empuxo 4250 N   massa 160
+    5.00 desenho Inclin 0.0   erro 0.0
+    5.00 desenho 
+    5.65 desenho [limpa]
+    5.65 desenho == ASCENT == estagio 1/1
+    5.65 desenho Y 269   vel 80.0   vy 80.0
+    5.65 desenho Empuxo 4250 N   massa 160
+    5.65 desenho Inclin 0.0   erro 0.0
+    5.65 desenho 
+    6.25 desenho [limpa]
+    6.25 desenho == ASCENT == estagio 1/1
+    6.25 desenho Y 334   vel 91.7   vy 91.7
+    6.25 desenho Empuxo 4250 N   massa 160
+    6.25 desenho Inclin 1.0   erro 1.0
+    6.25 desenho 
+    6.80 desenho [limpa]
+    6.80 desenho == ASCENT == estagio 1/1
+    6.80 desenho Y 387   vel 100.3   vy 100.3
+    6.80 desenho Empuxo 4250 N   massa 160
+    6.80 desenho Inclin 2.2   erro 2.2
+    6.80 desenho 
+    7.35 desenho [limpa]
+    7.35 desenho == ASCENT == estagio 1/1
+    7.35 desenho Y 445   vel 108.9   vy 108.9
+    7.35 desenho Empuxo 4250 N   massa 160
+    7.35 desenho Inclin 3.1   erro 3.1
+    7.35 desenho 
+    7.95 desenho [limpa]
+    7.95 desenho == ASCENT == estagio 1/1
+    7.95 desenho Y 513   vel 118.3   vy 118.3
+    7.95 desenho Empuxo 4250 N   massa 160
+    7.95 desenho Inclin 4.0   erro 4.0
+    7.95 desenho 
+    8.50 desenho [limpa]
+    8.50 desenho == ASCENT == estagio 1/1
+    8.50 desenho Y 581   vel 126.9   vy 126.9
+    8.50 desenho Empuxo 4250 N   massa 160
+    8.50 desenho Inclin 4.8   erro 4.8
+    8.50 desenho 
+    9.05 desenho [limpa]
+    9.05 desenho == ASCENT == estagio 1/1
+    9.05 desenho Y 653   vel 135.5   vy 135.5
+    9.05 desenho Empuxo 4250 N   massa 160
+    9.05 desenho Inclin 5.5   erro 5.5
+    9.05 desenho 
+    9.65 desenho [limpa]
+    9.65 desenho == ASCENT == estagio 1/1
+    9.65 desenho Y 737   vel 144.9   vy 144.9
+    9.65 desenho Empuxo 4250 N   massa 160
+    9.65 desenho Inclin 6.3   erro 6.3
+    9.65 desenho 
+   10.20 desenho [limpa]
+   10.20 desenho == ASCENT == estagio 1/1
+   10.20 desenho Y 820   vel 153.5   vy 153.5
+   10.20 desenho Empuxo 4250 N   massa 160
+   10.20 desenho Inclin 7.0   erro 7.0
+   10.20 desenho 
+   10.85 desenho [limpa]
+   10.85 desenho == ASCENT == estagio 1/1
+   10.85 desenho Y 923   vel 163.7   vy 163.7
+   10.85 desenho Empuxo 4250 N   massa 160
+   10.85 desenho Inclin 7.8   erro 7.8
+   10.85 desenho 
+   11.50 desenho [limpa]
+   11.50 desenho == ASCENT == estagio 1/1
+   11.50 desenho Y 1024   vel 173.0   vy 173.0
+   11.50 desenho Empuxo 4250 N   massa 160
+   11.50 desenho Inclin 8.6   erro 8.6
+   11.50 desenho 
+   12.05 desenho [limpa]
+   12.05 desenho == ASCENT == estagio 1/1
+   12.05 desenho Y 1122   vel 181.6   vy 181.6
+   12.05 desenho Empuxo 4250 N   massa 160
+   12.05 desenho Inclin 9.3   erro 9.3
+   12.05 desenho 
+   12.65 desenho [limpa]
+   12.65 desenho == ASCENT == estagio 1/1
+   12.65 desenho Y 1224   vel 190.3   vy 190.3
+   12.65 desenho Empuxo 4250 N   massa 160
+   12.65 desenho Inclin 10.0   erro 10.0
+   12.65 desenho 
+   13.20 desenho [limpa]
+   13.20 desenho == ASCENT == estagio 1/1
+   13.20 desenho Y 1352   vel 200.4   vy 200.4
+   13.20 desenho Empuxo 4250 N   massa 160
+   13.20 desenho Inclin 10.8   erro 10.8
+   13.20 desenho 
+   13.75 desenho [limpa]
+   13.75 desenho == ASCENT == estagio 1/1
+   13.75 desenho Y 1464   vel 209.0   vy 209.0
+   13.75 desenho Empuxo 4250 N   massa 160
+   13.75 desenho Inclin 11.5   erro 11.5
+   13.75 desenho 
+   14.35 desenho [limpa]
+   14.35 desenho == ASCENT == estagio 1/1
+   14.35 desenho Y 1593   vel 218.4   vy 218.4
+   14.35 desenho Empuxo 4250 N   massa 160
+   14.35 desenho Inclin 12.2   erro 12.2
+   14.35 desenho 
+   14.90 desenho [limpa]
+   14.90 desenho == ASCENT == estagio 1/1
+   14.90 desenho Y 1716   vel 227.0   vy 227.0
+   14.90 desenho Empuxo 4250 N   massa 160
+   14.90 desenho Inclin 12.9   erro 12.9
+   14.90 desenho 
+   15.45 desenho [limpa]
+   15.45 desenho == ASCENT == estagio 1/1
+   15.45 desenho Y 1843   vel 235.6   vy 235.6
+   15.45 desenho Empuxo 4250 N   massa 160
+   15.45 desenho Inclin 13.6   erro 13.6
+   15.45 desenho 
+   16.15 desenho [limpa]
+   16.15 desenho == ASCENT == estagio 1/1
+   16.15 desenho Y 2012   vel 246.6   vy 246.6
+   16.15 desenho Empuxo 4250 N   massa 160
+   16.15 desenho Inclin 14.5   erro 14.5
+   16.15 desenho 
+   16.70 desenho [limpa]
+   16.70 desenho == ASCENT == estagio 1/1
+   16.70 desenho Y 2150   vel 255.2   vy 255.2
+   16.70 desenho Empuxo 4250 N   massa 160
+   16.70 desenho Inclin 15.2   erro 15.2
+   16.70 desenho 
+   17.25 desenho [limpa]
+   17.25 desenho == ASCENT == estagio 1/1
+   17.25 desenho Y 2293   vel 263.8   vy 263.8
+   17.25 desenho Empuxo 4250 N   massa 160
+   17.25 desenho Inclin 15.9   erro 15.9
+   17.25 desenho 
+   17.90 desenho [limpa]
+   17.90 desenho == ASCENT == estagio 1/1
+   17.90 desenho Y 2455   vel 273.2   vy 273.2
+   17.90 desenho Empuxo 4250 N   massa 160
+   17.90 desenho Inclin 16.7   erro 16.7
+   17.90 desenho 
+   18.45 desenho [limpa]
+   18.45 desenho == ASCENT == estagio 1/1
+   18.45 desenho Y 2607   vel 281.8   vy 281.8
+   18.45 desenho Empuxo 4250 N   massa 160
+   18.45 desenho Inclin 17.4   erro 17.4
+   18.45 desenho 
+   19.05 desenho [limpa]
+   19.05 desenho == ASCENT == estagio 1/1
+   19.05 desenho Y 2765   vel 290.4   vy 290.4
+   19.05 desenho Empuxo 4250 N   massa 160
+   19.05 desenho Inclin 18.1   erro 18.1
+   19.05 desenho 
+   19.60 desenho [limpa]
+   19.60 desenho == ASCENT == estagio 1/1
+   19.60 desenho Y 2957   vel 300.6   vy 300.6
+   19.60 desenho Empuxo 4250 N   massa 160
+   19.60 desenho Inclin 18.9   erro 18.9
+   19.60 desenho 
+   20.15 desenho [limpa]
+   20.15 desenho == ASCENT == estagio 1/1
+   20.15 desenho Y 3125   vel 309.2   vy 309.2
+   20.15 desenho Empuxo 4250 N   massa 160
+   20.15 desenho Inclin 19.6   erro 19.6
+   20.15 desenho 
+   20.85 desenho [limpa]
+   20.85 desenho == ASCENT == estagio 1/1
+   20.85 desenho Y 3346   vel 320.1   vy 320.1
+   20.85 desenho Empuxo 4250 N   massa 160
+   20.85 desenho Inclin 20.5   erro 20.5
+   20.85 desenho 
+   21.40 desenho [limpa]
+   21.40 desenho == ASCENT == estagio 1/1
+   21.40 desenho Y 3524   vel 328.7   vy 328.7
+   21.40 desenho Empuxo 4250 N   massa 160
+   21.40 desenho Inclin 21.2   erro 21.2
+   21.40 desenho 
+   21.95 desenho [limpa]
+   21.95 desenho == ASCENT == estagio 1/1
+   21.95 desenho Y 3708   vel 337.3   vy 337.3
+   21.95 desenho Empuxo 4250 N   massa 160
+   21.95 desenho Inclin 22.0   erro 22.0
+   21.95 desenho 
+   22.55 desenho [limpa]
+   22.55 desenho == ASCENT == estagio 1/1
+   22.55 desenho Y 3913   vel 346.7   vy 346.7
+   22.55 desenho Empuxo 4250 N   massa 160
+   22.55 desenho Inclin 22.7   erro 22.7
+   22.55 desenho 
+   23.10 desenho [limpa]
+   23.10 desenho == ASCENT == estagio 1/1
+   23.10 desenho Y 4106   vel 355.3   vy 355.3
+   23.10 desenho Empuxo 4250 N   massa 160
+   23.10 desenho Inclin 23.5   erro 23.5
+   23.10 desenho 
+   23.65 desenho [limpa]
+   23.65 desenho == ASCENT == estagio 1/1
+   23.65 desenho Y 4304   vel 363.9   vy 363.9
+   23.65 desenho Empuxo 4250 N   massa 160
+   23.65 desenho Inclin 24.2   erro 24.2
+   23.65 desenho 
+   24.30 desenho [limpa]
+   24.30 desenho == ASCENT == estagio 1/1
+   24.30 desenho Y 4526   vel 373.3   vy 373.3
+   24.30 desenho Empuxo 4250 N   massa 160
+   24.30 desenho Inclin 25.0   erro 25.0
+   24.30 desenho 
+   24.85 desenho [limpa]
+   24.85 desenho == ASCENT == estagio 1/1
+   24.85 desenho Y 4734   vel 381.9   vy 381.9
+   24.85 desenho Empuxo 4250 N   massa 160
+   24.85 desenho Inclin 25.7   erro 25.7
+   24.85 desenho 
+   25.45 desenho [limpa]
+   25.45 desenho == ASCENT == estagio 1/1
+   25.45 desenho Y 4946   vel 390.5   vy 390.5
+   25.45 desenho Empuxo 4250 N   massa 160
+   25.45 desenho Inclin 26.5   erro 26.5
+   25.45 desenho 
+   26.10 desenho [limpa]
+   26.10 desenho == ASCENT == estagio 1/1
+   26.10 desenho Y 5244   vel 402.3   vy 402.3
+   26.10 desenho Empuxo 4250 N   massa 160
+   26.10 desenho Inclin 27.5   erro 27.5
+   26.10 desenho 
+   26.65 desenho [limpa]
+   26.65 desenho == ASCENT == estagio 1/1
+   26.65 desenho Y 5468   vel 410.9   vy 410.9
+   26.65 desenho Empuxo 4250 N   massa 160
+   26.65 desenho Inclin 28.2   erro 28.2
+   26.65 desenho 
+   27.25 desenho [limpa]
+   27.25 desenho == ASCENT == estagio 1/1
+   27.25 desenho Y 5717   vel 420.2   vy 420.2
+   27.25 desenho Empuxo 4250 N   massa 160
+   27.25 desenho Inclin 29.0   erro 29.0
+   27.25 desenho 
+   27.80 desenho [limpa]
+   27.80 desenho == ASCENT == estagio 1/1
+   27.80 desenho Y 5951   vel 428.9   vy 428.9
+   27.80 desenho Empuxo 4250 N   massa 160
+   27.80 desenho Inclin 29.8   erro 29.8
+   27.80 desenho 
+   28.35 desenho [limpa]
+   28.35 desenho == ASCENT == estagio 1/1
+   28.35 desenho Y 6189   vel 437.5   vy 437.5
+   28.35 desenho Empuxo 4250 N   massa 160
+   28.35 desenho Inclin 30.5   erro 30.5
+   28.35 desenho 
+   28.95 desenho [limpa]
+   28.95 desenho == ASCENT == estagio 1/1
+   28.95 desenho Y 6455   vel 446.8   vy 446.8
+   28.95 desenho Empuxo 4250 N   massa 160
+   28.95 desenho Inclin 31.3   erro 31.3
+   28.95 desenho 
+   29.50 desenho [limpa]
+   29.50 desenho == ASCENT == estagio 1/1
+   29.50 desenho Y 6703   vel 455.5   vy 455.5
+   29.50 desenho Empuxo 4250 N   massa 160
+   29.50 desenho Inclin 32.1   erro 32.1
+   29.50 desenho 
+   30.05 desenho [limpa]
+   30.05 desenho == ASCENT == estagio 1/1
+   30.05 desenho Y 6956   vel 464.1   vy 464.1
+   30.05 desenho Empuxo 4250 N   massa 160
+   30.05 desenho Inclin 32.8   erro 32.8
+   30.05 desenho 
+   30.70 desenho [limpa]
+   30.70 desenho == ASCENT == estagio 1/1
+   30.70 desenho Y 7238   vel 473.4   vy 473.4
+   30.70 desenho Empuxo 4250 N   massa 160
+   30.70 desenho Inclin 33.7   erro 33.7
+   30.70 desenho 
+   31.25 desenho [limpa]
+   31.25 desenho == ASCENT == estagio 1/1
+   31.25 desenho Y 7501   vel 482.0   vy 482.0
+   31.25 desenho Empuxo 4250 N   massa 160
+   31.25 desenho Inclin 34.4   erro 34.4
+   31.25 desenho 
+   31.85 desenho [limpa]
+   31.85 desenho == ASCENT == estagio 1/1
+   31.85 desenho Y 7769   vel 490.7   vy 490.7
+   31.85 desenho Empuxo 4250 N   massa 160
+   31.85 desenho Inclin 35.2   erro 35.2
+   31.85 desenho 
+   32.40 desenho [limpa]
+   32.40 desenho == ASCENT == estagio 1/1
+   32.40 desenho Y 8066   vel 500.0   vy 500.0
+   32.40 desenho Empuxo 4250 N   massa 160
+   32.40 desenho Inclin 36.0   erro 36.0
+   32.40 desenho 
+   32.95 desenho [limpa]
+   32.95 desenho == ASCENT == estagio 1/1
+   32.95 desenho Y 8344   vel 508.6   vy 508.6
+   32.95 desenho Empuxo 4250 N   massa 160
+   32.95 desenho Inclin 36.8   erro 36.8
+   32.95 desenho 
+   33.55 desenho [limpa]
+   33.55 desenho == ASCENT == estagio 1/1
+   33.55 desenho Y 8626   vel 517.3   vy 517.3
+   33.55 desenho Empuxo 4250 N   massa 160
+   33.55 desenho Inclin 37.6   erro 37.6
+   33.55 desenho 
+   34.10 desenho [limpa]
+   34.10 desenho == ASCENT == estagio 1/1
+   34.10 desenho Y 8939   vel 526.6   vy 526.6
+   34.10 desenho Empuxo 4250 N   massa 160
+   34.10 desenho Inclin 38.4   erro 38.4
+   34.10 desenho 
+   34.65 desenho [limpa]
+   34.65 desenho == ASCENT == estagio 1/1
+   34.65 desenho Y 9232   vel 535.2   vy 535.2
+   34.65 desenho Empuxo 4250 N   massa 160
+   34.65 desenho Inclin 39.2   erro 39.2
+   34.65 desenho 
+   35.25 desenho [limpa]
+   35.25 desenho == ASCENT == estagio 1/1
+   35.25 desenho Y 9529   vel 543.8   vy 543.8
+   35.25 desenho Empuxo 4250 N   massa 160
+   35.25 desenho Inclin 40.0   erro 40.0
+   35.25 desenho 
+   35.80 desenho [limpa]
+   35.80 desenho == ASCENT == estagio 1/1
+   35.80 desenho Y 9858   vel 553.2   vy 553.2
+   35.80 desenho Empuxo 4250 N   massa 160
+   35.80 desenho Inclin 40.8   erro 40.8
+   35.80 desenho 
+   36.35 desenho [limpa]
+   36.35 desenho == ASCENT == estagio 1/1
+   36.35 desenho Y 10165   vel 561.8   vy 561.8
+   36.35 desenho Empuxo 4250 N   massa 160
+   36.35 desenho Inclin 41.6   erro 41.6
+   36.35 desenho 
+   36.95 desenho [limpa]
+   36.95 desenho == ASCENT == estagio 1/1
+   36.95 desenho Y 10476   vel 570.4   vy 570.4
+   36.95 desenho Empuxo 4250 N   massa 160
+   36.95 desenho Inclin 42.4   erro 42.4
+   36.95 desenho 
+   37.50 desenho [limpa]
+   37.50 desenho == ASCENT == estagio 1/1
+   37.50 desenho Y 10822   vel 579.8   vy 579.8
+   37.50 desenho Empuxo 4250 N   massa 160
+   37.50 desenho Inclin 43.2   erro 43.2
+   37.50 desenho 
+   38.05 desenho [limpa]
+   38.05 desenho == ASCENT == estagio 1/1
+   38.05 desenho Y 11143   vel 588.4   vy 588.4
+   38.05 desenho Empuxo 4250 N   massa 160
+   38.05 desenho Inclin 44.0   erro 44.0
+   38.05 desenho 
+   38.65 desenho [limpa]
+   38.65 desenho == ASCENT == estagio 1/1
+   38.65 desenho Y 11469   vel 597.0   vy 597.0
+   38.65 desenho Empuxo 4250 N   massa 160
+   38.65 desenho Inclin 44.8   erro 44.8
+   38.65 desenho 
+   39.20 desenho [limpa]
+   39.20 desenho == ASCENT == estagio 1/1
+   39.20 desenho Y 11831   vel 606.4   vy 606.4
+   39.20 desenho Empuxo 4250 N   massa 160
+   39.20 desenho Inclin 45.7   erro 45.7
+   39.20 desenho 
+   39.75 desenho [limpa]
+   39.75 desenho == ASCENT == estagio 1/1
+   39.75 desenho Y 12167   vel 615.0   vy 615.0
+   39.75 desenho Empuxo 4250 N   massa 160
+   39.75 desenho Inclin 46.5   erro 46.5
+   39.75 desenho 
+   40.35 desenho [limpa]
+   40.35 desenho == ASCENT == estagio 1/1
+   40.35 desenho Y 12508   vel 623.6   vy 623.6
+   40.35 desenho Empuxo 4250 N   massa 160
+   40.35 desenho Inclin 47.3   erro 47.3
+   40.35 desenho 
+   40.90 desenho [limpa]
+   40.90 desenho == ASCENT == estagio 1/1
+   40.90 desenho Y 12885   vel 633.0   vy 633.0
+   40.90 desenho Empuxo 4250 N   massa 160
+   40.90 desenho Inclin 48.2   erro 48.2
+   40.90 desenho 
+   41.45 desenho [limpa]
+   41.45 desenho == ASCENT == estagio 1/1
+   41.45 desenho Y 13236   vel 641.6   vy 641.6
+   41.45 desenho Empuxo 4250 N   massa 160
+   41.45 desenho Inclin 49.0   erro 49.0
+   41.45 desenho 
+   42.05 desenho [limpa]
+   42.05 desenho == ASCENT == estagio 1/1
+   42.05 desenho Y 13591   vel 650.2   vy 650.2
+   42.05 desenho Empuxo 4250 N   massa 160
+   42.05 desenho Inclin 49.8   erro 49.8
+   42.05 desenho 
+   42.60 desenho [limpa]
+   42.60 desenho == ASCENT == estagio 1/1
+   42.60 desenho Y 13984   vel 659.6   vy 659.6
+   42.60 desenho Empuxo 4250 N   massa 160
+   42.60 desenho Inclin 50.6   erro 50.6
+   42.60 desenho 
+   43.15 desenho [limpa]
+   43.15 desenho == ASCENT == estagio 1/1
+   43.15 desenho Y 14350   vel 668.2   vy 668.2
+   43.15 desenho Empuxo 4250 N   massa 160
+   43.15 desenho Inclin 51.5   erro 51.5
+   43.15 desenho 
+   43.75 desenho [limpa]
+   43.75 desenho == ASCENT == estagio 1/1
+   43.75 desenho Y 14720   vel 676.8   vy 676.8
+   43.75 desenho Empuxo 4250 N   massa 160
+   43.75 desenho Inclin 52.3   erro 52.3
+   43.75 desenho 
+   44.30 desenho [limpa]
+   44.30 desenho == ASCENT == estagio 1/1
+   44.30 desenho Y 15129   vel 686.2   vy 686.2
+   44.30 desenho Empuxo 4250 N   massa 160
+   44.30 desenho Inclin 53.1   erro 53.1
+   44.30 desenho 
+   44.85 desenho [limpa]
+   44.85 desenho == ASCENT == estagio 1/1
+   44.85 desenho Y 15509   vel 694.8   vy 694.8
+   44.85 desenho Empuxo 4250 N   massa 160
+   44.85 desenho Inclin 54.0   erro 54.0
+   44.85 desenho 
+   45.05 fim de voo.lua (fim)
+==== arquivo config.lua
+return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
+ turn_start_alt=250, turn_end_angle=55, stages={{engines={"rocketnautics:rocket_thruster_0","rocketnautics:rocket_thruster_1",
+ "rocketnautics:rocket_thruster_2","rocketnautics:rocket_thruster_3","rocketnautics:vector_thruster_1"}}},
+ max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=3, ecc_target=0.02, sputnik="top", turn_end_y=16000,
+ steer_throttle=0.08, gimbal_sign=1, transfer_y=20000, stabilizer={side="right"} }
+==== arquivo estado.txt
+{failed={},logFile="/logs/2026-09-27_20-01-00_voo.txt",padY=63,phase="ASCENT",stage=1,t0=350}
+==== arquivo logs/2026-09-27_20-01-00_voo.txt
+
+========== PREPARACAO  (2026-09-27_20-02-00) ==========
+[   0.05] INFO  Motores liquidos desligados (5) - foguete na plataforma
+[   0.10] INFO  CHECAGEM massa=159.5 g=11.00 pos=(0.0, 63.0, 0.0)
+[   0.10] INFO  MOTOR pre rocket_thruster_0 [rocket_thruster] ativo=false lava=1000/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   0.10] INFO  MOTOR pre rocket_thruster_1 [rocket_thruster] ativo=false lava=1000/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   0.10] INFO  MOTOR pre rocket_thruster_2 [rocket_thruster] ativo=false lava=1000/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   0.10] INFO  MOTOR pre rocket_thruster_3 [rocket_thruster] ativo=false lava=1000/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   0.10] INFO  MOTOR pre vector_thruster_1 [vector_thruster] ativo=false lava=1000/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   0.15] INFO  CHECAGEM lava=5000 mB em 5 tanques/motores
+[   0.15] INFO  CHECAGEM Magnetic Stabilizer no lado right
+[   0.15] INFO  CHECAGEM empuxo_max=5000 TWR=2.85
+
+========== VOO  (2026-09-27_20-03-00) ==========
+[   0.05] INFO  FASE PAD -> ASCENT (lancamento)
+[   0.05] INFO  Acendendo estagio 1 (5 motores)
+[   0.30] INFO  ESTABILIZADOR desligado (livre para girar)
+[   2.25] INFO  FISICA y=100.2 vy=33.80 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[   3.30] INFO  FISICA y=144.7 vy=50.22 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[   4.35] INFO  FISICA y=206.5 vy=66.65 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=982.20000000000391/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=982.20000000000391/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=982.20000000000391/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=982.20000000000391/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[   5.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=982.20000000000391/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[   5.35] INFO  COMBUSTIVEL lava=4910 mB em 5 tanques/motores (fase ASCENT, Y=269)
+[   5.45] INFO  FISICA y=289.7 vy=83.86 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.2Hz
+[   6.50] INFO  FISICA y=386.8 vy=100.29 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=2.2 gimbal=(0.07,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[   7.65] INFO  FISICA y=513.0 vy=118.28 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=4.0 gimbal=(0.16,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[   8.65] INFO  FISICA y=639.5 vy=133.93 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=5.4 gimbal=(0.24,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[   9.70] INFO  FISICA y=789.1 vy=150.36 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=6.8 gimbal=(0.34,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=965.200000000008/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=965.200000000008/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=965.200000000008/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=965.200000000008/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  10.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=965.200000000008/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  10.35] INFO  COMBUSTIVEL lava=4825 mB em 5 tanques/motores (fase ASCENT, Y=874)
+[  10.85] INFO  FISICA y=972.8 vy=168.35 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=8.2 gimbal=(0.47,0.00) w=(0.00,0.00,0.00) loop=7.8Hz
+[  11.85] INFO  FISICA y=1149.4 vy=184.00 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=9.5 gimbal=(0.55,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  12.90] INFO  FISICA y=1351.6 vy=200.42 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=10.8 gimbal=(0.58,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  14.05] INFO  FISICA y=1592.9 vy=218.42 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=12.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  15.05] INFO  FISICA y=1819.5 vy=234.06 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=13.5 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=948.2000000000121/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=948.2000000000121/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=948.2000000000121/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=948.2000000000121/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  15.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=948.2000000000121/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  15.35] INFO  COMBUSTIVEL lava=4740 mB em 5 tanques/motores (fase ASCENT, Y=1867)
+[  16.10] INFO  FISICA y=2074.3 vy=250.49 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=14.8 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[  17.25] INFO  FISICA y=2373.2 vy=268.48 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=16.3 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  18.25] INFO  FISICA y=2649.9 vy=284.13 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=17.5 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  19.30] INFO  FISICA y=2957.3 vy=300.56 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=18.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  20.40] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=930.86000000001627/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  20.40] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=930.86000000001627/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  20.40] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=930.86000000001627/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  20.40] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=930.86000000001627/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  20.40] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=930.86000000001627/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  20.45] INFO  COMBUSTIVEL lava=4650 mB em 5 tanques/motores (fase ASCENT, Y=3250)
+[  20.55] INFO  FISICA y=3345.7 vy=320.11 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=20.5 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.0Hz
+[  21.55] INFO  FISICA y=3674.0 vy=335.76 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=21.8 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  22.60] INFO  FISICA y=4035.6 vy=352.19 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=23.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  23.65] INFO  FISICA y=4414.4 vy=368.62 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=24.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  24.65] INFO  FISICA y=4791.2 vy=384.26 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=25.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  25.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=914.20000000002028/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  25.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=914.20000000002028/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  25.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=914.20000000002028/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  25.30] INFO  MOTOR ASCENT rocket_thruster_3 [rocket_thruster] ativo=true lava=914.20000000002028/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  25.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=914.20000000002028/1000 fluxo=40 acel=1 aquec=0/10 empuxo=850
+[  25.35] INFO  COMBUSTIVEL lava=4570 mB em 5 tanques/motores (fase ASCENT, Y=5025)
+[  25.70] INFO  FISICA y=5203.7 vy=400.69 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=27.3 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[  26.85] INFO  FISICA y=5675.3 vy=418.68 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=28.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  27.85] INFO  FISICA y=6102.2 vy=434.33 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=30.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  28.90] INFO  FISICA y=6567.3 vy=450.76 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=31.7 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  30.05] INFO  FISICA y=7096.5 vy=468.75 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=33.3 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  31.05] INFO  FISICA y=7573.4 vy=484.39 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=34.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  32.20] INFO  FISICA y=8141.3 vy=502.39 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=36.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  33.35] INFO  FISICA y=8729.8 vy=520.38 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=37.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  34.45] INFO  FISICA y=9312.1 vy=537.59 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=39.4 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  35.60] INFO  FISICA y=9941.2 vy=555.58 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=41.0 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  36.75] INFO  FISICA y=10590.9 vy=573.58 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=42.7 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  37.85] INFO  FISICA y=11231.7 vy=590.79 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=44.3 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  39.00] INFO  FISICA y=11921.9 vy=608.78 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=45.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  40.15] INFO  FISICA y=12632.8 vy=626.77 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=47.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  41.25] INFO  FISICA y=13332.2 vy=643.98 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=49.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  42.40] INFO  FISICA y=14083.5 vy=661.97 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=50.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  43.55] INFO  FISICA y=14855.6 vy=679.97 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=52.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  44.65] INFO  FISICA y=15613.5 vy=697.18 a_medida=15.65 F/m=26.65 g=11.00 massa=159.5 F=4250 erro=54.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+
+==== arquivo logs/2026-09-27_20-01-00_voo_telemetria.csv
+t,fase,est,y,vel,vy,massa,empuxo,incl,erro,gx,gz,ecc,dist
+350,ASCENT,1,63.8,4.85,4.85,160,5000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+550,ASCENT,1,65.1,7.98,7.98,160,5000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+800,ASCENT,1,67.7,11.89,11.89,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1000,ASCENT,1,70.5,15.02,15.02,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1250,ASCENT,1,73.9,18.15,18.15,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1450,ASCENT,1,79.0,22.06,22.06,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1650,ASCENT,1,83.8,25.19,25.19,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1900,ASCENT,1,90.7,29.10,29.10,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2100,ASCENT,1,96.9,32.23,32.23,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2400,ASCENT,1,103.7,35.36,35.36,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2600,ASCENT,1,115.2,40.05,40.05,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2800,ASCENT,1,123.6,43.18,43.18,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3050,ASCENT,1,134.9,47.10,47.10,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3250,ASCENT,1,144.7,50.22,50.22,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3500,ASCENT,1,155.2,53.35,53.35,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3700,ASCENT,1,169.1,57.27,57.27,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3900,ASCENT,1,181.0,60.39,60.39,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4200,ASCENT,1,199.9,65.09,65.09,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4400,ASCENT,1,213.3,68.22,68.22,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4650,ASCENT,1,227.3,71.35,71.35,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4850,ASCENT,1,245.8,75.26,75.26,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5050,ASCENT,1,261.2,78.39,78.39,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5400,ASCENT,1,289.7,83.86,83.86,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5600,ASCENT,1,306.9,86.99,86.99,160,4250,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5900,ASCENT,1,333.8,91.69,91.69,160,4250,1.0,1.0,0.03,0.00,-nan(ind),-nan(ind)
+6100,ASCENT,1,352.5,94.82,94.82,160,4250,1.5,1.5,0.04,0.00,-nan(ind),-nan(ind)
+6350,ASCENT,1,371.9,97.94,97.94,160,4250,1.9,1.9,0.06,0.00,-nan(ind),-nan(ind)
+6550,ASCENT,1,397.0,101.86,101.86,160,4250,2.4,2.4,0.08,0.00,-nan(ind),-nan(ind)
+6750,ASCENT,1,417.7,104.98,104.98,160,4250,2.7,2.7,0.09,0.00,-nan(ind),-nan(ind)
+7000,ASCENT,1,444.6,108.90,108.90,160,4250,3.1,3.1,0.11,0.00,-nan(ind),-nan(ind)
+7200,ASCENT,1,466.7,112.03,112.03,160,4250,3.4,3.4,0.12,0.00,-nan(ind),-nan(ind)
+7500,ASCENT,1,489.5,115.15,115.15,160,4250,3.7,3.7,0.14,0.00,-nan(ind),-nan(ind)
+7700,ASCENT,1,524.9,119.85,119.85,160,4250,4.2,4.2,0.16,0.00,-nan(ind),-nan(ind)
+7950,ASCENT,1,549.3,122.98,122.98,160,4250,4.4,4.4,0.18,0.00,-nan(ind),-nan(ind)
+8150,ASCENT,1,580.6,126.89,126.89,160,4250,4.8,4.8,0.20,0.00,-nan(ind),-nan(ind)
+8350,ASCENT,1,606.4,130.02,130.02,160,4250,5.1,5.1,0.22,0.00,-nan(ind),-nan(ind)
+8600,ASCENT,1,639.5,133.93,133.93,160,4250,5.4,5.4,0.24,0.00,-nan(ind),-nan(ind)
+8800,ASCENT,1,666.6,137.06,137.06,160,4250,5.7,5.7,0.26,0.00,-nan(ind),-nan(ind)
+9100,ASCENT,1,694.4,140.19,140.19,160,4250,5.9,5.9,0.28,0.00,-nan(ind),-nan(ind)
+9300,ASCENT,1,737.3,144.88,144.88,160,4250,6.3,6.3,0.31,0.00,-nan(ind),-nan(ind)
+9550,ASCENT,1,766.7,148.01,148.01,160,4250,6.6,6.6,0.33,0.00,-nan(ind),-nan(ind)
+9750,ASCENT,1,804.3,151.92,151.92,160,4250,6.9,6.9,0.35,0.00,-nan(ind),-nan(ind)
+9950,ASCENT,1,835.0,155.05,155.05,160,4250,7.1,7.1,0.38,0.00,-nan(ind),-nan(ind)
+10300,ASCENT,1,874.4,158.96,158.96,160,4250,7.5,7.5,0.40,0.00,-nan(ind),-nan(ind)
+10500,ASCENT,1,922.9,163.66,163.66,160,4250,7.8,7.8,0.44,0.00,-nan(ind),-nan(ind)
+10800,ASCENT,1,972.8,168.35,168.35,160,4250,8.2,8.2,0.47,0.00,-nan(ind),-nan(ind)
+11000,ASCENT,1,1006.9,171.48,171.48,160,4250,8.5,8.5,0.50,0.00,-nan(ind),-nan(ind)
+11250,ASCENT,1,1050.3,175.39,175.39,160,4250,8.8,8.8,0.53,0.00,-nan(ind),-nan(ind)
+11450,ASCENT,1,1085.8,178.52,178.52,160,4250,9.0,9.0,0.54,0.00,-nan(ind),-nan(ind)
+11700,ASCENT,1,1121.9,181.65,181.65,160,4250,9.3,9.3,0.54,0.00,-nan(ind),-nan(ind)
+11900,ASCENT,1,1167.9,185.56,185.56,160,4250,9.6,9.6,0.55,0.00,-nan(ind),-nan(ind)
+12100,ASCENT,1,1205.4,188.69,188.69,160,4250,9.8,9.8,0.56,0.00,-nan(ind),-nan(ind)
+12400,ASCENT,1,1262.8,193.38,193.38,160,4250,10.2,10.2,0.57,0.00,-nan(ind),-nan(ind)
+12600,ASCENT,1,1301.9,196.51,196.51,160,4250,10.5,10.5,0.57,0.00,-nan(ind),-nan(ind)
+12850,ASCENT,1,1351.6,200.42,200.42,160,4250,10.8,10.8,0.58,0.00,-nan(ind),-nan(ind)
+13050,ASCENT,1,1392.1,203.55,203.55,160,4250,11.0,11.0,0.59,0.00,-nan(ind),-nan(ind)
+13300,ASCENT,1,1433.2,206.68,206.68,160,4250,11.3,11.3,0.59,0.00,-nan(ind),-nan(ind)
+13500,ASCENT,1,1485.4,210.59,210.59,160,4250,11.6,11.6,0.60,0.00,-nan(ind),-nan(ind)
+13700,ASCENT,1,1528.0,213.72,213.72,160,4250,11.9,11.9,0.60,0.00,-nan(ind),-nan(ind)
+14000,ASCENT,1,1592.9,218.42,218.42,160,4250,12.2,12.2,0.60,0.00,-nan(ind),-nan(ind)
+14200,ASCENT,1,1637.0,221.55,221.55,160,4250,12.5,12.5,0.60,0.00,-nan(ind),-nan(ind)
+14450,ASCENT,1,1692.9,225.46,225.46,160,4250,12.8,12.8,0.60,0.00,-nan(ind),-nan(ind)
+14650,ASCENT,1,1738.4,228.59,228.59,160,4250,13.0,13.0,0.60,0.00,-nan(ind),-nan(ind)
+14900,ASCENT,1,1784.5,231.72,231.72,160,4250,13.3,13.3,0.60,0.00,-nan(ind),-nan(ind)
+15100,ASCENT,1,1843.1,235.63,235.63,160,4250,13.6,13.6,0.60,0.00,-nan(ind),-nan(ind)
+15500,ASCENT,1,1914.6,240.32,240.32,160,4250,14.0,14.0,0.60,0.00,-nan(ind),-nan(ind)
+15700,ASCENT,1,1987.5,245.01,245.01,160,4250,14.4,14.4,0.60,0.00,-nan(ind),-nan(ind)
+15950,ASCENT,1,2036.9,248.14,248.14,160,4250,14.6,14.6,0.60,0.00,-nan(ind),-nan(ind)
+16150,ASCENT,1,2099.5,252.06,252.06,160,4250,14.9,14.9,0.60,0.00,-nan(ind),-nan(ind)
+16350,ASCENT,1,2150.3,255.18,255.18,160,4250,15.2,15.2,0.60,0.00,-nan(ind),-nan(ind)
+16600,ASCENT,1,2214.7,259.10,259.10,160,4250,15.5,15.5,0.60,0.00,-nan(ind),-nan(ind)
+16800,ASCENT,1,2266.9,262.22,262.22,160,4250,15.8,15.8,0.60,0.00,-nan(ind),-nan(ind)
+17100,ASCENT,1,2319.7,265.35,265.35,160,4250,16.0,16.0,0.60,0.00,-nan(ind),-nan(ind)
+17300,ASCENT,1,2400.2,270.05,270.05,160,4250,16.4,16.4,0.60,0.00,-nan(ind),-nan(ind)
+17550,ASCENT,1,2454.6,273.18,273.18,160,4250,16.7,16.7,0.60,0.00,-nan(ind),-nan(ind)
+17750,ASCENT,1,2523.4,277.09,277.09,160,4250,17.0,17.0,0.60,0.00,-nan(ind),-nan(ind)
+17950,ASCENT,1,2579.2,280.22,280.22,160,4250,17.2,17.2,0.60,0.00,-nan(ind),-nan(ind)
+18200,ASCENT,1,2649.9,284.13,284.13,160,4250,17.5,17.5,0.60,0.00,-nan(ind),-nan(ind)
+18400,ASCENT,1,2707.1,287.26,287.26,160,4250,17.8,17.8,0.60,0.00,-nan(ind),-nan(ind)
+18700,ASCENT,1,2764.9,290.39,290.39,160,4250,18.1,18.1,0.60,0.00,-nan(ind),-nan(ind)
+18900,ASCENT,1,2852.9,295.08,295.08,160,4250,18.4,18.4,0.60,0.00,-nan(ind),-nan(ind)
+19150,ASCENT,1,2912.3,298.21,298.21,160,4250,18.7,18.7,0.60,0.00,-nan(ind),-nan(ind)
+19350,ASCENT,1,2987.4,302.12,302.12,160,4250,19.0,19.0,0.60,0.00,-nan(ind),-nan(ind)
+19550,ASCENT,1,3048.2,305.25,305.25,160,4250,19.3,19.3,0.60,0.00,-nan(ind),-nan(ind)
+19800,ASCENT,1,3125.1,309.16,309.16,160,4250,19.6,19.6,0.60,0.00,-nan(ind),-nan(ind)
+20000,ASCENT,1,3187.4,312.29,312.29,160,4250,19.9,19.9,0.60,0.00,-nan(ind),-nan(ind)
+20400,ASCENT,1,3250.2,315.42,315.42,160,4250,20.1,20.1,0.60,0.00,-nan(ind),-nan(ind)
+20600,ASCENT,1,3377.8,321.68,321.68,160,4250,20.6,20.6,0.60,0.00,-nan(ind),-nan(ind)
+20850,ASCENT,1,3458.8,325.59,325.59,160,4250,21.0,21.0,0.60,0.00,-nan(ind),-nan(ind)
+21050,ASCENT,1,3524.3,328.72,328.72,160,4250,21.2,21.2,0.60,0.00,-nan(ind),-nan(ind)
+21300,ASCENT,1,3590.4,331.85,331.85,160,4250,21.5,21.5,0.60,0.00,-nan(ind),-nan(ind)
+21500,ASCENT,1,3674.0,335.76,335.76,160,4250,21.8,21.8,0.60,0.00,-nan(ind),-nan(ind)
+21700,ASCENT,1,3741.5,338.89,338.89,160,4250,22.1,22.1,0.60,0.00,-nan(ind),-nan(ind)
+22000,ASCENT,1,3844.0,343.58,343.58,160,4250,22.5,22.5,0.60,0.00,-nan(ind),-nan(ind)
+22200,ASCENT,1,3913.1,346.71,346.71,160,4250,22.7,22.7,0.60,0.00,-nan(ind),-nan(ind)
+22450,ASCENT,1,4000.4,350.62,350.62,160,4250,23.1,23.1,0.60,0.00,-nan(ind),-nan(ind)
+22650,ASCENT,1,4070.9,353.75,353.75,160,4250,23.3,23.3,0.60,0.00,-nan(ind),-nan(ind)
+22900,ASCENT,1,4142.1,356.88,356.88,160,4250,23.6,23.6,0.60,0.00,-nan(ind),-nan(ind)
+23100,ASCENT,1,4231.9,360.79,360.79,160,4250,23.9,23.9,0.60,0.00,-nan(ind),-nan(ind)
+23300,ASCENT,1,4304.4,363.92,363.92,160,4250,24.2,24.2,0.60,0.00,-nan(ind),-nan(ind)
+23600,ASCENT,1,4414.4,368.62,368.62,160,4250,24.6,24.6,0.60,0.00,-nan(ind),-nan(ind)
+23800,ASCENT,1,4488.5,371.75,371.75,160,4250,24.9,24.9,0.60,0.00,-nan(ind),-nan(ind)
+24050,ASCENT,1,4582.0,375.66,375.66,160,4250,25.2,25.2,0.60,0.00,-nan(ind),-nan(ind)
+24250,ASCENT,1,4657.6,378.79,378.79,160,4250,25.5,25.5,0.60,0.00,-nan(ind),-nan(ind)
+24500,ASCENT,1,4733.7,381.91,381.91,160,4250,25.7,25.7,0.60,0.00,-nan(ind),-nan(ind)
+24700,ASCENT,1,4829.8,385.83,385.83,160,4250,26.1,26.1,0.60,0.00,-nan(ind),-nan(ind)
+24900,ASCENT,1,4907.3,388.96,388.96,160,4250,26.3,26.3,0.60,0.00,-nan(ind),-nan(ind)
+25300,ASCENT,1,5024.8,393.65,393.65,160,4250,26.7,26.7,0.60,0.00,-nan(ind),-nan(ind)
+25550,ASCENT,1,5143.8,398.34,398.34,160,4250,27.1,27.1,0.60,0.00,-nan(ind),-nan(ind)
+25750,ASCENT,1,5243.9,402.25,402.25,160,4250,27.5,27.5,0.60,0.00,-nan(ind),-nan(ind)
+25950,ASCENT,1,5324.8,405.38,405.38,160,4250,27.7,27.7,0.60,0.00,-nan(ind),-nan(ind)
+26200,ASCENT,1,5426.7,409.29,409.29,160,4250,28.1,28.1,0.60,0.00,-nan(ind),-nan(ind)
+26400,ASCENT,1,5509.0,412.42,412.42,160,4250,28.3,28.3,0.60,0.00,-nan(ind),-nan(ind)
+26700,ASCENT,1,5591.8,415.55,415.55,160,4250,28.6,28.6,0.60,0.00,-nan(ind),-nan(ind)
+26900,ASCENT,1,5717.3,420.25,420.25,160,4250,29.0,29.0,0.60,0.00,-nan(ind),-nan(ind)
+27150,ASCENT,1,5801.8,423.38,423.38,160,4250,29.3,29.3,0.60,0.00,-nan(ind),-nan(ind)
+27350,ASCENT,1,5908.2,427.29,427.29,160,4250,29.6,29.6,0.60,0.00,-nan(ind),-nan(ind)
+27550,ASCENT,1,5994.0,430.42,430.42,160,4250,29.9,29.9,0.60,0.00,-nan(ind),-nan(ind)
+27800,ASCENT,1,6102.2,434.33,434.33,160,4250,30.2,30.2,0.60,0.00,-nan(ind),-nan(ind)
+28000,ASCENT,1,6189.5,437.46,437.46,160,4250,30.5,30.5,0.60,0.00,-nan(ind),-nan(ind)
+28300,ASCENT,1,6277.4,440.59,440.59,160,4250,30.8,30.8,0.60,0.00,-nan(ind),-nan(ind)
+28500,ASCENT,1,6410.4,445.28,445.28,160,4250,31.2,31.2,0.60,0.00,-nan(ind),-nan(ind)
+28750,ASCENT,1,6499.8,448.41,448.41,160,4250,31.5,31.5,0.60,0.00,-nan(ind),-nan(ind)
+28950,ASCENT,1,6612.5,452.32,452.32,160,4250,31.8,31.8,0.60,0.00,-nan(ind),-nan(ind)
+29150,ASCENT,1,6703.4,455.45,455.45,160,4250,32.1,32.1,0.60,0.00,-nan(ind),-nan(ind)
+29400,ASCENT,1,6817.8,459.36,459.36,160,4250,32.4,32.4,0.60,0.00,-nan(ind),-nan(ind)
+29600,ASCENT,1,6910.1,462.49,462.49,160,4250,32.7,32.7,0.60,0.00,-nan(ind),-nan(ind)
+29900,ASCENT,1,7003.0,465.62,465.62,160,4250,33.0,33.0,0.60,0.00,-nan(ind),-nan(ind)
+30100,ASCENT,1,7143.5,470.31,470.31,160,4250,33.4,33.4,0.60,0.00,-nan(ind),-nan(ind)
+30350,ASCENT,1,7237.9,473.44,473.44,160,4250,33.7,33.7,0.60,0.00,-nan(ind),-nan(ind)
+30550,ASCENT,1,7356.9,477.35,477.35,160,4250,34.0,34.0,0.60,0.00,-nan(ind),-nan(ind)
+30750,ASCENT,1,7452.7,480.48,480.48,160,4250,34.3,34.3,0.60,0.00,-nan(ind),-nan(ind)
+31000,ASCENT,1,7573.4,484.39,484.39,160,4250,34.6,34.6,0.60,0.00,-nan(ind),-nan(ind)
+31200,ASCENT,1,7670.7,487.52,487.52,160,4250,34.9,34.9,0.60,0.00,-nan(ind),-nan(ind)
+31500,ASCENT,1,7768.6,490.65,490.65,160,4250,35.2,35.2,0.60,0.00,-nan(ind),-nan(ind)
+31700,ASCENT,1,7916.6,495.35,495.35,160,4250,35.6,35.6,0.60,0.00,-nan(ind),-nan(ind)
+31900,ASCENT,1,8016.1,498.48,498.48,160,4250,35.9,35.9,0.60,0.00,-nan(ind),-nan(ind)
+32150,ASCENT,1,8141.3,502.39,502.39,160,4250,36.2,36.2,0.60,0.00,-nan(ind),-nan(ind)
+32350,ASCENT,1,8242.2,505.52,505.52,160,4250,36.5,36.5,0.60,0.00,-nan(ind),-nan(ind)
+32600,ASCENT,1,8343.7,508.65,508.65,160,4250,36.8,36.8,0.60,0.00,-nan(ind),-nan(ind)
+32800,ASCENT,1,8471.4,512.56,512.56,160,4250,37.2,37.2,0.60,0.00,-nan(ind),-nan(ind)
+33000,ASCENT,1,8574.3,515.69,515.69,160,4250,37.4,37.4,0.60,0.00,-nan(ind),-nan(ind)
+33300,ASCENT,1,8729.8,520.38,520.38,160,4250,37.9,37.9,0.60,0.00,-nan(ind),-nan(ind)
+33500,ASCENT,1,8834.3,523.51,523.51,160,4250,38.1,38.1,0.60,0.00,-nan(ind),-nan(ind)
+33750,ASCENT,1,8939.4,526.64,526.64,160,4250,38.4,38.4,0.60,0.00,-nan(ind),-nan(ind)
+33950,ASCENT,1,9071.6,530.55,530.55,160,4250,38.8,38.8,0.60,0.00,-nan(ind),-nan(ind)
+34150,ASCENT,1,9178.1,533.68,533.68,160,4250,39.1,39.1,0.60,0.00,-nan(ind),-nan(ind)
+34400,ASCENT,1,9312.1,537.59,537.59,160,4250,39.4,39.4,0.60,0.00,-nan(ind),-nan(ind)
+34600,ASCENT,1,9420.1,540.72,540.72,160,4250,39.7,39.7,0.60,0.00,-nan(ind),-nan(ind)
+34900,ASCENT,1,9528.6,543.85,543.85,160,4250,40.0,40.0,0.60,0.00,-nan(ind),-nan(ind)
+35100,ASCENT,1,9692.6,548.54,548.54,160,4250,40.4,40.4,0.60,0.00,-nan(ind),-nan(ind)
+35300,ASCENT,1,9802.7,551.67,551.67,160,4250,40.7,40.7,0.60,0.00,-nan(ind),-nan(ind)
+35550,ASCENT,1,9941.2,555.58,555.58,160,4250,41.0,41.0,0.60,0.00,-nan(ind),-nan(ind)
+35750,ASCENT,1,10052.7,558.71,558.71,160,4250,41.3,41.3,0.60,0.00,-nan(ind),-nan(ind)
+36000,ASCENT,1,10164.8,561.84,561.84,160,4250,41.6,41.6,0.60,0.00,-nan(ind),-nan(ind)
+36200,ASCENT,1,10305.9,565.75,565.75,160,4250,42.0,42.0,0.60,0.00,-nan(ind),-nan(ind)
+36400,ASCENT,1,10419.4,568.88,568.88,160,4250,42.2,42.2,0.60,0.00,-nan(ind),-nan(ind)
+36700,ASCENT,1,10590.9,573.58,573.58,160,4250,42.7,42.7,0.60,0.00,-nan(ind),-nan(ind)
+36900,ASCENT,1,10706.0,576.70,576.70,160,4250,43.0,43.0,0.60,0.00,-nan(ind),-nan(ind)
+37150,ASCENT,1,10821.7,579.83,579.83,160,4250,43.2,43.2,0.60,0.00,-nan(ind),-nan(ind)
+37350,ASCENT,1,10967.3,583.75,583.75,160,4250,43.6,43.6,0.60,0.00,-nan(ind),-nan(ind)
+37550,ASCENT,1,11084.4,586.87,586.87,160,4250,43.9,43.9,0.60,0.00,-nan(ind),-nan(ind)
+37800,ASCENT,1,11231.7,590.79,590.79,160,4250,44.3,44.3,0.60,0.00,-nan(ind),-nan(ind)
+38000,ASCENT,1,11350.3,593.92,593.92,160,4250,44.5,44.5,0.60,0.00,-nan(ind),-nan(ind)
+38300,ASCENT,1,11469.4,597.04,597.04,160,4250,44.8,44.8,0.60,0.00,-nan(ind),-nan(ind)
+38500,ASCENT,1,11649.4,601.74,601.74,160,4250,45.3,45.3,0.60,0.00,-nan(ind),-nan(ind)
+38700,ASCENT,1,11770.1,604.87,604.87,160,4250,45.5,45.5,0.60,0.00,-nan(ind),-nan(ind)
+38950,ASCENT,1,11921.9,608.78,608.78,160,4250,45.9,45.9,0.60,0.00,-nan(ind),-nan(ind)
+39150,ASCENT,1,12044.1,611.91,611.91,160,4250,46.2,46.2,0.60,0.00,-nan(ind),-nan(ind)
+39400,ASCENT,1,12166.8,615.04,615.04,160,4250,46.5,46.5,0.60,0.00,-nan(ind),-nan(ind)
+39600,ASCENT,1,12321.2,618.95,618.95,160,4250,46.9,46.9,0.60,0.00,-nan(ind),-nan(ind)
+39800,ASCENT,1,12445.4,622.08,622.08,160,4250,47.1,47.1,0.60,0.00,-nan(ind),-nan(ind)
+40100,ASCENT,1,12632.8,626.77,626.77,160,4250,47.6,47.6,0.60,0.00,-nan(ind),-nan(ind)
+40300,ASCENT,1,12758.6,629.90,629.90,160,4250,47.9,47.9,0.60,0.00,-nan(ind),-nan(ind)
+40550,ASCENT,1,12884.9,633.03,633.03,160,4250,48.2,48.2,0.60,0.00,-nan(ind),-nan(ind)
+40750,ASCENT,1,13043.8,636.94,636.94,160,4250,48.5,48.5,0.60,0.00,-nan(ind),-nan(ind)
+40950,ASCENT,1,13171.5,640.07,640.07,160,4250,48.8,48.8,0.60,0.00,-nan(ind),-nan(ind)
+41200,ASCENT,1,13332.2,643.98,643.98,160,4250,49.2,49.2,0.60,0.00,-nan(ind),-nan(ind)
+41400,ASCENT,1,13461.3,647.11,647.11,160,4250,49.5,49.5,0.60,0.00,-nan(ind),-nan(ind)
+41700,ASCENT,1,13591.2,650.24,650.24,160,4250,49.8,49.8,0.60,0.00,-nan(ind),-nan(ind)
+41900,ASCENT,1,13787.0,654.93,654.93,160,4250,50.2,50.2,0.60,0.00,-nan(ind),-nan(ind)
+42100,ASCENT,1,13918.4,658.06,658.06,160,4250,50.5,50.5,0.60,0.00,-nan(ind),-nan(ind)
+42350,ASCENT,1,14083.5,661.97,661.97,160,4250,50.9,50.9,0.60,0.00,-nan(ind),-nan(ind)
+42550,ASCENT,1,14216.3,665.10,665.10,160,4250,51.2,51.2,0.60,0.00,-nan(ind),-nan(ind)
+42800,ASCENT,1,14349.7,668.23,668.23,160,4250,51.5,51.5,0.60,0.00,-nan(ind),-nan(ind)
+43000,ASCENT,1,14517.4,672.14,672.14,160,4250,51.8,51.8,0.60,0.00,-nan(ind),-nan(ind)
+43200,ASCENT,1,14652.2,675.27,675.27,160,4250,52.1,52.1,0.60,0.00,-nan(ind),-nan(ind)
+43500,ASCENT,1,14855.6,679.97,679.97,160,4250,52.6,52.6,0.60,0.00,-nan(ind),-nan(ind)
+43700,ASCENT,1,14992.0,683.10,683.10,160,4250,52.9,52.9,0.60,0.00,-nan(ind),-nan(ind)
+43950,ASCENT,1,15129.0,686.23,686.23,160,4250,53.1,53.1,0.60,0.00,-nan(ind),-nan(ind)
+44150,ASCENT,1,15301.1,690.14,690.14,160,4250,53.5,53.5,0.60,0.00,-nan(ind),-nan(ind)
+44350,ASCENT,1,15439.5,693.27,693.27,160,4250,53.8,53.8,0.60,0.00,-nan(ind),-nan(ind)
+44600,ASCENT,1,15613.5,697.18,697.18,160,4250,54.2,54.2,0.60,0.00,-nan(ind),-nan(ind)
+
+mundo final: y=15753.28 vy=700.31 espaco=false

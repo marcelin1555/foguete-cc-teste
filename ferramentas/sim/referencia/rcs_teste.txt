@@ -1,0 +1,143 @@
+    0.00 tela 8 RCS encontrados. A nave precisa estar SOLTA (no ar ou no espaco).
+    0.00 call rocketnautics:rcs_thruster_1.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_2.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_3.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_4.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_5.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_6.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_7.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_8.setActive(false)
+    0.10 call rocketnautics:rcs_thruster_1.setActive(true)
+    1.15 call rocketnautics:rcs_thruster_1.setActive(false)
+    1.30 call rocketnautics:rcs_thruster_2.setActive(true)
+    2.35 call rocketnautics:rcs_thruster_2.setActive(false)
+    2.50 call rocketnautics:rcs_thruster_3.setActive(true)
+    3.55 call rocketnautics:rcs_thruster_3.setActive(false)
+    3.70 call rocketnautics:rcs_thruster_4.setActive(true)
+    4.75 call rocketnautics:rcs_thruster_4.setActive(false)
+    4.90 call rocketnautics:rcs_thruster_5.setActive(true)
+    5.95 call rocketnautics:rcs_thruster_5.setActive(false)
+    6.10 call rocketnautics:rcs_thruster_6.setActive(true)
+    7.15 call rocketnautics:rcs_thruster_6.setActive(false)
+    7.30 call rocketnautics:rcs_thruster_7.setActive(true)
+    8.35 call rocketnautics:rcs_thruster_7.setActive(false)
+    8.50 call rocketnautics:rcs_thruster_8.setActive(true)
+    9.55 call rocketnautics:rcs_thruster_8.setActive(false)
+    9.70 call rocketnautics:rcs_thruster_2.setActive(true)
+    9.70 call rocketnautics:rcs_thruster_4.setActive(true)
+    9.70 call rocketnautics:rcs_thruster_6.setActive(true)
+    9.70 call rocketnautics:rcs_thruster_8.setActive(true)
+    9.85 call rocketnautics:rcs_thruster_1.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_2.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_3.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_4.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_5.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_6.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_7.setActive(false)
+    9.85 call rocketnautics:rcs_thruster_8.setActive(false)
+    9.90 tela Calibrado. Segurando o nariz para cima por 15 s...
+    9.95 call rocketnautics:rcs_thruster_4.setActive(true)
+    9.95 call rocketnautics:rcs_thruster_8.setActive(true)
+   10.00 tela erro 51.1 graus
+   11.00 tela erro 49.3 graus
+   12.00 call rocketnautics:rcs_thruster_8.setActive(false)
+   12.05 tela erro 44.6 graus
+   13.05 tela erro 37.3 graus
+   13.25 call rocketnautics:rcs_thruster_1.setActive(true)
+   13.90 call rocketnautics:rcs_thruster_4.setActive(false)
+   14.05 call rocketnautics:rcs_thruster_7.setActive(true)
+   14.10 tela erro 28.8 graus
+   14.50 call rocketnautics:rcs_thruster_3.setActive(true)
+   14.65 call rocketnautics:rcs_thruster_1.setActive(false)
+   14.80 call rocketnautics:rcs_thruster_7.setActive(false)
+   15.15 tela erro 19.6 graus
+   15.55 call rocketnautics:rcs_thruster_2.setActive(true)
+   15.70 call rocketnautics:rcs_thruster_2.setActive(false)
+   16.15 tela erro 13.2 graus
+   16.55 call rocketnautics:rcs_thruster_2.setActive(true)
+   16.70 call rocketnautics:rcs_thruster_2.setActive(false)
+   17.15 call rocketnautics:rcs_thruster_2.setActive(true)
+   17.20 tela erro 8.6 graus
+   17.30 call rocketnautics:rcs_thruster_2.setActive(false)
+   17.65 call rocketnautics:rcs_thruster_2.setActive(true)
+   17.80 call rocketnautics:rcs_thruster_2.setActive(false)
+   17.95 call rocketnautics:rcs_thruster_3.setActive(false)
+   18.20 call rocketnautics:rcs_thruster_3.setActive(true)
+   18.25 tela erro 5.6 graus
+   18.35 call rocketnautics:rcs_thruster_3.setActive(false)
+   18.60 call rocketnautics:rcs_thruster_3.setActive(true)
+   18.75 call rocketnautics:rcs_thruster_3.setActive(false)
+   19.00 call rocketnautics:rcs_thruster_3.setActive(true)
+   19.15 call rocketnautics:rcs_thruster_3.setActive(false)
+   19.30 tela erro 3.5 graus
+   19.40 call rocketnautics:rcs_thruster_2.setActive(true)
+   19.40 call rocketnautics:rcs_thruster_3.setActive(true)
+   19.55 call rocketnautics:rcs_thruster_2.setActive(false)
+   19.55 call rocketnautics:rcs_thruster_3.setActive(false)
+   20.20 call rocketnautics:rcs_thruster_3.setActive(true)
+   20.20 call rocketnautics:rcs_thruster_7.setActive(true)
+   20.35 call rocketnautics:rcs_thruster_3.setActive(false)
+   20.35 call rocketnautics:rcs_thruster_7.setActive(false)
+   20.40 tela erro 2.1 graus
+   21.40 call rocketnautics:rcs_thruster_2.setActive(true)
+   21.40 call rocketnautics:rcs_thruster_3.setActive(true)
+   21.45 tela erro 1.3 graus
+   21.55 call rocketnautics:rcs_thruster_2.setActive(false)
+   21.55 call rocketnautics:rcs_thruster_3.setActive(false)
+   22.50 tela erro 0.6 graus
+   23.10 call rocketnautics:rcs_thruster_3.setActive(true)
+   23.10 call rocketnautics:rcs_thruster_7.setActive(true)
+   23.25 call rocketnautics:rcs_thruster_3.setActive(false)
+   23.25 call rocketnautics:rcs_thruster_7.setActive(false)
+   23.50 tela erro 0.3 graus
+   24.50 tela erro 0.3 graus
+   24.95 call rocketnautics:rcs_thruster_1.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_2.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_3.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_4.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_5.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_6.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_7.setActive(false)
+   24.95 call rocketnautics:rcs_thruster_8.setActive(false)
+   25.00 tela Pronto. Veja: logs
+   25.00 fim de voo.lua
+==== arquivo config.lua
+return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
+ turn_start_alt=250, turn_end_angle=55, stages={{engines={"rocketnautics:rocket_thruster_0","rocketnautics:rocket_thruster_1",
+ "rocketnautics:rocket_thruster_2","rocketnautics:rocket_thruster_3","rocketnautics:vector_thruster_1"}}},
+ max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=10, ecc_target=0.02, sputnik="top", turn_end_y=16000,
+ steer_throttle=0.08, gimbal_sign=1, transfer_y=20000, stabilizer={side="right"}, rcs_enabled=true }
+==== arquivo estado.txt
+{ phase = "COAST", stage = 1, failed = {}, t0 = 0 }
+==== arquivo logs/2026-09-27_20-01-00_rcs.txt
+
+========== TESTE DO RCS  (2026-09-27_20-02-00) ==========
+[   0.00] INFO  RCS calibrando 8 propulsores (comando voo rcs)
+[   1.25] INFO  RCS rcs_thruster_1 giro=(0.0274, 0.0000, 0.0037) rad/s2
+[   2.45] INFO  RCS rcs_thruster_2 giro=(-0.0274, 0.0018, 0.0000) rad/s2
+[   3.65] INFO  RCS rcs_thruster_3 giro=(-0.0000, -0.0000, 0.0274) rad/s2
+[   4.85] INFO  RCS rcs_thruster_4 giro=(0.0027, 0.0000, -0.0274) rad/s2
+[   6.05] INFO  RCS rcs_thruster_5 giro=(0.0000, 0.0183, 0.0000) rad/s2
+[   7.25] INFO  RCS rcs_thruster_6 giro=(-0.0000, -0.0183, -0.0000) rad/s2
+[   8.45] INFO  RCS rcs_thruster_7 giro=(0.0192, -0.0000, 0.0192) rad/s2
+[   9.65] INFO  RCS rcs_thruster_8 giro=(-0.0192, 0.0000, -0.0192) rad/s2
+[   9.90] INFO  RCS calibrado: 8 de 8 propulsores com efeito
+[  10.00] INFO  RCS teste erro=51.1 w=(-0.004,-0.001,-0.003)
+[  11.00] INFO  RCS teste erro=49.3 w=(-0.022,-0.001,-0.054)
+[  12.05] INFO  RCS teste erro=44.6 w=(-0.040,-0.001,-0.105)
+[  13.05] INFO  RCS teste erro=37.3 w=(-0.038,-0.001,-0.138)
+[  14.10] INFO  RCS teste erro=28.8 w=(-0.013,-0.001,-0.162)
+[  15.15] INFO  RCS teste erro=19.6 w=(0.023,-0.001,-0.126)
+[  16.15] INFO  RCS teste erro=13.2 w=(0.018,-0.000,-0.096)
+[  17.20] INFO  RCS teste erro=8.6 w=(0.014,-0.000,-0.066)
+[  18.25] INFO  RCS teste erro=5.6 w=(0.005,0.001,-0.040)
+[  19.30] INFO  RCS teste erro=3.5 w=(0.005,0.001,-0.027)
+[  20.40] INFO  RCS teste erro=2.1 w=(0.002,0.001,-0.017)
+[  21.45] INFO  RCS teste erro=1.3 w=(0.003,0.001,-0.015)
+[  22.50] INFO  RCS teste erro=0.6 w=(-0.001,0.001,-0.010)
+[  23.50] INFO  RCS teste erro=0.3 w=(0.002,0.001,-0.002)
+[  24.50] INFO  RCS teste erro=0.3 w=(0.002,0.001,-0.002)
+
+==== arquivo rcs.cal
+{["rocketnautics:rcs_thruster_1"]={[1]=0.027391304347826082,[2]=4.5253655895047142e-18,[3]=0.0036521739130434775},["rocketnautics:rcs_thruster_2"]={[1]=-0.027391304347826093,[2]=0.001826086956521742,[3]=0.0},["rocketnautics:rcs_thruster_3"]={[1]=-4.2425302401606715e-19,[2]=-3.7711379912539303e-19,[3]=0.0273913043478261},["rocketnautics:rcs_thruster_4"]={[1]=0.00273913043478261,[2]=7.5422759825078635e-19,[3]=-0.027391304347826093},["rocketnautics:rcs_thruster_5"]={[1]=2.2626827947523583e-18,[2]=0.018260869565217396,[3]=0.0},["rocketnautics:rcs_thruster_6"]={[1]=-1.5084551965015721e-18,[2]=-0.0182608695652174,[3]=-7.5422759825078606e-19},["rocketnautics:rcs_thruster_7"]={[1]=0.019173913043478243,[2]=-7.542275982507849e-19,[3]=0.019173913043478239},["rocketnautics:rcs_thruster_8"]={[1]=-0.019173913043478243,[2]=1.1313413973761764e-18,[3]=-0.019173913043478243}}
+mundo final: y=1130.00 vy=0.00 espaco=true a=2760742 e=0.0958

@@ -1,0 +1,570 @@
+    0.00 call rocketnautics:rocket_thruster_0.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_1.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_2.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_3.setActive(true)
+    0.00 call rocketnautics:vector_thruster_1.setActive(true)
+    0.00 call rocketnautics:rcs_thruster_1.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_2.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_3.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_4.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_5.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_6.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_7.setActive(false)
+    0.00 call rocketnautics:rcs_thruster_8.setActive(false)
+    0.15 call rocketnautics:rocket_thruster_0.setThrust(0.000)
+    0.15 call rocketnautics:rocket_thruster_0.setActive(false)
+    0.15 call rocketnautics:rocket_thruster_1.setThrust(0.000)
+    0.15 call rocketnautics:rocket_thruster_1.setActive(false)
+    0.15 call rocketnautics:rocket_thruster_2.setThrust(0.000)
+    0.15 call rocketnautics:rocket_thruster_2.setActive(false)
+    0.15 call rocketnautics:rocket_thruster_3.setThrust(0.000)
+    0.15 call rocketnautics:rocket_thruster_3.setActive(false)
+    0.15 call rocketnautics:vector_thruster_1.setThrust(0.000)
+    0.15 call rocketnautics:vector_thruster_1.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_1.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_2.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_3.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_4.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_5.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_6.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_7.setActive(false)
+    0.20 call rocketnautics:rcs_thruster_8.setActive(false)
+    0.30 call rocketnautics:rcs_thruster_1.setActive(true)
+    1.35 call rocketnautics:rcs_thruster_1.setActive(false)
+    1.50 call rocketnautics:rcs_thruster_2.setActive(true)
+    2.55 call rocketnautics:rcs_thruster_2.setActive(false)
+    2.70 call rocketnautics:rcs_thruster_3.setActive(true)
+    3.75 call rocketnautics:rcs_thruster_3.setActive(false)
+    3.90 call rocketnautics:rcs_thruster_4.setActive(true)
+    4.95 call rocketnautics:rcs_thruster_4.setActive(false)
+    5.10 call rocketnautics:rcs_thruster_5.setActive(true)
+    6.15 call rocketnautics:rcs_thruster_5.setActive(false)
+    6.30 call rocketnautics:rcs_thruster_6.setActive(true)
+    7.35 call rocketnautics:rcs_thruster_6.setActive(false)
+    7.50 call rocketnautics:rcs_thruster_7.setActive(true)
+    8.55 call rocketnautics:rcs_thruster_7.setActive(false)
+    8.70 call rocketnautics:rcs_thruster_8.setActive(true)
+    9.75 call rocketnautics:rcs_thruster_8.setActive(false)
+    9.90 call rocketnautics:rcs_thruster_2.setActive(true)
+    9.90 call rocketnautics:rcs_thruster_4.setActive(true)
+    9.90 call rocketnautics:rcs_thruster_6.setActive(true)
+    9.90 call rocketnautics:rcs_thruster_8.setActive(true)
+   10.05 call rocketnautics:rcs_thruster_1.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_2.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_3.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_4.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_5.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_6.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_7.setActive(false)
+   10.05 call rocketnautics:rcs_thruster_8.setActive(false)
+   10.15 call rocketnautics:vector_thruster_1.setGimbal(-0.059,0.000,0.600)
+   10.20 call rocketnautics:rcs_thruster_1.setActive(true)
+   10.20 call rocketnautics:rcs_thruster_7.setActive(true)
+   10.25 redstone right false
+   10.35 call rocketnautics:vector_thruster_1.setGimbal(-0.058,0.000,0.600)
+   10.55 call rocketnautics:vector_thruster_1.setGimbal(-0.053,0.000,0.600)
+   10.65 call rocketnautics:vector_thruster_1.setGimbal(-0.051,0.000,0.600)
+   10.75 call rocketnautics:vector_thruster_1.setGimbal(-0.049,0.000,0.600)
+   10.80 desenho [limpa]
+   10.80 desenho == COAST == estagio 1/1
+   10.80 desenho Y 1130   vel 0.0   vy 0.0
+   10.80 desenho Empuxo 0 N   massa 160
+   10.80 desenho Inclin 0.0   erro 84.9
+   10.80 desenho ESPACO PROFUNDO
+   10.90 call rocketnautics:vector_thruster_1.setGimbal(-0.046,0.000,0.600)
+   11.00 call rocketnautics:vector_thruster_1.setGimbal(-0.043,0.000,0.600)
+   11.10 call rocketnautics:vector_thruster_1.setGimbal(-0.041,0.000,0.600)
+   11.20 call rocketnautics:vector_thruster_1.setGimbal(-0.038,0.000,0.600)
+   11.30 call rocketnautics:vector_thruster_1.setGimbal(-0.036,0.000,0.600)
+   11.35 desenho [limpa]
+   11.35 desenho == COAST == estagio 1/1
+   11.35 desenho Y 1130   vel 0.0   vy 0.0
+   11.35 desenho Empuxo 0 N   massa 160
+   11.35 desenho Inclin 0.0   erro 83.7
+   11.35 desenho ESPACO PROFUNDO
+   11.45 call rocketnautics:vector_thruster_1.setGimbal(-0.033,0.000,0.600)
+   11.55 call rocketnautics:vector_thruster_1.setGimbal(-0.029,0.000,0.600)
+   11.65 call rocketnautics:vector_thruster_1.setGimbal(-0.027,0.000,0.600)
+   11.75 call rocketnautics:vector_thruster_1.setGimbal(-0.024,0.000,0.600)
+   11.85 call rocketnautics:vector_thruster_1.setGimbal(-0.021,0.000,0.600)
+   11.90 desenho [limpa]
+   11.90 desenho == COAST == estagio 1/1
+   11.90 desenho Y 1130   vel 0.0   vy 0.0
+   11.90 desenho Empuxo 0 N   massa 160
+   11.90 desenho Inclin 0.0   erro 81.7
+   11.90 desenho ESPACO PROFUNDO
+   12.00 call rocketnautics:vector_thruster_1.setGimbal(-0.018,0.000,0.600)
+   12.10 call rocketnautics:vector_thruster_1.setGimbal(-0.014,0.000,0.600)
+   12.20 call rocketnautics:vector_thruster_1.setGimbal(-0.010,0.000,0.600)
+   12.30 call rocketnautics:vector_thruster_1.setGimbal(-0.007,0.000,0.600)
+   12.40 call rocketnautics:vector_thruster_1.setGimbal(-0.003,0.000,0.600)
+   12.45 desenho [limpa]
+   12.45 desenho == COAST == estagio 1/1
+   12.45 desenho Y 1130   vel 0.0   vy 0.0
+   12.45 desenho Empuxo 0 N   massa 160
+   12.45 desenho Inclin 0.0   erro 78.7
+   12.45 desenho ESPACO PROFUNDO
+   12.55 call rocketnautics:vector_thruster_1.setGimbal(0.000,0.000,0.600)
+   12.65 call rocketnautics:vector_thruster_1.setGimbal(0.006,0.000,0.600)
+   12.75 call rocketnautics:vector_thruster_1.setGimbal(0.010,0.000,0.600)
+   12.85 call rocketnautics:vector_thruster_1.setGimbal(0.015,0.000,0.600)
+   12.95 call rocketnautics:vector_thruster_1.setGimbal(0.019,0.000,0.600)
+   13.00 desenho [limpa]
+   13.00 desenho == COAST == estagio 1/1
+   13.00 desenho Y 1130   vel 0.0   vy 0.0
+   13.00 desenho Empuxo 0 N   massa 160
+   13.00 desenho Inclin 0.0   erro 74.8
+   13.00 desenho ESPACO PROFUNDO
+   13.10 call rocketnautics:vector_thruster_1.setGimbal(0.024,0.000,0.600)
+   13.20 call rocketnautics:vector_thruster_1.setGimbal(0.031,0.000,0.600)
+   13.30 call rocketnautics:vector_thruster_1.setGimbal(0.037,0.000,0.600)
+   13.40 call rocketnautics:vector_thruster_1.setGimbal(0.042,0.000,0.600)
+   13.45 call rocketnautics:rcs_thruster_7.setActive(false)
+   13.60 call rocketnautics:vector_thruster_1.setGimbal(0.050,0.000,0.600)
+   13.65 desenho [limpa]
+   13.65 desenho == COAST == estagio 1/1
+   13.65 desenho Y 1130   vel 0.0   vy 0.0
+   13.65 desenho Empuxo 0 N   massa 160
+   13.65 desenho Inclin 0.0   erro 69.6
+   13.65 desenho ESPACO PROFUNDO
+   13.70 call rocketnautics:vector_thruster_1.setGimbal(0.057,0.000,0.600)
+   13.80 call rocketnautics:vector_thruster_1.setGimbal(0.062,0.000,0.600)
+   13.90 call rocketnautics:vector_thruster_1.setGimbal(0.067,0.000,0.600)
+   14.00 call rocketnautics:vector_thruster_1.setGimbal(0.073,0.000,0.600)
+   14.15 call rocketnautics:vector_thruster_1.setGimbal(0.078,0.000,0.600)
+   14.20 desenho [limpa]
+   14.20 desenho == COAST == estagio 1/1
+   14.20 desenho Y 1130   vel 0.0   vy 0.0
+   14.20 desenho Empuxo 0 N   massa 160
+   14.20 desenho Inclin 0.0   erro 64.2
+   14.20 desenho ESPACO PROFUNDO
+   14.25 call rocketnautics:vector_thruster_1.setGimbal(0.087,0.000,0.600)
+   14.30 call rocketnautics:rcs_thruster_4.setActive(true)
+   14.40 call rocketnautics:vector_thruster_1.setGimbal(0.095,0.000,0.600)
+   14.50 call rocketnautics:vector_thruster_1.setGimbal(0.099,0.000,0.600)
+   14.65 call rocketnautics:vector_thruster_1.setGimbal(0.102,0.000,0.600)
+   14.75 call rocketnautics:vector_thruster_1.setGimbal(0.108,0.000,0.600)
+   14.80 desenho [limpa]
+   14.80 desenho == COAST == estagio 1/1
+   14.80 desenho Y 1130   vel 0.0   vy 0.0
+   14.80 desenho Empuxo 0 N   massa 160
+   14.80 desenho Inclin 0.0   erro 57.2
+   14.80 desenho ESPACO PROFUNDO
+   14.85 call rocketnautics:vector_thruster_1.setGimbal(0.112,0.000,0.600)
+   14.95 call rocketnautics:vector_thruster_1.setGimbal(0.115,0.000,0.600)
+   15.05 call rocketnautics:vector_thruster_1.setGimbal(0.119,0.000,0.600)
+   15.20 call rocketnautics:vector_thruster_1.setGimbal(0.122,0.000,0.600)
+   15.30 call rocketnautics:vector_thruster_1.setGimbal(0.127,0.000,0.600)
+   15.45 desenho [limpa]
+   15.45 desenho == COAST == estagio 1/1
+   15.45 desenho Y 1130   vel 0.0   vy 0.0
+   15.45 desenho Empuxo 0 N   massa 160
+   15.45 desenho Inclin 0.0   erro 50.7
+   15.45 desenho ESPACO PROFUNDO
+   15.50 call rocketnautics:vector_thruster_1.setGimbal(0.134,0.000,0.600)
+   15.55 call rocketnautics:rcs_thruster_1.setActive(false)
+   15.70 call rocketnautics:vector_thruster_1.setGimbal(0.138,0.000,0.600)
+   15.80 call rocketnautics:vector_thruster_1.setGimbal(0.142,0.000,0.600)
+   15.90 call rocketnautics:vector_thruster_1.setGimbal(0.144,0.000,0.600)
+   16.00 call rocketnautics:vector_thruster_1.setGimbal(0.145,0.000,0.600)
+   16.05 call rocketnautics:rcs_thruster_8.setActive(true)
+   16.10 desenho [limpa]
+   16.10 desenho == COAST == estagio 1/1
+   16.10 desenho Y 1130   vel 0.0   vy 0.0
+   16.10 desenho Empuxo 0 N   massa 160
+   16.10 desenho Inclin 0.0   erro 41.8
+   16.10 desenho ESPACO PROFUNDO
+   16.20 call rocketnautics:vector_thruster_1.setGimbal(0.147,0.000,0.600)
+   16.30 call rocketnautics:vector_thruster_1.setGimbal(0.145,0.000,0.600)
+   16.40 call rocketnautics:vector_thruster_1.setGimbal(0.144,0.000,0.600)
+   16.50 call rocketnautics:vector_thruster_1.setGimbal(0.141,0.000,0.600)
+   16.60 call rocketnautics:vector_thruster_1.setGimbal(0.138,0.000,0.600)
+   16.65 call rocketnautics:rcs_thruster_2.setActive(true)
+   16.70 desenho [limpa]
+   16.70 desenho == COAST == estagio 1/1
+   16.70 desenho Y 1130   vel 0.0   vy 0.0
+   16.70 desenho Empuxo 0 N   massa 160
+   16.70 desenho Inclin 0.0   erro 34.2
+   16.70 desenho ESPACO PROFUNDO
+   16.80 call rocketnautics:vector_thruster_1.setGimbal(0.133,0.000,0.600)
+   16.90 call rocketnautics:vector_thruster_1.setGimbal(0.126,0.000,0.583)
+   16.95 call rocketnautics:rcs_thruster_4.setActive(false)
+   17.05 call rocketnautics:vector_thruster_1.setGimbal(0.119,0.000,0.549)
+   17.15 call rocketnautics:vector_thruster_1.setGimbal(0.115,0.000,0.527)
+   17.30 call rocketnautics:vector_thruster_1.setGimbal(0.111,0.000,0.505)
+   17.35 desenho [limpa]
+   17.35 desenho == COAST == estagio 1/1
+   17.35 desenho Y 1130   vel 0.0   vy 0.0
+   17.35 desenho Empuxo 0 N   massa 160
+   17.35 desenho Inclin 0.0   erro 26.5
+   17.35 desenho ESPACO PROFUNDO
+   17.40 call rocketnautics:vector_thruster_1.setGimbal(0.105,0.000,0.473)
+   17.50 call rocketnautics:vector_thruster_1.setGimbal(0.100,0.000,0.453)
+   17.60 call rocketnautics:vector_thruster_1.setGimbal(0.095,0.000,0.433)
+   17.70 call rocketnautics:vector_thruster_1.setGimbal(0.089,0.000,0.413)
+   17.85 call rocketnautics:vector_thruster_1.setGimbal(0.084,0.000,0.394)
+   17.90 desenho [limpa]
+   17.90 desenho == COAST == estagio 1/1
+   17.90 desenho Y 1130   vel 0.0   vy 0.0
+   17.90 desenho Empuxo 0 N   massa 160
+   17.90 desenho Inclin 0.0   erro 20.9
+   17.90 desenho ESPACO PROFUNDO
+   17.95 call rocketnautics:vector_thruster_1.setGimbal(0.074,0.000,0.367)
+   18.05 call rocketnautics:vector_thruster_1.setGimbal(0.068,0.000,0.349)
+   18.10 call rocketnautics:rcs_thruster_8.setActive(false)
+   18.20 call rocketnautics:vector_thruster_1.setGimbal(0.058,0.000,0.323)
+   18.35 call rocketnautics:vector_thruster_1.setGimbal(0.053,0.000,0.305)
+   18.45 call rocketnautics:vector_thruster_1.setGimbal(0.045,0.000,0.279)
+   18.50 desenho [limpa]
+   18.50 desenho == COAST == estagio 1/1
+   18.50 desenho Y 1130   vel 0.0   vy 0.0
+   18.50 desenho Empuxo 0 N   massa 160
+   18.50 desenho Inclin 0.0   erro 15.3
+   18.50 desenho ESPACO PROFUNDO
+   18.55 call rocketnautics:vector_thruster_1.setGimbal(0.040,0.000,0.262)
+   18.65 call rocketnautics:vector_thruster_1.setGimbal(0.034,0.000,0.245)
+   18.75 call rocketnautics:vector_thruster_1.setGimbal(0.029,0.000,0.229)
+   18.90 call rocketnautics:vector_thruster_1.setGimbal(0.023,0.000,0.213)
+   19.00 call rocketnautics:vector_thruster_1.setGimbal(0.015,0.000,0.189)
+   19.05 desenho [limpa]
+   19.05 desenho == COAST == estagio 1/1
+   19.05 desenho Y 1130   vel 0.0   vy 0.0
+   19.05 desenho Empuxo 0 N   massa 160
+   19.05 desenho Inclin 0.0   erro 11.1
+   19.05 desenho ESPACO PROFUNDO
+   19.10 call rocketnautics:vector_thruster_1.setGimbal(0.010,0.000,0.174)
+   19.20 call rocketnautics:vector_thruster_1.setGimbal(0.004,0.000,0.160)
+   19.30 call rocketnautics:vector_thruster_1.setGimbal(-0.001,0.000,0.145)
+   19.45 call rocketnautics:vector_thruster_1.setGimbal(-0.007,0.000,0.132)
+   19.55 call rocketnautics:vector_thruster_1.setGimbal(-0.015,0.000,0.112)
+   19.60 desenho [limpa]
+   19.60 desenho == COAST == estagio 1/1
+   19.60 desenho Y 1130   vel 0.0   vy 0.0
+   19.60 desenho Empuxo 0 N   massa 160
+   19.60 desenho Inclin 0.0   erro 7.5
+   19.60 desenho ESPACO PROFUNDO
+   19.65 call rocketnautics:vector_thruster_1.setGimbal(-0.021,0.000,0.099)
+   19.75 call rocketnautics:vector_thruster_1.setGimbal(-0.026,0.000,0.087)
+   19.80 call rocketnautics:rcs_thruster_3.setActive(true)
+   19.95 call rocketnautics:vector_thruster_1.setGimbal(-0.033,0.000,0.069)
+   20.05 call rocketnautics:vector_thruster_1.setGimbal(-0.037,0.000,0.052)
+   20.10 call rocketnautics:rcs_thruster_3.setActive(false)
+   20.20 call rocketnautics:vector_thruster_1.setGimbal(-0.041,0.000,0.037)
+   20.25 desenho [limpa]
+   20.25 desenho == COAST == estagio 1/1
+   20.25 desenho Y 1130   vel 0.0   vy 0.0
+   20.25 desenho Empuxo 0 N   massa 160
+   20.25 desenho Inclin 0.0   erro 4.0
+   20.25 desenho ESPACO PROFUNDO
+   20.30 call rocketnautics:vector_thruster_1.setGimbal(-0.045,0.000,0.027)
+   20.55 call rocketnautics:vector_thruster_1.setGimbal(-0.053,0.000,0.008)
+   20.65 call rocketnautics:vector_thruster_1.setGimbal(-0.059,0.000,-0.005)
+   20.70 call rocketnautics:rcs_thruster_3.setActive(true)
+   20.80 call rocketnautics:vector_thruster_1.setGimbal(-0.064,0.000,-0.016)
+   20.90 call rocketnautics:vector_thruster_1.setGimbal(-0.065,0.000,-0.024)
+   20.95 call rocketnautics:rcs_thruster_3.setActive(false)
+   21.00 desenho [limpa]
+   21.00 desenho == COAST == estagio 1/1
+   21.00 desenho Y 1130   vel 0.0   vy 0.0
+   21.00 desenho Empuxo 0 N   massa 160
+   21.00 desenho Inclin 0.0   erro 2.1
+   21.00 desenho ESPACO PROFUNDO
+   21.10 call rocketnautics:vector_thruster_1.setGimbal(-0.068,0.000,-0.034)
+   21.20 call rocketnautics:vector_thruster_1.setGimbal(-0.072,0.000,-0.043)
+   21.25 call rocketnautics:rcs_thruster_3.setActive(true)
+   21.35 call rocketnautics:vector_thruster_1.setGimbal(-0.075,0.000,-0.051)
+   21.45 call rocketnautics:vector_thruster_1.setGimbal(-0.075,0.000,-0.056)
+   21.50 call rocketnautics:rcs_thruster_3.setActive(false)
+   21.65 call rocketnautics:vector_thruster_1.setGimbal(-0.076,0.000,-0.062)
+   21.70 desenho [limpa]
+   21.70 desenho == COAST == estagio 1/1
+   21.70 desenho Y 1130   vel 0.0   vy 0.0
+   21.70 desenho Empuxo 0 N   massa 160
+   21.70 desenho Inclin 0.0   erro 2.7
+   21.70 desenho ESPACO PROFUNDO
+   21.75 call rocketnautics:vector_thruster_1.setGimbal(-0.078,0.000,-0.068)
+   21.80 call rocketnautics:rcs_thruster_3.setActive(true)
+   21.90 call rocketnautics:vector_thruster_1.setGimbal(-0.080,0.000,-0.072)
+   22.00 call rocketnautics:vector_thruster_1.setGimbal(-0.079,0.000,-0.074)
+   22.05 call rocketnautics:rcs_thruster_3.setActive(false)
+   22.20 call rocketnautics:vector_thruster_1.setGimbal(-0.077,0.000,-0.077)
+   22.30 call rocketnautics:vector_thruster_1.setGimbal(-0.078,0.000,-0.079)
+   22.35 call rocketnautics:rcs_thruster_3.setActive(true)
+   22.40 desenho [limpa]
+   22.40 desenho == COAST == estagio 1/1
+   22.40 desenho Y 1130   vel 0.0   vy 0.0
+   22.40 desenho Empuxo 0 N   massa 160
+   22.40 desenho Inclin 0.0   erro 3.7
+   22.40 desenho ESPACO PROFUNDO
+   22.45 call rocketnautics:vector_thruster_1.setGimbal(-0.078,0.000,-0.079)
+   22.55 call rocketnautics:vector_thruster_1.setGimbal(-0.076,0.000,-0.079)
+   22.60 call rocketnautics:rcs_thruster_3.setActive(false)
+   22.75 call rocketnautics:vector_thruster_1.setGimbal(-0.073,0.000,-0.078)
+   22.85 call rocketnautics:vector_thruster_1.setGimbal(-0.072,0.000,-0.076)
+   22.95 call rocketnautics:vector_thruster_1.setGimbal(-0.072,0.000,-0.075)
+   23.00 call rocketnautics:rcs_thruster_3.setActive(true)
+   23.05 desenho [limpa]
+   23.05 desenho == COAST == estagio 1/1
+   23.05 desenho Y 1130   vel 0.0   vy 0.0
+   23.05 desenho Empuxo 0 N   massa 160
+   23.05 desenho Inclin 0.0   erro 4.0
+   23.05 desenho ESPACO PROFUNDO
+   23.10 call rocketnautics:vector_thruster_1.setGimbal(-0.069,0.000,-0.071)
+   23.15 call rocketnautics:rcs_thruster_6.setActive(true)
+   23.30 call rocketnautics:vector_thruster_1.setGimbal(-0.064,0.000,-0.066)
+   23.35 call rocketnautics:rcs_thruster_3.setActive(false)
+   23.45 call rocketnautics:vector_thruster_1.setGimbal(-0.057,0.000,-0.058)
+   23.50 call rocketnautics:rcs_thruster_2.setActive(false)
+   23.60 call rocketnautics:vector_thruster_1.setGimbal(-0.054,0.000,-0.053)
+   23.65 call rocketnautics:rcs_thruster_6.setActive(false)
+   23.80 call rocketnautics:vector_thruster_1.setGimbal(-0.051,0.000,-0.049)
+   23.85 desenho [limpa]
+   23.85 desenho == COAST == estagio 1/1
+   23.85 desenho Y 1130   vel 0.0   vy 0.0
+   23.85 desenho Empuxo 0 N   massa 160
+   23.85 desenho Inclin 0.0   erro 3.3
+   23.85 desenho ESPACO PROFUNDO
+   23.90 call rocketnautics:vector_thruster_1.setGimbal(-0.048,0.000,-0.045)
+   24.00 call rocketnautics:vector_thruster_1.setGimbal(-0.046,0.000,-0.043)
+   24.10 call rocketnautics:vector_thruster_1.setGimbal(-0.044,0.000,-0.041)
+   24.20 call rocketnautics:vector_thruster_1.setGimbal(-0.042,0.000,-0.038)
+   24.35 call rocketnautics:vector_thruster_1.setGimbal(-0.040,0.000,-0.036)
+   24.40 desenho [limpa]
+   24.40 desenho == CIRC == estagio 1/1
+   24.40 desenho Y 1130   vel 0.0   vy 0.0
+   24.40 desenho Empuxo 0 N   massa 160
+   24.40 desenho Inclin 0.0   erro 2.7
+   24.40 desenho ESPACO PROFUNDO
+   24.45 call rocketnautics:vector_thruster_1.setGimbal(-0.037,0.000,-0.032)
+   24.50 call rocketnautics:rocket_thruster_0.setThrust(1000.000)
+   24.50 call rocketnautics:rocket_thruster_0.setActive(true)
+   24.50 call rocketnautics:rocket_thruster_1.setThrust(1000.000)
+   24.50 call rocketnautics:rocket_thruster_1.setActive(true)
+   24.50 call rocketnautics:rocket_thruster_2.setThrust(1000.000)
+   24.50 call rocketnautics:rocket_thruster_2.setActive(true)
+   24.50 call rocketnautics:rocket_thruster_3.setThrust(1000.000)
+   24.50 call rocketnautics:rocket_thruster_3.setActive(true)
+   24.50 call rocketnautics:vector_thruster_1.setThrust(1000.000)
+   24.50 call rocketnautics:vector_thruster_1.setActive(true)
+   24.55 redstone right true
+   24.60 call rocketnautics:vector_thruster_1.setGimbal(-0.010,0.000,-0.008)
+   24.65 call rocketnautics:rcs_thruster_1.setActive(true)
+   24.65 call rocketnautics:rcs_thruster_4.setActive(true)
+   24.75 call rocketnautics:vector_thruster_1.setGimbal(-0.039,0.000,-0.037)
+   24.80 call rocketnautics:rcs_thruster_1.setActive(false)
+   24.80 call rocketnautics:rcs_thruster_2.setActive(true)
+   24.80 call rocketnautics:rcs_thruster_3.setActive(true)
+   24.80 call rocketnautics:rcs_thruster_4.setActive(false)
+   24.95 call rocketnautics:vector_thruster_1.setGimbal(-0.034,0.000,-0.032)
+   25.00 call rocketnautics:rcs_thruster_2.setActive(false)
+   25.00 call rocketnautics:rcs_thruster_3.setActive(false)
+   25.10 call rocketnautics:vector_thruster_1.setGimbal(-0.032,0.000,-0.030)
+   25.15 desenho [limpa]
+   25.15 desenho == CIRC == estagio 1/1
+   25.15 desenho Y 1130   vel 0.0   vy 0.0
+   25.15 desenho Empuxo 5000 N   massa 160
+   25.15 desenho Inclin 0.0   erro 2.0
+   25.15 desenho ESPACO PROFUNDO
+   25.20 call rocketnautics:vector_thruster_1.setGimbal(-0.032,0.000,-0.030)
+   25.30 call rocketnautics:vector_thruster_1.setGimbal(-0.031,0.000,-0.029)
+   25.55 call rocketnautics:vector_thruster_1.setGimbal(-0.029,0.000,-0.028)
+   25.65 call rocketnautics:vector_thruster_1.setGimbal(-0.028,0.000,-0.027)
+   25.75 call rocketnautics:vector_thruster_1.setGimbal(-0.028,0.000,-0.026)
+   25.80 desenho [limpa]
+   25.80 desenho == CIRC == estagio 1/1
+   25.80 desenho Y 1130   vel 0.0   vy 0.0
+   25.80 desenho Empuxo 5000 N   massa 160
+   25.80 desenho Inclin 0.0   erro 1.7
+   25.80 desenho ESPACO PROFUNDO
+   25.85 call rocketnautics:vector_thruster_1.setGimbal(-0.027,0.000,-0.025)
+   25.95 call rocketnautics:vector_thruster_1.setGimbal(-0.026,0.000,-0.025)
+   26.10 call rocketnautics:vector_thruster_1.setGimbal(-0.026,0.000,-0.024)
+   26.15 call rocketnautics:rocket_thruster_0.setThrust(200.000)
+   26.15 call rocketnautics:rocket_thruster_0.setActive(true)
+   26.15 call rocketnautics:rocket_thruster_1.setThrust(200.000)
+   26.15 call rocketnautics:rocket_thruster_1.setActive(true)
+   26.15 call rocketnautics:rocket_thruster_2.setThrust(200.000)
+   26.15 call rocketnautics:rocket_thruster_2.setActive(true)
+   26.15 call rocketnautics:rocket_thruster_3.setThrust(200.000)
+   26.15 call rocketnautics:rocket_thruster_3.setActive(true)
+   26.15 call rocketnautics:vector_thruster_1.setThrust(200.000)
+   26.15 call rocketnautics:vector_thruster_1.setActive(true)
+   26.20 call rocketnautics:rocket_thruster_0.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_0.setActive(false)
+   26.20 call rocketnautics:rocket_thruster_1.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_1.setActive(false)
+   26.20 call rocketnautics:rocket_thruster_2.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_2.setActive(false)
+   26.20 call rocketnautics:rocket_thruster_3.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_3.setActive(false)
+   26.20 call rocketnautics:vector_thruster_1.setThrust(0.000)
+   26.20 call rocketnautics:vector_thruster_1.setActive(false)
+   26.20 redstone right false
+   26.20 call rocketnautics:rocket_thruster_0.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_0.setActive(false)
+   26.20 call rocketnautics:rocket_thruster_1.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_1.setActive(false)
+   26.20 call rocketnautics:rocket_thruster_2.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_2.setActive(false)
+   26.20 call rocketnautics:rocket_thruster_3.setThrust(0.000)
+   26.20 call rocketnautics:rocket_thruster_3.setActive(false)
+   26.20 call rocketnautics:vector_thruster_1.setThrust(0.000)
+   26.20 call rocketnautics:vector_thruster_1.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_1.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_2.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_3.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_4.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_5.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_6.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_7.setActive(false)
+   26.20 call rocketnautics:rcs_thruster_8.setActive(false)
+   26.25 desenho [limpa]
+   26.25 desenho == VOO ENCERRADO: ORBIT ==
+   26.25 desenho Y 1130  ECC 0.018390376088235457
+   26.25 desenho Veja: logs erros
+   26.25 fim de voo.lua
+==== arquivo config.lua
+return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
+ turn_start_alt=250, turn_end_angle=55, stages={{engines={"rocketnautics:rocket_thruster_0","rocketnautics:rocket_thruster_1",
+ "rocketnautics:rocket_thruster_2","rocketnautics:rocket_thruster_3","rocketnautics:vector_thruster_1"}}},
+ max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=10, ecc_target=0.02, sputnik="top", turn_end_y=16000,
+ steer_throttle=0.08, gimbal_sign=1, transfer_y=20000, stabilizer={side="right"}, rcs_enabled=true }
+==== arquivo estado.txt
+{failed={},logFile="/logs/2026-09-27_20-01-00_retomada.txt",phase="ORBIT",stage=1,t0=0}
+==== arquivo logs/2026-09-27_20-01-00_retomada.txt
+
+========== RETOMANDO VOO na fase COAST  (2026-09-27_20-02-00) ==========
+[   0.00] INFO  Acendendo estagio 1 (5 motores)
+[   0.15] INFO  SPUTNIK dados={distanceToPlanet=22100,eccentricity=0.094672193200233665,gravity=91.8,inAtmosphere=false,inDeepSpace=true,parentBody="overworld",parentRadius=3000000,period=995,semiMajorAxis=2760742.0000000005,speed=15850,velocity={x=0,y=0,z=15850}}
+[   0.15] INFO  ORBITA ecc=0.094672193200233665 sma=2760742.0000000005 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=22100 atm=false corpo=overworld
+[   0.20] INFO  RCS calibrando 8 propulsores (primeira vez no espaco)
+[   1.45] INFO  RCS rcs_thruster_1 giro=(0.0274, -0.0000, 0.0037) rad/s2
+[   2.65] INFO  RCS rcs_thruster_2 giro=(-0.0274, 0.0018, -0.0000) rad/s2
+[   3.85] INFO  RCS rcs_thruster_3 giro=(0.0000, 0.0000, 0.0274) rad/s2
+[   5.05] INFO  RCS rcs_thruster_4 giro=(0.0027, 0.0000, -0.0274) rad/s2
+[   6.25] INFO  RCS rcs_thruster_5 giro=(-0.0000, 0.0183, 0.0000) rad/s2
+[   7.45] INFO  RCS rcs_thruster_6 giro=(-0.0000, -0.0183, 0.0000) rad/s2
+[   8.65] INFO  RCS rcs_thruster_7 giro=(0.0192, -0.0000, 0.0192) rad/s2
+[   9.85] INFO  RCS rcs_thruster_8 giro=(-0.0192, 0.0000, -0.0192) rad/s2
+[  10.10] INFO  RCS calibrado: 8 de 8 propulsores com efeito
+[  10.25] INFO  ESTABILIZADOR desligado (livre para girar)
+[  10.35] INFO  ORBITA ecc=0.095226392035185112 sma=2760741.9999999991 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=23600 atm=false corpo=overworld
+[  10.45] INFO  MOTOR COAST rocket_thruster_0 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.45] INFO  MOTOR COAST rocket_thruster_1 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.45] INFO  MOTOR COAST rocket_thruster_2 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.45] INFO  MOTOR COAST rocket_thruster_3 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.45] INFO  MOTOR COAST vector_thruster_1 [vector_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.50] INFO  COMBUSTIVEL lava=5000 mB em 5 tanques/motores (fase COAST, Y=1130)
+[  11.35] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=83.7 gimbal=(-0.04,0.60) w=(0.05,-0.00,0.02) loop=8.0Hz
+[  12.35] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=79.3 gimbal=(-0.01,0.60) w=(0.10,-0.00,0.05) loop=9.0Hz
+[  12.55] INFO  ORBITA ecc=0.095345925117233166 sma=2760741.9999999995 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=23950 atm=false corpo=overworld
+[  13.35] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=71.9 gimbal=(0.04,0.60) w=(0.15,-0.00,0.07) loop=9.0Hz
+[  14.45] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=61.1 gimbal=(0.09,0.60) w=(0.19,-0.00,0.08) loop=8.2Hz
+[  14.65] INFO  ORBITA ecc=0.095460024877369931 sma=2760742.0 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=24250 atm=false corpo=overworld
+[  15.40] INFO  MOTOR COAST rocket_thruster_0 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.40] INFO  MOTOR COAST rocket_thruster_1 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.40] INFO  MOTOR COAST rocket_thruster_2 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.40] INFO  MOTOR COAST rocket_thruster_3 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.40] INFO  MOTOR COAST vector_thruster_1 [vector_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.45] INFO  COMBUSTIVEL lava=5000 mB em 5 tanques/motores (fase COAST, Y=1130)
+[  15.60] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=48.2 gimbal=(0.13,0.60) w=(0.23,-0.00,0.05) loop=8.2Hz
+[  16.55] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=35.4 gimbal=(0.14,0.60) w=(0.22,-0.00,0.01) loop=8.0Hz
+[  16.80] INFO  ORBITA ecc=0.0955768412984627 sma=2760741.9999999995 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=24600 atm=false corpo=overworld
+[  17.55] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=23.9 gimbal=(0.10,0.45) w=(0.18,0.00,-0.02) loop=8.0Hz
+[  18.60] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=14.5 gimbal=(0.04,0.26) w=(0.13,0.00,-0.04) loop=8.6Hz
+[  18.90] INFO  ORBITA ecc=0.095690941058599835 sma=2760741.9999999991 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=24900 atm=false corpo=overworld
+[  19.60] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=7.5 gimbal=(-0.02,0.11) w=(0.10,0.01,-0.04) loop=9.0Hz
+[  20.40] INFO  MOTOR COAST rocket_thruster_0 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  20.40] INFO  MOTOR COAST rocket_thruster_1 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  20.40] INFO  MOTOR COAST rocket_thruster_2 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  20.40] INFO  MOTOR COAST rocket_thruster_3 [rocket_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  20.40] INFO  MOTOR COAST vector_thruster_1 [vector_thruster] ativo=false lava=1000.0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  20.45] INFO  COMBUSTIVEL lava=5000 mB em 5 tanques/motores (fase COAST, Y=1130)
+[  20.75] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=2.5 gimbal=(-0.06,-0.00) w=(0.07,0.01,-0.03) loop=7.3Hz
+[  21.10] INFO  ORBITA ecc=0.095792363067610645 sma=2760741.9999999986 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=25200 atm=false corpo=overworld
+[  21.85] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=3.0 gimbal=(-0.08,-0.07) w=(0.04,0.01,-0.01) loop=7.3Hz
+[  22.90] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=4.0 gimbal=(-0.07,-0.08) w=(0.01,0.01,0.00) loop=7.3Hz
+[  23.30] INFO  ORBITA ecc=0.095792363067610645 sma=2760741.9999999986 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=25200 atm=false corpo=overworld
+[  23.95] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=0.00 g=9.81 massa=159.5 F=0 erro=3.1 gimbal=(-0.05,-0.05) w=(-0.02,0.00,0.01) loop=6.7Hz
+[  24.40] INFO  FASE COAST -> CIRC (apoastro, vr=0.00 ecc=0.095792363067610645 periastro=-503716 alvo=23000)
+[  24.55] INFO  ESTABILIZADOR ligado (segurando o angulo)
+[  25.05] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=31.35 g=9.81 massa=159.5 F=5000 erro=2.1 gimbal=(-0.03,-0.03) w=(-0.01,0.00,0.01) loop=8.0Hz
+[  25.40] INFO  MOTOR CIRC rocket_thruster_0 [rocket_thruster] ativo=true lava=996.59999999999923/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.40] INFO  MOTOR CIRC rocket_thruster_1 [rocket_thruster] ativo=true lava=996.59999999999923/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.40] INFO  MOTOR CIRC rocket_thruster_2 [rocket_thruster] ativo=true lava=996.59999999999923/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.40] INFO  MOTOR CIRC rocket_thruster_3 [rocket_thruster] ativo=true lava=996.59999999999923/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.40] INFO  MOTOR CIRC vector_thruster_1 [vector_thruster] ativo=true lava=996.59999999999923/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.45] INFO  COMBUSTIVEL lava=4980 mB em 5 tanques/motores (fase CIRC, Y=1130)
+[  25.55] INFO  ORBITA ecc=0.022908189855598719 sma=2957450.1700167828 periodo=995 vel_orb=15850 g=91.8 raio_planeta=3000000 dist=25200 atm=false corpo=overworld
+[  26.00] INFO  FISICA y=1130.0 vy=0.00 a_medida=0.00 F/m=31.35 g=9.81 massa=159.5 F=5000 erro=1.6 gimbal=(-0.03,-0.02) w=(-0.00,0.00,0.01) loop=7.6Hz
+[  26.20] INFO  FASE CIRC -> ORBIT (periastro=25200 ecc=0.018390376088235457)
+[  26.20] INFO  ESTABILIZADOR desligado (livre para girar)
+
+==== arquivo logs/2026-09-27_20-01-00_retomada_telemetria.csv
+10500,COAST,1,1130.0,0.00,0.00,160,0,0.0,85.2,-0.06,0.60,0.095226392035185112,23600
+10700,COAST,1,1130.0,0.00,0.00,160,0,0.0,85.0,-0.05,0.60,0.095226392035185112,23600
+10950,COAST,1,1130.0,0.00,0.00,160,0,0.0,84.8,-0.05,0.60,0.0952562753056968,23700
+11150,COAST,1,1130.0,0.00,0.00,160,0,0.0,84.3,-0.04,0.60,0.0952562753056968,23700
+11350,COAST,1,1130.0,0.00,0.00,160,0,0.0,83.7,-0.04,0.60,0.0952562753056968,23700
+11600,COAST,1,1130.0,0.00,0.00,160,0,0.0,82.9,-0.03,0.60,0.0952861585762083,23800
+11800,COAST,1,1130.0,0.00,0.00,160,0,0.0,82.1,-0.02,0.60,0.0952861585762083,23800
+12050,COAST,1,1130.0,0.00,0.00,160,0,0.0,81.2,-0.02,0.60,0.095316041846720739,23850
+12250,COAST,1,1130.0,0.00,0.00,160,0,0.0,79.9,-0.01,0.60,0.095316041846720739,23850
+12450,COAST,1,1130.0,0.00,0.00,160,0,0.0,78.7,-0.00,0.60,0.095316041846720739,23850
+12700,COAST,1,1130.0,0.00,0.00,160,0,0.0,77.0,0.01,0.60,0.095345925117233166,23950
+12900,COAST,1,1130.0,0.00,0.00,160,0,0.0,75.6,0.01,0.60,0.095345925117233166,23950
+13150,COAST,1,1130.0,0.00,0.00,160,0,0.0,74.0,0.02,0.60,0.095375808387745592,24050
+13350,COAST,1,1130.0,0.00,0.00,160,0,0.0,71.9,0.04,0.60,0.095375808387745592,24050
+13650,COAST,1,1130.0,0.00,0.00,160,0,0.0,69.6,0.05,0.60,0.095402974997301451,24100
+13850,COAST,1,1130.0,0.00,0.00,160,0,0.0,67.2,0.06,0.60,0.095402974997301451,24100
+14050,COAST,1,1130.0,0.00,0.00,160,0,0.0,65.2,0.07,0.60,0.095402974997301451,24100
+14350,COAST,1,1130.0,0.00,0.00,160,0,0.0,62.6,0.09,0.60,0.0954328582678135,24200
+14550,COAST,1,1130.0,0.00,0.00,160,0,0.0,60.0,0.10,0.60,0.0954328582678135,24200
+14800,COAST,1,1130.0,0.00,0.00,160,0,0.0,57.2,0.11,0.60,0.095460024877369931,24250
+15000,COAST,1,1130.0,0.00,0.00,160,0,0.0,54.9,0.12,0.60,0.095460024877369931,24250
+15250,COAST,1,1130.0,0.00,0.00,160,0,0.0,52.5,0.12,0.60,0.095489908147882163,24350
+15600,COAST,1,1130.0,0.00,0.00,160,0,0.0,48.2,0.13,0.60,0.095489908147882163,24350
+15850,COAST,1,1130.0,0.00,0.00,160,0,0.0,44.3,0.14,0.60,0.095517074757438952,24400
+16100,COAST,1,1130.0,0.00,0.00,160,0,0.0,41.8,0.15,0.60,0.095517074757438952,24400
+16350,COAST,1,1130.0,0.00,0.00,160,0,0.0,37.9,0.15,0.60,0.095544241366995367,24500
+16550,COAST,1,1130.0,0.00,0.00,160,0,0.0,35.4,0.14,0.60,0.095544241366995367,24500
+16850,COAST,1,1130.0,0.00,0.00,160,0,0.0,32.3,0.13,0.60,0.0955768412984627,24600
+17100,COAST,1,1130.0,0.00,0.00,160,0,0.0,28.8,0.12,0.55,0.0955768412984627,24600
+17350,COAST,1,1130.0,0.00,0.00,160,0,0.0,26.5,0.11,0.51,0.095604007908019109,24650
+17550,COAST,1,1130.0,0.00,0.00,160,0,0.0,23.9,0.10,0.45,0.095604007908019109,24650
+17750,COAST,1,1130.0,0.00,0.00,160,0,0.0,21.9,0.09,0.41,0.095604007908019109,24650
+18000,COAST,1,1130.0,0.00,0.00,160,0,0.0,19.5,0.07,0.37,0.095633891178531,24750
+18250,COAST,1,1130.0,0.00,0.00,160,0,0.0,17.4,0.06,0.32,0.095633891178531,24750
+18500,COAST,1,1130.0,0.00,0.00,160,0,0.0,15.3,0.04,0.28,0.095661057788087214,24800
+18700,COAST,1,1130.0,0.00,0.00,160,0,0.0,13.7,0.03,0.24,0.095661057788087214,24800
+18950,COAST,1,1130.0,0.00,0.00,160,0,0.0,12.2,0.02,0.21,0.095690941058599835,24900
+19150,COAST,1,1130.0,0.00,0.00,160,0,0.0,10.4,0.01,0.17,0.095690941058599835,24900
+19350,COAST,1,1130.0,0.00,0.00,160,0,0.0,9.1,-0.00,0.15,0.095690941058599835,24900
+19600,COAST,1,1130.0,0.00,0.00,160,0,0.0,7.5,-0.02,0.11,0.095720824329112081,25000
+19850,COAST,1,1130.0,0.00,0.00,160,0,0.0,6.3,-0.03,0.09,0.095720824329112081,25000
+20150,COAST,1,1130.0,0.00,0.00,160,0,0.0,4.7,-0.04,0.05,0.0957479909386683,25050
+20450,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.6,-0.04,0.03,0.0957479909386683,25050
+20750,COAST,1,1130.0,0.00,0.00,160,0,0.0,2.5,-0.06,-0.00,0.0957805908701362,25150
+21000,COAST,1,1130.0,0.00,0.00,160,0,0.0,2.1,-0.07,-0.02,0.0957805908701362,25150
+21300,COAST,1,1130.0,0.00,0.00,160,0,0.0,2.1,-0.07,-0.04,0.095792363067610645,25200
+21550,COAST,1,1130.0,0.00,0.00,160,0,0.0,2.5,-0.08,-0.06,0.095792363067610645,25200
+21850,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.0,-0.08,-0.07,0.095792363067610645,25200
+22100,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.4,-0.08,-0.07,0.095792363067610645,25200
+22400,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.7,-0.08,-0.08,0.095792363067610645,25200
+22650,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.9,-0.08,-0.08,0.095792363067610645,25200
+22900,COAST,1,1130.0,0.00,0.00,160,0,0.0,4.0,-0.07,-0.08,0.095792363067610645,25200
+23200,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.9,-0.07,-0.07,0.095792363067610645,25200
+23550,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.7,-0.06,-0.06,0.095792363067610645,25200
+23850,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.3,-0.05,-0.05,0.095792363067610645,25200
+24050,COAST,1,1130.0,0.00,0.00,160,0,0.0,3.0,-0.05,-0.04,0.095792363067610645,25200
+24250,COAST,1,1130.0,0.00,0.00,160,0,0.0,2.8,-0.04,-0.04,0.095792363067610645,25200
+24550,CIRC,1,1130.0,0.00,0.00,160,0,0.0,2.5,-0.04,-0.03,0.095792363067610645,25200
+24850,CIRC,1,1130.0,0.00,0.00,160,0,0.0,2.1,-0.04,-0.04,0.095792363067610645,25200
+25150,CIRC,1,1130.0,0.00,0.00,160,5000,0.0,2.0,-0.03,-0.03,0.066980262986970837,25200
+25450,CIRC,1,1130.0,0.00,0.00,160,5000,0.0,1.9,-0.03,-0.03,0.066980262986970837,25200
+25700,CIRC,1,1130.0,0.00,0.00,160,5000,0.0,1.7,-0.03,-0.03,0.022908189855598719,25200
+25900,CIRC,1,1130.0,0.00,0.00,160,5000,0.0,1.6,-0.03,-0.03,0.022908189855598719,25200
+
+==== arquivo rcs.cal
+{["rocketnautics:rcs_thruster_1"]={[1]=0.027391304347826082,[2]=-1.5084551965015712e-18,[3]=0.0036521739130434775},["rocketnautics:rcs_thruster_2"]={[1]=-0.027391304347826093,[2]=0.0018260869565217414,[3]=-7.5422759825078586e-19},["rocketnautics:rcs_thruster_3"]={[1]=1.4141767467202239e-19,[2]=3.7711379912539303e-19,[3]=0.0273913043478261},["rocketnautics:rcs_thruster_4"]={[1]=0.0027391304347826103,[2]=3.7711379912539288e-19,[3]=-0.027391304347826096},["rocketnautics:rcs_thruster_5"]={[1]=-3.7711379912539306e-18,[2]=0.0182608695652174,[3]=0.0},["rocketnautics:rcs_thruster_6"]={[1]=-4.9024793886301095e-18,[2]=-0.0182608695652174,[3]=0.0},["rocketnautics:rcs_thruster_7"]={[1]=0.019173913043478243,[2]=-7.542275982507849e-19,[3]=0.019173913043478243},["rocketnautics:rcs_thruster_8"]={[1]=-0.019173913043478243,[2]=2.6397965938777451e-18,[3]=-0.019173913043478239}}
+mundo final: y=1130.00 vy=0.00 espaco=true a=3108359 e=0.0268

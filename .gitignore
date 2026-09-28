@@ -1,7 +1,8 @@
-config.lua
-estado.txt
+/config.lua
+/estado.txt
 log.txt
 log_antigo.txt
 *.log
-rcs.cal
+/rcs.cal
 logs/
+__pycache__/

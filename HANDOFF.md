@@ -20,22 +20,41 @@ Um foguete no Minecraft, 100% survival e totalmente automático, que decola com 
 
 | Arquivo | O que faz |
 |---|---|
-| `voo.lua` | Piloto automático, com todas as fases do voo. É o arquivo principal (~1400 linhas). |
+| `voo.lua` | Entrada do piloto automático (~60 linhas): argumentos, checagem de arquivos de `lib/`, `xpcall`. |
+| `lib/foguete/` | O código do voo, dividido em módulos (tabela abaixo). |
 | `setup.lua` | Assistente que cria o `config.lua`: estágios, motores, separadores, stabilizer e Sputnik. |
 | `sputnik_guiagem.lua` | Script colado no nó Lua da Sputnik. Faz a curva de gravidade na subida e o PID de direção. |
-| `log.lua` | Biblioteca de log: um arquivo por voo em `/logs/AAAA-MM-DD_HH-MM-SS_<tipo>.txt`, mais `_telemetria.csv`. |
 | `logs.lua` | Leitor de logs: `logs`, `logs lista`, `logs N`, `logs erros`, `logs motores`, `logs fisica`, `logs tudo`, `logs limpar`. |
 | `diagnostico.lua` | Lista os lados do computador, os periféricos (com o tipo de motor) e o que está na config mas não está conectado. |
-| `atualizar.lua` | Baixa os arquivos do GitHub e confere a sintaxe com `load()` antes de trocar. |
+| `atualizar.lua` | Baixa os arquivos listados em `arquivos.txt`, confere a sintaxe de todos e só então grava (tudo ou nada). |
+| `arquivos.txt` | Lista do atualizador. Linhas depois de `remover:` são apagadas do computador. **Arquivo novo = acrescentar aqui.** |
 | `parar.lua` | Corta todos os motores. |
 | `startup.lua` | Retoma um voo em andamento depois que o computador reinicia. |
-| `ferramentas/sim*.py` | Simulador fora do jogo (veja abaixo). O `atualizar` não baixa esta pasta. |
+| `ferramentas/sim/` | Simulador fora do jogo (veja abaixo). O `atualizar` não baixa esta pasta. |
 
-O `.gitignore` deixa de fora `config.lua`, `estado.txt`, `rcs.cal` e `logs/`, que são arquivos específicos de cada foguete.
+**Módulos em `lib/foguete/`:**
+
+| Módulo | O que faz |
+|---|---|
+| `laco.lua` | Monta os módulos e roda o laço: sensores, boosters, equilíbrio, troca de estágio, fase atual, telemetria, estabilizador. Também `voo descer`. |
+| `fases/*.lua` | Uma fase por arquivo: `plataforma` (PAD), `subida` (ASCENT/BALISTICO), `orbita` (COAST/CIRC), `deorbit`, `reentrada`, `pouso`. Cada uma tem `fases`, `novaMemoria`, `tick(ctx)` e `estabilizador(ctx)`. |
+| `config.lua` | Carrega o `config.lua` do foguete e aplica **todos os padrões** (`PADROES`). Chave desconhecida vira AVISO no preflight. |
+| `estado.lua` | `estado.txt` (`salvar`, `carregar`) e `trocar(fase, motivo)`, a única função que troca de fase. |
+| `motores.lua` | Periféricos de motor, acelerador, ignição, `safeAll`, `stageStatus`, lava total, equilíbrio de empuxo. |
+| `controle.lua` | `steer` (gimbal PD+I), `alignedFor` e o Magnetic Stabilizer. |
+| `separacao.lua` | Pulsos de separador, troca de estágio, boosters (confirmação de ignição e largada). |
+| `sensores.lua`, `sputnik.lua` | Leitura da nave (CC: Sable) e dados orbitais da Sputnik. |
+| `checagem.lua` | `preflight` e `voo teste`. |
+| `rcs.lua` | RCS (só age com `rcs_enabled = true`) e `voo rcs`. |
+| `tela.lua`, `telemetria.lua`, `log.lua`, `mat.lua` | Tela, CSV e linhas FISICA/MOTOR/COMBUSTIVEL, log por voo, matemática. |
+
+As fases recebem um `ctx` com o estado (`ctx.S`), a config, a nave, os dados da Sputnik (`ctx.orb`) e uma memória própria (`ctx.mem`), criada uma vez por execução e mantida entre as trocas de fase.
+
+O `.gitignore` deixa de fora `/config.lua`, `/estado.txt`, `/rcs.cal` e `logs/` da raiz, que são arquivos específicos de cada foguete.
 
 **Comandos no jogo:** `setup`, `diagnostico`, `voo`, `voo teste` (só o preflight), `voo descer [Y]` (vai direto para o pouso), `voo rcs` (calibra o RCS), `voo reset`, `parar`, `logs`, `atualizar`.
 
-## Como o voo funciona (`voo.lua`)
+## Como o voo funciona (`lib/foguete/`)
 
 Fases: `ASCENT → BALISTICO → COAST/CIRC (órbita) → ORBIT → DEORBIT → REENTRADA → POUSO`.
 
@@ -66,9 +85,9 @@ Fases: `ASCENT → BALISTICO → COAST/CIRC (órbita) → ORBIT → DEORBIT → 
   - Usa `ground_y` e `land_ceiling_y` (teto de 400).
   - Freia a velocidade horizontal e detecta o contato com o chão.
 - **RCS.** Desligado por padrão, a pedido do dono. Só funciona com `rcs_enabled = true`. Pelo CC dá só para ligar e desligar; o nível de empuxo quem define é a Sputnik.
-- **Gyrodyne.** Tem suporte opcional no código, mas o bloco não existe na versão usada.
+- **Gyrodyne.** O suporte foi removido na refatoração: o bloco não existe na 26.08.307.
 
-As outras chaves do `config.lua` têm valor padrão no início de `voo.lua`. Procure por `CFG.`.
+Os valores padrão de todas as chaves opcionais do `config.lua` ficam em `lib/foguete/config.lua` (`PADROES`).
 
 ## Fatos da mecânica, conferidos no código-fonte da 26.08.307
 
@@ -115,15 +134,15 @@ As outras chaves do `config.lua` têm valor padrão no início de `voo.lua`. Pro
 - Sistema de boosters: https://claude.ai/artifact/UNyTu7Ke1i94yCn8x34LaC
 - Foguete de dois estágios com boosters (lista de blocos, fiação, respostas do setup, checklist): https://claude.ai/artifact/Vx3yE4HX5g53JYtAn6fP4e
 
-## Simulador (`ferramentas/`)
+## Simulador (`ferramentas/sim/`)
 
-- Precisa de Python 3 com `lupa` (`pip install lupa`).
-- Roda a partir da raiz do repositório:
-  - `python3 ferramentas/sim.py` simula a órbita;
-  - `sim2.py` testa os comandos `voo`, `voo reset` e `voo teste`;
-  - `sim3.py` simula a subida com 4 boosters e a separação.
-- Simula `fs`, os periféricos, a Sputnik, a redstone (`STAB`, `PULSOS`) e os boosters.
-- Variáveis de ambiente: `RCSN`, `NOTHR`, `STAB`, `ARG1`, `FRACO`.
+- Precisa de Python 3 com `lupa` (`pip install lupa`). Roda a partir da raiz do repositório:
+  - `py ferramentas/sim/testar.py` roda todos os cenários e compara com a referência;
+  - `py ferramentas/sim/testar.py descida` roda um cenário só;
+  - `py ferramentas/sim/testar.py --gravar` regrava a referência.
+- `ambiente.lua` imita o CC (fs, periféricos, parallel, redstone, http, require); `mundo.lua` tem a nave, os motores, a Sputnik, os separadores e a física; `rodar.lua` executa um cenário.
+- Cenários (`cenarios/*.lua`): órbita nos 3 modos, RCS, subida com boosters, dois estágios, lançamento, comandos, preflight com erros, descida (com reboot na troca de dimensão), descida pesada, retomada no pouso, config mínima e explícita, instalação incompleta, fase desconhecida e atualizador.
+- A referência (`referencia/*.txt`) registra cada comando mandado aos motores, a redstone, a tela, os logs e o estado final. **Toda mudança de comportamento de propósito regrava a referência, com o motivo no commit.**
 - A física é bem simplificada. Serve para pegar erros de lógica e de Lua, não para ajustar ganhos de controle.
 
 ## Próximos passos
