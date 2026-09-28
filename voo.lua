@@ -60,174 +60,10 @@ local pulse, separate, checkBoosterDrop = Sep.pulse, Sep.separate, Sep.checkBoos
 local Sp = require("foguete.sputnik").novo(CFG, Mot)
 local sputnik, orbitDir, periAlt = Sp.dados, Sp.orbitDir, Sp.periAlt
 
----------------------------------------------------------------- Gyrodyne
--- Roda de reacao do Cosmonautics: gira a nave SEM empuxo (precisa de energia FE).
--- Os modos dela usam a velocidade local da nave, que no espaco profundo e ~0,
--- entao so servem no pouso: radial_out = nariz para cima, retrograde = contra o movimento.
--- O Gyrodyne precisa estar virado para o mesmo lado do nariz do foguete.
-local gyro = { names = nil, mode = nil }
-local function gyroNames()
-  if not gyro.names then
-    gyro.names = {}
-    for _, n in ipairs(periNames()) do
-      if peripheral.hasType(n, "gyrodyne") then gyro.names[#gyro.names + 1] = n end
-    end
-  end
-  return gyro.names
-end
-local function gyroMode(mode)
-  if gyro.mode == mode or #gyroNames() == 0 then return end
-  gyro.mode = mode
-  for _, n in ipairs(gyro.names) do call(n, "setMode", mode) end
-  L.info("GYRODYNE modo %s (%d)", mode, #gyro.names)
-end
-
----------------------------------------------------------------- RCS
--- O CC so liga/desliga o RCS (setThrust nao faz nada nele e o acelerador interno
--- comeca em 0). O script da Sputnik poe o acelerador em 1; aqui so ligamos/desligamos.
--- O CC tambem nao diz para onde cada RCS aponta: a calibracao liga um de cada vez
--- e mede o giro que ele causa (em rad/s2, no referencial da nave). Fica em rcs.cal.
-local RCS_FILE = path("rcs.cal")
-local rcs = { names = {}, cal = {}, on = {} }
-
-local function rcsDiscover()
-  rcs.names = {}
-  -- RCS desligado por padrao: so e usado com rcs_enabled = true no config.lua
-  if not CFG.rcs_enabled then return end
-  for _, n in ipairs(periNames()) do
-    if peripheral.hasType(n, "thruster") and typeOf(n) == "rcs_thruster" then rcs.names[#rcs.names + 1] = n end
-  end
-  table.sort(rcs.names)
-  rcs.cal = {}
-  if fs.exists(RCS_FILE) then
-    local f = fs.open(RCS_FILE, "r")
-    local t = textutils.unserialize(f.readAll())
-    f.close()
-    if type(t) == "table" then rcs.cal = t end
-  end
-end
-
--- eixos (X e Z da nave, nos dois sentidos) que nenhum RCS consegue girar
-local function rcsMissing()
-  local missing = {}
-  for _, ax in ipairs({ { V(1, 0, 0), "+X" }, { V(-1, 0, 0), "-X" }, { V(0, 0, 1), "+Z" }, { V(0, 0, -1), "-Z" } }) do
-    local covered = false
-    for _, n in ipairs(rcs.names) do
-      local rr = rcs.cal[n]
-      if rr then
-        local rv = V(rr[1], rr[2], rr[3])
-        if rv:length() > 1e-9 and rv:dot(ax[1]) / rv:length() > (CFG.rcs_cos) then covered = true end
-      end
-    end
-    if not covered then missing[#missing + 1] = ax[2] end
-  end
-  return missing
-end
-
--- RCS pronto para apontar a nave sozinho (calibrado e cobrindo os 4 lados)
-local function rcsReady()
-  if #rcs.names == 0 or rcs.failed then return false end
-  return #rcsMissing() == 0
-end
-
--- liga exatamente os RCS da lista (so chama o periferico quando muda)
-local function rcsSet(list)
-  local fns = {}
-  for _, n in ipairs(rcs.names) do
-    local want = list[n] == true
-    if rcs.on[n] ~= want then
-      rcs.on[n] = want
-      fns[#fns + 1] = function() call(n, "setActive", want) end
-    end
-  end
-  if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
-end
-
-local function rcsOff()
-  rcs.on = {}  -- forca o desligamento de todos
-  rcsSet({})
-end
-
--- aponta o nariz (+Y da nave) para 'target' (mundo) so com RCS. Retorna o erro em graus.
-local function rcsControl(ship, target)
-  local d = toLocal(ship.q, target:normalize())
-  local w = toLocal(ship.q, ship.angv)
-  local ang = math.acos(clamp(d.y, -1, 1))
-  local ax = V(d.z, 0, -d.x)  -- eixo que leva +Y ate o alvo (regra da mao direita)
-  if ax:length() < 1e-6 then
-    ax = (d.y < 0) and V(1, 0, 0) or V(0, 0, 0)
-  else
-    ax = ax:normalize()
-  end
-  -- aceleracao angular desejada: corrige o erro e amortece o giro (inclusive o de rolagem)
-  local want = ax * ((CFG.rcs_kp) * ang) - w * (CFG.rcs_kd)
-  local fire, m = {}, want:length()
-  if m > (CFG.rcs_deadband) then
-    for _, n in ipairs(rcs.names) do
-      local r = rcs.cal[n]
-      if r then
-        local rv = V(r[1], r[2], r[3])
-        local rl = rv:length()
-        if rl > 1e-9 and rv:dot(want) / (rl * m) > (CFG.rcs_cos) then fire[n] = true end
-      end
-    end
-  end
-  rcsSet(fire)
-  return math.deg(ang)
-end
-
--- calibracao: precisa da nave solta (espaco ou no ar), nunca apoiada no chao
-local function rcsCalibrate(why)
-  rcsDiscover()
-  if #rcs.names == 0 then return false end
-  L.info("RCS calibrando %d propulsores (%s)", #rcs.names, why)
-  rcsOff()
-  local T = CFG.rcs_cal_time
-  local cal, ok = {}, 0
-  for _, n in ipairs(rcs.names) do
-    local s0, t0 = readShip(), os.clock()
-    rcsSet({ [n] = true })
-    sleep(T)
-    rcsSet({})
-    local s1 = readShip()
-    local dt = math.max(os.clock() - t0, 0.05)
-    local r = (toLocal(s1.q, s1.angv) - toLocal(s0.q, s0.angv)) * (1 / dt)
-    if r:length() > (CFG.rcs_min_resp) then
-      cal[n] = { r.x, r.y, r.z }
-      ok = ok + 1
-      L.info("RCS %s giro=(%.4f, %.4f, %.4f) rad/s2", short(n), r.x, r.y, r.z)
-    else
-      L.warn("RCS %s nao girou a nave (%.4f rad/s2)", short(n), r:length())
-    end
-  end
-  if ok == 0 then
-    L.err("Nenhum RCS fez efeito. Confira: script NOVO da Sputnik (ele liga o acelerador do RCS) e nave solta, fora do chao.")
-    return false
-  end
-  rcs.cal = cal
-  local f = fs.open(RCS_FILE, "w") f.write(textutils.serialize(cal)) f.close()
-  -- freia o giro que sobrou da calibracao
-  local tEnd = os.clock() + 8
-  while os.clock() < tEnd do
-    local s = readShip()
-    local w = toLocal(s.q, s.angv)
-    if w:length() < 0.003 then break end
-    local fire = {}
-    for name, rr in pairs(cal) do
-      if V(rr[1], rr[2], rr[3]):dot(w) < 0 then fire[name] = true end
-    end
-    rcsSet(fire)
-    sleep(0.05)
-  end
-  rcsOff()
-  L.info("RCS calibrado: %d de %d propulsores com efeito", ok, #rcs.names)
-  local missing = rcsMissing()
-  if #missing > 0 then
-    L.warn("RCS nao consegue girar em torno de %s: vou girar com o motor principal. Com 4 RCS: ponha longe do centro de massa (nariz ou cauda), apontando para os 4 lados.",
-      table.concat(missing, ", "))
-  end
-  return true
-end
+---------------------------------------------------------------- RCS e checagem
+local Rcs = require("foguete.rcs").novo(CFG, E, L, Mot, Sens)
+local rcs, rcsDiscover, rcsReady, rcsOff = Rcs.estado, Rcs.discover, Rcs.ready, Rcs.off
+local rcsControl, rcsCalibrate, rcsTeste = Rcs.control, Rcs.calibrate, Rcs.teste
 
 ---------------------------------------------------------------- tela
 local Tela = require("foguete.tela").novo(CFG, L)
@@ -235,122 +71,8 @@ local show = Tela.show
 local TelCsv = require("foguete.telemetria").novo(L)
 local csvLine = TelCsv.csvLine
 
----------------------------------------------------------------- checagem
--- retorna lista de erros (impedem o lancamento) e avisos
-local function preflight()
-  local errs, warns = {}, {}
-  local function E(...) local m = string.format(...) table.insert(errs, m) L.err("CHECAGEM %s", m) end
-  local function W(...) local m = string.format(...) table.insert(warns, m) L.warn("CHECAGEM %s", m) end
-
-  if not sublevel or not sublevel.isInPlotGrid() then E("computador fora da nave") return errs, warns end
-
-  local ship = readShip()
-  local g = gravity()
-  L.info("CHECAGEM massa=%.1f g=%.2f pos=(%.1f, %.1f, %.1f)", ship.mass, g, ship.pos.x, ship.pos.y, ship.pos.z)
-
-  -- motores configurados
-  local configured = {}
-  for i, st in ipairs(CFG.stages) do
-    for _, n in ipairs(st.engines) do
-      configured[n] = true
-      if not peripheral.isPresent(n) then
-        E("%s (estagio %d) nao encontrado: modem desligado ou cabo solto", short(n), i)
-      else
-        local d = call(n, "getData") or {}
-        L.info("MOTOR pre %s", engineLine(n))
-        if d.engine_type == "vector_thruster" or d.engine_type == "rocket_thruster" then
-          if (d.fuel_amount or 0) <= 0 then
-            E("%s sem lava no motor (bomba parada, sem forca ou cano errado)", short(n))
-          end
-        elseif d.engine_type == "booster_thruster" then
-          if d.is_spent then E("%s ja esta gasto", short(n)) end
-          if d.ignited then W("%s ja esta aceso!", short(n)) end
-        end
-      end
-    end
-  end
-  -- motores ligados mas fora da config
-  for _, n in ipairs(periNames()) do
-    if peripheral.hasType(n, "thruster") and not configured[n] and typeOf(n) ~= "rcs_thruster" then
-      W("%s esta conectado mas NAO esta na config (rode setup)", short(n))
-    end
-  end
-  -- controle de direcao: sem Vector Thruster nao ha gimbal (a menos que o RCS esteja ligado e calibrado)
-  local nVec = 0
-  for _, n in ipairs(stageEngines(1)) do
-    if typeOf(n) == "vector_thruster" then nVec = nVec + 1 end
-  end
-  if nVec == 0 then
-    E("nenhum Vector Thruster no estagio 1: o foguete nao tem como corrigir a direcao e vai tombar (ligue um modem no Vector Thruster e rode setup)")
-  end
-  -- boosters: simetria de potencia
-  local pots = {}
-  for _, n in ipairs(stageEngines(1)) do
-    local d = call(n, "getData")
-    if d and d.engine_type == "booster_thruster" then pots[#pots + 1] = d.thrust_power or 0 end
-  end
-  for k = 2, #pots do
-    if pots[k] ~= pots[1] then W("boosters com potencias diferentes (%s): foguete vai tombar", table.concat(pots, "/")) break end
-  end
-  -- empuxo
-  local maxT = 0
-  for _, n in ipairs(stageEngines(1)) do
-    local d = call(n, "getData") or {}
-    maxT = maxT + (d.engine_type == "booster_thruster" and (d.thrust_power or 0) or CFG.max_thrust_n)
-  end
-  local lava, nt = lavaTotal()
-  L.info("CHECAGEM lava=%d mB em %d tanques/motores", lava, nt)
-  if CFG.stabilizer then
-    L.info("CHECAGEM Magnetic Stabilizer no lado %s%s", tostring(CFG.stabilizer.side),
-      CFG.stabilizer.relay and (" do relay " .. CFG.stabilizer.relay) or "")
-  end
-  if #gyroNames() > 0 then
-    L.info("CHECAGEM Gyrodyne: %d (ajuda a apontar no pouso; precisa de energia e virado para o nariz)", #gyro.names)
-  end
-  rcsDiscover()
-  if #rcs.names > 0 then
-    L.info("CHECAGEM RCS: %d propulsores, %s", #rcs.names, rcsReady() and "calibrados" or "sem calibracao (calibra sozinho ao chegar no espaco)")
-  end
-  if nt == 0 then W("nenhum tanque ligado ao computador: nao da para medir o combustivel") end
-  local twr = maxT / (ship.mass * g)
-  L.info("CHECAGEM empuxo_max=%.0f TWR=%.2f", maxT, twr)
-  if twr < CFG.min_twr then
-    E("TWR %.2f abaixo de %.2f: o foguete so flutua e escorrega de lado (mais motores ou menos peso)", twr, CFG.min_twr)
-  end
-  for _, k in ipairs(DESCONHECIDAS) do
-    W("chave desconhecida no config.lua: %s (erro de digitacao?)", k)
-  end
-  if not CFG.sputnik or not peripheral.isPresent(CFG.sputnik) then W("Sputnik nao encontrado: sem dados de orbita") end
-  if not redstone then W("sem API redstone") end
-  return errs, warns, twr
-end
-
----------------------------------------------------------------- modo teste
-local function teste()
-  L.newFile("teste")
-  L.section("TESTE EM SOLO")
-  safeAll("teste em solo")
-  local errs, warns, twr = preflight()
-  print(("TWR estagio 1: %.2f"):format(twr or 0))
-  for _, e in ipairs(errs) do printError("ERRO: " .. e) end
-  for _, w in ipairs(warns) do print("AVISO: " .. w) end
-  print("Teste de gimbal: olhe os bocais dos Vector Thrusters.")
-  for _, ax in ipairs({ { 0.35, 0, 0, "+X" }, { 0, 0, 0.35, "+Z" } }) do
-    print("  inclinando o escape para " .. ax[4] .. " por 3s")
-    for _ = 1, 60 do
-      for _, n in ipairs(allEngines()) do
-        if typeOf(n) == "vector_thruster" then call(n, "setGimbal", ax[1], ax[2], ax[3]) end
-      end
-      sleep(0.05)
-    end
-  end
-  if CFG.stabilizer then
-    print("Teste do Magnetic Stabilizer: ligando por 2 s (confira o bloco acender)")
-    stabilizer(true) sleep(2) stabilizer(false)
-  end
-  L.info("Teste concluido: %d erros, %d avisos", #errs, #warns)
-  print(("Pronto. %d erros, %d avisos. Veja: logs"):format(#errs, #warns))
-end
+local Chk = require("foguete.checagem").novo(CFG, E, L, Mot, Sens, Ctl, Rcs, DESCONHECIDAS)
+local preflight, teste = Chk.preflight, Chk.teste
 
 ---------------------------------------------------------------- voo
 local function voo()
@@ -672,8 +394,6 @@ local function voo()
         thr = 1
         if slow then L.err("Empuxo insuficiente para pousar (a_max=%.2f)", aMax) end
       end
-      -- gyrodyne ajuda a apontar: contra o movimento quando cai rapido, senao nariz para cima
-      if vy < -2 and speed > 3 then gyroMode("retrograde") else gyroMode("radial_out") end
       -- primeiro aponta, depois acende: desalinhado, so o Vector Thruster empurra (para girar)
       local okAng = land.lastErr < (CFG.land_align_deg)
       if okAng then
@@ -817,7 +537,6 @@ local function voo()
     Tel.fisica(ship, now, thrust, g, err, gx, gz, Ctl.lastW())
     Tel.motores(now, burnStart, S, ship, Mot)
 
-    if S.phase ~= "POUSO" then gyroMode("off") end
     -- estabilizador: desligado enquanto o Vector Thruster gira a nave, ligado quando ja esta alinhada
     local wantStab = false
     if S.phase == "COAST" then wantStab = not orb.orienting
@@ -831,7 +550,6 @@ local function voo()
     if S.phase == "ORBIT" or S.phase == "FALHA" or S.phase == "FIM" or S.phase == "POUSADO" then
       shutdown(S.stage)
       rcsOff()
-      gyroMode("off")
       stabilizer(false)
       show({ "== VOO ENCERRADO: " .. S.phase .. " ==", ("Y %.0f  ECC %s"):format(ship.pos.y, tostring(ecc)),
         "Veja: logs erros" })
@@ -889,33 +607,6 @@ local function descer()
   return voo()
 end
 
--- voo rcs: calibra o RCS agora e testa segurando o nariz para cima por 15 s
-local function rcsTeste()
-  L.newFile("rcs")
-  L.section("TESTE DO RCS")
-  rcsDiscover()
-  if not CFG.rcs_enabled then printError("RCS desligado. Para usar, ponha rcs_enabled = true no config.lua.") return end
-  if #rcs.names == 0 then printError("Nenhum RCS ligado ao computador (modem + cabo em cada um).") return end
-  print(("%d RCS encontrados. A nave precisa estar SOLTA (no ar ou no espaco)."):format(#rcs.names))
-  if not rcsCalibrate("comando voo rcs") then printError("Calibracao falhou. Veja: logs erros") return end
-  print("Calibrado. Segurando o nariz para cima por 15 s...")
-  local tEnd = os.clock() + 15
-  local nextLog = 0
-  while os.clock() < tEnd do
-    local ship = readShip()
-    local e = rcsControl(ship, UP)
-    if os.clock() >= nextLog then
-      nextLog = os.clock() + 1
-      local w = toLocal(ship.q, ship.angv)
-      L.info("RCS teste erro=%.1f w=(%.3f,%.3f,%.3f)", e, w.x, w.y, w.z)
-      print(("erro %.1f graus"):format(e))
-    end
-    sleep(0.05)
-  end
-  rcsOff()
-  print("Pronto. Veja: logs")
-end
-
 local main = (args[1] == "teste") and teste or (args[1] == "descer") and descer
   or (args[1] == "rcs") and rcsTeste or voo
 local ok, e = xpcall(main, debug.traceback)
@@ -929,6 +620,5 @@ if not ok then
   end
   pcall(shutdown, S.stage)
   pcall(rcsOff)
-  pcall(gyroMode, "off")
   pcall(stabilizer, false)
 end
