@@ -1,8 +1,8 @@
--- config_explicita: land_cc_gimbal = false no config tem que continuar false
+-- config_explicita: land_cc_gimbal = false continua false; ki = false (numero) cai no padrao 0.6, como o 'or' antigo
 return {
   semReferencia = true,
   limite = 30,
-  config = [[return { max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0}, land_cc_gimbal=false,
+  config = [[return { max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0}, land_cc_gimbal=false, ki=false,
  turn_start_alt=250, turn_end_angle=55, stages={{engines={"rocketnautics:vector_thruster_1"}}}, sputnik_guidance=true,
  max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=10, turn_end_y=16000, gimbal_sign=1, transfer_y=20000 }]],
   mundo = { modo = "atmosfera", pos = { 0, 63, 0 }, chao = 60,

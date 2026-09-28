@@ -38,8 +38,10 @@ function M.carregar(caminho)
     if not conhecidas[k] then desconhecidas[#desconhecidas + 1] = tostring(k) end
   end
   table.sort(desconhecidas)
+  -- false numa chave numerica tambem vale o padrao (como o antigo 'CFG.x or N');
+  -- nas chaves true/false o false do jogador e mantido
   for k, v in pairs(M.PADROES) do
-    if cfg[k] == nil then cfg[k] = v end
+    if cfg[k] == nil or (cfg[k] == false and type(v) == "number") then cfg[k] = v end
   end
   for _, st in ipairs(cfg.stages or {}) do
     local seen, list = {}, {}
