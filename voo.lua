@@ -5,9 +5,20 @@
 --      voo descer [Y]  -> deorbit (se no espaco) e pouso; Y = altura do chao, se souber
 --      voo rcs      -> calibra os RCS (nave solta no ar/espaco) e testa por 15 s
 -- Registros: um arquivo por voo em /logs, com data e hora no nome (use o programa 'logs')
+-- O codigo fica em /lib/foguete (baixado pelo 'atualizar').
 
 local args = { ... }
+local MODULOS = { "log", "config", "estado", "mat", "sensores", "sputnik", "motores", "controle",
+  "separacao", "checagem", "tela", "telemetria", "rcs", "laco", "fases/plataforma", "fases/subida",
+  "fases/orbita", "fases/deorbit", "fases/reentrada", "fases/pouso" }
+for _, m in ipairs(MODULOS) do
+  if not fs.exists("/lib/foguete/" .. m .. ".lua") then
+    printError(("Arquivo lib/foguete/%s.lua faltando, rode atualizar"):format(m))
+    return
+  end
+end
 package.path = "/lib/?.lua;" .. package.path
+
 local DIR = fs.getDir(shell.getRunningProgram())
 local function path(p) return fs.combine(DIR, p) end
 local L = require("foguete.log")

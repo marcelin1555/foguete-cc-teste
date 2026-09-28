@@ -1,0 +1,361 @@
+    0.00 call rocketnautics:rocket_thruster_0.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_1.setActive(true)
+    0.00 call rocketnautics:vector_thruster_1.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_0.setThrust(1000.000)
+    0.00 call rocketnautics:rocket_thruster_0.setActive(true)
+    0.00 call rocketnautics:rocket_thruster_1.setThrust(1000.000)
+    0.00 call rocketnautics:rocket_thruster_1.setActive(true)
+    0.00 call rocketnautics:vector_thruster_1.setThrust(1000.000)
+    0.00 call rocketnautics:vector_thruster_1.setActive(true)
+   15.65 call rocketnautics:rocket_thruster_0.setThrust(0.000)
+   15.65 call rocketnautics:rocket_thruster_0.setActive(false)
+   15.65 call rocketnautics:rocket_thruster_1.setThrust(0.000)
+   15.65 call rocketnautics:rocket_thruster_1.setActive(false)
+   15.65 call rocketnautics:vector_thruster_1.setThrust(0.000)
+   15.65 call rocketnautics:vector_thruster_1.setActive(false)
+   15.65 redstone back true
+   15.65 mundo separou rocketnautics:rocket_thruster_0,rocketnautics:rocket_thruster_1,rocketnautics:vector_thruster_1
+   15.95 redstone back false
+   16.95 call rocketnautics:rocket_thruster_2.setActive(true)
+   16.95 call rocketnautics:vector_thruster_2.setActive(true)
+   16.95 call rocketnautics:rocket_thruster_2.setThrust(1000.000)
+   16.95 call rocketnautics:rocket_thruster_2.setActive(true)
+   16.95 call rocketnautics:vector_thruster_2.setThrust(1000.000)
+   16.95 call rocketnautics:vector_thruster_2.setActive(true)
+   32.35 call rocketnautics:rocket_thruster_2.setThrust(0.000)
+   32.35 call rocketnautics:rocket_thruster_2.setActive(false)
+   32.35 call rocketnautics:vector_thruster_2.setThrust(0.000)
+   32.35 call rocketnautics:vector_thruster_2.setActive(false)
+   45.80 call rocketnautics:rocket_thruster_2.setThrust(0.000)
+   45.80 call rocketnautics:rocket_thruster_2.setActive(false)
+   45.80 call rocketnautics:vector_thruster_2.setThrust(0.000)
+   45.80 call rocketnautics:vector_thruster_2.setActive(false)
+   45.80 fim de voo.lua
+==== arquivo config.lua
+return { sputnik_guidance=true, max_thrust_n=1000, max_twr=2.5, kp=1.5, kd=0.8, east={1,0,0},
+ turn_start_alt=250, turn_end_angle=55, stages={
+ {engines={"rocketnautics:rocket_thruster_0","rocketnautics:rocket_thruster_1","rocketnautics:vector_thruster_1"}, separator={side="back"}},
+ {engines={"rocketnautics:rocket_thruster_2","rocketnautics:vector_thruster_2"}}},
+ max_gimbal=0.6, launch_side="left", min_twr=1.15, countdown=10, ecc_target=0.02, sputnik="top", turn_end_y=16000,
+ steer_throttle=0.08, gimbal_sign=1, transfer_y=20000 }
+==== arquivo estado.txt
+{failed={},fuelOut=true,logFile="/logs/2026-09-27_20-01-00_retomada.txt",padY=1127,phase="FALHA",stage=2,t0=0}
+==== arquivo logs/2026-09-27_20-01-00_retomada.txt
+
+========== RETOMANDO VOO na fase ASCENT  (2026-09-27_20-02-00) ==========
+[   0.00] INFO  Acendendo estagio 1 (3 motores)
+[   2.15] INFO  FISICA y=1149.4 vy=18.45 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[   3.20] INFO  FISICA y=1173.9 vy=27.90 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[   4.25] INFO  FISICA y=1208.4 vy=37.35 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=38.9999999999997/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=38.9999999999997/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[   5.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=38.9999999999997/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[   5.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   5.30] INFO  MOTOR ASCENT vector_thruster_2 [vector_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[   5.35] INFO  COMBUSTIVEL lava=234 mB em 5 tanques/motores (fase ASCENT, Y=1248)
+[   5.45] INFO  FISICA y=1260.0 vy=48.15 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.3Hz
+[   6.50] INFO  FISICA y=1315.8 vy=57.60 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=0.0 gimbal=(0.00,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[   7.65] INFO  FISICA y=1388.2 vy=67.95 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=0.7 gimbal=(0.02,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[   8.75] INFO  FISICA y=1468.6 vy=77.85 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=2.6 gimbal=(0.09,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[   9.80] INFO  FISICA y=1555.6 vy=87.30 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=3.9 gimbal=(0.16,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=18.999999999999496/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=18.999999999999496/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  10.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=18.999999999999496/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  10.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.30] INFO  MOTOR ASCENT vector_thruster_2 [vector_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  10.35] INFO  COMBUSTIVEL lava=174 mB em 5 tanques/motores (fase ASCENT, Y=1591)
+[  10.95] INFO  FISICA y=1662.2 vy=97.65 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=5.2 gimbal=(0.25,0.00) w=(0.00,0.00,0.00) loop=7.8Hz
+[  11.95] INFO  FISICA y=1764.6 vy=106.65 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=6.2 gimbal=(0.34,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  13.00] INFO  FISICA y=1881.7 vy=116.10 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=7.3 gimbal=(0.44,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  14.15] INFO  FISICA y=2021.5 vy=126.45 a_medida=9.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=8.5 gimbal=(0.52,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  15.15] INFO  FISICA y=2152.6 vy=134.45 a_medida=8.00 F/m=20.00 g=11.00 massa=150.0 F=3000 erro=9.4 gimbal=(0.55,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_0 [rocket_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_1 [rocket_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.30] INFO  MOTOR ASCENT vector_thruster_1 [vector_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.30] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.30] INFO  MOTOR ASCENT vector_thruster_2 [vector_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.35] INFO  COMBUSTIVEL lava=120 mB em 5 tanques/motores (fase ASCENT, Y=2166)
+[  15.60] INFO  Estagio 1 esgotado
+[  15.65] INFO  MOTOR fim_estagio rocket_thruster_0 [rocket_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.65] INFO  MOTOR fim_estagio rocket_thruster_1 [rocket_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.65] INFO  MOTOR fim_estagio vector_thruster_1 [vector_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.65] INFO  MOTOR fim_estagio rocket_thruster_2 [rocket_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.65] INFO  MOTOR fim_estagio vector_thruster_2 [vector_thruster] ativo=false lava=60/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  15.65] INFO  Separando estagio 1 ({side="back"})
+[  16.95] INFO  Acendendo estagio 2 (2 motores)
+[  17.20] INFO  FISICA y=2393.4 vy=113.78 a_medida=-10.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=11.1 gimbal=(0.59,0.00) w=(0.00,0.00,0.00) loop=2.0Hz
+[  18.15] INFO  FISICA y=2508.4 vy=116.12 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=11.8 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  19.15] INFO  FISICA y=2625.8 vy=118.45 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=12.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  20.20] INFO  FISICA y=2751.5 vy=120.90 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=13.3 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  20.30] ERRO  periferico rocketnautics:rocket_thruster_0 ausente (ao chamar getData)
+[  20.30] ERRO  periferico rocketnautics:rocket_thruster_1 ausente (ao chamar getData)
+[  20.30] ERRO  periferico rocketnautics:vector_thruster_1 ausente (ao chamar getData)
+[  20.35] INFO  MOTOR ASCENT rocket_thruster_0 AUSENTE
+[  20.35] INFO  MOTOR ASCENT rocket_thruster_1 AUSENTE
+[  20.35] INFO  MOTOR ASCENT vector_thruster_1 AUSENTE
+[  20.35] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=46.59999999999981/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  20.35] INFO  MOTOR ASCENT vector_thruster_2 [vector_thruster] ativo=true lava=46.59999999999981/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  20.40] INFO  COMBUSTIVEL lava=92 mB em 2 tanques/motores (fase ASCENT, Y=2764)
+[  21.25] INFO  FISICA y=2879.8 vy=123.35 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=14.0 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=7.6Hz
+[  22.25] INFO  FISICA y=3004.3 vy=125.68 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=14.7 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  23.30] INFO  FISICA y=3137.7 vy=128.13 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=15.4 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  24.45] INFO  FISICA y=3286.6 vy=130.82 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=16.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.7Hz
+[  25.35] ERRO  periferico rocketnautics:rocket_thruster_0 ausente (ao chamar getData)
+[  25.35] ERRO  periferico rocketnautics:rocket_thruster_1 ausente (ao chamar getData)
+[  25.35] ERRO  periferico rocketnautics:vector_thruster_1 ausente (ao chamar getData)
+[  25.40] INFO  MOTOR ASCENT rocket_thruster_0 AUSENTE
+[  25.40] INFO  MOTOR ASCENT rocket_thruster_1 AUSENTE
+[  25.40] INFO  MOTOR ASCENT vector_thruster_1 AUSENTE
+[  25.40] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=26.399999999999523/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.40] INFO  MOTOR ASCENT vector_thruster_2 [vector_thruster] ativo=true lava=26.399999999999523/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  25.45] INFO  COMBUSTIVEL lava=52 mB em 2 tanques/motores (fase ASCENT, Y=3399)
+[  25.55] INFO  FISICA y=3432.0 vy=133.38 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=16.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.2Hz
+[  26.60] INFO  FISICA y=3573.4 vy=135.83 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=17.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  27.65] INFO  FISICA y=3717.4 vy=138.28 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=18.3 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  28.65] INFO  FISICA y=3856.9 vy=140.62 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=19.0 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  29.70] INFO  FISICA y=4005.9 vy=143.07 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=19.6 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  30.35] ERRO  periferico rocketnautics:rocket_thruster_0 ausente (ao chamar getData)
+[  30.35] ERRO  periferico rocketnautics:rocket_thruster_1 ausente (ao chamar getData)
+[  30.35] ERRO  periferico rocketnautics:vector_thruster_1 ausente (ao chamar getData)
+[  30.40] INFO  MOTOR ASCENT rocket_thruster_0 AUSENTE
+[  30.40] INFO  MOTOR ASCENT rocket_thruster_1 AUSENTE
+[  30.40] INFO  MOTOR ASCENT vector_thruster_1 AUSENTE
+[  30.40] INFO  MOTOR ASCENT rocket_thruster_2 [rocket_thruster] ativo=true lava=6.3999999999992383/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  30.40] INFO  MOTOR ASCENT vector_thruster_2 [vector_thruster] ativo=true lava=6.3999999999992383/1000 fluxo=40 acel=1 aquec=0/10 empuxo=1000
+[  30.45] INFO  COMBUSTIVEL lava=12 mB em 2 tanques/motores (fase ASCENT, Y=4099)
+[  30.85] INFO  FISICA y=4172.0 vy=145.75 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=20.4 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=7.8Hz
+[  31.85] INFO  FISICA y=4319.0 vy=148.08 a_medida=2.33 F/m=13.33 g=11.00 massa=150.0 F=2000 erro=21.0 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.0Hz
+[  32.30] INFO  Estagio 2 esgotado
+[  32.35] INFO  MOTOR fim_estagio rocket_thruster_0 AUSENTE
+[  32.35] INFO  MOTOR fim_estagio rocket_thruster_1 AUSENTE
+[  32.35] INFO  MOTOR fim_estagio vector_thruster_1 AUSENTE
+[  32.35] INFO  MOTOR fim_estagio rocket_thruster_2 [rocket_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  32.35] INFO  MOTOR fim_estagio vector_thruster_2 [vector_thruster] ativo=true lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  32.35] INFO  FASE ASCENT -> BALISTICO (combustivel acabou em Y=4378, subindo por inercia)
+[  32.95] INFO  FISICA y=4477.7 vy=138.65 a_medida=-8.58 F/m=0.00 g=11.00 massa=150.0 F=0 erro=21.7 gimbal=(0.55,0.00) w=(0.00,0.00,0.00) loop=8.2Hz
+[  34.05] INFO  FISICA y=4623.2 vy=126.55 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=22.3 gimbal=(0.57,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  35.15] INFO  FISICA y=4755.5 vy=114.45 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=22.8 gimbal=(0.58,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  35.50] INFO  MOTOR BALISTICO rocket_thruster_0 AUSENTE
+[  35.50] INFO  MOTOR BALISTICO rocket_thruster_1 AUSENTE
+[  35.50] INFO  MOTOR BALISTICO vector_thruster_1 AUSENTE
+[  35.50] INFO  MOTOR BALISTICO rocket_thruster_2 [rocket_thruster] ativo=false lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  35.50] INFO  MOTOR BALISTICO vector_thruster_2 [vector_thruster] ativo=false lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  35.55] INFO  COMBUSTIVEL lava=0 mB em 2 tanques/motores (fase BALISTICO, Y=4789)
+[  36.25] INFO  FISICA y=4869.3 vy=102.90 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=23.3 gimbal=(0.59,0.00) w=(0.00,0.00,0.00) loop=8.6Hz
+[  37.35] INFO  FISICA y=4975.5 vy=90.80 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=23.7 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  38.45] INFO  FISICA y=5068.4 vy=78.70 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=24.1 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  39.55] INFO  FISICA y=5148.0 vy=66.60 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=24.4 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  40.55] INFO  MOTOR BALISTICO rocket_thruster_0 AUSENTE
+[  40.55] INFO  MOTOR BALISTICO rocket_thruster_1 AUSENTE
+[  40.55] INFO  MOTOR BALISTICO vector_thruster_1 AUSENTE
+[  40.55] INFO  MOTOR BALISTICO rocket_thruster_2 [rocket_thruster] ativo=false lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  40.55] INFO  MOTOR BALISTICO vector_thruster_2 [vector_thruster] ativo=false lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  40.60] INFO  COMBUSTIVEL lava=0 mB em 2 tanques/motores (fase BALISTICO, Y=5209)
+[  40.75] INFO  FISICA y=5219.7 vy=53.40 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=24.7 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=8.3Hz
+[  41.85] INFO  FISICA y=5271.5 vy=41.30 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=24.9 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  42.95] INFO  FISICA y=5310.0 vy=29.20 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=25.0 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  44.05] INFO  FISICA y=5335.1 vy=17.10 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=25.1 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  45.15] INFO  FISICA y=5347.0 vy=5.00 a_medida=-11.00 F/m=0.00 g=11.00 massa=150.0 F=0 erro=25.2 gimbal=(0.60,0.00) w=(0.00,0.00,0.00) loop=9.1Hz
+[  45.60] INFO  MOTOR BALISTICO rocket_thruster_0 AUSENTE
+[  45.60] INFO  MOTOR BALISTICO rocket_thruster_1 AUSENTE
+[  45.60] INFO  MOTOR BALISTICO vector_thruster_1 AUSENTE
+[  45.60] INFO  MOTOR BALISTICO rocket_thruster_2 [rocket_thruster] ativo=false lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  45.60] INFO  MOTOR BALISTICO vector_thruster_2 [vector_thruster] ativo=false lava=0/1000 fluxo=40 acel=1 aquec=0/10 empuxo=0
+[  45.65] INFO  COMBUSTIVEL lava=0 mB em 2 tanques/motores (fase BALISTICO, Y=5348)
+[  45.80] ERRO  Sem combustivel antes do espaco: pico Y=5348, faltaram 14652 blocos
+[  45.80] INFO  FASE BALISTICO -> FALHA (caindo sem combustivel)
+
+==== arquivo logs/2026-09-27_20-01-00_retomada_telemetria.csv
+300,ASCENT,1,1130.2,1.80,1.80,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+500,ASCENT,1,1130.8,3.60,3.60,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+750,ASCENT,1,1131.8,5.40,5.40,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+950,ASCENT,1,1133.4,7.65,7.65,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1150,ASCENT,1,1135.2,9.45,9.45,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1400,ASCENT,1,1137.9,11.70,11.70,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1600,ASCENT,1,1140.5,13.50,13.50,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+1850,ASCENT,1,1143.4,15.30,15.30,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2050,ASCENT,1,1147.6,17.55,17.55,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2250,ASCENT,1,1151.3,19.35,19.35,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2550,ASCENT,1,1157.6,22.05,22.05,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+2750,ASCENT,1,1162.2,23.85,23.85,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3000,ASCENT,1,1167.2,25.65,25.65,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3200,ASCENT,1,1173.9,27.90,27.90,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3400,ASCENT,1,1179.7,29.70,29.70,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3650,ASCENT,1,1187.5,31.95,31.95,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+3850,ASCENT,1,1194.1,33.75,33.75,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4150,ASCENT,1,1201.1,35.55,35.55,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4350,ASCENT,1,1212.2,38.25,38.25,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4550,ASCENT,1,1220.1,40.05,40.05,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+4800,ASCENT,1,1230.5,42.30,42.30,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5000,ASCENT,1,1239.1,44.10,44.10,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5350,ASCENT,1,1248.2,45.90,45.90,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5550,ASCENT,1,1264.9,49.05,49.05,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+5850,ASCENT,1,1274.9,50.85,50.85,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6050,ASCENT,1,1290.6,53.55,53.55,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6250,ASCENT,1,1301.6,55.35,55.35,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6500,ASCENT,1,1315.8,57.60,57.60,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6700,ASCENT,1,1327.5,59.40,59.40,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+6950,ASCENT,1,1339.6,61.20,61.20,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7150,ASCENT,1,1355.2,63.45,63.45,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7350,ASCENT,1,1368.2,65.25,65.25,150,3000,0.0,0.0,0.00,0.00,-nan(ind),-nan(ind)
+7650,ASCENT,1,1388.2,67.95,67.95,150,3000,0.7,0.7,0.02,0.00,-nan(ind),-nan(ind)
+7850,ASCENT,1,1402.0,69.75,69.75,150,3000,1.2,1.2,0.03,0.00,-nan(ind),-nan(ind)
+8100,ASCENT,1,1416.2,71.55,71.55,150,3000,1.6,1.6,0.05,0.00,-nan(ind),-nan(ind)
+8300,ASCENT,1,1434.4,73.80,73.80,150,3000,2.0,2.0,0.06,0.00,-nan(ind),-nan(ind)
+8500,ASCENT,1,1449.4,75.60,75.60,150,3000,2.3,2.3,0.08,0.00,-nan(ind),-nan(ind)
+8750,ASCENT,1,1468.6,77.85,77.85,150,3000,2.6,2.6,0.09,0.00,-nan(ind),-nan(ind)
+8950,ASCENT,1,1484.4,79.65,79.65,150,3000,2.9,2.9,0.10,0.00,-nan(ind),-nan(ind)
+9250,ASCENT,1,1500.6,81.45,81.45,150,3000,3.1,3.1,0.12,0.00,-nan(ind),-nan(ind)
+9450,ASCENT,1,1525.5,84.15,84.15,150,3000,3.5,3.5,0.14,0.00,-nan(ind),-nan(ind)
+9700,ASCENT,1,1542.6,85.95,85.95,150,3000,3.7,3.7,0.15,0.00,-nan(ind),-nan(ind)
+9900,ASCENT,1,1564.4,88.20,88.20,150,3000,4.0,4.0,0.17,0.00,-nan(ind),-nan(ind)
+10100,ASCENT,1,1582.3,90.00,90.00,150,3000,4.3,4.3,0.18,0.00,-nan(ind),-nan(ind)
+10450,ASCENT,1,1614.4,93.15,93.15,150,3000,4.6,4.6,0.21,0.00,-nan(ind),-nan(ind)
+10650,ASCENT,1,1633.2,94.95,94.95,150,3000,4.9,4.9,0.23,0.00,-nan(ind),-nan(ind)
+10950,ASCENT,1,1662.2,97.65,97.65,150,3000,5.2,5.2,0.25,0.00,-nan(ind),-nan(ind)
+11150,ASCENT,1,1681.9,99.45,99.45,150,3000,5.4,5.4,0.27,0.00,-nan(ind),-nan(ind)
+11400,ASCENT,1,1707.1,101.70,101.70,150,3000,5.7,5.7,0.29,0.00,-nan(ind),-nan(ind)
+11600,ASCENT,1,1727.7,103.50,103.50,150,3000,5.9,5.9,0.31,0.00,-nan(ind),-nan(ind)
+11850,ASCENT,1,1748.6,105.30,105.30,150,3000,6.1,6.1,0.33,0.00,-nan(ind),-nan(ind)
+12050,ASCENT,1,1775.3,107.55,107.55,150,3000,6.3,6.3,0.35,0.00,-nan(ind),-nan(ind)
+12250,ASCENT,1,1797.0,109.35,109.35,150,3000,6.5,6.5,0.37,0.00,-nan(ind),-nan(ind)
+12550,ASCENT,1,1830.3,112.05,112.05,150,3000,6.8,6.8,0.39,0.00,-nan(ind),-nan(ind)
+12750,ASCENT,1,1852.9,113.85,113.85,150,3000,7.0,7.0,0.41,0.00,-nan(ind),-nan(ind)
+13000,ASCENT,1,1881.7,116.10,116.10,150,3000,7.3,7.3,0.44,0.00,-nan(ind),-nan(ind)
+13200,ASCENT,1,1905.2,117.90,117.90,150,3000,7.5,7.5,0.46,0.00,-nan(ind),-nan(ind)
+13450,ASCENT,1,1929.0,119.70,119.70,150,3000,7.7,7.7,0.49,0.00,-nan(ind),-nan(ind)
+13650,ASCENT,1,1959.3,121.95,121.95,150,3000,8.0,8.0,0.51,0.00,-nan(ind),-nan(ind)
+13850,ASCENT,1,1983.9,123.75,123.75,150,3000,8.2,8.2,0.51,0.00,-nan(ind),-nan(ind)
+14150,ASCENT,1,2021.5,126.45,126.45,150,3000,8.5,8.5,0.52,0.00,-nan(ind),-nan(ind)
+14350,ASCENT,1,2047.0,128.25,128.25,150,3000,8.6,8.6,0.53,0.00,-nan(ind),-nan(ind)
+14600,ASCENT,1,2079.4,130.50,130.50,150,3000,8.9,8.9,0.53,0.00,-nan(ind),-nan(ind)
+14800,ASCENT,1,2105.7,132.30,132.30,150,3000,9.1,9.1,0.54,0.00,-nan(ind),-nan(ind)
+15050,ASCENT,1,2132.4,134.10,134.10,150,3000,9.3,9.3,0.54,0.00,-nan(ind),-nan(ind)
+15350,ASCENT,1,2166.0,133.35,133.35,150,3000,9.5,9.5,0.55,0.00,-nan(ind),-nan(ind)
+17050,ASCENT,2,2205.4,130.05,130.05,150,0,9.8,9.8,0.56,0.00,-nan(ind),-nan(ind)
+17300,ASCENT,2,2410.5,114.13,114.13,150,2000,11.2,11.2,0.59,0.00,-nan(ind),-nan(ind)
+17500,ASCENT,2,2433.4,114.60,114.60,150,2000,11.4,11.4,0.60,0.00,-nan(ind),-nan(ind)
+17750,ASCENT,2,2456.4,115.07,115.07,150,2000,11.5,11.5,0.60,0.00,-nan(ind),-nan(ind)
+17950,ASCENT,2,2485.2,115.65,115.65,150,2000,11.7,11.7,0.60,0.00,-nan(ind),-nan(ind)
+18150,ASCENT,2,2508.4,116.12,116.12,150,2000,11.8,11.8,0.60,0.00,-nan(ind),-nan(ind)
+18400,ASCENT,2,2537.5,116.70,116.70,150,2000,12.0,12.0,0.60,0.00,-nan(ind),-nan(ind)
+18600,ASCENT,2,2560.9,117.17,117.17,150,2000,12.2,12.2,0.60,0.00,-nan(ind),-nan(ind)
+18850,ASCENT,2,2584.4,117.63,117.63,150,2000,12.3,12.3,0.60,0.00,-nan(ind),-nan(ind)
+19050,ASCENT,2,2613.9,118.22,118.22,150,2000,12.5,12.5,0.60,0.00,-nan(ind),-nan(ind)
+19250,ASCENT,2,2637.6,118.68,118.68,150,2000,12.6,12.6,0.60,0.00,-nan(ind),-nan(ind)
+19550,ASCENT,2,2673.4,119.38,119.38,150,2000,12.9,12.9,0.60,0.00,-nan(ind),-nan(ind)
+19750,ASCENT,2,2697.3,119.85,119.85,150,2000,13.0,13.0,0.60,0.00,-nan(ind),-nan(ind)
+20000,ASCENT,2,2727.3,120.43,120.43,150,2000,13.2,13.2,0.60,0.00,-nan(ind),-nan(ind)
+20200,ASCENT,2,2751.5,120.90,120.90,150,2000,13.3,13.3,0.60,0.00,-nan(ind),-nan(ind)
+20550,ASCENT,2,2787.9,121.60,121.60,150,2000,13.5,13.5,0.60,0.00,-nan(ind),-nan(ind)
+20750,ASCENT,2,2818.4,122.18,122.18,150,2000,13.7,13.7,0.60,0.00,-nan(ind),-nan(ind)
+20950,ASCENT,2,2842.9,122.65,122.65,150,2000,13.8,13.8,0.60,0.00,-nan(ind),-nan(ind)
+21250,ASCENT,2,2879.8,123.35,123.35,150,2000,14.0,14.0,0.60,0.00,-nan(ind),-nan(ind)
+21450,ASCENT,2,2904.5,123.82,123.82,150,2000,14.2,14.2,0.60,0.00,-nan(ind),-nan(ind)
+21700,ASCENT,2,2935.5,124.40,124.40,150,2000,14.4,14.4,0.60,0.00,-nan(ind),-nan(ind)
+21900,ASCENT,2,2960.5,124.87,124.87,150,2000,14.5,14.5,0.60,0.00,-nan(ind),-nan(ind)
+22150,ASCENT,2,2985.5,125.33,125.33,150,2000,14.6,14.6,0.60,0.00,-nan(ind),-nan(ind)
+22350,ASCENT,2,3016.9,125.92,125.92,150,2000,14.8,14.8,0.60,0.00,-nan(ind),-nan(ind)
+22550,ASCENT,2,3042.2,126.38,126.38,150,2000,14.9,14.9,0.60,0.00,-nan(ind),-nan(ind)
+22850,ASCENT,2,3080.2,127.08,127.08,150,2000,15.1,15.1,0.60,0.00,-nan(ind),-nan(ind)
+23050,ASCENT,2,3105.7,127.55,127.55,150,2000,15.3,15.3,0.60,0.00,-nan(ind),-nan(ind)
+23300,ASCENT,2,3137.7,128.13,128.13,150,2000,15.4,15.4,0.60,0.00,-nan(ind),-nan(ind)
+23500,ASCENT,2,3163.3,128.60,128.60,150,2000,15.6,15.6,0.60,0.00,-nan(ind),-nan(ind)
+23750,ASCENT,2,3189.1,129.07,129.07,150,2000,15.7,15.7,0.60,0.00,-nan(ind),-nan(ind)
+23950,ASCENT,2,3221.5,129.65,129.65,150,2000,15.9,15.9,0.60,0.00,-nan(ind),-nan(ind)
+24150,ASCENT,2,3247.5,130.12,130.12,150,2000,16.0,16.0,0.60,0.00,-nan(ind),-nan(ind)
+24450,ASCENT,2,3286.6,130.82,130.82,150,2000,16.2,16.2,0.60,0.00,-nan(ind),-nan(ind)
+24650,ASCENT,2,3312.8,131.28,131.28,150,2000,16.3,16.3,0.60,0.00,-nan(ind),-nan(ind)
+24900,ASCENT,2,3345.8,131.87,131.87,150,2000,16.5,16.5,0.60,0.00,-nan(ind),-nan(ind)
+25100,ASCENT,2,3372.2,132.33,132.33,150,2000,16.6,16.6,0.60,0.00,-nan(ind),-nan(ind)
+25450,ASCENT,2,3398.7,132.80,132.80,150,2000,16.8,16.8,0.60,0.00,-nan(ind),-nan(ind)
+25650,ASCENT,2,3445.4,133.62,133.62,150,2000,17.0,17.0,0.60,0.00,-nan(ind),-nan(ind)
+25950,ASCENT,2,3472.1,134.08,134.08,150,2000,17.1,17.1,0.60,0.00,-nan(ind),-nan(ind)
+26150,ASCENT,2,3512.5,134.78,134.78,150,2000,17.3,17.3,0.60,0.00,-nan(ind),-nan(ind)
+26400,ASCENT,2,3539.5,135.25,135.25,150,2000,17.5,17.5,0.60,0.00,-nan(ind),-nan(ind)
+26600,ASCENT,2,3573.4,135.83,135.83,150,2000,17.6,17.6,0.60,0.00,-nan(ind),-nan(ind)
+26800,ASCENT,2,3600.6,136.30,136.30,150,2000,17.8,17.8,0.60,0.00,-nan(ind),-nan(ind)
+27050,ASCENT,2,3634.8,136.88,136.88,150,2000,17.9,17.9,0.60,0.00,-nan(ind),-nan(ind)
+27250,ASCENT,2,3662.2,137.35,137.35,150,2000,18.1,18.1,0.60,0.00,-nan(ind),-nan(ind)
+27550,ASCENT,2,3689.8,137.82,137.82,150,2000,18.2,18.2,0.60,0.00,-nan(ind),-nan(ind)
+27750,ASCENT,2,3731.2,138.52,138.52,150,2000,18.4,18.4,0.60,0.00,-nan(ind),-nan(ind)
+28000,ASCENT,2,3759.0,138.98,138.98,150,2000,18.5,18.5,0.60,0.00,-nan(ind),-nan(ind)
+28200,ASCENT,2,3793.8,139.57,139.57,150,2000,18.7,18.7,0.60,0.00,-nan(ind),-nan(ind)
+28400,ASCENT,2,3821.8,140.03,140.03,150,2000,18.8,18.8,0.60,0.00,-nan(ind),-nan(ind)
+28650,ASCENT,2,3856.9,140.62,140.62,150,2000,19.0,19.0,0.60,0.00,-nan(ind),-nan(ind)
+28850,ASCENT,2,3885.1,141.08,141.08,150,2000,19.1,19.1,0.60,0.00,-nan(ind),-nan(ind)
+29150,ASCENT,2,3913.3,141.55,141.55,150,2000,19.2,19.2,0.60,0.00,-nan(ind),-nan(ind)
+29350,ASCENT,2,3955.9,142.25,142.25,150,2000,19.4,19.4,0.60,0.00,-nan(ind),-nan(ind)
+29600,ASCENT,2,3984.4,142.72,142.72,150,2000,19.5,19.5,0.60,0.00,-nan(ind),-nan(ind)
+29800,ASCENT,2,4020.2,143.30,143.30,150,2000,19.7,19.7,0.60,0.00,-nan(ind),-nan(ind)
+30000,ASCENT,2,4048.9,143.77,143.77,150,2000,19.8,19.8,0.60,0.00,-nan(ind),-nan(ind)
+30250,ASCENT,2,4084.9,144.35,144.35,150,2000,20.0,20.0,0.60,0.00,-nan(ind),-nan(ind)
+30550,ASCENT,2,4128.4,145.05,145.05,150,2000,20.2,20.2,0.60,0.00,-nan(ind),-nan(ind)
+30850,ASCENT,2,4172.0,145.75,145.75,150,2000,20.4,20.4,0.60,0.00,-nan(ind),-nan(ind)
+31050,ASCENT,2,4201.2,146.22,146.22,150,2000,20.5,20.5,0.60,0.00,-nan(ind),-nan(ind)
+31300,ASCENT,2,4237.9,146.80,146.80,150,2000,20.7,20.7,0.60,0.00,-nan(ind),-nan(ind)
+31500,ASCENT,2,4267.3,147.27,147.27,150,2000,20.8,20.8,0.60,0.00,-nan(ind),-nan(ind)
+31750,ASCENT,2,4296.8,147.73,147.73,150,2000,20.9,20.9,0.60,0.00,-nan(ind),-nan(ind)
+31950,ASCENT,2,4333.8,148.32,148.32,150,2000,21.1,21.1,0.60,0.00,-nan(ind),-nan(ind)
+32150,ASCENT,2,4363.4,147.45,147.45,150,2000,21.2,21.2,0.60,0.00,-nan(ind),-nan(ind)
+32500,BALISTICO,2,4414.3,143.60,143.60,150,0,21.4,21.4,0.55,0.00,-nan(ind),-nan(ind)
+32700,BALISTICO,2,4442.7,141.40,141.40,150,0,21.5,21.5,0.55,0.00,-nan(ind),-nan(ind)
+32950,BALISTICO,2,4477.7,138.65,138.65,150,0,21.7,21.7,0.55,0.00,-nan(ind),-nan(ind)
+33150,BALISTICO,2,4505.1,136.45,136.45,150,0,21.8,21.8,0.56,0.00,-nan(ind),-nan(ind)
+33400,BALISTICO,2,4532.1,134.25,134.25,150,0,21.9,21.9,0.56,0.00,-nan(ind),-nan(ind)
+33600,BALISTICO,2,4565.3,131.50,131.50,150,0,22.1,22.1,0.56,0.00,-nan(ind),-nan(ind)
+33800,BALISTICO,2,4591.3,129.30,129.30,150,0,22.2,22.2,0.57,0.00,-nan(ind),-nan(ind)
+34050,BALISTICO,2,4623.2,126.55,126.55,150,0,22.3,22.3,0.57,0.00,-nan(ind),-nan(ind)
+34250,BALISTICO,2,4648.2,124.35,124.35,150,0,22.4,22.4,0.57,0.00,-nan(ind),-nan(ind)
+34500,BALISTICO,2,4672.8,122.15,122.15,150,0,22.5,22.5,0.57,0.00,-nan(ind),-nan(ind)
+34700,BALISTICO,2,4703.0,119.40,119.40,150,0,22.6,22.6,0.58,0.00,-nan(ind),-nan(ind)
+34900,BALISTICO,2,4726.6,117.20,117.20,150,0,22.7,22.7,0.58,0.00,-nan(ind),-nan(ind)
+35150,BALISTICO,2,4755.5,114.45,114.45,150,0,22.8,22.8,0.58,0.00,-nan(ind),-nan(ind)
+35350,BALISTICO,2,4778.1,112.25,112.25,150,0,22.9,22.9,0.58,0.00,-nan(ind),-nan(ind)
+35700,BALISTICO,2,4811.2,108.95,108.95,150,0,23.1,23.1,0.59,0.00,-nan(ind),-nan(ind)
+35900,BALISTICO,2,4838.0,106.20,106.20,150,0,23.2,23.2,0.59,0.00,-nan(ind),-nan(ind)
+36100,BALISTICO,2,4859.0,104.00,104.00,150,0,23.3,23.3,0.59,0.00,-nan(ind),-nan(ind)
+36350,BALISTICO,2,4884.6,101.25,101.25,150,0,23.4,23.4,0.59,0.00,-nan(ind),-nan(ind)
+36550,BALISTICO,2,4904.5,99.05,99.05,150,0,23.4,23.4,0.60,0.00,-nan(ind),-nan(ind)
+36800,BALISTICO,2,4924.1,96.85,96.85,150,0,23.5,23.5,0.60,0.00,-nan(ind),-nan(ind)
+37000,BALISTICO,2,4947.9,94.10,94.10,150,0,23.6,23.6,0.60,0.00,-nan(ind),-nan(ind)
+37200,BALISTICO,2,4966.4,91.90,91.90,150,0,23.7,23.7,0.60,0.00,-nan(ind),-nan(ind)
+37450,BALISTICO,2,4989.0,89.15,89.15,150,0,23.8,23.8,0.60,0.00,-nan(ind),-nan(ind)
+37650,BALISTICO,2,5006.5,86.95,86.95,150,0,23.8,23.8,0.60,0.00,-nan(ind),-nan(ind)
+37900,BALISTICO,2,5023.6,84.75,84.75,150,0,23.9,23.9,0.60,0.00,-nan(ind),-nan(ind)
+38100,BALISTICO,2,5044.4,82.00,82.00,150,0,24.0,24.0,0.60,0.00,-nan(ind),-nan(ind)
+38300,BALISTICO,2,5060.5,79.80,79.80,150,0,24.0,24.0,0.60,0.00,-nan(ind),-nan(ind)
+38550,BALISTICO,2,5080.1,77.05,77.05,150,0,24.1,24.1,0.60,0.00,-nan(ind),-nan(ind)
+38750,BALISTICO,2,5095.2,74.85,74.85,150,0,24.2,24.2,0.60,0.00,-nan(ind),-nan(ind)
+39000,BALISTICO,2,5109.9,72.65,72.65,150,0,24.2,24.2,0.60,0.00,-nan(ind),-nan(ind)
+39200,BALISTICO,2,5127.7,69.90,69.90,150,0,24.3,24.3,0.60,0.00,-nan(ind),-nan(ind)
+39400,BALISTICO,2,5141.4,67.70,67.70,150,0,24.4,24.4,0.60,0.00,-nan(ind),-nan(ind)
+39650,BALISTICO,2,5157.9,64.95,64.95,150,0,24.4,24.4,0.60,0.00,-nan(ind),-nan(ind)
+39850,BALISTICO,2,5170.6,62.75,62.75,150,0,24.5,24.5,0.60,0.00,-nan(ind),-nan(ind)
+40100,BALISTICO,2,5182.9,60.55,60.55,150,0,24.5,24.5,0.60,0.00,-nan(ind),-nan(ind)
+40300,BALISTICO,2,5197.6,57.80,57.80,150,0,24.6,24.6,0.60,0.00,-nan(ind),-nan(ind)
+40600,BALISTICO,2,5208.9,55.60,55.60,150,0,24.6,24.6,0.60,0.00,-nan(ind),-nan(ind)
+40850,BALISTICO,2,5227.6,51.75,51.75,150,0,24.7,24.7,0.60,0.00,-nan(ind),-nan(ind)
+41050,BALISTICO,2,5237.6,49.55,49.55,150,0,24.7,24.7,0.60,0.00,-nan(ind),-nan(ind)
+41300,BALISTICO,2,5247.3,47.35,47.35,150,0,24.8,24.8,0.60,0.00,-nan(ind),-nan(ind)
+41500,BALISTICO,2,5258.7,44.60,44.60,150,0,24.8,24.8,0.60,0.00,-nan(ind),-nan(ind)
+41700,BALISTICO,2,5267.3,42.40,42.40,150,0,24.9,24.9,0.60,0.00,-nan(ind),-nan(ind)
+41950,BALISTICO,2,5277.5,39.65,39.65,150,0,24.9,24.9,0.60,0.00,-nan(ind),-nan(ind)
+42150,BALISTICO,2,5285.2,37.45,37.45,150,0,24.9,24.9,0.60,0.00,-nan(ind),-nan(ind)
+42400,BALISTICO,2,5292.4,35.25,35.25,150,0,24.9,24.9,0.60,0.00,-nan(ind),-nan(ind)
+42600,BALISTICO,2,5300.8,32.50,32.50,150,0,25.0,25.0,0.60,0.00,-nan(ind),-nan(ind)
+42800,BALISTICO,2,5307.0,30.30,30.30,150,0,25.0,25.0,0.60,0.00,-nan(ind),-nan(ind)
+43050,BALISTICO,2,5314.2,27.55,27.55,150,0,25.0,25.0,0.60,0.00,-nan(ind),-nan(ind)
+43250,BALISTICO,2,5319.4,25.35,25.35,150,0,25.0,25.0,0.60,0.00,-nan(ind),-nan(ind)
+43500,BALISTICO,2,5324.2,23.15,23.15,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+43700,BALISTICO,2,5329.6,20.40,20.40,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+43900,BALISTICO,2,5333.4,18.20,18.20,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+44150,BALISTICO,2,5337.5,15.45,15.45,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+44350,BALISTICO,2,5340.4,13.25,13.25,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+44600,BALISTICO,2,5342.7,11.05,11.05,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+44800,BALISTICO,2,5345.1,8.30,8.30,150,0,25.1,25.1,0.60,0.00,-nan(ind),-nan(ind)
+45000,BALISTICO,2,5346.5,6.10,6.10,150,0,25.2,25.2,0.60,0.00,-nan(ind),-nan(ind)
+45250,BALISTICO,2,5347.6,3.35,3.35,150,0,25.2,25.2,0.60,0.00,-nan(ind),-nan(ind)
+45450,BALISTICO,2,5348.0,1.15,1.15,150,0,25.2,25.2,0.60,0.00,-nan(ind),-nan(ind)
+
+mundo final: y=5347.25 vy=-3.80 espaco=false

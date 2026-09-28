@@ -74,7 +74,37 @@ function M.novo(CFG, E, L, Mot)
     if #fns > 0 then parallel.waitForAll(table.unpack(fns)) end
   end
 
-  return { pulse = pulse, separate = separate, checkBoosterDrop = checkBoosterDrop, confirmarIgnicao = confirmarIgnicao }
+  -- troca de estagio quando a lava do estagio acaba; devolve true se acendeu o proximo
+  local function trocaEstagio(ship, inSpace)
+    L.info("Estagio %d esgotado", S.stage)
+    Mot.logEngines("fim_estagio")
+    Mot.shutdown(S.stage)
+    if S.stage < #CFG.stages then
+      separate(S.stage)
+      S.stage = S.stage + 1
+      save()
+      sleep(1)
+      Mot.ignite(S.stage)
+      if S.phase == "ASCENT" then Mot.setThrottle(S.stage, 1) else Mot.orientThrottle(S.stage) end
+      return true
+    elseif not S.fuelOut then
+      S.fuelOut = true
+      if S.phase == "DEORBIT" then
+        L.err("Combustivel acabou durante o DEORBIT. Periastro pode nao ter baixado o suficiente.")
+        E.trocar("REENTRADA", "sem combustivel no deorbit")
+      elseif S.phase == "POUSO" or S.phase == "REENTRADA" then
+        L.err("SEM COMBUSTIVEL PARA O POUSO! Y=%.0f vy=%.1f", ship.pos.y, ship.vel.y)
+      elseif inSpace or S.phase == "COAST" or S.phase == "CIRC" then
+        E.trocar("FIM", "combustivel acabou no espaco")
+      else
+        E.trocar("BALISTICO", ("combustivel acabou em Y=%.0f, subindo por inercia"):format(ship.pos.y))
+      end
+    end
+    return false
+  end
+
+  return { pulse = pulse, separate = separate, checkBoosterDrop = checkBoosterDrop, confirmarIgnicao = confirmarIgnicao,
+    trocaEstagio = trocaEstagio }
 end
 
 return M
